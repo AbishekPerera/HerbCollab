@@ -12,13 +12,13 @@ const Footer = () => {
                 <h3>Services</h3>
                 <ul>
                   <li>
-                    <a href="#">Web design</a>
+                    <a href="#">Order tracking</a>
                   </li>
                   <li>
-                    <a href="#">Development</a>
+                    <a href="#">Wish List</a>
                   </li>
                   <li>
-                    <a href="#">Hosting</a>
+                    <a href="#">Login</a>
                   </li>
                 </ul>
               </div>
