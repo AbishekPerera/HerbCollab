@@ -1,6 +1,6 @@
 import React from "react";
 import { Routes, Route } from "react-router-dom";
-import Sample from "./pages/Sample";
+import Homepage from "./pages/HomePage/HomePage";
 import Test from "./pages/Test";
 import Footer from "./components/Footer/Footer";
 import Header from "./components/Header/Header";
@@ -12,7 +12,7 @@ function App() {
 
       {/* ::::::::::::::::::::::::::::::::::::::::Customer Routes::::::::::::::::::::::::::::::::::::::::::::::::::: */}
       <Routes>
-        <Route path="/" element={<Sample />} />
+        <Route path="/" element={<Homepage />} />
         <Route path="/just" element={<Test />} />
         {/* ::::::::::::::::::::::::::::::::::::::::Customer Routes::::::::::::::::::::::::::::::::::::::::::::::::::: */}
 

@@ -1,9 +1,29 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
 import Logo from "../../img/Logo/logo.png";
 import "./Header.css";
 import { Row, Col, Navbar, Container, Nav } from "react-bootstrap";
 
 const Header = () => {
+  const [isSticky, setIsSticky] = useState(false);
+
+  useEffect(() => {
+    window.addEventListener("scroll", handleScroll);
+    return () => {
+      window.removeEventListener("scroll", handleScroll);
+    };
+  }, []);
+
+  function handleScroll() {
+    const scrollTop = window.pageYOffset;
+
+    console.log(scrollTop);
+    if (scrollTop > 100 && !isSticky) {
+      setIsSticky(true);
+    } else {
+      setIsSticky(false);
+    }
+  }
+
   return (
     <div className="header-nav-bar">
       <Row>
@@ -44,7 +64,7 @@ const Header = () => {
         </Col>
       </Row>
 
-      <Navbar bg="primary" variant="dark">
+      <Navbar bg="primary" variant="dark" className={isSticky ? "sticky" : ""}>
         <Container>
           <Navbar.Brand href="#home"></Navbar.Brand>
           <Nav className="me-auto">
