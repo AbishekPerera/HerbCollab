@@ -1,0 +1,23 @@
+.mainContainer {
+  display: flex;
+}
+
+.sidebar {
+  height: 700px;
+  position: sticky;
+  top: 0;
+  left: 0;
+}
+.contentContainer {
+  width: auto;
+  position: relative;
+  display: grid;
+}
+
+.content {
+  padding: 3rem;
+}
+
+.systemNavBar {
+  width: 100%;
+}
