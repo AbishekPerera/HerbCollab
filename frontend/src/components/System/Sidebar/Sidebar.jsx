@@ -19,18 +19,6 @@ const Sidebar = () => {
     });
   }, [location]);
 
-  // useEffect(() => {
-  //   // set active item based on current route
-  //   $(".sidebar ul li").removeClass("active");
-  //   const currentPath = location.pathname;
-  //   $(".sidebar ul li a").each(function () {
-  //     const $this = $(this);
-  //     if ($this.attr("href") === currentPath) {
-  //       $this.parent().addClass("active");
-  //     }
-  //   });
-  // }, [location]);
-
   return (
     <div className="main-container">
       <div className="sidebar" id="side-nav">
