@@ -1,6 +1,6 @@
 import React from "react";
 import Sidebar from "../../../components/System/Sidebar/Sidebar";
-import "./Dashboard.css";
+import "./styles/Dashboard.css";
 import SystemNav from "../../../components/System/SystemNavBar/SystemNav";
 import SystemFooter from "../../../components/System/SystemFooter/SystemFooter";
 import DashInfoCard from "../../../components/System/DashInfoCard/DashInfoCard";
