@@ -1,17 +1,35 @@
-import React, { useEffect } from "react";
+import React, { useEffect, useState } from "react";
 import "./Sidebar.css";
 import $ from "jquery";
 import Logo from "../../../img/Logo/logo.png";
-import { Link } from "react-router-dom";
+import { Link, useLocation } from "react-router-dom";
 
 const Sidebar = () => {
+  const location = useLocation();
+  const [activeItem, setActiveItem] = useState("");
+
   useEffect(() => {
+    // set the active item based on the current URL path
+    const path = location.pathname;
+    setActiveItem(path);
+
     // add click event handler to sidebar items
     $(".sidebar ul li").on("click", function () {
-      $(".sidebar ul li.active").removeClass("active");
-      $(this).addClass("active");
+      setActiveItem($(this).find("a").attr("href"));
     });
-  }, []);
+  }, [location]);
+
+  // useEffect(() => {
+  //   // set active item based on current route
+  //   $(".sidebar ul li").removeClass("active");
+  //   const currentPath = location.pathname;
+  //   $(".sidebar ul li a").each(function () {
+  //     const $this = $(this);
+  //     if ($this.attr("href") === currentPath) {
+  //       $this.parent().addClass("active");
+  //     }
+  //   });
+  // }, [location]);
 
   return (
     <div className="main-container">
@@ -31,7 +49,11 @@ const Sidebar = () => {
 
         <div>
           <ul className="list-untyled px-2">
-            <li className="active">
+            <li
+              className={
+                activeItem === "/system/admin-dashboard" ? "active" : ""
+              }
+            >
               <Link
                 to="/system/admin-dashboard"
                 className="text-decoration-none px-3 py-2 d-block"
@@ -40,25 +62,32 @@ const Sidebar = () => {
                 <span style={{ paddingLeft: "0.7rem" }}>Dashboard</span>
               </Link>
             </li>
-            <li className="">
-              <Link to="#" className="text-decoration-none px-3 py-2 d-block">
+            <li
+              className={
+                activeItem === "/system/admin-pendingproducts" ? "active" : ""
+              }
+            >
+              <Link
+                to="/system/admin-pendingproducts"
+                className="text-decoration-none px-3 py-2 d-block"
+              >
                 <i class="bi bi-bag-plus"></i>
-                <span style={{ paddingLeft: "0.7rem" }}>New Products</span>
+                <span style={{ paddingLeft: "0.7rem" }}>Pending Products</span>
               </Link>
             </li>
-            <li className="">
+            <li>
               <Link to="#" className="text-decoration-none px-3 py-2 d-block">
                 <i class="bi bi-card-list"></i>
                 <span style={{ paddingLeft: "0.7rem" }}>All Products</span>
               </Link>
             </li>
-            <li className="">
+            <li>
               <Link to="#" className="text-decoration-none px-3 py-2 d-block">
                 <i class="bi bi-people"></i>
                 <span style={{ paddingLeft: "0.7rem" }}>Users</span>
               </Link>
             </li>
-            <li className="">
+            <li>
               <Link to="#" className="text-decoration-none px-3 py-2 d-block">
                 <i class="bi bi-person-square"></i>
                 <span style={{ paddingLeft: "0.7rem" }}>My Profile</span>

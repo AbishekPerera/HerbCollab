@@ -3,6 +3,7 @@ import { Routes, Route } from "react-router-dom";
 import Sample from "./pages/Sample";
 import Test from "./pages/Test";
 import Dashboard from "./pages/System/Admin/Dashboard";
+import PendingProducts from "./pages/System/Admin/PendingProducts";
 
 function App() {
   return (
@@ -16,6 +17,10 @@ function App() {
         {/* ::::::::::::::::::::::::::::::::::::::::Admin Routes::::::::::::::::::::::::::::::::::::::::::::::::::: */}
         <Route path="/system/auth" element={<Test />} />
         <Route path="/system/admin-dashboard" element={<Dashboard />} />
+        <Route
+          path="/system/admin-pendingproducts"
+          element={<PendingProducts />}
+        />
         {/* ::::::::::::::::::::::::::::::::::::::::Admin Routes::::::::::::::::::::::::::::::::::::::::::::::::::: */}
 
         {/* ::::::::::::::::::::::::::::::::::::::::Seller Routes::::::::::::::::::::::::::::::::::::::::::::::::::: */}
