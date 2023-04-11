@@ -3,7 +3,7 @@ import Nav from "react-bootstrap/Nav";
 import Navbar from "react-bootstrap/Navbar";
 import NavDropdown from "react-bootstrap/NavDropdown";
 import { Link } from "react-router-dom";
-import AdminImg from "../../img/Admin/admin2.png";
+import AdminImg from "../../../img/Admin/admin2.png";
 import "./SystemNav.css";
 const SystemNav = () => {
   return (

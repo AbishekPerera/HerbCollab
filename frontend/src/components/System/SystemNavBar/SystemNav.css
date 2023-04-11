@@ -2,10 +2,11 @@
   background-color: white;
 } */
 
-.mainNavContainer {
+/* .mainNavContainer {
   background-color: white;
-}
+} */
 
 .subNavContainer {
+  box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
   background-color: white;
 }
