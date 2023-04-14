@@ -3,8 +3,8 @@ import { Routes, Route } from "react-router-dom";
 import Sample from "./pages/Sample";
 import Test from "./pages/Test";
 import Dashboard from "./pages/System/Admin/Dashboard";
-import PendingProducts from "./pages/System/Admin/PendingProducts";
 import SellerDashboard from "./pages/System/Seller/SellerDashboard";
+import PendingOrders from "./pages/System/Admin/PendingOrders";
 
 function App() {
   return (
@@ -20,7 +20,7 @@ function App() {
         <Route path="/system/admin-dashboard" element={<Dashboard />} />
         <Route
           path="/system/admin-pendingproducts"
-          element={<PendingProducts />}
+          element={<PendingOrders />}
         />
         {/* ::::::::::::::::::::::::::::::::::::::::Admin Routes::::::::::::::::::::::::::::::::::::::::::::::::::: */}
 

@@ -1,0 +1,48 @@
+body {
+  background-color: #f5f7fa;
+}
+
+.pendingOrdersCard {
+  background-color: #54a96673;
+  box-shadow: rgba(0, 0, 0, 0.16) 0px 1px 4px;
+  --bs-card-spacer-y: 1rem;
+  --bs-card-spacer-x: 1rem;
+  --bs-card-title-spacer-y: 0.5rem;
+  --bs-card-border-width: 1px;
+  --bs-card-border-color: rgba(223, 215, 202, 0.75);
+  --bs-card-border-radius: 0.375rem;
+  --bs-card-box-shadow: ;
+  --bs-card-inner-border-radius: calc(0.375rem - 1px);
+  --bs-card-cap-padding-y: 0.5rem;
+  --bs-card-cap-padding-x: 1rem;
+  --bs-card-cap-bg: rgba(248, 245, 240, 0.25);
+  --bs-card-cap-color: ;
+  --bs-card-height: ;
+  --bs-card-color: ;
+  --bs-card-bg: #fff;
+  --bs-card-img-overlay-padding: 1rem;
+  --bs-card-group-margin: 0.75rem;
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  min-width: 0;
+  height: var(--bs-card-height);
+  word-wrap: break-word;
+  background-clip: border-box;
+  border: var(--bs-card-border-width) solid var(--bs-card-border-color);
+  border-radius: var(--bs-card-border-radius);
+}
+
+.fas.fa-heart:hover {
+  color: #f44336 !important;
+  /* background-color: #10491c7a; */
+}
+
+.fas.fa-share-alt:hover {
+  color: #0d47a1 !important;
+}
+
+.my-5 {
+  margin-top: 3rem !important;
+  margin-bottom: 0rem !important;
+}
