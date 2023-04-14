@@ -4,6 +4,7 @@ import Sample from "./pages/Sample";
 import Test from "./pages/Test";
 import Dashboard from "./pages/System/Admin/Dashboard";
 import PendingProducts from "./pages/System/Admin/PendingProducts";
+import SellerDashboard from "./pages/System/Seller/SellerDashboard";
 
 function App() {
   return (
@@ -25,7 +26,7 @@ function App() {
 
         {/* ::::::::::::::::::::::::::::::::::::::::Seller Routes::::::::::::::::::::::::::::::::::::::::::::::::::: */}
         <Route path="/system/auth" element={<Test />} />
-        <Route path="/system/seller-dashboard" element={<Test />} />
+        <Route path="/system/seller-dashboard" element={<SellerDashboard />} />
         {/* ::::::::::::::::::::::::::::::::::::::::Seller Routes::::::::::::::::::::::::::::::::::::::::::::::::::: */}
       </Routes>
     </div>
