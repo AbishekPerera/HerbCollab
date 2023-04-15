@@ -4,6 +4,8 @@ import Sample from "./pages/Sample";
 import Test from "./pages/Test";
 import Dashboard from "./pages/System/Admin/Dashboard";
 import PendingProducts from "./pages/System/Admin/PendingProducts";
+import AdminProfile from "./pages/System/Admin/AdminProfile";
+
 
 function App() {
   return (
@@ -17,6 +19,7 @@ function App() {
         {/* ::::::::::::::::::::::::::::::::::::::::Admin Routes::::::::::::::::::::::::::::::::::::::::::::::::::: */}
         <Route path="/system/auth" element={<Test />} />
         <Route path="/system/admin-dashboard" element={<Dashboard />} />
+        <Route path="/system/admin-profile" element={<AdminProfile />} />
         <Route
           path="/system/admin-pendingproducts"
           element={<PendingProducts />}
