@@ -2,14 +2,12 @@ import React from "react";
 import { Routes, Route } from "react-router-dom";
 import Homepage from "./pages/HomePage/HomePage";
 import Test from "./pages/Test";
-import Footer from "./components/Footer/Footer";
-import Header from "./components/Header/Header";
+import Dashboard from "./pages/System/Admin/Dashboard";
+import PendingProducts from "./pages/System/Admin/PendingProducts";
 
 function App() {
   return (
     <div className="App">
-      <Header />
-
       {/* ::::::::::::::::::::::::::::::::::::::::Customer Routes::::::::::::::::::::::::::::::::::::::::::::::::::: */}
       <Routes>
         <Route path="/" element={<Homepage />} />
@@ -18,7 +16,11 @@ function App() {
 
         {/* ::::::::::::::::::::::::::::::::::::::::Admin Routes::::::::::::::::::::::::::::::::::::::::::::::::::: */}
         <Route path="/system/auth" element={<Test />} />
-        <Route path="/system/admin-dashboard" element={<Test />} />
+        <Route path="/system/admin-dashboard" element={<Dashboard />} />
+        <Route
+          path="/system/admin-pendingproducts"
+          element={<PendingProducts />}
+        />
         {/* ::::::::::::::::::::::::::::::::::::::::Admin Routes::::::::::::::::::::::::::::::::::::::::::::::::::: */}
 
         {/* ::::::::::::::::::::::::::::::::::::::::Seller Routes::::::::::::::::::::::::::::::::::::::::::::::::::: */}
@@ -26,8 +28,6 @@ function App() {
         <Route path="/system/seller-dashboard" element={<Test />} />
         {/* ::::::::::::::::::::::::::::::::::::::::Seller Routes::::::::::::::::::::::::::::::::::::::::::::::::::: */}
       </Routes>
-
-      <Footer />
     </div>
   );
 }
