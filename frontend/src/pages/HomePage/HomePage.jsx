@@ -11,80 +11,91 @@ import giftcard from "../../img/svg/11-gift-card.svg";
 import Card from "../../components/ItemCard/ItemCard";
 import Header from "../../components/Header/Header";
 import Footer from "../../components/Footer/Footer";
-import Categories from "../../components/Categories/Categories";
 
 const HomePage = () => {
   const products = [
     {
       id: 1,
       title: "Product 1",
-      image: "https://via.placeholder.com/150",
+      image:
+        "https://mymed.lk/public/storage/products_assets/6114a16bbee4e.jpg",
       price: "$10.00",
     },
     {
       id: 2,
       title: "Product 2",
-      image: "https://via.placeholder.com/150",
+      image:
+        "https://mymed.lk/public/storage/dev_images/products_assets/60d530404aa4e.jpg",
       price: "$20.00",
     },
     {
       id: 3,
       title: "Product 3",
-      image: "https://via.placeholder.com/150",
+      image:
+        "https://mymed.lk/public/storage/products_assets/614c12af03c80.png",
       price: "$30.00",
     },
     {
       id: 4,
       title: "Product 4",
-      image: "https://via.placeholder.com/150",
+      image:
+        "https://mymed.lk/public/storage/products_assets/614d827c00aa1.jpg",
       price: "$40.00",
     },
     {
       id: 5,
       title: "Product 5",
-      image: "https://via.placeholder.com/150",
+      image:
+        "https://mymed.lk/public/storage/products_assets/614d876228cfd.jpg",
       price: "$40.00",
     },
     {
       id: 6,
       title: "Product 6",
-      image: "https://via.placeholder.com/150",
+      image:
+        "https://mymed.lk/public/storage/products_assets/614d88568ca26.jpg",
       price: "$40.00",
     },
     {
       id: 7,
       title: "Product 7",
-      image: "https://via.placeholder.com/150",
+      image:
+        "https://mymed.lk/public/storage/products_assets/6135ac6edd3d5.jpg",
       price: "$40.00",
     },
     {
       id: 8,
       title: "Product 8",
-      image: "https://via.placeholder.com/150",
+      image:
+        "https://mymed.lk/public/storage/products_assets/612c56d1d51f1.png",
       price: "$40.00",
     },
     {
       id: 9,
       title: "Product 9",
-      image: "https://via.placeholder.com/150",
+      image:
+        "https://mymed.lk/public/storage/products_assets/61262d0c4911e.jpg",
       price: "$40.00",
     },
     {
       id: 10,
       title: "Product 10",
-      image: "https://via.placeholder.com/150",
+      image:
+        "https://mymed.lk/public/storage/products_assets/61262c58df611.jpg",
       price: "$40.00",
     },
     {
       id: 11,
       title: "Product 11",
-      image: "https://via.placeholder.com/150",
+      image:
+        "https://mymed.lk/public/storage/products_assets/61262d8a3a528.jpg",
       price: "$40.00",
     },
     {
       id: 12,
       title: "Product 12",
-      image: "https://via.placeholder.com/150",
+      image:
+        "https://mymed.lk/public/storage/products_assets/6184bdc63310f.jpg",
       price: "$40.00",
     },
   ];
@@ -141,146 +152,6 @@ const HomePage = () => {
                                       </li>
                                     </ul>
                                   </li>
-                                  <li class="ltn__category-submenu-title ltn__category-menu-drop">
-                                    <a>First Aid</a>
-                                    <ul class="ltn__category-submenu-children">
-                                      <li>
-                                        <a>Clutches</a>
-                                      </li>
-                                      <li>
-                                        <a>Cross Body</a>
-                                      </li>
-                                      <li>
-                                        <a>Satchels</a>
-                                      </li>
-                                      <li>
-                                        <a>Sholuder</a>
-                                      </li>
-                                      <li>
-                                        <a>Toter</a>
-                                      </li>
-                                    </ul>
-                                  </li>
-                                  <li class="ltn__category-submenu-title ltn__category-menu-drop">
-                                    <a>Surgical Product</a>
-                                    <ul class="ltn__category-submenu-children">
-                                      <li>
-                                        <a>Clutches</a>
-                                      </li>
-                                      <li>
-                                        <a>Cross Body</a>
-                                      </li>
-                                      <li>
-                                        <a>Satchels</a>
-                                      </li>
-                                      <li>
-                                        <a>Sholuder</a>
-                                      </li>
-                                      <li>
-                                        <a>Toter</a>
-                                      </li>
-                                    </ul>
-                                  </li>
-                                  <li class="ltn__category-submenu-title ltn__category-menu-drop">
-                                    <a>Diagnostic Product</a>
-                                    <ul class="ltn__category-submenu-children">
-                                      <li>
-                                        <a>Clutches</a>
-                                      </li>
-                                      <li>
-                                        <a>Cross Body</a>
-                                      </li>
-                                      <li>
-                                        <a>Satchels</a>
-                                      </li>
-                                      <li>
-                                        <a>Sholuder</a>
-                                      </li>
-                                      <li>
-                                        <a>Toter</a>
-                                      </li>
-                                    </ul>
-                                  </li>
-                                  <li class="ltn__category-submenu-title ltn__category-menu-drop">
-                                    <a>Laboratory Product</a>
-                                    <ul class="ltn__category-submenu-children">
-                                      <li>
-                                        <a>Clutches</a>
-                                      </li>
-                                      <li>
-                                        <a>Cross Body</a>
-                                      </li>
-                                      <li>
-                                        <a>Satchels</a>
-                                      </li>
-                                      <li>
-                                        <a>Sholuder</a>
-                                      </li>
-                                      <li>
-                                        <a>Toter</a>
-                                      </li>
-                                    </ul>
-                                  </li>
-                                  <li class="ltn__category-submenu-title ltn__category-menu-drop">
-                                    <a>Handbags</a>
-                                    <ul class="ltn__category-submenu-children">
-                                      <li>
-                                        <a>Clutches</a>
-                                      </li>
-                                      <li>
-                                        <a>Cross Body</a>
-                                      </li>
-                                      <li>
-                                        <a>Satchels</a>
-                                      </li>
-                                      <li>
-                                        <a>Sholuder</a>
-                                      </li>
-                                      <li>
-                                        <a>Toter</a>
-                                      </li>
-                                    </ul>
-                                  </li>
-                                  <li class="ltn__category-submenu-title ltn__category-menu-drop">
-                                    <a>Handbags</a>
-                                    <ul class="ltn__category-submenu-children">
-                                      <li>
-                                        <a>Clutches</a>
-                                      </li>
-                                      <li>
-                                        <a>Cross Body</a>
-                                      </li>
-                                      <li>
-                                        <a>Satchels</a>
-                                      </li>
-                                      <li>
-                                        <a>Sholuder</a>
-                                      </li>
-                                      <li>
-                                        <a>Toter</a>
-                                      </li>
-                                    </ul>
-                                  </li>
-                                  <li class="ltn__category-submenu-title ltn__category-menu-drop">
-                                    <a>Handbags</a>
-                                    <ul class="ltn__category-submenu-children">
-                                      <li>
-                                        <a>Clutches</a>
-                                      </li>
-                                      <li>
-                                        <a>Cross Body</a>
-                                      </li>
-                                      <li>
-                                        <a>Satchels</a>
-                                      </li>
-                                      <li>
-                                        <a>Sholuder</a>
-                                      </li>
-                                      <li>
-                                        <a>Toter</a>
-                                      </li>
-                                    </ul>
-                                  </li>
                                 </ul>
                               </li>
                               {/* <!-- Submenu Column - 4 --> */}
@@ -290,67 +161,7 @@ const HomePage = () => {
                                 </a>
                                 <ul class="ltn__category-submenu ltn__category-column-4">
                                   <li class="ltn__category-submenu-title ltn__category-menu-drop">
-                                    <a>Handbags</a>
-                                    <ul class="ltn__category-submenu-children">
-                                      <li>
-                                        <a>Clutches</a>
-                                      </li>
-                                      <li>
-                                        <a>Cross Body</a>
-                                      </li>
-                                      <li>
-                                        <a>Satchels</a>
-                                      </li>
-                                      <li>
-                                        <a>Sholuder</a>
-                                      </li>
-                                      <li>
-                                        <a>Toter</a>
-                                      </li>
-                                    </ul>
-                                  </li>
-                                  <li class="ltn__category-submenu-title ltn__category-menu-drop">
-                                    <a>Handbags</a>
-                                    <ul class="ltn__category-submenu-children">
-                                      <li>
-                                        <a>Clutches</a>
-                                      </li>
-                                      <li>
-                                        <a>Cross Body</a>
-                                      </li>
-                                      <li>
-                                        <a>Satchels</a>
-                                      </li>
-                                      <li>
-                                        <a>Sholuder</a>
-                                      </li>
-                                      <li>
-                                        <a>Toter</a>
-                                      </li>
-                                    </ul>
-                                  </li>
-                                  <li class="ltn__category-submenu-title ltn__category-menu-drop">
-                                    <a>Handbags</a>
-                                    <ul class="ltn__category-submenu-children">
-                                      <li>
-                                        <a>Clutches</a>
-                                      </li>
-                                      <li>
-                                        <a>Cross Body</a>
-                                      </li>
-                                      <li>
-                                        <a>Satchels</a>
-                                      </li>
-                                      <li>
-                                        <a>Sholuder</a>
-                                      </li>
-                                      <li>
-                                        <a>Toter</a>
-                                      </li>
-                                    </ul>
-                                  </li>
-                                  <li class="ltn__category-submenu-title ltn__category-menu-drop">
-                                    <a>Handbags</a>
+                                    <a>First Aid</a>
                                     <ul class="ltn__category-submenu-children">
                                       <li>
                                         <a>Clutches</a>
@@ -378,7 +189,7 @@ const HomePage = () => {
                                 </a>
                                 <ul class="ltn__category-submenu ltn__category-column-3">
                                   <li class="ltn__category-submenu-title ltn__category-menu-drop">
-                                    <a>Handbags</a>
+                                    <a>Surgical Product</a>
                                     <ul class="ltn__category-submenu-children">
                                       <li>
                                         <a>Clutches</a>
@@ -398,7 +209,7 @@ const HomePage = () => {
                                     </ul>
                                   </li>
                                   <li class="ltn__category-submenu-title ltn__category-menu-drop">
-                                    <a>Handbags</a>
+                                    <a>First Aid</a>
                                     <ul class="ltn__category-submenu-children">
                                       <li>
                                         <a>Clutches</a>
@@ -418,7 +229,7 @@ const HomePage = () => {
                                     </ul>
                                   </li>
                                   <li class="ltn__category-submenu-title ltn__category-menu-drop">
-                                    <a>Handbags</a>
+                                    <a>Surgical Product</a>
                                     <ul class="ltn__category-submenu-children">
                                       <li>
                                         <a>Clutches</a>
@@ -537,13 +348,22 @@ const HomePage = () => {
             </Row>
           </Container>
         </div>
+        {/* <!-- FEATURE AREA END --> */}
         <div class="section-title-area ltn__section-title-2--- text-center">
           <h1 class="section-title">Our Products</h1>
           <p>
-            A highly efficient slip-ring scanner for today's diagnostic
-            requirements.
+            Taking care of your health has never been easier with our pharmacy
+            products.
           </p>
         </div>
+
+        {/* __________________________________________
+
+        Featured Products
+
+        __________________________________________
+        */}
+
         <div className="ourproductgrid">
           <Row xs={2} md={4} lg={5} className="g-4">
             {/* add grid classes */}
@@ -559,7 +379,26 @@ const HomePage = () => {
             ))}
           </Row>
         </div>
-        {/* <!-- FEATURE AREA END --> */}
+        <div class="container">
+          <div class="row">
+            <div class="col-lg-12">
+              <div class="call-to-action-inner call-to-action-inner-6 bg-primary position-relative text-center---">
+                <div class="coll-to-info">
+                  <h1>
+                    Your health is our top priority - <br />
+                    shop our quality medical products today!
+                  </h1>
+                </div>
+                <div class="btn-wrapper">
+                  <a class="btn btn-effect-3 bg-light">
+                    Register as customer .
+                    <i class="bi bi-box-arrow-in-right fs-6"></i>
+                  </a>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
       </div>
       <Footer />
     </div>
