@@ -4,6 +4,7 @@ import Homepage from "./pages/HomePage/HomePage";
 import Test from "./pages/Test";
 import Dashboard from "./pages/System/Admin/Dashboard";
 import PendingProducts from "./pages/System/Admin/PendingProducts";
+import ProductDetailsPage from "./pages/ProductDetailsPage/ProductDetailsPage";
 
 function App() {
   return (
@@ -11,6 +12,7 @@ function App() {
       {/* ::::::::::::::::::::::::::::::::::::::::Customer Routes::::::::::::::::::::::::::::::::::::::::::::::::::: */}
       <Routes>
         <Route path="/" element={<Homepage />} />
+        <Route path="/product/:id" element={<ProductDetailsPage />} />
         <Route path="/just" element={<Test />} />
         {/* ::::::::::::::::::::::::::::::::::::::::Customer Routes::::::::::::::::::::::::::::::::::::::::::::::::::: */}
 
