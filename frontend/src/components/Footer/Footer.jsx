@@ -6,6 +6,7 @@ const Footer = () => {
   return (
     <div>
       <div class="footer-clean">
+        <hr />
         <footer>
           <div class="container">
             <div class="row justify-content-center">
