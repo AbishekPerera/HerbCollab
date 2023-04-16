@@ -19,12 +19,13 @@ return (
           <SystemNav />
       </div>
       
-      
-        <br/>
+        <div style={{ textAlign: 'center' }}>
+                <h2>My Profile</h2>
+        </div>
         <div className="containerx">
             
             <div style={{ textAlign: 'center' }}>
-                <h2>My Profile</h2>
+                {/* <h2>My Profile</h2> */}
                 <br/>
                 <img src={AdminProfilePic} alt="My Profile Image" width="160" height="160" />
             </div>
@@ -38,14 +39,7 @@ return (
                         <input type="text" id="name" name="name" placeholder="Name" />
                     </div>
                 </div>
-                <div className="row">
-                    <div className="col-25">
-                        <label htmlFor="nic">NIC Number</label>
-                    </div>
-                    <div className="col-75">
-                        <input type="text" id="nic" name="nic" placeholder="NIC" />
-                    </div>
-                </div>
+                
                 <div className="row">
                     <div className="col-25">
                         <label htmlFor="email">Email</label>
@@ -54,6 +48,16 @@ return (
                         <input type="text" id="email" name="email" placeholder="Email" />
                     </div>
                 </div>
+
+                <div className="row">
+                    <div className="col-25">
+                        <label htmlFor="address">Address</label>
+                    </div>
+                    <div className="col-75">
+                        <input type="text" id="address" name="address" placeholder="NIC" />
+                    </div>
+                </div>
+
                 <div className="row">
                     <div className="col-25">
                         <label htmlFor="mobile">Mobile</label>

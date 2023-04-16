@@ -5,6 +5,7 @@ import Test from "./pages/Test";
 import Dashboard from "./pages/System/Admin/Dashboard";
 import PendingProducts from "./pages/System/Admin/PendingProducts";
 import AdminProfile from "./pages/System/Admin/AdminProfile";
+import AllUsers from "./pages/System/Admin/AllUsers";
 
 
 function App() {
@@ -20,9 +21,8 @@ function App() {
         <Route path="/system/auth" element={<Test />} />
         <Route path="/system/admin-dashboard" element={<Dashboard />} />
         <Route path="/system/admin-profile" element={<AdminProfile />} />
-        <Route
-          path="/system/admin-pendingproducts"
-          element={<PendingProducts />}
+        <Route path="/system/admin-allusers" element={<AllUsers />} />
+        <Route path="/system/admin-pendingproducts" element={<PendingProducts />}
         />
         {/* ::::::::::::::::::::::::::::::::::::::::Admin Routes::::::::::::::::::::::::::::::::::::::::::::::::::: */}
 
