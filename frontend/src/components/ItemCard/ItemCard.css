@@ -1,7 +1,17 @@
-.card {
+.card-my {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  min-width: 0;
+  height: var(--bs-card-height);
+  word-wrap: break-word;
+  background-color: var(--bs-card-bg);
+  background-clip: border-box;
   border: 1px solid #ccc;
   border-radius: 4px;
   padding: 16px;
+  justify-content: center;
+  align-items: center;
 }
 
 .title {
@@ -11,9 +21,10 @@
 
 .image {
   display: block;
-  max-width: 100%;
-  height: auto;
+  width: 200px;
+  height: 200px;
   margin-bottom: 16px;
+  background-size: cover;
 }
 
 .price {
@@ -83,6 +94,19 @@ card hover
 }
 
 .product-hover-action li:hover a {
-  background-color: #0a9a73;
+  background-color: #60b972;
   color: white;
+}
+
+.product-hover-action i {
+  font-size: 20px;
+  color: #60b972;
+}
+
+.product-hover-action :hover i {
+  color: white;
+}
+
+a {
+  text-decoration: none;
 }
