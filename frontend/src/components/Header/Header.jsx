@@ -2,6 +2,7 @@ import React, { useEffect, useState } from "react";
 import Logo from "../../img/Logo/logo.png";
 import "./Header.css";
 import { Row, Col, Navbar, Container, Nav } from "react-bootstrap";
+import { Link } from "react-router-dom";
 
 const Header = () => {
   const [isSticky, setIsSticky] = useState(false);
@@ -28,8 +29,10 @@ const Header = () => {
     <div className="header-nav-bar">
       <Row>
         <Col lg={3}>
-          <a class="navbar-brand" href="#">
-            <img src={Logo} alt="" id="navbar-Logo" />
+          <a class="navbar-brand">
+            <Link>
+              <img src={Logo} alt="" id="navbar-Logo" />
+            </Link>
           </a>
         </Col>
         <Col lg={5}>
