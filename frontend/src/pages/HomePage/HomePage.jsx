@@ -8,8 +8,60 @@ import trolley from "../../img/svg/8-trolley.svg";
 import money from "../../img/svg/9-money.svg";
 import creditcard from "../../img/svg/10-credit-card.svg";
 import giftcard from "../../img/svg/11-gift-card.svg";
+import Card from "../../components/ItemCard/ItemCard";
 
 const HomePage = () => {
+  const products = [
+    {
+      id: 1,
+      title: "Product 1",
+      image: "https://via.placeholder.com/150",
+      price: "$10.00",
+    },
+    {
+      id: 2,
+      title: "Product 2",
+      image: "https://via.placeholder.com/150",
+      price: "$20.00",
+    },
+    {
+      id: 3,
+      title: "Product 3",
+      image: "https://via.placeholder.com/150",
+      price: "$30.00",
+    },
+    {
+      id: 4,
+      title: "Product 4",
+      image: "https://via.placeholder.com/150",
+      price: "$40.00",
+    },
+    {
+      id: 5,
+      title: "Product 4",
+      image: "https://via.placeholder.com/150",
+      price: "$40.00",
+    },
+    {
+      id: 6,
+      title: "Product 4",
+      image: "https://via.placeholder.com/150",
+      price: "$40.00",
+    },
+    {
+      id: 7,
+      title: "Product 4",
+      image: "https://via.placeholder.com/150",
+      price: "$40.00",
+    },
+    {
+      id: 8,
+      title: "Product 4",
+      image: "https://via.placeholder.com/150",
+      price: "$40.00",
+    },
+  ];
+
   return (
     <div className="homepage-body">
       <Row>
@@ -452,7 +504,18 @@ const HomePage = () => {
           </Row>
         </Container>
       </div>
-
+      <Row>
+        {products.map((product) => (
+          <Col>
+            <Card
+              key={product.id}
+              title={product.title}
+              image={product.image}
+              price={product.price}
+            />
+          </Col>
+        ))}
+      </Row>
       {/* <!-- FEATURE AREA END --> */}
     </div>
   );
