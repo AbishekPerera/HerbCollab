@@ -4,6 +4,7 @@ import Sidebar from "../../../components/System/Sidebar/Sidebar";
 import SystemNav from "../../../components/System/SystemNavBar/SystemNav";
 import SystemFooter from "../../../components/System/SystemFooter/SystemFooter";
 import "./styles/PendingOrders.css";
+import { Link } from "react-router-dom";
 
 const PendingOrders = () => {
   return (
@@ -48,23 +49,27 @@ const PendingOrders = () => {
                       class="bg-image hover-overlay ripple rounded-0"
                       data-mdb-ripple-color="light"
                     >
-                      <img
-                        class="img-fluid"
-                        src="https://cdn.shopify.com/s/files/1/0521/9962/0761/products/1_53765edd-b7cf-48f0-b6bd-e5fa95cdcc89_345x345@2x.jpg?v=1626343639"
-                        alt="Product"
-                        style={{ height: "350px", width: "100%" }}
-                      />
+                      <Link to="/system/admin-pendingitem">
+                        <img
+                          class="img-fluid"
+                          src="https://cdn.shopify.com/s/files/1/0521/9962/0761/products/1_53765edd-b7cf-48f0-b6bd-e5fa95cdcc89_345x345@2x.jpg?v=1626343639"
+                          alt="Product"
+                          style={{ height: "350px", width: "100%" }}
+                        />
+                      </Link>
                     </div>
                     <div class="card-body">
                       <div class="d-flex justify-content-center">
-                        <span
-                          style={{ textDecoration: "none" }}
-                          class="btn btn-link link-danger p-md-1 my-1"
-                          data-mdb-toggle="collapse"
-                          role="button"
-                        >
-                          View Product
-                        </span>
+                        <Link to="/system/admin-pendingitem">
+                          <span
+                            style={{ textDecoration: "none" }}
+                            class="btn btn-link link-danger p-md-1 my-1"
+                            data-mdb-toggle="collapse"
+                            role="button"
+                          >
+                            View Product
+                          </span>
+                        </Link>
                       </div>
                     </div>
                   </div>
