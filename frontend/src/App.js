@@ -13,6 +13,11 @@ import AdminProfile from "./pages/System/Admin/AdminProfile";
 import AllUsers from "./pages/System/Admin/AllUsers";
 
 import ProductDetailsPage from "./pages/ProductDetailsPage/ProductDetailsPage";
+import ShopPage from "./pages/ShopPage/ShopPage";
+import NewsPage from "./pages/NewsPage/NewsPage";
+import AboutUsPage from "./pages/AboutUsPage/AboutUsPage";
+import MyCart from "./pages/MyCart/MyCart";
+import MyProfile from "./pages/MyProfile/MyProfile";
 
 
 
@@ -23,6 +28,11 @@ function App() {
       <Routes>
         <Route path="/" element={<Homepage />} />
         <Route path="/product/:id" element={<ProductDetailsPage />} />
+        <Route path="/shop" element={<ShopPage />} />
+        <Route path="/news" element={<NewsPage />} />
+        <Route path="/about" element={<AboutUsPage />} />
+        <Route path="/mycart" element={<MyCart />} />
+        <Route path="/myaccount" element={<MyProfile />} />
         <Route path="/just" element={<Test />} />
         {/* ::::::::::::::::::::::::::::::::::::::::Customer Routes::::::::::::::::::::::::::::::::::::::::::::::::::: */}
 
