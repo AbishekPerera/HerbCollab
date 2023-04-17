@@ -1,0 +1,112 @@
+.card-my {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  min-width: 0;
+  height: var(--bs-card-height);
+  word-wrap: break-word;
+  background-color: var(--bs-card-bg);
+  background-clip: border-box;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  padding: 16px;
+  justify-content: center;
+  align-items: center;
+}
+
+.title {
+  font-size: 20px;
+  margin: 0 0 16px;
+}
+
+.image {
+  display: block;
+  width: 200px;
+  height: 200px;
+  margin-bottom: 16px;
+  background-size: cover;
+}
+
+.price {
+  font-size: 18px;
+  font-weight: bold;
+  margin: 0 0 16px;
+}
+
+/* _______________________________
+
+card hover 
+
+*/
+
+.product-hover-action {
+  position: absolute;
+  top: 60%;
+  left: 0;
+  right: 0;
+  text-align: center;
+  -webkit-transform: translateY(-50%);
+  -ms-transform: translateY(-50%);
+  transform: translateY(-50%);
+  opacity: 0;
+  visibility: hidden;
+  -webkit-transition: all 0.3s ease 0s;
+  -o-transition: all 0.3s ease 0s;
+  transition: all 0.3s ease 0s;
+}
+
+.ltn__product-item:hover .product-hover-action {
+  top: 50%;
+  opacity: 1;
+  visibility: visible;
+}
+
+.product-hover-action ul {
+  margin: 0;
+  padding: 0;
+  display: inline-block;
+  -webkit-box-shadow: #0a9a73;
+  box-shadow: #0a9a73;
+}
+
+.product-hover-action li {
+  height: 50px;
+  width: 50px;
+  line-height: 50px;
+  font-size: 14px;
+  text-align: center;
+  float: left;
+  margin-right: 0px;
+  margin-top: 0;
+  list-style: none;
+  border-right: 1px solid var(--border-color-7);
+}
+
+.product-hover-action li:last-child {
+  margin-right: 0;
+  border-right: 0;
+}
+
+.product-hover-action li a {
+  display: block;
+  background-color: white;
+  font-weight: 700;
+}
+
+.product-hover-action li:hover a {
+  background-color: #60b972;
+  color: white;
+}
+
+.product-hover-action i {
+  font-size: 20px;
+  color: #60b972;
+}
+
+.product-hover-action :hover i {
+  color: white;
+}
+
+a {
+  text-decoration: none;
+}
