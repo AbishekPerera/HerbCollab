@@ -9,9 +9,7 @@ import PendingOrders from "./pages/System/Admin/PendingOrders";
 import PendingItem from "./pages/System/Admin/PendingItem";
 import AllProducts from "./pages/System/Admin/AllProducts";
 
-import PendingProducts from "./pages/System/Admin/PendingProducts";
 import ProductDetailsPage from "./pages/ProductDetailsPage/ProductDetailsPage";
-
 
 function App() {
   return (
