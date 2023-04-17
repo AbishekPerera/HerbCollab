@@ -11,7 +11,11 @@ const SystemNav = () => {
       <Navbar className="subNavContainer" expand="lg">
         <Container>
           <Navbar.Brand href="#home">
-            <img src={AdminImg} style={{ height: "40px", width: "40px" }}></img>
+            <img
+              src={AdminImg}
+              alt="Admin-Avatar"
+              style={{ height: "40px", width: "40px" }}
+            ></img>
           </Navbar.Brand>
           <Navbar.Toggle aria-controls="basic-navbar-nav" />
           <Navbar.Collapse id="basic-navbar-nav">
