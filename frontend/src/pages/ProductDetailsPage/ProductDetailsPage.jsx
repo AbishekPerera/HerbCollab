@@ -60,6 +60,9 @@ const ProductDetailsPage = () => {
                 <span>$49.00</span>
               </div>
               <div class="modal-product-meta ltn__product-details-menu-1">
+                <Link>
+                  <h6>Seller name</h6>
+                </Link>
                 <ul>
                   <li>
                     <strong>Categories:</strong>
@@ -195,7 +198,7 @@ const ProductDetailsPage = () => {
                       With supporting text below as a natural lead-in to
                       additional content.
                     </Card.Text>
-                    <Button variant="primary">Go somewhere</Button>
+                    {/* <Button variant="primary">Go somewhere</Button> */}
                   </Card.Body>
                 </Card>
 
@@ -207,7 +210,7 @@ const ProductDetailsPage = () => {
                       With supporting text below as a natural lead-in to
                       additional content.
                     </Card.Text>
-                    <Button variant="primary">Go somewhere</Button>
+                    {/* <Button variant="primary">Go somewhere</Button> */}
                   </Card.Body>
                 </Card>
               </div>
