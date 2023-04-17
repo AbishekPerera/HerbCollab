@@ -150,6 +150,7 @@
     margin: 10px 10px 10px 15px;
     cursor: pointer;
     transition: 0.5s;
+    text-align: center;
 }
 .btnProduct:hover {
     background-color: #000000;
