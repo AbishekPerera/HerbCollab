@@ -79,7 +79,7 @@ const ProductDetailsPage = () => {
                   <li>
                     <div class="qty">
                       <span class="minus bg-dark">-</span>
-                      <input type="number" class="count" name="qty" value="1" />
+                      <input class="inputx count" type="number"  name="qty" value="1" />
                       <span class="plus bg-dark">+</span>
                     </div>
                   </li>
