@@ -4,7 +4,7 @@ import $ from "jquery";
 import Logo from "../../../img/Logo/logo.png";
 import { Link, useLocation } from "react-router-dom";
 
-const Sidebar = () => {
+const SellerSidebar = () => {
   const location = useLocation();
   const [activeItem, setActiveItem] = useState("");
 
@@ -39,11 +39,11 @@ const Sidebar = () => {
           <ul className="list-untyled px-2">
             <li
               className={
-                activeItem === "/system/admin-dashboard" ? "active" : ""
+                activeItem === "/system/seller-dashboard" ? "active" : ""
               }
             >
               <Link
-                to="/system/admin-dashboard"
+                to="/system/seller-dashboard"
                 className="text-decoration-none px-3 py-2 d-block"
               >
                 <i class="bi bi-house-door"></i>
@@ -55,26 +55,23 @@ const Sidebar = () => {
                 activeItem === "/system/admin-pendingproducts" ? "active" : ""
               }
             >
-              <Link
-                to="/system/admin-pendingproducts"
-                className="text-decoration-none px-3 py-2 d-block"
-              >
+              <Link to="#" className="text-decoration-none px-3 py-2 d-block">
                 <i class="bi bi-bag-plus"></i>
-                <span style={{ paddingLeft: "0.7rem" }}>Pending Orders</span>
+                <span style={{ paddingLeft: "0.7rem" }}>My Products</span>
               </Link>
             </li>
             <li>
               <Link to="#" className="text-decoration-none px-3 py-2 d-block">
                 <i class="bi bi-card-list"></i>
-                <span style={{ paddingLeft: "0.7rem" }}>All Products</span>
+                <span style={{ paddingLeft: "0.7rem" }}>All Orders</span>
               </Link>
             </li>
-            <li>
+            {/* <li>
               <Link to="#" className="text-decoration-none px-3 py-2 d-block">
                 <i class="bi bi-people"></i>
                 <span style={{ paddingLeft: "0.7rem" }}>Users</span>
               </Link>
-            </li>
+            </li> */}
             <li>
               <Link to="#" className="text-decoration-none px-3 py-2 d-block">
                 <i class="bi bi-person-square"></i>
@@ -89,4 +86,4 @@ const Sidebar = () => {
   );
 };
 
-export default Sidebar;
+export default SellerSidebar;

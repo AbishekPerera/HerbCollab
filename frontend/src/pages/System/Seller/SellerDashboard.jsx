@@ -1,21 +1,23 @@
 import React from "react";
-import "./styles/Dashboard.css";
-import Sidebar from "../../../components/System/Sidebar/Sidebar";
-import SystemNav from "../../../components/System/SystemNavBar/SystemNav";
+import "./styles/SellerDashboard.css";
 import SystemFooter from "../../../components/System/SystemFooter/SystemFooter";
+import SellerSidebar from "../../../components/System/Sidebar/SellerSidebar";
+import SellerNav from "../../../components/System/SystemNavBar/SellerNav";
+import SellerInfoCard from "../../../components/System/DashInfoCard/SellerInfoCard";
 
-const PendingProducts = () => {
+const SellerDashboard = () => {
   return (
     <div className="mainContainer">
       <div className="sidebar">
-        <Sidebar />
+        <SellerSidebar />
       </div>
 
       <div className="contentContainer">
         <div className="systemNavBar">
-          <SystemNav />
+          <SellerNav />
         </div>
         <div className="content">
+          <SellerInfoCard />
           <br />
           Lorem ipsum dolor sit amet consectetur adipisicing elit. Et non odio
           incidunt a veritatis voluptatem excepturi, magni, natus harum
@@ -41,4 +43,4 @@ const PendingProducts = () => {
   );
 };
 
-export default PendingProducts;
+export default SellerDashboard;

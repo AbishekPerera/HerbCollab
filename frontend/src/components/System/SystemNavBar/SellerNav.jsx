@@ -3,17 +3,18 @@ import Nav from "react-bootstrap/Nav";
 import Navbar from "react-bootstrap/Navbar";
 import NavDropdown from "react-bootstrap/NavDropdown";
 import { Link } from "react-router-dom";
-import AdminImg from "../../../img/Admin/admin2.png";
+import SellerImg from "../../../img/Seller/sellerImg.png";
 import "./SystemNav.css";
-const SystemNav = () => {
+
+const SellerNav = () => {
   return (
     <div className="mainNavContainer d-flex justify-content-end">
       <Navbar className="subNavContainer" expand="lg">
         <Container>
           <Navbar.Brand href="#home">
             <img
-              src={AdminImg}
-              alt="Admin-Avatar"
+              src={SellerImg}
+              alt="Seller-Avatar"
               style={{ height: "40px", width: "40px" }}
             ></img>
           </Navbar.Brand>
@@ -22,7 +23,11 @@ const SystemNav = () => {
             <Nav className="me-auto">
               {/* <Nav.Link href="#home">Home</Nav.Link> */}
 
-              <NavDropdown active title="System Admin" id="basic-nav-dropdown">
+              <NavDropdown
+                active
+                title="Product Seller"
+                id="basic-nav-dropdown"
+              >
                 <NavDropdown.Item href="#action/3.1">
                   {" "}
                   <Link to="#" class="nav-link" aria-current="page">
@@ -54,4 +59,4 @@ const SystemNav = () => {
   );
 };
 
-export default SystemNav;
+export default SellerNav;
