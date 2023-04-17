@@ -6,6 +6,10 @@ import Dashboard from "./pages/System/Admin/Dashboard";
 import PendingProducts from "./pages/System/Admin/PendingProducts";
 import ProductDetailsPage from "./pages/ProductDetailsPage/ProductDetailsPage";
 import ShopPage from "./pages/ShopPage/ShopPage";
+import NewsPage from "./pages/NewsPage/NewsPage";
+import AboutUsPage from "./pages/AboutUsPage/AboutUsPage";
+import MyCart from "./pages/MyCart/MyCart";
+import MyProfile from "./pages/MyProfile/MyProfile";
 
 function App() {
   return (
@@ -15,6 +19,10 @@ function App() {
         <Route path="/" element={<Homepage />} />
         <Route path="/product/:id" element={<ProductDetailsPage />} />
         <Route path="/shop" element={<ShopPage />} />
+        <Route path="/news" element={<NewsPage />} />
+        <Route path="/about" element={<AboutUsPage />} />
+        <Route path="/mycart" element={<MyCart />} />
+        <Route path="/myaccount" element={<MyProfile />} />
         <Route path="/just" element={<Test />} />
         {/* ::::::::::::::::::::::::::::::::::::::::Customer Routes::::::::::::::::::::::::::::::::::::::::::::::::::: */}
 
