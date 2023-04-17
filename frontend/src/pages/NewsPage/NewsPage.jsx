@@ -59,7 +59,7 @@ const NewsPage = () => {
               <Card style={{ width: "25rem" }}>
                 <Card.Img
                   variant="top"
-                  src="https://www.lankahospitals.com/wp-content/uploads/2022/03/Lanka-Hospitals-partnership-with-AIESEC-1024x1024-1.jpg"
+                  src="https://www.lankahospitals.com/wp-content/uploads/2022/03/Lanka-Hospitals-Academy-partners-with-National-Youth-Corp1-1024x1024-1.jpg"
                 />
                 <Card.Body>
                   <Card.Title>Card Title</Card.Title>
