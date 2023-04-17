@@ -5,6 +5,7 @@ import { Link } from "react-router-dom";
 import "./ShopPage.css";
 import { Col, Pagination, Row } from "react-bootstrap";
 import Card from "../../components/ItemCard/ItemCard";
+import FooterBanner from "../../components/FooterBanner/FooterBanner";
 
 const ShopPage = () => {
   const products = [
@@ -107,7 +108,7 @@ const ShopPage = () => {
                   <div class="ltn__breadcrumb-list">
                     <ul>
                       <li>
-                        <Link>
+                        <Link to="/">
                           <span class="ltn__secondary-color">
                             <i class="bi bi-house-fill"></i>
                           </span>
@@ -184,6 +185,7 @@ const ShopPage = () => {
             <Pagination.Last />
           </Pagination>
         </div>
+        <FooterBanner />
       </div>
       <Footer />
     </div>
