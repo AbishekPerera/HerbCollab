@@ -1,10 +1,12 @@
 import React from "react";
 import "./Footer.css";
+import { Link } from "react-router-dom";
 
 const Footer = () => {
   return (
     <div>
       <div class="footer-clean">
+        <hr />
         <footer>
           <div class="container">
             <div class="row justify-content-center">
@@ -12,13 +14,19 @@ const Footer = () => {
                 <h3>Services</h3>
                 <ul>
                   <li>
-                    <a href="#">Web design</a>
+                    <a>
+                      <Link>Order tracking</Link>
+                    </a>
                   </li>
                   <li>
-                    <a href="#">Development</a>
+                    <a>
+                      <Link>Wish List</Link>
+                    </a>
                   </li>
                   <li>
-                    <a href="#">Hosting</a>
+                    <a>
+                      <Link>Login</Link>
+                    </a>
                   </li>
                 </ul>
               </div>
@@ -26,13 +34,19 @@ const Footer = () => {
                 <h3>About</h3>
                 <ul>
                   <li>
-                    <a href="#">Company</a>
+                    <a>
+                      <Link>Company</Link>
+                    </a>
                   </li>
                   <li>
-                    <a href="#">Team</a>
+                    <a>
+                      <Link>Team</Link>
+                    </a>
                   </li>
                   <li>
-                    <a href="#">Legacy</a>
+                    <a>
+                      <Link>Legacy</Link>
+                    </a>
                   </li>
                 </ul>
               </div>
@@ -40,30 +54,40 @@ const Footer = () => {
                 <h3>Careers</h3>
                 <ul>
                   <li>
-                    <a href="#">Job openings</a>
+                    <a>
+                      <Link>Job openings</Link>
+                    </a>
                   </li>
                   <li>
-                    <a href="#">Employee success</a>
+                    <a>
+                      <Link>Employee success</Link>
+                    </a>
                   </li>
                   <li>
-                    <a href="#">Benefits</a>
+                    <a>
+                      <Link>Benefits</Link>
+                    </a>
                   </li>
                 </ul>
               </div>
               <div class="col-lg-3 item social">
-                <a href="#">
+                <a>
+                  <Link></Link>
                   <i class="bi bi-facebook"></i>
                 </a>
-                <a href="#">
+                <a>
+                  <Link></Link>
                   <i class="bi bi-twitter"></i>
                 </a>
-                <a href="#">
+                <a>
+                  <Link></Link>
                   <i class="bi bi-whatsapp"></i>
                 </a>
-                <a href="#">
+                <a>
+                  <Link></Link>
                   <i class="bi bi-heart-pulse"></i>
                 </a>
-                <p class="copyright">Company Name © 2018</p>
+                <p class="copyright">Herbcolab© 2023</p>
               </div>
             </div>
           </div>
