@@ -7,7 +7,7 @@ import Dashboard from "./pages/System/Admin/Dashboard";
 import SellerDashboard from "./pages/System/Seller/SellerDashboard";
 import PendingOrders from "./pages/System/Admin/PendingOrders";
 
-import PendingProducts from "./pages/System/Admin/PendingProducts";
+// import PendingProducts from "./pages/System/Admin/PendingProducts";
 
 import AdminProfile from "./pages/System/Admin/AdminProfile";
 import AllUsers from "./pages/System/Admin/AllUsers";
@@ -42,7 +42,7 @@ function App() {
 
         <Route path="/system/admin-profile" element={<AdminProfile />} />
         <Route path="/system/admin-allusers" element={<AllUsers />} />
-        <Route path="/system/admin-pendingproducts" element={<PendingProducts />} />
+        <Route path="/system/admin-pendingproducts" element={<PendingOrders />} />
         
         {/* ::::::::::::::::::::::::::::::::::::::::Admin Routes::::::::::::::::::::::::::::::::::::::::::::::::::: */}
 
