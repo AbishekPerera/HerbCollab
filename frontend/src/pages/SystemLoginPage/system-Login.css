@@ -1,7 +1,5 @@
 
-input {
-  font-family: "Poppins", sans-serif;
-}
+
 
 .container-login {
   position: relative;
@@ -122,6 +120,27 @@ form.sign-in-form {
   background-color: #000000;
   color:#08781f
 }
+
+#btnLogin {
+  width: 150px;
+  background-color: #08781f;
+  border: none;
+  outline: none;
+  height: 49px;
+  border-radius: 49px;
+  color: #000000;
+  text-transform: uppercase;
+  font-weight: 600;
+  margin: 10px 0;
+  cursor: pointer;
+  transition: 0.5s;
+}
+
+#btnLogin:hover {
+  background-color: #000000;
+  color:#08781f
+}
+
 .panels-container {
   position: absolute;
   height: 100%;
@@ -140,7 +159,7 @@ form.sign-in-form {
   top: -10%;
   right: 48%;
   transform: translateY(-50%);
-  background-image:url("C:\Users\kavin\OneDrive\Documents\GitHub\HerbCollab\frontend\src\img\SigIn\ayurveda4.jpg");
+  background-image:url("../../img/SigIn/ayurveda4.jpg");
   transition: 1.8s ease-in-out;
   border-radius: 50%;
   z-index: 6;

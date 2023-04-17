@@ -28,24 +28,24 @@ const SystemLogin = () => {
             <h2 className="title">Sign in</h2>
             <div className="input-field">
               <i className="fas fa-user"></i>
-              <input type="text" placeholder="Username" />
+              <input type="name" placeholder="Username" />
             </div>
             <div className="input-field">
               <i className="fas fa-lock"></i>
               <input type="password" placeholder="Password" />
             </div>
-            <input type="submit" value="Login" className="btnLogin solid" />
+            <input type="submit" value="Login" id="btnLogin" className="btnLogin solid" />
             <a href="" className="social-text">Fogot Password ? </a>
           </form>
           <form action="#" className="sign-up-form">
             <h2 className="title">Sign up</h2>
             <div className="input-field">
               <i className="fas fa-user"></i>
-              <input type="text" placeholder="User Name" />
+              <input type="name" placeholder="User Name" />
             </div>
             <div className="input-field">
               <i className="fas fa-user"></i>
-              <input type="text" placeholder="Store Name" />
+              <input type="name" placeholder="Store Name" />
             </div>
             <div className="input-field">
               <i className="fas fa-envelope"></i>
@@ -63,7 +63,7 @@ const SystemLogin = () => {
               <i className="fas fa-lock"></i>
               <input type="password" placeholder="Password" />
             </div>
-            <input type="submit" className="btnLogin" value="Sign up" />
+            <input type="submit" id="btnLogin" value="Sign up" />
             
             
           </form>
@@ -83,7 +83,6 @@ const SystemLogin = () => {
         </button>
       </div>
 
-      {<img src='../../img/SignIn/log.svg' className="image" alt="" />}
     </div>
     <div className="panel right-panel" onClick={handleSigninMode}>
       <div className="content">
@@ -96,7 +95,7 @@ const SystemLogin = () => {
           Sign in
         </button>
       </div>
-      {<img src='../../img/SignIn/register.svg' className="image" alt="" />}
+     
     </div>
   </div>
 </div>
