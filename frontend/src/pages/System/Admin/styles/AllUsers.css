@@ -1,0 +1,21 @@
+table {
+    border-collapse: collapse;
+    width: 95%;
+    margin: 0 auto;
+    margin-left: 50px;
+    margin-right: 50px;
+  }
+  
+  th, td {
+    padding: 8px;
+    text-align: left;
+    border-bottom: 1px solid #ae9e9e;
+  }
+  
+  tr:hover {background-color: #cbdbce;}
+
+  .table-container {
+    margin: 0 auto;
+  }
+
+  

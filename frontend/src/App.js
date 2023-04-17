@@ -8,7 +8,12 @@ import SellerDashboard from "./pages/System/Seller/SellerDashboard";
 import PendingOrders from "./pages/System/Admin/PendingOrders";
 
 import PendingProducts from "./pages/System/Admin/PendingProducts";
+
+import AdminProfile from "./pages/System/Admin/AdminProfile";
+import AllUsers from "./pages/System/Admin/AllUsers";
+
 import ProductDetailsPage from "./pages/ProductDetailsPage/ProductDetailsPage";
+
 
 
 function App() {
@@ -24,10 +29,11 @@ function App() {
         {/* ::::::::::::::::::::::::::::::::::::::::Admin Routes::::::::::::::::::::::::::::::::::::::::::::::::::: */}
         <Route path="/system/auth" element={<Test />} />
         <Route path="/system/admin-dashboard" element={<Dashboard />} />
-        <Route
-          path="/system/admin-pendingproducts"
-          element={<PendingOrders />}
-        />
+
+        <Route path="/system/admin-profile" element={<AdminProfile />} />
+        <Route path="/system/admin-allusers" element={<AllUsers />} />
+        <Route path="/system/admin-pendingproducts" element={<PendingProducts />} />
+        
         {/* ::::::::::::::::::::::::::::::::::::::::Admin Routes::::::::::::::::::::::::::::::::::::::::::::::::::: */}
 
         {/* ::::::::::::::::::::::::::::::::::::::::Seller Routes::::::::::::::::::::::::::::::::::::::::::::::::::: */}
