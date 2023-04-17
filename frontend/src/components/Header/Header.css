@@ -1,3 +1,6 @@
+@import url("https://fonts.googleapis.com/css2?family=DM+Sans:wght@700&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=Caveat:wght@500&display=swap");
+
 #navbar-Logo {
   width: 200px;
   /* height: 100px; */
@@ -28,4 +31,35 @@
   top: 0;
   padding: 0 15px;
   border: none;
+}
+
+.header-nav-bar {
+  background-color: #fff;
+  overflow: hidden;
+}
+
+.herbcolab-title {
+  margin: 5% 0 5% 0;
+}
+
+.herbcolab-title h1 {
+  font-family: "DM Sans", sans-serif;
+  font-size: 3rem;
+  font-weight: 700;
+  color: #08781f;
+  text-align: center;
+}
+
+.herbcolab-title p {
+  font-family: "Caveat", cursive;
+  font-size: 2rem;
+  font-weight: 500;
+  color: #08781f;
+  text-align: center;
+}
+
+.company-info-nav i {
+  font-size: 2.5rem;
+  color: #08781f;
+  display: flexbox;
 }
