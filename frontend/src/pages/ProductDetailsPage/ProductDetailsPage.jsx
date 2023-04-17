@@ -24,7 +24,7 @@ const ProductDetailsPage = () => {
                 <div class="ltn__breadcrumb-list">
                   <ul>
                     <li>
-                      <Link>
+                      <Link to="/">
                         <span class="ltn__secondary-color">
                           <i class="bi bi-house-fill"></i>
                         </span>
