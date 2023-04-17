@@ -61,7 +61,7 @@ const SellerSidebar = () => {
               </Link>
             </li>
             <li>
-              <Link to="#" className="text-decoration-none px-3 py-2 d-block">
+              <Link to="/system/seller-allorders" className="text-decoration-none px-3 py-2 d-block">
                 <i class="bi bi-card-list"></i>
                 <span style={{ paddingLeft: "0.7rem" }}>All Orders</span>
               </Link>
@@ -73,7 +73,7 @@ const SellerSidebar = () => {
               </Link>
             </li> */}
             <li>
-              <Link to="#" className="text-decoration-none px-3 py-2 d-block">
+              <Link to="/system/seller-profile" className="text-decoration-none px-3 py-2 d-block">
                 <i class="bi bi-person-square"></i>
                 <span style={{ paddingLeft: "0.7rem" }}>My Profile</span>
               </Link>
