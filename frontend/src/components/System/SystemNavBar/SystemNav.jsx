@@ -25,7 +25,11 @@ const SystemNav = () => {
               <NavDropdown active title="System Admin" id="basic-nav-dropdown">
                 <NavDropdown.Item href="#action/3.1">
                   {" "}
-                  <Link to="#" class="nav-link" aria-current="page">
+                  <Link
+                    to="/system/admin-profile"
+                    class="nav-link"
+                    aria-current="page"
+                  >
                     <i
                       style={{
                         color: "#359733",

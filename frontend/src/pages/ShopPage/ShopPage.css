@@ -1,0 +1,42 @@
+.shop-page {
+  overflow: hidden;
+}
+
+/* ----------------------------------------------------
+    Breadcurmb Area
+---------------------------------------------------- */
+.ltn__breadcrumb-area-shop {
+  background-color: #f4f4f4;
+  margin-bottom: 120px;
+  padding-top: 110px;
+  padding-bottom: 110px;
+  background-image: url(../../img/other\ comp/pharmacybanner.jpg);
+  background-repeat: no-repeat;
+  background-size: cover;
+}
+
+.ltn__breadcrumb-list ul {
+  margin: 0;
+  padding: 0;
+}
+
+.ltn__breadcrumb-list ul li {
+  display: inline-block;
+  margin-right: 30px;
+  position: relative;
+  font-weight: 700;
+}
+
+.btn-search {
+  background-color: #08781f;
+  color: #08781f;
+  border-radius: 50px;
+  padding: 10px 20px;
+  font-weight: 700;
+  border: 2px solid #08781f;
+}
+
+.btn-search:hover {
+  background-color: #08781f;
+  color: #fff;
+}
