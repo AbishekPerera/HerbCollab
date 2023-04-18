@@ -33,7 +33,7 @@ return (
           {/* Search Bar */}
           <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css"></link>
           <div style={{ display: "flex", justifyContent: "flex-end", alignItems: "center", marginRight: "20px"  }}>
-                <form className="example" action="/action_page.php" style={{ maxWidth: "300px" }}>
+                <form className="searchbody example1 example2 example3 example4" action="/action_page.php" style={{ maxWidth: "300px" }}>
                     <input type="text" placeholder="Search.." name="search2" />
                     <button type="submit"><i className="fa fa-search"></i></button>
                 </form>
