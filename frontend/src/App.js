@@ -3,7 +3,10 @@ import { Routes, Route } from "react-router-dom";
 import Homepage from "./pages/HomePage/HomePage";
 import Test from "./pages/Test";
 import Dashboard from "./pages/System/Admin/Dashboard";
+
+
 import SystemLogin from "./pages/SystemLoginPage/system-Login";
+
 import SellerDashboard from "./pages/System/Seller/SellerDashboard";
 
 import PendingOrders from "./pages/System/Admin/PendingOrders";
@@ -14,14 +17,19 @@ import AllProducts from "./pages/System/Admin/AllProducts";
 
 import AdminProfile from "./pages/System/Admin/AdminProfile";
 import AllUsers from "./pages/System/Admin/AllUsers";
-
 import ProductDetailsPage from "./pages/ProductDetailsPage/ProductDetailsPage";
+
+import SellerProfile from "./pages/System/Seller/SellerProfile";
+import AllOrders from "./pages/System/Seller/AllOrders";
+
+
 import ShopPage from "./pages/ShopPage/ShopPage";
 import NewsPage from "./pages/NewsPage/NewsPage";
 import AboutUsPage from "./pages/AboutUsPage/AboutUsPage";
 import MyCart from "./pages/MyCart/MyCart";
 import MyProfile from "./pages/MyProfile/MyProfile";
 import SellerProducts from "./pages/System/Seller/SellerProducts";
+
 
 
 function App() {
@@ -52,9 +60,13 @@ function App() {
         <Route path="/system/admin-profile" element={<AdminProfile />} />
         <Route path="/system/admin-allusers" element={<AllUsers />} />
 
+        {/* <Route path="/system/admin-pendingproducts" element={<PendingProducts />} /> */}
+
+
         <Route path="/system/admin-pendingproducts" element={<PendingOrders />} />
 
         
+
 
         
         {/* ::::::::::::::::::::::::::::::::::::::::Admin Routes::::::::::::::::::::::::::::::::::::::::::::::::::: */}
@@ -62,8 +74,13 @@ function App() {
         {/* ::::::::::::::::::::::::::::::::::::::::Seller Routes::::::::::::::::::::::::::::::::::::::::::::::::::: */}
         <Route path="/system/auth" element={<Test />} />
         <Route path="/system/seller-dashboard" element={<SellerDashboard />} />
+
+        <Route path="/system/seller-profile" element={<SellerProfile />} />
+        <Route path="/system/seller-allorders" element={<AllOrders />} />
+
         <Route path="/system/seller-products" element={<SellerProducts />} />
         <Route path="/system/system-login" element={<SystemLogin />} />
+
         {/* ::::::::::::::::::::::::::::::::::::::::Seller Routes::::::::::::::::::::::::::::::::::::::::::::::::::: */}
       </Routes>
     </div>
