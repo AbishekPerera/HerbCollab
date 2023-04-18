@@ -4,6 +4,7 @@ import bodyParser from "body-parser";
 import cors from "cors";
 import dotenv from "dotenv";
 import userRouter from "./routes/user-routes.js";
+import authRouter from "./routes/auth.js"
 
 const app = express();
 
@@ -31,3 +32,4 @@ mongoose
 
 
 app.use("/users",userRouter );
+app.use("/users",authRouter );

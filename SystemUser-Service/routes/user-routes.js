@@ -4,11 +4,6 @@ import bcrypt from 'bcryptjs';
 
 const router = express.Router();
 
-
-
-
-
-
 //SignUp
 router.route("/signup").post([
 
@@ -57,6 +52,110 @@ router.route("/signup").post([
 
    
     
+})
+
+//display all users
+router.route("/").get((req,res)=>{
+    users.find().then((user)=>{
+        return res.status(200).json(user)
+    }).catch((err)=>{
+        console.log(err)
+    })
+})
+
+//single user
+router.route("/user/:id").get(async(req,res)=>{
+
+    const userId = req.params.id;
+    const user = await users.findById(userId).then((user)=>{
+        return res.status(200).json(user)
+    }).catch((err)=>{
+        return res.status(400).json(err)
+    })
+
+    
+});
+
+//update user
+router.route("/update/:id").put(async(req,res)=>{
+    const userId = req.params.id;
+    console.log(userId)
+    const {UserName,StoreName,Email,MobileNo,Address}  = req.body;
+
+    const updateUser= {
+        UserName,
+        StoreName,
+        Email,
+        MobileNo,
+        Address,
+ 
+    }
+    
+    await users.findByIdAndUpdate(userId,updateUser,{
+    new:true
+   }).then(() =>{
+        res.status(200).json({status:"User updated successfully"});
+    }).catch((err) =>{
+        console.log(err);
+        res.status(200).json({status:"Error with update user"});
+    })  
+})
+
+//update user Account Status
+router.route("/updateStatus/:id").put(async(req,res)=>{
+    const userId = req.params.id;
+    const{Account} = req.body;
+    
+    const update= {
+       Account
+    }
+   await users.findByIdAndUpdate(userId,update,{
+    new:true
+   }).then(() =>{
+        res.status(200).json({status:"User Status updated successfully"});
+    }).catch((err) =>{
+        console.log(err);
+        res.status(200).json({status:"Error with update status"});
+    })  
+ 
+})
+
+//update Password
+/*router.route("/updatePassword/").put(async(req,res)=>{
+    
+    const {Email,Password} = req.body;
+
+    const result = users.findOne({Email:Email});
+
+    if(result == "")
+    {
+        res.status(400).json({status:"Invalid Email"});
+    }
+    const hashPassword =await bcrypt.hash(Password, 10);
+
+    const changePassword = {
+        Password:hashPassword
+    }
+   await users.findByIdAndUpdate(result._id,changePassword,{
+    new:true
+   }).then(() =>{
+        res.status(200).json({status:"Password Changed successfully"});
+    }).catch((err) =>{
+        console.log(err);
+        res.status(401).json({status:"Error with change Password"});
+    })  
+})
+*/
+//delete User
+router.route("/delete/:id").delete(async(req,res)=>{
+    
+    let userId = req.params.id;
+    await users.findByIdAndDelete(userId).then(()=>{
+        res.status(200).json({status:"User deleted successfully"});
+    }).catch((err) =>{
+        console.log(err);
+        res.status(200).json({status:"Error with delete User"});
+    })
 })
 
 export default router;
