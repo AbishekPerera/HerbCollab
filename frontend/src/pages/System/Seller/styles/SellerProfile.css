@@ -1,4 +1,4 @@
-.profile{
+.seller{
     box-sizing: border-box;
   }
   
@@ -10,7 +10,7 @@
     resize: vertical;
   }
   
-  .label3 {
+  .label2 {
     padding: 12px 12px 12px 0;
     display: inline-block;
   }
@@ -25,7 +25,7 @@
     float: right;
   }
   
-  .profile input[type=submit]:hover {
+  .input3[type=submit]:hover {
     background-color: #60b972;
   }
   

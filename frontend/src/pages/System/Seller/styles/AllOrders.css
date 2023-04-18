@@ -12,21 +12,24 @@
     border-bottom: 1px solid #ae9e9e;
   }
   
-  tr:hover {background-color: #cbdbce;}
-
+  tr:hover {background-color: #c4cac5;} */
+------------
   .table-container {
     margin: 0 auto;
-  } */
-
-  /* ------------------ */
-  .table-container table {
-    border-collapse: collapse;
-    width: 95%;
-    margin-left: 50px;
-    margin-right: 50px;
   }
-  
-  .table-container th,
+
+  .header-row {
+    background-color: #73c285;
+}
+.table-container table {
+  border-collapse: collapse;
+  width: 95%;
+  margin-left: 50px;
+  margin-right: 50px;
+}
+
+
+.table-container th,
   .table-container td {
     padding: 8px;
     text-align: left;
@@ -36,10 +39,5 @@
   .table-container tr:hover {
     background-color: #cbdbce;
   }
-  
-  
-  
-  
-  
   
   
