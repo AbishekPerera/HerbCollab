@@ -30,7 +30,11 @@ const SellerNav = () => {
               >
                 <NavDropdown.Item href="#action/3.1">
                   {" "}
-                  <Link to="#" class="nav-link" aria-current="page">
+                  <Link
+                    to="/system/seller-profile"
+                    class="nav-link"
+                    aria-current="page"
+                  >
                     <i
                       style={{
                         color: "#359733",

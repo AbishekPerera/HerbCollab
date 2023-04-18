@@ -1,0 +1,42 @@
+.pendingItemContainer0 {
+  /* padding: 2rem; */
+  margin-top: 2rem;
+  box-shadow: 0 3px 6px rgba(0, 0, 0, 0.16), 0 3px 6px rgba(0, 0, 0, 0.23);
+  background-color: rgb(255, 255, 255);
+}
+
+.pendingItemImageContainer {
+  height: 450px;
+}
+
+.pendingItemContentContainer {
+  border-color: rgb(99, 95, 95);
+  border-left: ridge;
+  height: 100%;
+  padding: 1.5rem;
+  padding-top: 3rem;
+  background-color: #ffffff;
+}
+
+.pendingItemTopic {
+  font-size: 2rem;
+}
+
+.pendingItemPrice {
+  font-size: 1.2rem;
+}
+
+.pendingItemDesc {
+  width: fit-content;
+}
+
+.pendingItemQuantity {
+  font-size: 0.9rem;
+}
+
+.buttonRow {
+  /* background-color: #e3d2d2; */
+
+  background-color: #5d646d5e;
+  --bs-gutter-x: 0rem;
+}

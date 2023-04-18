@@ -11,6 +11,7 @@ import giftcard from "../../img/svg/11-gift-card.svg";
 import Card from "../../components/ItemCard/ItemCard";
 import Header from "../../components/Header/Header";
 import Footer from "../../components/Footer/Footer";
+import FooterBanner from "../../components/FooterBanner/FooterBanner";
 
 const HomePage = () => {
   const products = [
@@ -379,26 +380,7 @@ const HomePage = () => {
             ))}
           </Row>
         </div>
-        <div class="container">
-          <div class="row">
-            <div class="col-lg-12">
-              <div class="call-to-action-inner call-to-action-inner-6 bg-primary position-relative text-center---">
-                <div class="coll-to-info">
-                  <h1>
-                    Your health is our top priority - <br />
-                    shop our quality medical products today!
-                  </h1>
-                </div>
-                <div class="btn-wrapper">
-                  <a class="btn btn-effect-3 bg-light">
-                    Register as customer .
-                    <i class="bi bi-box-arrow-in-right fs-6"></i>
-                  </a>
-                </div>
-              </div>
-            </div>
-          </div>
-        </div>
+        <FooterBanner />
       </div>
       <Footer />
     </div>
