@@ -282,12 +282,12 @@ input.cart-plus-minus-box {
 .plus:hover {
   background-color: #08781f !important;
 }
-input {
+.inputx {
   border: 0;
   width: 2%;
 }
 
-input:disabled {
+.inputx:disabled {
   background-color: white;
 }
 
