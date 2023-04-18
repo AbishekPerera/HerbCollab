@@ -29,7 +29,8 @@
   z-index: 5;
 }
 
-form {
+
+form.sign-up-form {
   display: flex;
   align-items: center;
   justify-content: center;
@@ -39,14 +40,20 @@ form {
   overflow: hidden;
   grid-column: 1 / 2;
   grid-row: 1 / 2;
-}
-
-form.sign-up-form {
   opacity: 0;
   z-index: 1;
 }
 
 form.sign-in-form {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+  padding: 0rem 5rem;
+  transition: all 0.2s 0.7s;
+  overflow: hidden;
+  grid-column: 1 / 2;
+  grid-row: 1 / 2;
   z-index: 2;
 }
 
@@ -68,17 +75,12 @@ form.sign-in-form {
   grid-template-columns: 15% 85%;
   padding: 0 0.4rem;
   position: relative;
-}
-
-.input-field i {
   text-align: center;
-  line-height: 55px;
-  color: #070000;
-  transition: 0.5s;
-  font-size: 1.1rem;
 }
 
-.input-field input {
+
+
+.input-field .input {
   background: none;
   outline: none;
   border: none;
