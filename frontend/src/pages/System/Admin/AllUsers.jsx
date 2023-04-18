@@ -26,7 +26,7 @@ const AllUsers = () => {
 
           {/* Search Bar */}
           <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css"></link>
-          <div style={{ display: "flex", justifyContent: "flex-end", alignItems: "center", marginRight: "20px"  }}>
+          <div className="search-form__example" style={{ display: "flex", justifyContent: "flex-end", alignItems: "center", marginRight: "20px"  }}>
                 <form className="example" action="/action_page.php" style={{ maxWidth: "300px" }}>
                     <input type="text" placeholder="Search.." name="search2" />
                     <button type="submit"><i className="fa fa-search"></i></button>
@@ -35,7 +35,7 @@ const AllUsers = () => {
           <br/>  
            
           {/* Table */}
-          <div >
+          <div className="table-container" style={{ width: '98%'}}>
           
                 <table>
                     <tr>

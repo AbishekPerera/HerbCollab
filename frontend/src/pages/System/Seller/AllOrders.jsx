@@ -42,7 +42,7 @@ return (
            
           {/* Table */}
           
-          <div >
+          <div className="table-container" style={{ width: '98%'}}>
           
                 <table>
                     <tr class="header-row">

@@ -32,61 +32,61 @@ return (
             </div>
             <br/>
             <form action="/action_page.php">
-                <div className="row">
+                <div className="row seller">
                     <div className="col-25">
-                        <label htmlFor="name">Name</label>
+                        <label className="label2 seller"htmlFor="name">Name</label>
                     </div>
                     <div className="col-75">
-                        <input type="text" id="name" name="name" placeholder="Name" />
+                        <input type="text" className="input1 seller" id="name" name="name" placeholder="Name" />
                     </div>
                 </div>
 
                 <div className="row">
                     <div className="col-25">
-                        <label htmlFor="name">Store Name</label>
+                        <label className="label2 seller" htmlFor="name">Store Name</label>
                     </div>
                     <div className="col-75">
-                        <input type="text" id="name" name="name" placeholder="Name" />
+                        <input type="text" className="input1 seller" id="name" name="name" placeholder="Name" />
                     </div>
                 </div>
                 
                 <div className="row">
                     <div className="col-25">
-                        <label htmlFor="email">Email</label>
+                        <label className="label2 seller" htmlFor="email">Email</label>
                     </div>
                     <div className="col-75">
-                        <input type="text" id="email" name="email" placeholder="Email" />
+                        <input type="text" className="input1 seller" id="email" name="email" placeholder="Email" />
                     </div>
                 </div>
 
                 <div className="row">
                     <div className="col-25">
-                        <label htmlFor="address">Address</label>
+                        <label className="label2 seller" htmlFor="address">Address</label>
                     </div>
                     <div className="col-75">
-                        <input type="text" id="address" name="address" placeholder="NIC" />
+                        <input type="text" className="input1 seller" id="address" name="address" placeholder="NIC" />
                     </div>
                 </div>
 
                 <div className="row">
                     <div className="col-25">
-                        <label htmlFor="mobile">Mobile</label>
+                        <label className="label2 seller" htmlFor="mobile">Mobile</label>
                     </div>
                     <div className="col-75">
-                        <input type="text" id="mobile" name="mobile" placeholder="Mobile" />
+                        <input type="text" className="input1 seller" id="mobile" name="mobile" placeholder="Mobile" />
                     </div>
                 </div>
                 <div className="row">
                     <div className="col-25">
-                        <label htmlFor="nic">Password</label>
+                        <label className="label2 seller" htmlFor="nic">Password</label>
                     </div>
                     <div className="col-75">
-                        <input type="text" id="password" name="password" placeholder="Password" />
+                        <input type="text" className="input1 seller" id="password" name="password" placeholder="Password" />
                     </div>
                 </div>
                 <br/>
                 <div className="row"><br/>
-                <input type="submit" id="editProfileBtn" value="Edit Profile" className="half-size"/>
+                <input type="submit" className="input2 input3 half-size" id="editProfileBtn" value="Edit Profile"/>
                 </div>
             </form>
         </div>
