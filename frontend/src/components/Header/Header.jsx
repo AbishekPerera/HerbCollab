@@ -86,8 +86,19 @@ const Header = () => {
               <Link to="/about">About</Link>
             </Nav.Link>
           </Nav>
+
           <div className="row">
-            <div className="col-12 ">
+            <div className="col-8">
+              <form class="d-flex header-search-2">
+                <input
+                  class="form-control me-sm-2"
+                  type="search"
+                  placeholder="Search"
+                />
+                <button class="btn btn-secondary my-2 my-sm-0">Search</button>
+              </form>
+            </div>
+            <div className="col-4 ">
               <div className="cart-acc-section m-sm-2">
                 <Link to="/mycart" className="cart-acc fs-5 m-lg-3">
                   <i className="bi bi-cart"></i>
