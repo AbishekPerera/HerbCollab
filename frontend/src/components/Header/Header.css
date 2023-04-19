@@ -38,6 +38,11 @@
   overflow: hidden;
 }
 
+.header-nav-bar Link,
+a {
+  text-decoration: none;
+}
+
 .herbcolab-title {
   margin: 5% 0 5% 0;
 }
