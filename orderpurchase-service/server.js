@@ -24,3 +24,8 @@ mongoose
     })
   )
   .catch((err) => console.log(err));
+
+//routes-----------------------------------------------------------------
+
+import cartRouter from "./routes/carts.js";
+app.use("/carts", cartRouter);
