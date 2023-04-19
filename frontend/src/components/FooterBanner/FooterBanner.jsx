@@ -1,4 +1,5 @@
 import React from "react";
+import {Link} from "react-router-dom";
 
 const FooterBanner = () => {
   return (
@@ -14,10 +15,10 @@ const FooterBanner = () => {
                 </h1>
               </div>
               <div class="btn-wrapper">
-                <a class="btn btn-effect-3 bg-light">
+               <Link to={"/customerlogin"}> <a class="btn btn-effect-3 bg-light">
                   Login as customer .
                   <i class="bi bi-box-arrow-in-right fs-6"></i>
-                </a>
+                </a></Link>
               </div>
             </div>
           </div>

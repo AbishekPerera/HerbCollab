@@ -1,12 +1,12 @@
 /* ----------------------------------------------------
     Breadcurmb Area
 ---------------------------------------------------- */
-.ltn__breadcrumb-area-myprofilepage {
+.ltn__breadcrumb-area-customerloginpage {
     background-color: #f4f4f4;
     margin-bottom: 120px;
     padding-top: 110px;
     padding-bottom: 110px;
-    background-image: url(https://i.pinimg.com/564x/0f/29/1d/0f291dc436fdb57a7d5a4c25a0ad405f.jpg);
+    background-image: url(https://images.unsplash.com/photo-1517157837591-17b69085bfdc?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1170&q=80);
     background-repeat: no-repeat;
     background-size: cover;
   }
@@ -26,4 +26,5 @@
   .news-page-lowerbody {
     margin: 2%;
   }
+  
   

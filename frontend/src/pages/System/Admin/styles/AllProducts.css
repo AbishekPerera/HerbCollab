@@ -1,4 +1,4 @@
-table {
+.table-container table {
   border-collapse: collapse;
   width: 95%;
   margin: 0 auto;
@@ -6,8 +6,8 @@ table {
   margin-right: 50px;
 }
 
-th,
-td {
+.table-container th,
+.table-container td {
   padding: 8px;
   text-align: left;
   border-bottom: 1px solid #ae9e9e;
