@@ -1,12 +1,11 @@
-import express from 'express';
 import users from '../models/Users.js';
 import bcrypt from 'bcryptjs';
 import jwt from 'jsonwebtoken'
 import dotenv from "dotenv";
-const router = express.Router();
+
 
 //login
-async function login(req,res,next){
+export async function login(req,res,next){
 
     const {Email,Password}  = req.body;
 
@@ -55,7 +54,7 @@ async function login(req,res,next){
 
 
 //verify token
-async function getUserDetails(req,res,next){
+export async function verifyToken(req,res,next){
 
 
         const cookies = req.headers.cookie;
@@ -81,13 +80,13 @@ async function getUserDetails(req,res,next){
     next();
 };
 
-async function refresh(req,res,next){
+/*export async function refresh(req,res,next){
     const cookies = req.headers.cookie;
     const prevToken = cookies.split('=')[1].split(';')[0];
     if(!prevToken) {
         return res.status(400).json({message:'No token Found'})
     }
-    jwt.verify(String(token), process.env.JWT_SECREAT_KEY, (err, user) => {
+    jwt.verify(String(prevToken), process.env.JWT_SECREAT_KEY, (err, user) => {
         if(err){
             return res.status(400).json({message:"Invalid Token"});;
         }
@@ -111,9 +110,9 @@ async function refresh(req,res,next){
         
     });
 };
-
+*/
 //get user details
-async function getUserDetails(req,res,next){
+export async function getUserDetails(req,res,next){
     const userId = req.id;
     
     
@@ -128,7 +127,7 @@ async function getUserDetails(req,res,next){
   
 };
 
-async function logout(req,res,next){
+export async function logout(req,res,next){
     const cookies = req.headers.cookie;
     const token = cookies.split('=')[1].split(';')[0];
     console.log(cookies);
@@ -153,4 +152,3 @@ async function logout(req,res,next){
    
 };
 
-export default router;
