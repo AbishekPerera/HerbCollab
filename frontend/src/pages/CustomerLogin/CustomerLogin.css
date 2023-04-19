@@ -1,0 +1,30 @@
+/* ----------------------------------------------------
+    Breadcurmb Area
+---------------------------------------------------- */
+.ltn__breadcrumb-area-customerloginpage {
+    background-color: #f4f4f4;
+    margin-bottom: 120px;
+    padding-top: 110px;
+    padding-bottom: 110px;
+    background-image: url(https://images.unsplash.com/photo-1517157837591-17b69085bfdc?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1170&q=80);
+    background-repeat: no-repeat;
+    background-size: cover;
+  }
+  
+  .ltn__breadcrumb-list ul {
+    margin: 0;
+    padding: 0;
+  }
+  
+  .ltn__breadcrumb-list ul li {
+    display: inline-block;
+    margin-right: 30px;
+    position: relative;
+    font-weight: 700;
+  }
+  
+  .news-page-lowerbody {
+    margin: 2%;
+  }
+  
+  
