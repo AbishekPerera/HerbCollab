@@ -29,6 +29,7 @@ import AboutUsPage from "./pages/AboutUsPage/AboutUsPage";
 import MyCart from "./pages/MyCart/MyCart";
 import MyProfile from "./pages/MyProfile/MyProfile";
 import SellerProducts from "./pages/System/Seller/SellerProducts";
+import CustomerLogin from "./pages/CustomerLogin/CustomerLogin";
 
 
 
@@ -44,6 +45,7 @@ function App() {
         <Route path="/about" element={<AboutUsPage />} />
         <Route path="/mycart" element={<MyCart />} />
         <Route path="/myaccount" element={<MyProfile />} />
+        <Route path="/customerlogin" element={<CustomerLogin />} />
         <Route path="/just" element={<Test />} />
         {/* ::::::::::::::::::::::::::::::::::::::::Customer Routes::::::::::::::::::::::::::::::::::::::::::::::::::: */}
 
