@@ -11,7 +11,7 @@ import Product5 from '../../../img/Admin/Product8.jpeg';
 import Sidebar from '../../../components/System/Sidebar/Sidebar';
 import SystemNav from '../../../components/System/SystemNavBar/SystemNav';
 
-const AllProducts = () => {
+const DeliveryTracking = () => {
   return (
     <div className="mainContainer">
       <div className="sidebar">
@@ -23,7 +23,7 @@ const AllProducts = () => {
           <SystemNav />
         </div>
         <div style={{ textAlign: 'center' }}>
-          <h2>All Products</h2>
+          <h2>Delivery Status</h2>
         </div>
         <br />
         {/* Search Bar */}
@@ -60,7 +60,7 @@ const AllProducts = () => {
               <th>Quantity</th>
               <th>Amount</th>
               <th>Seller Name</th>
-              <th>Status</th>
+              <th>Tracking Status</th>
             </tr>
             <tr>
               <td>
@@ -71,11 +71,16 @@ const AllProducts = () => {
                 />
               </td>
               <td>Facial Cream</td>
-              <td>50</td>
+              <td>1</td>
               <td>1500.00</td>
               <td>Seller name here</td>
 
-              <td>Confirmed</td>
+              <td>
+                <select style={{ width: '180px' }}>
+                  <option value="dispatched">Dispatched</option>
+                  <option value="delivered">Delivered</option>
+                </select>
+              </td>
             </tr>
             <tr>
               <td>
@@ -86,11 +91,16 @@ const AllProducts = () => {
                 />
               </td>
               <td>Body Spray</td>
-              <td>120</td>
+              <td>5</td>
               <td>2500.00</td>
               <td>Seller name here</td>
 
-              <td>Confirmed</td>
+              <td>
+                <select style={{ width: '180px' }}>
+                  <option value="dispatched">Dispatched</option>
+                  <option value="delivered">Delivered</option>
+                </select>
+              </td>
             </tr>
             <tr>
               <td>
@@ -101,11 +111,16 @@ const AllProducts = () => {
                 />
               </td>
               <td>Hand Clenser</td>
-              <td>50</td>
+              <td>1</td>
               <td>4500.00</td>
               <td>Sam Perera</td>
 
-              <td>Confirmed</td>
+              <td>
+                <select style={{ width: '180px' }}>
+                  <option value="dispatched">Dispatched</option>
+                  <option value="delivered">Delivered</option>
+                </select>
+              </td>
             </tr>
             <tr>
               <td>
@@ -116,10 +131,15 @@ const AllProducts = () => {
                 />
               </td>
               <td>Amond oil</td>
-              <td>50</td>
+              <td>8</td>
               <td>4000.00</td>
               <td>Seller name here</td>
-              <td>Confirmed</td>
+              <td>
+                <select style={{ width: '180px' }}>
+                  <option value="dispatched">Dispatched</option>
+                  <option value="delivered">Delivered</option>
+                </select>
+              </td>
             </tr>
             <tr>
               <td>
@@ -130,11 +150,16 @@ const AllProducts = () => {
                 />
               </td>
               <td>Hair oil</td>
-              <td>50</td>
+              <td>1</td>
               <td>3000.00</td>
               <td>Seller name here</td>
 
-              <td>Confirmed</td>
+              <td>
+                <select style={{ width: '180px' }}>
+                  <option value="dispatched">Dispatched</option>
+                  <option value="delivered">Delivered</option>
+                </select>
+              </td>
             </tr>
           </table>
         </div>
@@ -144,4 +169,4 @@ const AllProducts = () => {
     </div>
   );
 };
-export default AllProducts;
+export default DeliveryTracking;
