@@ -26,3 +26,6 @@ mongoose
     })
   )
   .catch((err) => console.log(err));
+
+import productRouter from "./routes/Products.js";
+app.use("/products", productRouter);
