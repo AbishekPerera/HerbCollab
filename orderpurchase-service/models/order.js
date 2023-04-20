@@ -2,12 +2,12 @@ import mongoose from "mongoose";
 
 const Schema = mongoose.Schema;
 
-const ratereviewSchema = new Schema({
+const orderSchema = new Schema({
   userId: {
     type: String,
     required: true,
   },
-  customerName: {
+  username: {
     type: String,
     required: true,
   },
@@ -19,34 +19,34 @@ const ratereviewSchema = new Schema({
     type: String,
     required: true,
   },
-  sellerId: {
+  productImage: {
     type: String,
     required: true,
   },
-  sellerName: {
-    type: String,
-    required: true,
-  },
-  sellerRating: {
+  quantity: {
     type: Number,
     required: true,
   },
-  productRating: {
+  price: {
     type: Number,
     required: true,
   },
-  productReview: {
-    type: String,
-    required: true,
-  },
-  sellerReview: {
-    type: String,
+  total: {
+    type: Number,
     required: true,
   },
   date: {
     type: Date,
     default: Date.now,
   },
+  commission: {
+    type: Number,
+    required: true,
+  },
+  status: {
+    type: String,
+    default: "Pending",
+  },
 });
 
-export const RateReview = mongoose.model("RateReview", ratereviewSchema);
+export const Order = mongoose.model("Order", orderSchema);
