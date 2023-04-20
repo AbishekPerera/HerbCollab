@@ -40,11 +40,22 @@ orderRouter.route("/getallorders").get((req, res) => {
 });
 
 //get orders by userId and status (for customer)
-orderRouter.route("/getorderbyuserid/:userId/:status").get((req, res) => {
-  const userId = req.params.userId;
-  const status = req.params.status;
+orderRouter
+  .route("/getorderbyuseridandstatus/:userId/:status")
+  .get((req, res) => {
+    const userId = req.params.userId;
+    const status = req.params.status;
 
-  Order.find({ userId, status })
+    Order.find({ userId, status })
+      .then((orders) => res.json(orders))
+      .catch((err) => res.status(400).json("Error: " + err));
+  });
+
+//get orders by userId (for customer)
+orderRouter.route("/getorderbyuserid/:userId").get((req, res) => {
+  const userId = req.params.userId;
+
+  Order.find({ userId })
     .then((orders) => res.json(orders))
     .catch((err) => res.status(400).json("Error: " + err));
 });
