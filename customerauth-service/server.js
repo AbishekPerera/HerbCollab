@@ -29,3 +29,5 @@ mongoose
 
 import customerRouter from "./routes/customers.js";
 app.use("/auth", customerRouter);
+import authRouter from "./routes/auth.js"
+app.use("/auth",authRouter );

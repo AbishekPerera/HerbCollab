@@ -27,7 +27,7 @@ router.route("/signup").post([
     }
     
     else if(existingUser){
-        return res.status(406).json({message: "User already exists! Login Insted"});
+        return res.status(406).json({message: "User already exists! Login Instead"});
     }
 
 
