@@ -39,4 +39,33 @@ orderRouter.route("/getallorders").get((req, res) => {
     .catch((err) => res.status(400).json("Error: " + err));
 });
 
+//get orders by userId and status (for customer)
+orderRouter.route("/getorderbyuserid/:userId/:status").get((req, res) => {
+  const userId = req.params.userId;
+  const status = req.params.status;
+
+  Order.find({ userId, status })
+    .then((orders) => res.json(orders))
+    .catch((err) => res.status(400).json("Error: " + err));
+});
+
+//get orders by status (for admin)
+orderRouter.route("/getorderbystatus/:status").get((req, res) => {
+  const status = req.params.status;
+
+  Order.find({ status })
+    .then((orders) => res.json(orders))
+    .catch((err) => res.status(400).json("Error: " + err));
+});
+
+// update order status
+orderRouter.route("/updateorderstatus/:id").put((req, res) => {
+  const id = req.params.id;
+  const status = req.body.status;
+
+  Order.findByIdAndUpdate(id, { status }, { new: true })
+    .then((updatedOrder) => res.json(updatedOrder))
+    .catch((err) => res.status(400).json("Error: " + err));
+});
+
 export default orderRouter;
