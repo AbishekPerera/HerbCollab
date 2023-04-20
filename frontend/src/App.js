@@ -28,6 +28,7 @@ import MyCart from "./pages/MyCart/MyCart";
 import MyProfile from "./pages/MyProfile/MyProfile";
 import SellerProducts from "./pages/System/Seller/SellerProducts";
 import CustomerLogin from "./pages/CustomerAuth/CustomerLogin";
+import CustomerRegister from "./pages/CustomerAuth/CustomerRegister";
 
 function App() {
   return (
@@ -42,6 +43,7 @@ function App() {
         <Route path="/mycart" element={<MyCart />} />
         <Route path="/myaccount" element={<MyProfile />} />
         <Route path="/customerlogin" element={<CustomerLogin />} />
+        <Route path="/customer/register" element={<CustomerRegister />} />
         <Route path="/just" element={<Test />} />
         {/* ::::::::::::::::::::::::::::::::::::::::Customer Routes::::::::::::::::::::::::::::::::::::::::::::::::::: */}
 
