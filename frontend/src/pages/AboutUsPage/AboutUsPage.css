@@ -22,3 +22,17 @@
   position: relative;
   font-weight: 700;
 }
+.AboutUsimg {
+  width: 70%;
+  height: 80%;
+  background-image: url(../../img/other\ comp/aboutusbanner.jpg);
+  background-repeat: no-repeat;
+  background-size: cover;
+  background-position: center;
+  background-attachment: fixed;
+}
+
+.BackgroundAboutUs{
+  background-color: #dbf5e3;
+  
+}
