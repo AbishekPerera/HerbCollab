@@ -7,8 +7,8 @@ import "./MyProfile.css";
 const MyProfile = () => {
   return (
     <div>
-      <Header />
-      <div className="news-page-body">
+    <Header />
+    <div className="muprofile-page-body">
         {/* <!-- BREADCRUMB AREA START --> */}
         <div class="ltn__breadcrumb-area-myprofilepage text-left bg-overlay-white-30 bg-image">
           <div class="container">
@@ -35,9 +35,22 @@ const MyProfile = () => {
           </div>
         </div>
         {/* <!-- BREADCRUMB AREA END --> */}
-
-        <Footer />
+     
     </div>
+
+    {/* Profile Content */}
+    <div class="container">
+      <div class="row">
+        <div class="col-md-4">
+          {/* Column1 */}
+        </div> 
+        <div class="col-md-4">
+          {/* Column2 */}
+        </div> 
+      </div>
+    </div>
+
+    <Footer />
     </div>
   );
 };

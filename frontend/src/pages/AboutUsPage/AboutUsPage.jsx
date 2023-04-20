@@ -3,6 +3,7 @@ import Header from "../../components/Header/Header";
 import Footer from "../../components/Footer/Footer";
 import { Link } from "react-router-dom";
 import "./AboutUsPage.css";
+import AboutUsImg from "../../img/other comp/AboutUs2.jpeg";
 
 const AboutUsPage = () => {
   return (
@@ -38,66 +39,73 @@ const AboutUsPage = () => {
       </div>
 
       {/* AboutUs Content      */}
-      <div style={{ width: "80%", margin: "0 auto" }}>
-        <h1 style={{ textAlign: "left" }}>Our Story..</h1>
-        <p>
-          HerbCollab, was established in 1961 as a sole Proprietor business
-          entity by our Late founder Mr. Shirley Rodrigo, We are a chain
-          pharmacy with 7 outlets. HerbCollab, has served the nation for Over 3
-          Generations, with Prescription Medication, Preparation mixing local
-          Applications, supplying of Wheelchairs, Orthopaedic supports, Home and
-          professional medical Care equipment, Surgical consumable.
-        </p>
-        <p>
-          With present busy schedules and traffic situations to customers, we
-          have established our “Online Pharmacy” service. Customers can log in
-          to “HerbCollab” Upload the medical Prescription or buy home or
-          Professional Medical equipment Orthopaedic supports Wheel chairs, from
-          our “Pharmacy Online service”.
-        </p>
-        <p>
-          HerbCollab delivery service will send your order through our
-          experience qualified dispenser to your doorstep. Our team is trained
-          on Medicinal Product or prescription Advice and Explanation, Medical
-          Equipment Demonstration and installation.
-        </p>
-      </div>
+      <div className="BackgroundAboutUs">
+          <div style={{ width: "90%", margin: "0 auto" }}>
+            <br/><br/><h1 style={{ textAlign: "left" }}>Our Story..</h1>
+            <p>
+              HerbCollab, was established in 1961 as a sole Proprietor business
+              entity by our Late founder Mr. Shirley Rodrigo, We are a chain
+              pharmacy with 7 outlets. HerbCollab, has served the nation for Over 3
+              Generations, with Prescription Medication, Preparation mixing local
+              Applications, supplying of Wheelchairs, Orthopaedic supports, Home and
+              professional medical Care equipment, Surgical consumable.
+            </p>
+            <p>
+              With present busy schedules and traffic situations to customers, we
+              have established our “Online Pharmacy” service. Customers can log in
+              to “HerbCollab” Upload the medical Prescription or buy home or
+              Professional Medical equipment Orthopaedic supports Wheel chairs, from
+              our “Pharmacy Online service”.
+            </p>
+            <p>
+              HerbCollab delivery service will send your order through our
+              experience qualified dispenser to your doorstep. Our team is trained
+              on Medicinal Product or prescription Advice and Explanation, Medical
+              Equipment Demonstration and installation.
+            </p>
+          </div>
 
-      {/* Second Paragraph */}
-      <div style={{ width: "65%", margin: "0 auto" }}>
-        {/* <p>
-          <strong>Superior care</strong>
-        </p> */}
-         <h4 style={{color: "#003c1f"}}>Superior care</h4>
-        <p>
-          Our Ayurwedic pharmacies are well-equipped with modern facilities that
-          make use of the latest technological advancements to ensure your
-          comfort as well as best clinical outcome. As an internationally
-          accredited hospital chain, we always remain mindful of the requirement
-          to offer world class services to you and your family. We’ve secured
-          the services of some of the country’s finest talent in the medical
-          arena to provide the best possible care and guidance to you. Our
-          aesthetically pleasing hospital interiors, were specifically designed
-          so to help you gain a sense of peace to help with the healing process.
-        </p>
-        {/* <p>
-          <strong>Our Services</strong>
-        </p> */}
-        <h4 style={{color: "#003c1f"}}>Our Services</h4>
-        <p>
-          We take care of your preventive and curative healthcare requirements
-          at our state-of-the-art facilities. Collectively, our hospitals can
-          accommodate 190 in-house patients where you can be rest assured of
-          receiving care on par with international standards. Our island wide
-          laboratory services network is well-equipped with the cutting-edge
-          technology, equipment and skilled professionals to provide accurate
-          diagnostic investigations. We’ve purposely built our hospitals to
-          align with international standards and equipped each area with the
-          latest technological advancements. You can visit our Accident and
-          Emergency units any time during the day and night to receive medical
-          or surgical emergency care.
-        </p>
-      </div>
+          {/* Second Paragraph */}
+          <div className="row "> 
+            <div className="col-lg-7"> 
+                    <div style={{allign: "left" ,padding:"100px"}}>
+                    
+                      <h4 style={{color: "#003c1f"}}>Superior care</h4>
+                      <p>
+                        Our Ayurwedic pharmacies are well-equipped with modern facilities that
+                        make use of the latest technological advancements to ensure your
+                        comfort as well as best clinical outcome. As an internationally
+                        accredited hospital chain, we always remain mindful of the requirement
+                        to offer world class services to you and your family. We’ve secured
+                        the services of some of the country’s finest talent in the medical
+                        arena to provide the best possible care and guidance to you. Our
+                        aesthetically pleasing hospital interiors, were specifically designed
+                        so to help you gain a sense of peace to help with the healing process.
+                      </p>
+                      {/* <p>
+                        <strong>Our Services</strong>
+                      </p> */}
+                      <h4 style={{color: "#003c1f"}}>Our Services</h4>
+                      <p>
+                        We take care of your preventive and curative healthcare requirements
+                        at our state-of-the-art facilities. Collectively, our hospitals can
+                        accommodate 190 in-house patients where you can be rest assured of
+                        receiving care on par with international standards. Our island wide
+                        laboratory services network is well-equipped with the cutting-edge
+                        technology, equipment and skilled professionals to provide accurate
+                        diagnostic investigations. We’ve purposely built our hospitals to
+                        align with international standards and equipped each area with the
+                        latest technological advancements. You can visit our Accident and
+                        Emergency units any time during the day and night to receive medical
+                        or surgical emergency care.
+                      </p>
+                    </div>
+            </div> 
+            <div className="col-lg-5"> 
+                  <img src={AboutUsImg} alt="register" className="AboutUsimg"/> 
+            </div>   
+          </div>
+      </div>    
 
       {/* Element */}
       <div
