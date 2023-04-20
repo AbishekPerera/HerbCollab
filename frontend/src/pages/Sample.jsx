@@ -7,7 +7,7 @@ const Sample = () => {
   return (
     <div>
       <Header />
-      Sample
+      Sample Page
       <Footer />
     </div>
   );

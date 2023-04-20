@@ -70,19 +70,23 @@ const Header = () => {
       <Navbar bg="primary" variant="dark" className={isSticky ? "sticky" : ""}>
         <Container>
           <Nav className="me-auto">
-            <Link to="/">
-              <Nav.Link>Home</Nav.Link>
-            </Link>
-            <Link to="/shop">
-              <Nav.Link>Shop</Nav.Link>
-            </Link>
-            <Link to="/news">
-              <Nav.Link>News</Nav.Link>
-            </Link>
-            <Link to="/about">
-              <Nav.Link>About</Nav.Link>
-            </Link>
+            <Nav.Link>
+              <Link to="/">Home</Link>
+            </Nav.Link>
+
+            <Nav.Link>
+              <Link to="/shop">Shop </Link>
+            </Nav.Link>
+
+            <Nav.Link>
+              <Link to="/news">News</Link>
+            </Nav.Link>
+
+            <Nav.Link>
+              <Link to="/about">About</Link>
+            </Nav.Link>
           </Nav>
+
           <div className="row">
             <div className="col-8">
               <form class="d-flex header-search-2">
@@ -91,18 +95,16 @@ const Header = () => {
                   type="search"
                   placeholder="Search"
                 />
-                <button class="btn btn-secondary my-2 my-sm-0" type="submit">
-                  Search
-                </button>
+                <button class="btn btn-secondary my-2 my-sm-0">Search</button>
               </form>
             </div>
             <div className="col-4 ">
               <div className="cart-acc-section m-sm-2">
-                <Link to="#" className="cart-acc fs-5 m-lg-3">
+                <Link to="/mycart" className="cart-acc fs-5 m-lg-3">
                   <i className="bi bi-cart"></i>
                 </Link>
 
-                <Link to="#" className="cart-acc fs-5 m-lg-3">
+                <Link to="/myaccount" className="cart-acc fs-5 m-lg-3">
                   <i className="bi bi-person"></i>
                 </Link>
               </div>

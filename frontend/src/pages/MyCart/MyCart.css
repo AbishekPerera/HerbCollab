@@ -1,0 +1,48 @@
+.my-cart-body {
+  background-color: white;
+}
+
+/* ----------------------------------------------------
+    Breadcurmb Area
+---------------------------------------------------- */
+.ltn__breadcrumb-area-cart {
+  background-color: #f4f4f4;
+  margin-bottom: 80px;
+  padding-top: 110px;
+  padding-bottom: 110px;
+  background-image: url(../../img/other\ comp/cartbanner.jpg);
+  background-repeat: no-repeat;
+  background-size: cover;
+}
+
+.cart-products {
+  padding: 0px 30px;
+}
+
+.cart-product-img {
+  width: 100px;
+  height: 100px;
+}
+
+/* .cart-total {
+  background: rgba(19, 255, 67, 0.31);
+  border-radius: 16px;
+  box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1);
+  backdrop-filter: blur(9.7px);
+  -webkit-backdrop-filter: blur(9.7px);
+  border: 1px solid rgba(19, 255, 67, 0.23);
+} */
+
+.cart-item-count-input {
+  width: 60px;
+  text-align: center;
+  border: none;
+  border-radius: 5px;
+}
+
+.my-cart-beforeitem {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin-bottom: 20px;
+}

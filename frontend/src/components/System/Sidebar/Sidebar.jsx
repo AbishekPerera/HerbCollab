@@ -52,11 +52,11 @@ const Sidebar = () => {
             </li>
             <li
               className={
-                activeItem === "/system/admin-pendingproducts" ? "active" : ""
+                activeItem === "/system/admin-pendingorders" ? "active" : ""
               }
             >
               <Link
-                to="/system/admin-pendingproducts"
+                to="/system/admin-pendingorders"
                 className="text-decoration-none px-3 py-2 d-block"
               >
                 <i class="bi bi-bag-plus"></i>
@@ -64,19 +64,22 @@ const Sidebar = () => {
               </Link>
             </li>
             <li>
-              <Link to="#" className="text-decoration-none px-3 py-2 d-block">
+              <Link
+                to="/system/admin-allproducts"
+                className="text-decoration-none px-3 py-2 d-block"
+              >
                 <i class="bi bi-card-list"></i>
                 <span style={{ paddingLeft: "0.7rem" }}>All Products</span>
               </Link>
             </li>
             <li>
-              <Link to="#" className="text-decoration-none px-3 py-2 d-block">
+              <Link to="/system/admin-allusers" className="text-decoration-none px-3 py-2 d-block">
                 <i class="bi bi-people"></i>
                 <span style={{ paddingLeft: "0.7rem" }}>Users</span>
               </Link>
             </li>
             <li>
-              <Link to="#" className="text-decoration-none px-3 py-2 d-block">
+              <Link to="/system/admin-profile" className="text-decoration-none px-3 py-2 d-block">
                 <i class="bi bi-person-square"></i>
                 <span style={{ paddingLeft: "0.7rem" }}>My Profile</span>
               </Link>
