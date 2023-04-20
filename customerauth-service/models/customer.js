@@ -2,37 +2,25 @@ import mongoose from "mongoose";
 
 const Schema = mongoose.Schema;
 
-const cartSchema = new Schema({
-  userId: {
+const customerSchema = new Schema({
+  name: {
     type: String,
     required: true,
   },
-  username: {
+  email: {
     type: String,
     required: true,
   },
-  productId: {
+  phone: {
     type: String,
     required: true,
   },
-  productName: {
+  address: {
     type: String,
     required: true,
   },
-  productImage: {
+  password: {
     type: String,
-    required: true,
-  },
-  quantity: {
-    type: Number,
-    required: true,
-  },
-  price: {
-    type: Number,
-    required: true,
-  },
-  total: {
-    type: Number,
     required: true,
   },
   date: {
@@ -41,4 +29,4 @@ const cartSchema = new Schema({
   },
 });
 
-export const Cart = mongoose.model("Cart", cartSchema);
+export const Customer = mongoose.model("Customer", customerSchema);
