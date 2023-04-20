@@ -144,38 +144,38 @@ const MyCart = () => {
             </Col>
             <Col lg={4}>
               <Container>
-                <div className="cart-total">
-                  <Table bordered={false}>
-                    <tbody>
-                      <tr>
-                        <td className="font-weight-bold">Subtotal</td>
-                        <td className="text-right">${total}</td>
-                      </tr>
-                      <tr>
-                        <td className="font-weight-bold">Shipping</td>
-                        <td className="text-right">Free</td>
-                      </tr>
-                      <tr>
-                        <td className="font-weight-bold">Total</td>
-                        <td className="text-right">${total}</td>
-                      </tr>
-                    </tbody>
-                  </Table>
-                  <div className="cart-total-item m-3 d-flex justify-content-center">
-                    <Link>
-                      <button
-                        onClick={() => setModalShow(true)}
-                        className="btn btn-success"
-                      >
-                        Proceed to Checkout
-                      </button>
-                    </Link>
-                  </div>
-                  <MyVerticallyCenteredModal
-                    show={modalShow}
-                    onHide={() => setModalShow(false)}
-                  />
+                {/* <div className="cart-total"> */}
+                <Table bordered={false}>
+                  <tbody>
+                    <tr>
+                      <td className="font-weight-bold">Subtotal</td>
+                      <td className="text-right">${total}</td>
+                    </tr>
+                    <tr>
+                      <td className="font-weight-bold">Shipping</td>
+                      <td className="text-right">Free</td>
+                    </tr>
+                    <tr>
+                      <td className="font-weight-bold">Total</td>
+                      <td className="text-right">${total}</td>
+                    </tr>
+                  </tbody>
+                </Table>
+                <div className="cart-total-item d-flex justify-content-center">
+                  <Link>
+                    <button
+                      onClick={() => setModalShow(true)}
+                      className="btn btn-success"
+                    >
+                      Proceed to Checkout
+                    </button>
+                  </Link>
                 </div>
+                <MyVerticallyCenteredModal
+                  show={modalShow}
+                  onHide={() => setModalShow(false)}
+                />
+                {/* </div> */}
               </Container>
             </Col>
           </Row>

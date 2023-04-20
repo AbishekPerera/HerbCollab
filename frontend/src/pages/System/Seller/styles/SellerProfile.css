@@ -1,8 +1,8 @@
-*{
+.seller{
     box-sizing: border-box;
   }
   
-  input[type=text], select, textarea {
+  .input1[type=text], select, textarea {
     width: 100%;
     padding: 12px;
     border: 1px solid #ccc;
@@ -10,12 +10,12 @@
     resize: vertical;
   }
   
-  label {
+  .label2 {
     padding: 12px 12px 12px 0;
     display: inline-block;
   }
   
-  input[type=submit] {
+  .input2[type=submit] {
     background-color: #108033;
     color: white;
     padding: 12px 20px;
@@ -25,7 +25,7 @@
     float: right;
   }
   
-  input[type=submit]:hover {
+  .input3[type=submit]:hover {
     background-color: #60b972;
   }
   

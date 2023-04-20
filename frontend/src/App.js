@@ -4,7 +4,6 @@ import Homepage from "./pages/HomePage/HomePage";
 import Test from "./pages/Test";
 import Dashboard from "./pages/System/Admin/Dashboard";
 
-
 import SystemLogin from "./pages/SystemLoginPage/system-Login";
 
 import SellerDashboard from "./pages/System/Seller/SellerDashboard";
@@ -22,15 +21,13 @@ import ProductDetailsPage from "./pages/ProductDetailsPage/ProductDetailsPage";
 import SellerProfile from "./pages/System/Seller/SellerProfile";
 import AllOrders from "./pages/System/Seller/AllOrders";
 
-
 import ShopPage from "./pages/ShopPage/ShopPage";
 import NewsPage from "./pages/NewsPage/NewsPage";
 import AboutUsPage from "./pages/AboutUsPage/AboutUsPage";
 import MyCart from "./pages/MyCart/MyCart";
 import MyProfile from "./pages/MyProfile/MyProfile";
 import SellerProducts from "./pages/System/Seller/SellerProducts";
-
-
+import CustomerLogin from "./pages/CustomerAuth/CustomerLogin";
 
 function App() {
   return (
@@ -44,6 +41,7 @@ function App() {
         <Route path="/about" element={<AboutUsPage />} />
         <Route path="/mycart" element={<MyCart />} />
         <Route path="/myaccount" element={<MyProfile />} />
+        <Route path="/customerlogin" element={<CustomerLogin />} />
         <Route path="/just" element={<Test />} />
         {/* ::::::::::::::::::::::::::::::::::::::::Customer Routes::::::::::::::::::::::::::::::::::::::::::::::::::: */}
 
@@ -55,20 +53,16 @@ function App() {
         <Route path="/system/admin-pendingitem" element={<PendingItem />} />
         <Route path="/system/admin-allproducts" element={<AllProducts />} />
 
-
-
         <Route path="/system/admin-profile" element={<AdminProfile />} />
         <Route path="/system/admin-allusers" element={<AllUsers />} />
 
         {/* <Route path="/system/admin-pendingproducts" element={<PendingProducts />} /> */}
 
+        <Route
+          path="/system/admin-pendingproducts"
+          element={<PendingOrders />}
+        />
 
-        <Route path="/system/admin-pendingproducts" element={<PendingOrders />} />
-
-        
-
-
-        
         {/* ::::::::::::::::::::::::::::::::::::::::Admin Routes::::::::::::::::::::::::::::::::::::::::::::::::::: */}
 
         {/* ::::::::::::::::::::::::::::::::::::::::Seller Routes::::::::::::::::::::::::::::::::::::::::::::::::::: */}

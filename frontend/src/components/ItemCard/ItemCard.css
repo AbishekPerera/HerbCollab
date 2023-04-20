@@ -5,7 +5,7 @@
   min-width: 0;
   height: var(--bs-card-height);
   word-wrap: break-word;
-  background-color: var(--bs-card-bg);
+  background-color: white;
   background-clip: border-box;
   border: 1px solid #ccc;
   border-radius: 4px;
@@ -14,12 +14,13 @@
   align-items: center;
 }
 
-.title {
+.card-my .title {
   font-size: 20px;
   margin: 0 0 16px;
+  color: #08781f;
 }
 
-.image {
+.card-my .image {
   display: block;
   width: 200px;
   height: 200px;
@@ -27,7 +28,7 @@
   background-size: cover;
 }
 
-.price {
+.card-my .price {
   font-size: 18px;
   font-weight: bold;
   margin: 0 0 16px;
@@ -107,6 +108,6 @@ card hover
   color: white;
 }
 
-a {
+.cardbodywrap a {
   text-decoration: none;
 }

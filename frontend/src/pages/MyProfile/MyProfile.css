@@ -1,0 +1,29 @@
+/* ----------------------------------------------------
+    Breadcurmb Area
+---------------------------------------------------- */
+.ltn__breadcrumb-area-myprofilepage {
+    background-color: #f4f4f4;
+    margin-bottom: 120px;
+    padding-top: 110px;
+    padding-bottom: 110px;
+    background-image: url(https://i.pinimg.com/564x/0f/29/1d/0f291dc436fdb57a7d5a4c25a0ad405f.jpg);
+    background-repeat: no-repeat;
+    background-size: cover;
+  }
+  
+  .ltn__breadcrumb-list ul {
+    margin: 0;
+    padding: 0;
+  }
+  
+  .ltn__breadcrumb-list ul li {
+    display: inline-block;
+    margin-right: 30px;
+    position: relative;
+    font-weight: 700;
+  }
+  
+  .news-page-lowerbody {
+    margin: 2%;
+  }
+  

@@ -39,7 +39,7 @@ const AboutUsPage = () => {
 
       {/* AboutUs Content      */}
       <div style={{ width: "80%", margin: "0 auto" }}>
-        <h2 style={{ textAlign: "center" }}>Book Your Appointment Now</h2>
+        <h1 style={{ textAlign: "left" }}>Our Story..</h1>
         <p>
           HerbCollab, was established in 1961 as a sole Proprietor business
           entity by our Late founder Mr. Shirley Rodrigo, We are a chain
@@ -65,9 +65,10 @@ const AboutUsPage = () => {
 
       {/* Second Paragraph */}
       <div style={{ width: "65%", margin: "0 auto" }}>
-        <p>
+        {/* <p>
           <strong>Superior care</strong>
-        </p>
+        </p> */}
+         <h4 style={{color: "#003c1f"}}>Superior care</h4>
         <p>
           Our Ayurwedic pharmacies are well-equipped with modern facilities that
           make use of the latest technological advancements to ensure your
@@ -79,9 +80,10 @@ const AboutUsPage = () => {
           aesthetically pleasing hospital interiors, were specifically designed
           so to help you gain a sense of peace to help with the healing process.
         </p>
-        <p>
+        {/* <p>
           <strong>Our Services</strong>
-        </p>
+        </p> */}
+        <h4 style={{color: "#003c1f"}}>Our Services</h4>
         <p>
           We take care of your preventive and curative healthcare requirements
           at our state-of-the-art facilities. Collectively, our hospitals can
@@ -105,36 +107,42 @@ const AboutUsPage = () => {
           borderRadius: "5px",
         }}
       >
-        <div style={{ width: "50%", margin: "0 auto", textAlign: "center" }}>
+        <div style={{ width: "55%", margin: "0 auto", textAlign: "center" }}>
           <div className="container">
-            <div className="row">
-              <div className="col-md-5">
-                <h2 className="white" style={{ color: "#fffaf1" }}>
-                  Experience the natural beauty with Ayurveda
+            {/* <div className="row"> */}
+              {/* <div className="col-md-5">
+                <h2 className="white" style={{ color: "#CDBE78" }}>
+                  HerbCollab:
                   <br />
+                  Your destination for 
+                  <br />
+                  authentic Ayurvedic remedies
                 </h2>
-              </div>
-              <div className="col-md-7">
+              </div> */}
+              {/* <div className="col-md-7"> */}
                 <div className="contact-us d-blue-bg">
                   <h4 className="green">
-                    <a href="/about" style={{ color: "#fffaf1" }}>
+                    <a href="/about" style={{ color: "#CDBE78",width: "100%", margin: "0 auto", textAlign: "center"  }}>
                       CONTACT US
                     </a>
                   </h4>
-                  <p style={{ color: "black" }}>+94-114-312 777</p>
-                  <p style={{ color: "black" }}>herbcollab@gmail.com</p>
+                  <p style={{ color: "#F2F2F2" }}>123, Main Street, New York, USA.</p>          
+                  <p style={{ color: "#F2F2F2" }}>(+94) 031 223 7006 / (+94) 031 492 8922</p>
+                  <p style={{ color: "#F2F2F2" }}>herbcollab@gmail.com</p>
+                  
                 </div>
                 <div className="appointment-intro-btn">
                   <a
                     className="appointment-btn"
-                    style={{ color: "#fffaf1" }}
+                    style={{ color: "#CDBE78" }}
                     href="/"
                   >
                     MAKE AN APPOINTMENT
                   </a>
+                  
                 </div>
-              </div>
-            </div>
+              {/* </div> */}
+            {/* </div> */}
           </div>
         </div>
       </div>
