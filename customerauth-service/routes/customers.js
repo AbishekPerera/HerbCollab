@@ -1,21 +1,23 @@
 import express from "express";
 const customerRouter = express.Router();
-import { Customer } from "../models/customer.js";
+import Customer from "../models/customer.js";
+import bcrypt from "bcryptjs";
 
 //add customer to database
-customerRouter.route("/addcustomer").post((req, res) => {
+customerRouter.route("/addcustomer").post(async(req, res) => {
   const name = req.body.name;
   const email = req.body.email;
   const phone = req.body.phone;
   const address = req.body.address;
   const password = req.body.password;
+  const hashPassword =await bcrypt.hash(password, 10);
 
   const newCustomer = new Customer({
     name,
     email,
     phone,
     address,
-    password,
+    password:hashPassword,
   });
 
   newCustomer
@@ -32,7 +34,7 @@ customerRouter.route("/").get((req, res) => {
 });
 
 // login customer
-customerRouter.route("/login").post((req, res) => {
+/*customerRouter.route("/login").post((req, res) => {
   const email = req.body.email;
   const password = req.body.password;
 
@@ -49,7 +51,7 @@ customerRouter.route("/login").post((req, res) => {
       }
     })
     .catch((err) => res.status(400).json("Error: " + err));
-});
+});*/
 
 //get customer by id
 customerRouter.route("/:id").get((req, res) => {
