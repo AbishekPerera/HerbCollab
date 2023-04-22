@@ -1,11 +1,53 @@
-import React from "react";
+import React, { useState } from "react";
 import Header from "../../components/Header/Header";
 import Footer from "../../components/Footer/Footer";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import "./CustomerAuth.css";
 import RegisterImg from "../../img/other comp/register1.jpeg";
+import axios from "axios";
 
 const CustomerRegister = () => {
+  const [name, setName] = useState("");
+  const [email, setEmail] = useState("");
+  const [address, setAddress] = useState("");
+  const [phone, setPhone] = useState("");
+  const [password, setPassword] = useState("");
+  const [confirmPassword, setConfirmPassword] = useState("");
+  const [error, setError] = useState(false);
+  const [passwordError, setPasswordError] = useState(false);
+  const history = useNavigate();
+
+  const submitHandler = (e) => {
+    e.preventDefault();
+    console.log(name, email, address, phone, password, confirmPassword);
+
+    if (password !== confirmPassword) {
+      setPasswordError(true);
+      return;
+    }
+
+    const newOb = {
+      name: name,
+      email: email,
+      address: address,
+      phone: phone,
+      password: password,
+    };
+
+    // console.log(newOb);
+
+    axios
+      .post("http://localhost:8075/auth/addcustomer", newOb)
+      .then((res) => {
+        console.log(res.data);
+        history("/customerlogin");
+      })
+      .catch((err) => {
+        setError(true);
+        console.log(err);
+      });
+  };
+
   return (
     <div>
       <Header />
@@ -45,12 +87,14 @@ const CustomerRegister = () => {
             <br />
             <br />
             <h1 class="text-center">Registration Form</h1>
-            <form class="registrationform ">
+            <form class="registrationform" onSubmit={submitHandler}>
               <div class="mb-3">
                 <label for="exampleInputEmail1" class="form-label">
                   Name
                 </label>
                 <input
+                  required
+                  onChange={(e) => setName(e.target.value)}
                   type="text"
                   class="form-control"
                   id="name"
@@ -63,6 +107,8 @@ const CustomerRegister = () => {
                   Email address
                 </label>
                 <input
+                  required
+                  onChange={(e) => setEmail(e.target.value)}
                   type="email"
                   class="form-control"
                   id="email"
@@ -75,6 +121,8 @@ const CustomerRegister = () => {
                   Address
                 </label>
                 <input
+                  required
+                  onChange={(e) => setAddress(e.target.value)}
                   type="text"
                   class="form-control"
                   id="address"
@@ -87,6 +135,8 @@ const CustomerRegister = () => {
                   Phone Number
                 </label>
                 <input
+                  required
+                  onChange={(e) => setPhone(e.target.value)}
                   type="phone"
                   class="form-control"
                   id="phone"
@@ -95,20 +145,42 @@ const CustomerRegister = () => {
                 />
               </div>
               <div class="mb-3">
-                <label for="gender" class="form-label">
-                  Gender
+                <label for="password" class="form-label">
+                  Password
                 </label>
-                <select class="form-select" id="gender" name="gender">
-                  <option value="" disabled selected>
-                    Select gender
-                  </option>
-                  <option value="male">Male</option>
-                  <option value="female">Female</option>
-                </select>
+                <input
+                  required
+                  onChange={(e) => setPassword(e.target.value)}
+                  type="password"
+                  class="form-control"
+                  id="password"
+                  aria-describedby="emailHelp"
+                  placeholder="Enter Password"
+                />
+              </div>
+              <div class="mb-3">
+                <label for="confirmPassword" class="form-label">
+                  Confirm Password
+                </label>
+                <input
+                  required
+                  onChange={(e) => setConfirmPassword(e.target.value)}
+                  type="password"
+                  class="form-control"
+                  id="confirmPassword"
+                  aria-describedby="emailHelp"
+                  placeholder="Enter Confirm Password"
+                />
+                {passwordError && (
+                  <span style={{ color: "red" }}>
+                    Passwords do not match! Please try again.
+                  </span>
+                )}
               </div>
 
               <div class="mb-3 form-check">
                 <input
+                  required
                   type="checkbox"
                   class="form-check-input"
                   id="exampleCheck1"
@@ -117,6 +189,14 @@ const CustomerRegister = () => {
                   I agree to HerbCollab's terms and privacy policy
                 </label>
               </div>
+              <div className="somethingwentwrong p-2">
+                {error && (
+                  <span style={{ color: "red" }}>
+                    Something went wrong! Please try again.
+                  </span>
+                )}
+              </div>
+
               <button type="submit" class="registerbtn btn btn-success">
                 Sign Up
               </button>
