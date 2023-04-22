@@ -12,7 +12,7 @@ const ProductDetailsPage = () => {
   const { id } = useParams();
 
   return (
-    <div>
+    <div className="bg-white">
       <Header />
       {/* <!-- BREADCRUMB AREA START --> */}
       <div class="ltn__breadcrumb-area text-left bg-overlay-white-30 bg-image">
@@ -42,7 +42,7 @@ const ProductDetailsPage = () => {
       {/* <!-- BREADCRUMB AREA END --> */}
 
       {/* <!-- PRODUCT DETAILS AREA START --> */}
-      <div className="productdetailsdetailedview">
+      <div className="productdetailsdetailedview ">
         <Row>
           <Col lg={6}>
             <div className="productImageSide">
@@ -79,7 +79,12 @@ const ProductDetailsPage = () => {
                   <li>
                     <div class="qty">
                       <span class="minus bg-dark">-</span>
-                      <input class="inputx count" type="number"  name="qty" value="1" />
+                      <input
+                        class="inputx count"
+                        type="number"
+                        name="qty"
+                        value="1"
+                      />
                       <span class="plus bg-dark">+</span>
                     </div>
                   </li>

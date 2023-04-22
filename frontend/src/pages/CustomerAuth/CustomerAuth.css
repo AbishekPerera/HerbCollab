@@ -65,7 +65,7 @@
 }
 /* Refistration form css */
 .registrationsidejpg {
-  height: 640px;
+  height: 655px;
   background-color: white;
   background: rgba(255, 255, 255, 0.14);
   border-radius: 16px;
@@ -73,14 +73,16 @@
   backdrop-filter: blur(4.2px);
   -webkit-backdrop-filter: blur(4.2px);
   border: 1px solid rgba(255, 255, 255, 0.26);
-  
+}
+.registrationsidejpg2 {
+  padding: 5px;
+  height: 645px;
+}
+.registerbackground {
+  padding-bottom: 110px;
 }
 
-.registerbackground{ 
-  padding-bottom: 110px;
- } 
-
-.registerbtn{
+.registerbtn {
   width: 20%;
 }
 .registerimg {
