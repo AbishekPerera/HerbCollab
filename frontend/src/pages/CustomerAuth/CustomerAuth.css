@@ -73,14 +73,16 @@
   backdrop-filter: blur(4.2px);
   -webkit-backdrop-filter: blur(4.2px);
   border: 1px solid rgba(255, 255, 255, 0.26);
-  
+}
+.registrationsidejpg2 {
+  padding: 5px;
+  height: 640px;
+}
+.registerbackground {
+  padding-bottom: 110px;
 }
 
-.registerbackground{ 
-  padding-bottom: 110px;
- } 
-
-.registerbtn{
+.registerbtn {
   width: 20%;
 }
 .registerimg {
