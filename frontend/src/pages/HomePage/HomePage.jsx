@@ -313,7 +313,7 @@ const HomePage = () => {
           </Col>
         </Row>
         <div class="ltn__feature-area">
-          {/* <!-- FEATURE AREA START ( Feature - 3) --> */}
+          {/* <!-- FEATURE AREA START --> */}
           <Container className="container-features">
             <Row>
               <Col className="svg-features" lg={3}>
@@ -323,7 +323,7 @@ const HomePage = () => {
                   </div>
                   <div class="ltn__feature-info">
                     <h4>Free shipping</h4>
-                    <p>On all orders over $49.00</p>
+                    <p>On all orders over Rs.4999</p>
                   </div>
                 </div>
               </Col>
