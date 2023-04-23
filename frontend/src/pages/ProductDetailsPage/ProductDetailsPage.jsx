@@ -6,10 +6,44 @@ import "./ProductDetailsPage.css";
 import { Button, Card, Col, Row, Tab, Tabs } from "react-bootstrap";
 import paymentimage from "../../img/other comp/payment-2.png";
 import doctorbanner from "../../img/other comp/doctorbanner.jpg";
+import { useEffect, useState } from "react";
+import axios from "axios";
 
 const ProductDetailsPage = () => {
   //get product id from url
+
   const { id } = useParams();
+  const [product, setProduct] = useState([]);
+
+  useEffect(() => {
+    getAllProducts(id);
+  }, [id]);
+
+  const getAllProducts = (productId) => {
+    axios
+      .get(`http://localhost:8071/products/get/${productId}`)
+      .then((res) => {
+        // console.log(res.data);
+        setProduct(res.data["product"]);
+      })
+      .catch((err) => {
+        console.log(err);
+      });
+  };
+  // console.log(product);
+
+  //for pluse and minus button
+  const handlePlus = () => {
+    const count = document.querySelector(".count");
+    count.value = parseInt(count.value) + 1;
+  };
+
+  const handleMinus = () => {
+    const count = document.querySelector(".count");
+    if (count.value > 1) {
+      count.value = parseInt(count.value) - 1;
+    }
+  };
 
   return (
     <div className="bg-white">
@@ -47,17 +81,18 @@ const ProductDetailsPage = () => {
           <Col lg={6}>
             <div className="productImageSide">
               <img
-                src="https://mymed.lk/public/storage/products_assets/614d827c00aa1.jpg"
+                src={product.image}
                 alt=""
                 className="productImage"
+                style={{ width: "100%" }}
               />
             </div>
           </Col>
           <Col lg={6}>
             <div class="modal-product-info shop-details-info pl-0">
-              <h3>Hand Sanitizer</h3>
+              <h3>{product.name}</h3>
               <div class="product-price">
-                <span>$49.00</span>
+                <span>Rs.{product.price}</span>
               </div>
               <div class="modal-product-meta ltn__product-details-menu-1">
                 <Link>
@@ -67,9 +102,7 @@ const ProductDetailsPage = () => {
                   <li>
                     <strong>Categories:</strong>
                     <span>
-                      <a>Categories1</a>
-                      <a>Categories2</a>
-                      <a>Categories3</a>
+                      <a>{product.category}</a>
                     </span>
                   </li>
                 </ul>
@@ -78,14 +111,18 @@ const ProductDetailsPage = () => {
                 <ul className="addtocartul">
                   <li>
                     <div class="qty">
-                      <span class="minus bg-dark">-</span>
+                      <span class="minus bg-dark" onClick={handleMinus}>
+                        -
+                      </span>
                       <input
                         class="inputx count"
                         type="number"
                         name="qty"
-                        value="1"
+                        value={1}
                       />
-                      <span class="plus bg-dark">+</span>
+                      <span class="plus bg-dark" onClick={handlePlus}>
+                        +
+                      </span>
                     </div>
                   </li>
                   <li>
@@ -138,32 +175,8 @@ const ProductDetailsPage = () => {
           >
             <Tab eventKey="description" title="Description">
               <div className="description-tab">
-                <h1>Lorem ipsum dolor sit amet elit.</h1>
-                <p>
-                  Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed
-                  do eiusmod tempor incididunt ut labore et dolore magna aliqua.
-                  Ut enim ad minim veniam, quis nostrud exercitation ullamco
-                  laboris nisi ut aliquip ex ea commodo consequat. Duis aute
-                  irure dolor in reprehenderit in voluptate velit esse cillum
-                  dolore eu fugiat nulla pariatur. Excepteur sint occaecat
-                  cupidatat non proident. Lorem ipsum dolor sit amet,
-                  consectetur adipisicing elit, sed do eiusmod tempor incididunt
-                  ut labore et dolore magna aliqua. Ut enim ad minim veniam,
-                  quis nostrud exercitation ullamco laboris nisi ut aliquip ex
-                  ea commodo consequat. Duis aute irure dolor in reprehenderit
-                  in voluptate velit esse cillum dolore eu fugiat nulla
-                  pariatur. Excepteur sint occaecat cupidatat non proident, sunt
-                  in culpa qui officia deserunt mollit anim id est laborum. Sed
-                  ut perspiciatis unde omnis iste natus error sit voluptatem,
-                  totam rem aperiam, eaque ipsa quae ab illo inventore veritatis
-                  et quasi architecto beatae vitae dicta sunt explicabo. Nemo
-                  enim ipsam voluptatem quia voluptas sit aspernatur aut odit
-                  aut fugit, sed quia consequuntur magni dolores eos qui ratione
-                  voluptatem sequi nesciunt. Neque porro quisquam est, qui
-                  dolorem ipsum quia dolor sit amet, consectetur, adipisci
-                  velit, sed quia non numquam eius modi tempora incidunt ut
-                  labore et dolore magnam aliquam quaerat voluptatem.
-                </p>
+                <h1>{product.name}</h1>
+                <p>{product.description}</p>
               </div>
             </Tab>
             <Tab eventKey="reviews" title="Reviews">

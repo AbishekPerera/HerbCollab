@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
 import Header from "../../components/Header/Header";
 import Footer from "../../components/Footer/Footer";
 import { Link } from "react-router-dom";
@@ -6,6 +6,7 @@ import "./ShopPage.css";
 import { Col, Pagination, Row } from "react-bootstrap";
 import Card from "../../components/ItemCard/ItemCard";
 import FooterBanner from "../../components/FooterBanner/FooterBanner";
+import axios from "axios";
 
 const ShopPage = () => {
   const products = [
@@ -94,6 +95,20 @@ const ShopPage = () => {
       price: "$40.00",
     },
   ];
+
+  const [productslist, setProductslist] = useState([]);
+
+  useEffect(() => {
+    getAllProducts();
+  });
+
+  //get all product
+  const getAllProducts = async () => {
+    const response = await axios.get("http://localhost:8071/products/");
+    // console.log(response.data);
+    setProductslist(response.data);
+  };
+
   return (
     <div>
       <Header />
@@ -153,11 +168,11 @@ const ShopPage = () => {
           <div className="ourproductgrid">
             <Row xs={2} md={4} lg={5} className="g-4">
               {/* add grid classes */}
-              {products.map((product) => (
+              {productslist.map((product) => (
                 <Col key={product.id}>
                   <Card
-                    id={product.id}
-                    title={product.title}
+                    id={product._id}
+                    title={product.name}
                     image={product.image}
                     price={product.price}
                   />
