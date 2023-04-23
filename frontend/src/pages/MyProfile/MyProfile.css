@@ -30,7 +30,7 @@
   }
   
 
-  /* ----------Profile Area------------- */
+  /* ----------Profile Area(Nav Bar)------------- */
   .sidebar77{
     height: 100%;
     padding: 15px;
@@ -60,3 +60,64 @@
   .active77 {
     color: #d6cddb !important;
   }
+
+  /* ----------Profile Area(Form)------------- */
+  .profileformlabel {
+    display: inline-block;
+    width: 120px; /* adjust this value to match the desired label width */
+    margin-right: 20px; /* adjust this value to add spacing between the label and input field */
+    margin-left: 50px;
+    font-weight: bold;
+     
+  }
+
+  .profileformlabelName {
+    display: inline-block;
+    width: 120px; 
+    margin-right: 200px;
+    margin-left: 10px;
+    font-weight: bold;
+  }
+  
+  .profileformtextarea {
+    display: inline-block;
+    width: 400px; /* adjust this value to match the desired input field width */
+    padding: 5px;
+    border: 1px solid #ccc; /* add border styling to the input field */
+    border-radius: 3px; /* add rounded corners to the input field */
+    margin-bottom: 10px; /* adjust this value to add spacing between input fields */
+  }
+
+  profileformtextareaName {
+    display: inline-block;
+    width: 50px; /* adjust this value to match the desired input field width */
+    padding: 90px;
+    border: 1px solid #ccc; /* add border styling to the input field */
+    border-radius: 3px; /* add rounded corners to the input field */
+    margin-bottom: 10px; /* adjust this value to add spacing between input fields */
+  }
+  .profileicon {
+    display: inline-flex;
+    align-items: center;
+    margin-right: 0.5em;
+  }
+  
+  
+  /* Buttons */
+  .editbtn {
+    background-color: #1e90ff;
+    border: none;
+    color: white;
+    padding: 12px 16px;
+    font-size: 16px;
+    cursor: pointer;
+  }
+  
+  /* Darker background on mouse-over */
+  .editbtn:hover {
+    background-color: RoyalBlue;
+  }
+
+
+  /* Profile Photo */
+  
