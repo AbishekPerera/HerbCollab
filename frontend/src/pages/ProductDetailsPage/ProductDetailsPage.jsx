@@ -8,6 +8,7 @@ import paymentimage from "../../img/other comp/payment-2.png";
 import doctorbanner from "../../img/other comp/doctorbanner.jpg";
 import { useEffect, useState } from "react";
 import axios from "axios";
+import ReactStars from "react-rating-stars-component";
 
 const ProductDetailsPage = () => {
   //get product id from url
@@ -17,13 +18,13 @@ const ProductDetailsPage = () => {
 
   useEffect(() => {
     getAllProducts(id);
+    getReviews(id);
   }, [id]);
 
   const getAllProducts = (productId) => {
     axios
       .get(`http://localhost:8071/products/get/${productId}`)
       .then((res) => {
-        // console.log(res.data);
         setProduct(res.data["product"]);
       })
       .catch((err) => {
@@ -42,6 +43,76 @@ const ProductDetailsPage = () => {
     const count = document.querySelector(".count");
     if (count.value > 1) {
       count.value = parseInt(count.value) - 1;
+    }
+  };
+
+  //add to cart button handler
+  const addToCartHandler = (e) => {
+    e.preventDefault();
+    const count = document.querySelector(".count");
+    const quantity = count.value;
+    const price = product.price;
+    const total = quantity * price;
+
+    //get data prom
+    const iserInfo = localStorage.getItem("userInfo");
+    const userInfo = JSON.parse(iserInfo);
+
+    const userId = userInfo.user._id;
+    const username = userInfo.user.name;
+    const productId = product._id;
+    const productName = product.name;
+    const productImage = product.image;
+
+    const newOb = {
+      userId,
+      username,
+      productId,
+      productName,
+      productImage,
+      quantity,
+      price,
+      total,
+    };
+
+    // console.log(newOb);
+
+    axios.post("http://localhost:8072/carts/addtocart", newOb).then((res) => {
+      // console.log(res.data);
+      alert("Added to cart");
+    });
+  };
+
+  //get priduct ratings and reviews
+  const [reviews, setReviews] = useState([]);
+  const [averageRating, setAverageRating] = useState(4);
+
+  const getReviews = (productId) => {
+    axios
+      .get(
+        `http://localhost:8073/ratereviews/getratereviewbyproductid/${productId}`
+      )
+      .then((res) => {
+        setReviews(res.data);
+      })
+      .catch((err) => {
+        console.log(err);
+      });
+  };
+
+  //calculate average rating
+  useEffect(() => {
+    calculateAverageRating();
+  }, [reviews]);
+
+  const calculateAverageRating = () => {
+    if (reviews.length > 0) {
+      let total = 0;
+      reviews.forEach((review) => {
+        total += review.productRating;
+      });
+      const average = total / reviews.length;
+      setAverageRating(average);
     }
   };
 
@@ -98,6 +169,12 @@ const ProductDetailsPage = () => {
                 <Link>
                   <h6>Seller name</h6>
                 </Link>
+                <ReactStars
+                  count={5}
+                  value={averageRating}
+                  size={24}
+                  activeColor="#ffd700"
+                />
                 <ul>
                   <li>
                     <strong>Categories:</strong>
@@ -119,6 +196,7 @@ const ProductDetailsPage = () => {
                         type="number"
                         name="qty"
                         value={1}
+                        style={{ width: "50px" }}
                       />
                       <span class="plus bg-dark" onClick={handlePlus}>
                         +
@@ -126,7 +204,11 @@ const ProductDetailsPage = () => {
                     </div>
                   </li>
                   <li>
-                    <button class="button-37" role="button">
+                    <button
+                      class="button-37"
+                      role="button"
+                      onClick={addToCartHandler}
+                    >
                       Add to Cart
                     </button>
                   </li>
@@ -182,55 +264,55 @@ const ProductDetailsPage = () => {
             <Tab eventKey="reviews" title="Reviews">
               <div className="reviews-tab">
                 <h1>Customer Reviews</h1>
-                <p>
-                  Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed
-                  do eiusmod tempor incididunt ut labore et dolore magna aliqua.
-                  Ut enim ad minim veniam, quis nostrud exercitation ullamco
-                  laboris nisi ut aliquip ex ea commodo consequat. Duis aute
-                  irure dolor in reprehenderit in voluptate velit esse cillum
-                  dolore eu fugiat nulla pariatur. Excepteur sint occaecat
-                  cupidatat non proident. Lorem ipsum dolor sit amet,
-                  consectetur adipisicing elit, sed do eiusmod tempor incididunt
-                  ut labore et dolore magna aliqua. Ut enim ad minim veniam,
-                  quis nostrud exercitation ullamco laboris nisi ut aliquip ex
-                  ea commodo consequat. Duis aute irure dolor in reprehenderit
-                  in voluptate velit esse cillum dolore eu fugiat nulla
-                  pariatur. Excepteur sint occaecat cupidatat non proident, sunt
-                  in culpa qui officia deserunt mollit anim id est laborum. Sed
-                  ut perspiciatis unde omnis iste natus error sit voluptatem,
-                  totam rem aperiam, eaque ipsa quae ab illo inventore veritatis
-                  et quasi architecto beatae vitae dicta sunt explicabo. Nemo
-                  enim ipsam voluptatem quia voluptas sit aspernatur aut odit
-                  aut fugit, sed quia consequuntur magni dolores eos qui ratione
-                  voluptatem sequi nesciunt. Neque porro quisquam est, qui
-                  dolorem ipsum quia dolor sit amet, consectetur, adipisci
-                  velit, sed quia non numquam eius modi tempora incidunt ut
-                  labore et dolore magnam aliquam quaerat voluptatem.
-                </p>
 
-                <Card className="m-5">
-                  <Card.Header as="h5">Review</Card.Header>
-                  <Card.Body>
-                    <Card.Title>Special title treatment</Card.Title>
-                    <Card.Text>
-                      With supporting text below as a natural lead-in to
-                      additional content.
-                    </Card.Text>
-                    {/* <Button variant="primary">Go somewhere</Button> */}
-                  </Card.Body>
-                </Card>
+                {reviews.map((review) => (
+                  <Card className="m-5 bg-white">
+                    <Card.Header as="h5">
+                      <Row>
+                        <Col>
+                          Product Rating
+                          <div className="d-flex">
+                            <ReactStars
+                              count={5}
+                              value={review.productRating}
+                              size={24}
+                              activeColor="#ffd700"
+                            />
+                            <h6 className="m-1">{review.productRating}</h6>
+                          </div>
+                        </Col>
+                        <Col>
+                          Seller Rating
+                          <div className="d-flex">
+                            <ReactStars
+                              count={5}
+                              value={review.sellerRating}
+                              size={24}
+                              activeColor="#ffd700"
+                            />
+                            <h6 className="m-1">{review.sellerRating}</h6>
+                          </div>
+                        </Col>
+                      </Row>
+                    </Card.Header>
+                    <Card.Body>
+                      <Card.Title>by {review.customerName}</Card.Title>
+                      <Row>
+                        <Col>
+                          <Card.Text>{review.productReview}</Card.Text>
+                        </Col>
+                        <Col>
+                          <Card.Text>{review.sellerReview}</Card.Text>
+                        </Col>
+                      </Row>
+                      {/* <Button variant="primary">Go somewhere</Button> */}
+                    </Card.Body>
 
-                <Card className="m-5">
-                  <Card.Header as="h5">Review</Card.Header>
-                  <Card.Body>
-                    <Card.Title>Special title treatment</Card.Title>
-                    <Card.Text>
-                      With supporting text below as a natural lead-in to
-                      additional content.
-                    </Card.Text>
-                    {/* <Button variant="primary">Go somewhere</Button> */}
-                  </Card.Body>
-                </Card>
+                    <Card.Footer className="text-muted">
+                      {review.date}
+                    </Card.Footer>
+                  </Card>
+                ))}
               </div>
             </Tab>
           </Tabs>
