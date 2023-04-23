@@ -6,6 +6,7 @@ import { Link } from "react-router-dom";
 
 const Header = () => {
   const [isSticky, setIsSticky] = useState(false);
+  const [isLogedin, setIsLogedin] = useState(false);
 
   useEffect(() => {
     window.addEventListener("scroll", handleScroll);
@@ -14,10 +15,18 @@ const Header = () => {
     };
   }, []);
 
+  useEffect(() => {
+    const userInfo = localStorage.getItem("userInfo");
+
+    if (userInfo) {
+      setIsLogedin(true);
+    }
+  });
+
   function handleScroll() {
     const scrollTop = window.pageYOffset;
 
-    console.log(scrollTop);
+    // console.log(scrollTop);
     if (scrollTop > 100 && !isSticky) {
       setIsSticky(true);
     } else {
@@ -98,17 +107,19 @@ const Header = () => {
                 <button class="btn btn-secondary my-2 my-sm-0">Search</button>
               </form>
             </div>
-            <div className="col-4 ">
-              <div className="cart-acc-section m-sm-2">
-                <Link to="/mycart" className="cart-acc fs-5 m-lg-3">
-                  <i className="bi bi-cart"></i>
-                </Link>
+            {isLogedin && (
+              <div className="col-4 ">
+                <div className="cart-acc-section m-sm-2">
+                  <Link to="/mycart" className="cart-acc fs-5 m-lg-3">
+                    <i className="bi bi-cart"></i>
+                  </Link>
 
-                <Link to="/myaccount" className="cart-acc fs-5 m-lg-3">
-                  <i className="bi bi-person"></i>
-                </Link>
+                  <Link to="/myaccount" className="cart-acc fs-5 m-lg-3">
+                    <i className="bi bi-person"></i>
+                  </Link>
+                </div>
               </div>
-            </div>
+            )}
           </div>
         </Container>
       </Navbar>

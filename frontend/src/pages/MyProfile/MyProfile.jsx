@@ -39,16 +39,51 @@ const MyProfile = () => {
     </div>
 
     {/* Profile Content */}
-    <div class="container">
+    <div class="container-fluid">
       <div class="row">
-        <div class="col-md-4">
-          {/* Column1 */}
-        </div> 
-        <div class="col-md-4">
-          {/* Column2 */}
-        </div> 
+          <div class="col-md-2">
+            <div class="sidebar sidebar77">
+              <ul class="nav flex-column">
+                <br/><li class="nav-item nav-item77">
+                    <a class="nav-link nav-link77" href="#">
+                    <i class="bi bi bi-person-fill me-2"></i>My Profile
+                    </a>
+                </li>
+                <li class="nav-item nav-item77">
+                    <Link to="#" class="nav-link nav-link77">
+                    <i class="bi bi-cart-fill me-2"></i>My Orders
+                    </Link>
+                </li>
+                <li class="nav-item nav-item77">
+                    <Link to="#" class="nav-link nav-link77"> 
+                    <i class="bi bi-clock-history me-2"></i>Pre Orders
+                    </Link>
+                </li>
+                <li class="nav-item nav-item77">
+                    <Link to="#" class="nav-link nav-link77">   
+                    <i class="bi bi-truck me-2"></i>Shipped
+                    </Link>
+                </li>
+                <li class="nav-item nav-item77">
+                    <Link to="#" class="nav-link nav-link77">
+                    <i class="bi bi-star-fill me-2"></i>Reviews
+                    </Link>
+                </li>
+              </ul>
+            </div>
+          </div>
+          <div class="col-md-9">
+            <h1>My Profile</h1>
+            <p>Lorem ipsum dolor sit amet,    ssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssc cccccccccccccccccccccccccccccccccccccccccccccccccccc  vvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvv consectetur adipiscing elit. Fusce vel nibh sit amet massa varius accumsan. Praesent ut elit quis tortor viverra consequat. Sed vel tortor vestibulum, elementum augue at, scelerisque sapien. Sed laoreet purus in sagittis vulputate. Nulla viverra arcu vel ligula sollicitudin, non pellentesque lectus pretium. Mauris mollis sed tellus vel malesuada.</p>
+            <p>Lorem ipsum dolor sit amet,    ssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssc cccccccccccccccccccccccccccccccccccccccccccccccccccc  vvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvv consectetur adipiscing elit. Fusce vel nibh sit amet massa varius accumsan. Praesent ut elit quis tortor viverra consequat. Sed vel tortor vestibulum, elementum augue at, scelerisque sapien. Sed laoreet purus in sagittis vulputate. Nulla viverra arcu vel ligula sollicitudin, non pellentesque lectus pretium. Mauris mollis sed tellus vel malesuada.</p>
+            <p>Lorem ipsum dolor sit amet,    ssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssc cccccccccccccccccccccccccccccccccccccccccccccccccccc  vvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvv consectetur adipiscing elit. Fusce vel nibh sit amet massa varius accumsan. Praesent ut elit quis tortor viverra consequat. Sed vel tortor vestibulum, elementum augue at, scelerisque sapien. Sed laoreet purus in sagittis vulputate. Nulla viverra arcu vel ligula sollicitudin, non pellentesque lectus pretium. Mauris mollis sed tellus vel malesuada.</p>
+            <p>Lorem ipsum dolor sit amet,    ssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssc cccccccccccccccccccccccccccccccccccccccccccccccccccc  vvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvv consectetur adipiscing elit. Fusce vel nibh sit amet massa varius accumsan. Praesent ut elit quis tortor viverra consequat. Sed vel tortor vestibulum, elementum augue at, scelerisque sapien. Sed laoreet purus in sagittis vulputate. Nulla viverra arcu vel ligula sollicitudin, non pellentesque lectus pretium. Mauris mollis sed tellus vel malesuada.</p>
+          </div>
       </div>
     </div>
+
+
+
 
     <Footer />
     </div>
