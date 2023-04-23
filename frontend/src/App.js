@@ -1,34 +1,35 @@
-import React from "react";
-import { Routes, Route } from "react-router-dom";
-import Homepage from "./pages/HomePage/HomePage";
-import Test from "./pages/Test";
-import Dashboard from "./pages/System/Admin/Dashboard";
+import React from 'react';
+import { Routes, Route } from 'react-router-dom';
+import Homepage from './pages/HomePage/HomePage';
+import Test from './pages/Test';
+import Dashboard from './pages/System/Admin/Dashboard';
 
-import SystemLogin from "./pages/SystemLoginPage/system-Login";
+import SystemLogin from './pages/SystemLoginPage/system-Login';
 
-import SellerDashboard from "./pages/System/Seller/SellerDashboard";
+import SellerDashboard from './pages/System/Seller/SellerDashboard';
 
-import PendingOrders from "./pages/System/Admin/PendingOrders";
-import PendingItem from "./pages/System/Admin/PendingItem";
-import AllProducts from "./pages/System/Admin/AllProducts";
+import PendingOrders from './pages/System/Admin/PendingOrders';
+import PendingItem from './pages/System/Admin/PendingItem';
+import AllProducts from './pages/System/Admin/AllProducts';
 
 // import PendingProducts from "./pages/System/Admin/PendingProducts";
 
-import AdminProfile from "./pages/System/Admin/AdminProfile";
-import AllUsers from "./pages/System/Admin/AllUsers";
-import ProductDetailsPage from "./pages/ProductDetailsPage/ProductDetailsPage";
+import AdminProfile from './pages/System/Admin/AdminProfile';
+import AllUsers from './pages/System/Admin/AllUsers';
+import ProductDetailsPage from './pages/ProductDetailsPage/ProductDetailsPage';
 
-import SellerProfile from "./pages/System/Seller/SellerProfile";
-import AllOrders from "./pages/System/Seller/AllOrders";
+import SellerProfile from './pages/System/Seller/SellerProfile';
+import AllOrders from './pages/System/Seller/AllOrders';
 
-import ShopPage from "./pages/ShopPage/ShopPage";
-import NewsPage from "./pages/NewsPage/NewsPage";
-import AboutUsPage from "./pages/AboutUsPage/AboutUsPage";
-import MyCart from "./pages/MyCart/MyCart";
-import MyProfile from "./pages/MyProfile/MyProfile";
-import SellerProducts from "./pages/System/Seller/SellerProducts";
-import CustomerLogin from "./pages/CustomerAuth/CustomerLogin";
-import CustomerRegister from "./pages/CustomerAuth/CustomerRegister";
+import ShopPage from './pages/ShopPage/ShopPage';
+import NewsPage from './pages/NewsPage/NewsPage';
+import AboutUsPage from './pages/AboutUsPage/AboutUsPage';
+import MyCart from './pages/MyCart/MyCart';
+import MyProfile from './pages/MyProfile/MyProfile';
+import SellerProducts from './pages/System/Seller/SellerProducts';
+import CustomerLogin from './pages/CustomerAuth/CustomerLogin';
+import CustomerRegister from './pages/CustomerAuth/CustomerRegister';
+import DeliveryTracking from './pages/System/Admin/DeliveryTracking';
 
 function App() {
   return (
@@ -57,6 +58,7 @@ function App() {
 
         <Route path="/system/admin-profile" element={<AdminProfile />} />
         <Route path="/system/admin-allusers" element={<AllUsers />} />
+        <Route path="/system/admin-tracking" element={<DeliveryTracking />} />
 
         {/* <Route path="/system/admin-pendingproducts" element={<PendingProducts />} /> */}
 
