@@ -30,6 +30,7 @@ import SellerProducts from './pages/System/Seller/SellerProducts';
 import CustomerLogin from './pages/CustomerAuth/CustomerLogin';
 import CustomerRegister from './pages/CustomerAuth/CustomerRegister';
 import DeliveryTracking from './pages/System/Admin/DeliveryTracking';
+import UpdateProduct from './pages/System/Seller/UpdateProduct';
 
 function App() {
   return (
@@ -78,6 +79,7 @@ function App() {
 
         <Route path="/system/seller-products" element={<SellerProducts />} />
         <Route path="/system/system-login" element={<SystemLogin />} />
+        <Route path="/system/seller-products/update/:id" exact element={<UpdateProduct />} />
 
         {/* ::::::::::::::::::::::::::::::::::::::::Seller Routes::::::::::::::::::::::::::::::::::::::::::::::::::: */}
       </Routes>
