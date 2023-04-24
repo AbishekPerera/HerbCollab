@@ -91,20 +91,22 @@ const [loginInputs,setloginInputs] = useState({
     await axios.post("http://localhost:8084/users/login",{
         Email:inputs.Email,
         Password:inputs.Password,
-        }).then(()=>{
-
-          alert("You have successfully Logged In.")
-          history("/DriverProfile");
+        }).then(res=>{
+         
+            alert("You have successfully Logged In as a Seller.")
+            history("seller-Profile");
+     
+         
 
       }).catch(error => {
 
-          if(error.response.status == 400){
+          if(error.response.status === 400){
               alert("User not Found. SignUp Please");
           }
-          else if(error.response.status == 401){
+          else if(error.response.status === 401){
               alert("Invalid Email/Password");
           }
-          else if(error.response.status == 402){
+          else if(error.response.status === 402){
               alert("Your account is not activate Yet");
           }
           else{

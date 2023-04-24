@@ -19,6 +19,7 @@ import AllUsers from './pages/System/Admin/AllUsers';
 import ProductDetailsPage from './pages/ProductDetailsPage/ProductDetailsPage';
 
 import SellerProfile from './pages/System/Seller/SellerProfile';
+import NewSellerProfile from './pages/System/Seller/NewSellerProfile';
 import AllOrders from './pages/System/Seller/AllOrders';
 
 import ShopPage from './pages/ShopPage/ShopPage';
@@ -75,7 +76,7 @@ function App() {
         <Route path="/system/auth" element={<Test />} />
         <Route path="/system/seller-dashboard" element={<SellerDashboard />} />
 
-        <Route path="/system/seller-profile" element={<SellerProfile />} />
+        <Route path="/system/system-login/seller-profile" element={<NewSellerProfile />} />
         <Route path="/system/seller-allorders" element={<AllOrders />} />
 
         <Route path="/system/seller-products" element={<SellerProducts />} />

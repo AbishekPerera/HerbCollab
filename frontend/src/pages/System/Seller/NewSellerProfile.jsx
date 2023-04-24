@@ -1,17 +1,58 @@
-import React, { useState } from 'react';
 import "./styles/SellerDashboard.css";
 import "./styles/SellerProfile.css";
 import SystemFooter from "../../../components/System/SystemFooter/SystemFooter";
 import SellerSidebar from "../../../components/System/Sidebar/SellerSidebar";
 import SellerNav from "../../../components/System/SystemNavBar/SellerNav";
 
+import React, { useEffect, useState,useRef } from "react";
+import axios from "axios";
+axios.defaults.withCredentials=true;
+
 
 const SellerProfile = () => {
     const [isEditMode, setIsEditMode] = useState(false);
-    const [text, setText] = useState('Enter the value');
+    const [user,setUser]=useState('');
+    const [ID,setID]=useState('');
+    const [inputs,setInputs] = useState({
+        UserName: '',
+        StoreName: '',
+        Email: '',
+        MobileNo: '',
+        Address: '',
+        Password:''  
+        
+    })  
+    console.log(ID);
+
+    const sendRequest = async()=>{
+        try{
+          
+        const res =await axios.get("http://localhost:8084/users/user",{
+              withCredentials: true,
+          }).then((res)=>{
+            const data =  res.data;
+            setUser(data)
+            setID(data._id);
+        })
+      }catch(err){ alert(err)};
+            
+      
+    }
+
+
+      useEffect(()=>{
+        sendRequest()
+      },[])
+    
   
     const handleInputChange = (e) => {
-      setText(e.target.value);
+      //Set input value on change
+    function  handleChange(e){
+    setInputs(prev=>({
+        ...prev,[e.target.name]:e.target.value,    
+    }))
+
+}
     };
   
     const handleEditClick = () => {
@@ -41,7 +82,7 @@ return (
               </div>
               <div class="card-body text-center" >
               <img src="https://bootdey.com/img/Content/avatar/avatar7.png" alt="Admin" class="rounded-circle" width="280"/>
-              <p class="text-muted font-size-sm">Registerd Date : 2020/10/12</p>
+              <p class="text-muted font-size-sm">Registerd Date : {user.RegisteredDate} </p>
               </div>
               <div class="card-body" >
               
@@ -52,11 +93,11 @@ return (
                     <div class="row">
                       <div class="col-lg-12">
                         <div class="form-group focused" >
-                          <label for="name" class=" profileformlabelName"><i class="bi bi-person-circle profileicon"></i>Name:</label><br/>
+                          <label for="name" class=" profileformlabelName"><i class="bi bi-person-circle profileicon"></i>Seller Name:</label><br/>
                          {isEditMode ? (
-                            <input type="text" class="form-control profileformtextareaName" id="name" name="name" value={text} onChange={handleInputChange} required/>
+                            <input type="text" class="form-control profileformtextareaName" id="name" name="name" value={user.UserName} onChange={handleInputChange} required/>
                           ) : (
-                            <div >{text}</div>
+                            <div>{user.UserName}</div>
                           )}
                           <br/>
                         </div>
@@ -67,9 +108,9 @@ return (
                         <div class="form-group focused" >
                           <label for="name" class=" profileformlabelName"><i class="bi bi-person-circle profileicon"></i>Store Name:</label><br/>
                          {isEditMode ? (
-                            <input type="text" class="form-control profileformtextareaName" id="name" name="store name" value={text} onChange={handleInputChange} required/>
+                            <input type="text" class="form-control profileformtextareaName" id="name" name="store name" value={user.StoreName} onChange={handleInputChange} required/>
                           ) : (
-                            <div  >{text}</div>
+                            <div>{user.StoreName}</div>
                           )}
                           <br/>
                         </div>
@@ -81,9 +122,9 @@ return (
                         <div class="form-group focused" >
                           <label for="email" class=" profileformlabelName"><i class="bi bi-envelope-at-fill profileicon"></i>Email:</label><br/>
                           {isEditMode ? (
-                          <input type="email" class="form-control profileformtextareaName" id="email" name="email" value={text} onChange={handleInputChange} required/>
+                          <input type="email" class="form-control profileformtextareaName" id="email" name="email" value={user.Email}  onChange={handleInputChange} required/>
                           ) : (
-                            <div>{text}</div>
+                            <div>{user.Email}</div>
                           )}
                           <br/>
                         </div>
@@ -113,9 +154,9 @@ return (
                         
                           <label for="phone" class=" profileformlabelName"><i class="bi bi-telephone-fill profileicon"></i>Mobile:</label><br/>
                           {isEditMode ? (
-                          <input type="number" class="form-control profileformtextareaName" id="aphone" name="phone" value={text} onChange={handleInputChange} required/>
+                          <input type="number" class="form-control profileformtextareaName" id="aphone" name="phone" value={user.MobileNo}  onChange={handleInputChange} required/>
                           ) : (
-                            <div>{text}</div>
+                            <div>{user.MobileNo}</div>
                           )}
                         </div>
                         </div>
@@ -126,9 +167,9 @@ return (
                         <div class="form-group">
                           <label for="address" class=" profileformlabelName"><i class="bi bi-geo-alt profileicon"></i>Address:</label><br/>
                           {isEditMode ? (
-                          <input type="text" class="form-control profileformtextareaName" id="address" name="address" value={text} onChange={handleInputChange}required/>
+                          <input type="text" class="form-control profileformtextareaName" id="address" name="address" value={user.Address} onChange={handleInputChange}required/>
                           ) : (
-                            <div>{text}</div>
+                            <div>{user.Address}</div>
                           )}
                           </div>
                         </div>
