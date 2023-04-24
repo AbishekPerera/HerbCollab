@@ -1,0 +1,29 @@
+.sidebar77{
+    height: 100%;
+    padding: 15px;
+    /* background-color: #C8B6A6; */
+    background-color: #08781f;
+   
+  }
+  
+  .nav-item77 {
+    margin-bottom: 15px;
+    text-align: center;
+    font-size: 18px
+  }
+  
+  .nav-link77 {
+    color: #1214a9;
+    font-weight: 550;
+    display: flex;
+    gap: 5px;
+    text-align: center;
+  }
+  
+  .nav-link77:hover {
+    color: #fdd23e;
+  }
+  
+  .active77 {
+    color: #d6cddb !important;
+  }

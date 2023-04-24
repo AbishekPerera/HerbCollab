@@ -1,9 +1,25 @@
-import React, { useState } from "react";
+import React, { useState,useEffect } from "react";
+import axios from "axios";
+import {useNavigate } from "react-router-dom";
 import "./system-Login.css";
 import Header from "../../components/Header/Header";
+import {Link, link} from "react-router-dom";
 
 const SystemLogin = () => {
   const [isSignUpMode, setIsSignUpMode] = useState(false);
+  const [formErrors, setFormErrors] = useState({});
+  const [isSubmit, setIsSubmit] = useState(false);
+
+
+  const [inputs,setInputs] = useState({
+    UserName: '',
+    StoreName: '',
+    Email: '',
+    MobileNo: '',
+    Address: '',
+    Password:''  
+    
+})  
 
   const handleSigninClick = () => {
     setIsSignUpMode(false);
@@ -21,36 +37,174 @@ const SystemLogin = () => {
     setIsSignUpMode(false);
   };
 
+  //redirect to page
+  const history = useNavigate();
+  
+  //call function Validate 
+  const sendData =(e)=>{
+      e.preventDefault();
+      setFormErrors(validate(inputs));
+      setIsSubmit(true);
+  }
+
+  const sendData2 =(e)=>{
+    e.preventDefault();
+    //setFormErrors(validate(inputs));
+    //setIsSubmit(true);
+    sendRequest2();
+}
+
+  //insert data
+  const sendRequest1=async()=>{
+ 
+  await axios.post("http://localhost:8084/users/signup",{
+      UserName:inputs.UserName,
+      StoreName:inputs.StoreName,
+      Email:inputs.Email,
+      MobileNo:inputs.MobileNo,
+      Address:inputs.Address,
+      Password:inputs.Password,
+      }).then(res=>{
+      
+          alert(res.data)
+         
+      }).catch(error => {
+        alert(error);
+          if(error.response.status === 406){
+              alert("User already exists! Login Instead");
+          }
+      
+          else{
+              alert(error);
+          }
+      })
+  }
+
+  const sendRequest2=async()=>{
+ 
+    await axios.post("http://localhost:8084/users/login",{
+        Email:inputs.Email,
+        Password:inputs.Password,
+        }).then(res=>{
+         
+            alert("You have successfully Logged In as a Seller.")
+            history("seller-Profile");
+     
+         
+
+      }).catch(error => {
+
+          if(error.response.status === 400){
+              alert("User not Found. SignUp Please");
+          }
+          else if(error.response.status === 401){
+              alert("Invalid Email/Password");
+          }
+          else if(error.response.status === 402){
+              alert("Your account is not activate Yet");
+          }
+          else{
+              alert(error);
+          }
+        })
+    }
+ 
+  //call function sendRequest to submit data
+  useEffect(()=>{
+      if(Object.keys(formErrors).length === 0 && isSubmit){
+          sendRequest1();
+      }
+     
+  },[formErrors]);
+
+  //Set input value on change
+  function  handleChange(e){
+      setInputs(prev=>({
+          ...prev,[e.target.name]:e.target.value,    
+      }))
+  
+  }
+
+
+//frontend validation
+const validate =(values)=>{
+
+  const errors={}
+  
+  if(!values.UserName){
+      errors.UserName ="UserName is required"
+  }
+
+  if(!values.Email){
+
+      errors.Email ="Email is required"
+  }
+  else if (!/^[A-Z0-9._%+-]+@[A-Z0-9.-]+\.[A-Z]{2,4}$/i.test(values.Email)) {
+
+      errors.Email = 'Invalid email address'
+  }
+  if(!values.Password){
+
+      errors.Password ="Password is required"
+  }
+  else if(values.Password.length <=6){
+
+      errors.Password ="Password should contain more than 6 chracters."
+  }
+  else if (!/^(?=.*[0-9])(?=.*[!@#$%^&*])[a-zA-Z0-9!@#$%^&*]/i.test(values.Password)) {
+
+      errors.Password = 'Password should contain at least one numeric digit and a special character'
+  }
+
+  if(!values.MobileNo){
+      errors.MobileNo ="Mobile Number is required"
+  }
+  else if(values.MobileNo.length!==10 ){
+      errors.MobileNo="Invalid MobileNo";
+  }
+  /*else if(isNaN(values.MobileNo)){
+      errors.MobileNo="Invalid MobileNo";
+  }*/
+
+
+  return errors
+}
+
   return (
 
     <><Header /><div className={`container-login ${isSignUpMode ? 'sign-up-mode' : ''}`}>
       <div className="forms-container">
         <div className="signin-signup">
-          <form action="#" className="sign-in-form">
+          <form onSubmit={sendData2}  className="sign-in-form">
             <h2 className="title">Sign in</h2>
-            <input type="name" className="input-field" placeholder="UserName" />
-            <input type="password" className="input-field" placeholder="Password" />
+            <input type="name" className="input-field" placeholder="Email" name="Email" value={inputs.Email} onChange={handleChange} />
+            <input type="password" className="input-field" placeholder="Password" name="Password" value={inputs.Password} onChange={handleChange} />
 
             <input type="submit" value="Login" id="btnLogin" className="btnLogin solid" />
-            <a href="" className="social-text">Fogot Password ? </a>
+            <a href="" className="social-text">Forgot Password ? </a>
           </form>
-          <form action="#" className="sign-up-form">
+          <form onSubmit={sendData} className="sign-up-form">
             <h2 className="title">Sign up</h2>
 
-            <input type="name" className="input-field" placeholder="User Name" />
+            <input type="name" className="input-field" name="UserName" value={inputs.UserName} onChange={handleChange} placeholder="User Name" />
+            <p class="error">{formErrors.UserName}</p>
 
-            <input type="name" className="input-field" placeholder="Store Name" />
+            <input type="name" className="input-field" name="StoreName" value={inputs.StoreName} onChange={handleChange} placeholder="Store Name" />
+            <p class="error">{formErrors.StoreName}</p>
 
-            <input type="email" className="input-field" placeholder="Email" />
+            <input type="email" className="input-field" name="Email" value={inputs.Email} onChange={handleChange}  placeholder="Email" />
+            <p class="error">{formErrors.Email}</p>
 
-            <input type="number" className="input-field" placeholder="Mobile Number" />
+            <input type="number" className="input-field" name="MobileNo" value={inputs.MobileNo} onChange={handleChange} placeholder="Mobile Number" />
+            <p class="error">{formErrors.MobileNo}</p>
 
-            <input type="address" className="input-field" placeholder="Address" />
+            <input type="address" className="input-field" name="Address" value={inputs.Address} onChange={handleChange} placeholder="Address" />
+            <p class="error">{formErrors.Address}</p>
 
-            <input type="password" className="input-field" placeholder="Password" />
+            <input type="password" className="input-field" name="Password" value={inputs.Password} onChange={handleChange} placeholder="Password" />
+            <p class="error">{formErrors.Password}</p>
 
             <input type="submit" id="btnLogin" value="Sign up" />
-
 
           </form>
         </div>

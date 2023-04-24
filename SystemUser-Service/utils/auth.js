@@ -30,9 +30,10 @@ export async function login(req,res,next){
         return res.status(401).json({message: "Invalid Email/Password"});
     }
 
-    else if(existingUser.Account !== 'Active'){
+    /*else if(existingUser.Account !== 'Active'){
         return res.status(402).json({message: "Your account is not activate Yet"})
-    }
+    }*/
+
     
     
         const token = jwt.sign({id:existingUser._id},process.env.JWT_SECREAT_KEY,{
@@ -45,7 +46,13 @@ export async function login(req,res,next){
             httpOnly: true,
             sameSite: 'lax'
         });
-        return res.status(200).json({message: "Successfully Loged In",user:existingUser,token});
+        if(existingUser.Role == 'Seller'){
+            return res.status(201).json({message: "You are allowed to login as seller",user:existingUser,token})
+        }
+         else if(existingUser.Role == 'Admin'){
+            return res.status(202).json({message: "You are successfully login as Admin",user:existingUser,token})
+        }
+       // return res.status(200).json({message: "Successfully Loged In",user:existingUser,token});
         
    
 };

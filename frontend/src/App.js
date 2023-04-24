@@ -19,6 +19,7 @@ import AllUsers from "./pages/System/Admin/AllUsers";
 import ProductDetailsPage from "./pages/ProductDetailsPage/ProductDetailsPage";
 
 import SellerProfile from "./pages/System/Seller/SellerProfile";
+import NewSellerProfile from "./pages/System/Seller/NewSellerProfile";
 import AllOrders from "./pages/System/Seller/AllOrders";
 
 import ShopPage from "./pages/ShopPage/ShopPage";
@@ -32,6 +33,8 @@ import CustomerRegister from "./pages/CustomerAuth/CustomerRegister";
 import DeliveryTracking from "./pages/System/Admin/DeliveryTracking";
 import PaymentGateway from "./pages/PaymentGateway/PaymentGateway";
 import CachOnDelivery from "./pages/CachOnDelivery/CachOnDelivery";
+import CustomerProfile from "./pages/CustomerAuth/CustomerProfile";
+import UpdateProduct from "./pages/System/Seller/UpdateProduct";
 
 function App() {
   return (
@@ -47,6 +50,7 @@ function App() {
         <Route path="/myaccount" element={<MyProfile />} />
         <Route path="/customerlogin" element={<CustomerLogin />} />
         <Route path="/customer/register" element={<CustomerRegister />} />
+        <Route path="/customer/profile" element={<CustomerProfile />} />
         <Route path="/payment-gateway" element={<PaymentGateway />} />
         <Route path="/cachondelivery" element={<CachOnDelivery />} />
         {/* ::::::::::::::::::::::::::::::::::::::::Customer Routes::::::::::::::::::::::::::::::::::::::::::::::::::: */}
@@ -76,11 +80,19 @@ function App() {
         <Route path="/system/auth" element={<Test />} />
         <Route path="/system/seller-dashboard" element={<SellerDashboard />} />
 
-        <Route path="/system/seller-profile" element={<SellerProfile />} />
+        <Route
+          path="/system/system-login/seller-profile"
+          element={<NewSellerProfile />}
+        />
         <Route path="/system/seller-allorders" element={<AllOrders />} />
 
         <Route path="/system/seller-products" element={<SellerProducts />} />
         <Route path="/system/system-login" element={<SystemLogin />} />
+        <Route
+          path="/system/seller-products/update/:id"
+          exact
+          element={<UpdateProduct />}
+        />
 
         {/* ::::::::::::::::::::::::::::::::::::::::Seller Routes::::::::::::::::::::::::::::::::::::::::::::::::::: */}
       </Routes>
