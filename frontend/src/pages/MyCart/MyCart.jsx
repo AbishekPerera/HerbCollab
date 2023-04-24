@@ -5,7 +5,7 @@ import { Link } from "react-router-dom";
 import "./MyCart.css";
 import { useState, useEffect } from "react";
 import { Col, Container, Row, Table } from "react-bootstrap";
-import MyVerticallyCenteredModal from "../../components/MyVerticallyCenteredModal/MyVerticallyCenteredModal";
+import PaymentGatewayModel from "../../components/PaymentGatewayModel/PaymentGatewayModel";
 import axios from "axios";
 
 const MyCart = () => {
@@ -182,7 +182,7 @@ const MyCart = () => {
                     </button>
                   </Link>
                 </div>
-                <MyVerticallyCenteredModal
+                <PaymentGatewayModel
                   show={modalShow}
                   onHide={() => setModalShow(false)}
                 />

@@ -1,0 +1,104 @@
+.payment-form {
+  max-width: 500px;
+  margin: 0 auto;
+  padding: 5%;
+  border-radius: 10px;
+  box-shadow: rgba(50, 50, 93, 0.25) 0px 13px 27px -5px,
+    rgba(0, 0, 0, 0.3) 0px 8px 16px -8px;
+}
+
+.payment-form .form-group {
+  margin-bottom: 20px;
+}
+
+.payment-form label {
+  font-weight: bold;
+  margin: 1% 0;
+}
+
+.payment-form input[type="text"] {
+  width: 100%;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  padding: 10px;
+  font-size: 16px;
+}
+.payment-form input[type="number"] {
+  width: 100%;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  padding: 10px;
+  font-size: 16px;
+  width: 50%;
+}
+
+.payment-form button[type="submit"] {
+  background-color: #007bff;
+  border-color: #007bff;
+  color: #fff;
+  font-size: 18px;
+  padding: 10px 20px;
+  border-radius: 4px;
+  margin: 5% 0;
+}
+
+.payment-form button[type="submit"]:hover {
+  background-color: #0069d9;
+  border-color: #0062cc;
+  color: #fff;
+}
+
+.paymentgateway-order-details {
+  margin: 0 auto;
+  padding: 5%;
+  border-radius: 10px;
+  box-shadow: rgba(50, 50, 93, 0.25) 0px 13px 27px -5px,
+    rgba(0, 0, 0, 0.3) 0px 8px 16px -8px;
+}
+
+.paymentgateway-order-grand-total {
+  margin: 0 auto;
+  padding: 5%;
+  border-radius: 10px;
+  box-shadow: rgba(60, 64, 67, 0.3) 0px 1px 2px 0px,
+    rgba(60, 64, 67, 0.15) 0px 1px 3px 1px;
+}
+
+.delivery-details-form {
+  margin: 0 auto;
+  padding: 5%;
+  border-radius: 10px;
+}
+
+.delivery-details-form .form-group {
+  margin-bottom: 20px;
+}
+
+.delivery-details-form label {
+  font-weight: bold;
+  margin: 1% 0;
+}
+
+.delivery-details-form input[type="text"] {
+  width: 100%;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  padding: 10px;
+  font-size: 16px;
+}
+
+.delivery-details-form button[type="submit"] {
+  background-color: #007bff;
+  border-color: #007bff;
+  color: #fff;
+  font-size: 18px;
+  padding: 10px 20px;
+  border-radius: 4px;
+  margin: 5% 0;
+}
+
+.delivery-details-form button[type="submit"]:hover {
+  background-color: #0069d9;
+  border-color: #0062cc;
+  color: #fff;
+}
