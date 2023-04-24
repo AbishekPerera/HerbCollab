@@ -29,3 +29,6 @@ mongoose
 
 import cartRouter from "./routes/carts.js";
 app.use("/carts", cartRouter);
+
+import orderRouter from "./routes/orders.js";
+app.use("/orders", orderRouter);

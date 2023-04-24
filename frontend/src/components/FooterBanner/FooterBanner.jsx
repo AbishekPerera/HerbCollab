@@ -1,7 +1,20 @@
-import React from "react";
-import {Link} from "react-router-dom";
+import React, { useEffect, useState } from "react";
+import { Link } from "react-router-dom";
 
 const FooterBanner = () => {
+  const [isLogedin, setIsLogedin] = useState(false);
+  useEffect(() => {
+    const userInfo = localStorage.getItem("userInfo");
+
+    if (userInfo) {
+      setIsLogedin(true);
+    }
+  });
+
+  if (isLogedin) {
+    return 0;
+  }
+
   return (
     <div>
       <div class="container">
@@ -15,10 +28,13 @@ const FooterBanner = () => {
                 </h1>
               </div>
               <div class="btn-wrapper">
-               <Link to={"/customerlogin"}> <a class="btn btn-effect-3 bg-light">
-                  Login as customer .
-                  <i class="bi bi-box-arrow-in-right fs-6"></i>
-                </a></Link>
+                <Link to={"/customerlogin"}>
+                  {" "}
+                  <a class="btn btn-effect-3 bg-light">
+                    Login as customer .
+                    <i class="bi bi-box-arrow-in-right fs-6"></i>
+                  </a>
+                </Link>
               </div>
             </div>
           </div>
