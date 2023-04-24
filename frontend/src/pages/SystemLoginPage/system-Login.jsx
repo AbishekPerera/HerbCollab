@@ -21,12 +21,6 @@ const SystemLogin = () => {
     
 })  
 
-const [loginInputs,setloginInputs] = useState({
-  Email: '',
-  Password:''  
-  
-})  
-
   const handleSigninClick = () => {
     setIsSignUpMode(false);
   };
