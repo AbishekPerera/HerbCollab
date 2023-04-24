@@ -1,19 +1,26 @@
 import express from "express";
 import mongoose from "mongoose";
 import bodyParser from "body-parser";
-import cors from "cors";
+import cookieParser from "cookie-parser";
 import dotenv from "dotenv";
-import userRouter from "./routes/user-routes.js";
-import authRouter from "./routes/auth.js"
-
+import cors from "cors";
 const app = express();
-
-const PORT = process.env.PORT || 8074;
-app.use(cors());
+dotenv.config();
+app.use(express.json());
+app.use(cors({origin:true,credentials: true}));
+app.use(cookieParser());
+app.use(cors({credentials: true, origin: "http://localhost:3000"}));
 app.use(bodyParser.json());
 app.use(express.json());
 
 dotenv.config();
+
+import userRouter from "./routes/user-routes.js";
+import authRouter from "./routes/auth.js"
+
+
+
+const PORT = process.env.PORT || 8074;
 
 const URL = process.env.MONGODB_URL;
 
