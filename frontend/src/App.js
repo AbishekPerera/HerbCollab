@@ -1,40 +1,38 @@
-import React from "react";
-import { Routes, Route } from "react-router-dom";
-import Homepage from "./pages/HomePage/HomePage";
-import Test from "./pages/Test";
-import Dashboard from "./pages/System/Admin/Dashboard";
+import React from 'react';
+import { Routes, Route } from 'react-router-dom';
+import Homepage from './pages/HomePage/HomePage';
+import Test from './pages/Test';
+import Dashboard from './pages/System/Admin/Dashboard';
 
-import SystemLogin from "./pages/SystemLoginPage/system-Login";
+import SystemLogin from './pages/SystemLoginPage/system-Login';
 
-import SellerDashboard from "./pages/System/Seller/SellerDashboard";
+import SellerDashboard from './pages/System/Seller/SellerDashboard';
 
-import PendingOrders from "./pages/System/Admin/PendingOrders";
-import PendingItem from "./pages/System/Admin/PendingItem";
-import AllProducts from "./pages/System/Admin/AllProducts";
+import PendingOrders from './pages/System/Admin/PendingOrders';
+import PendingItem from './pages/System/Admin/PendingItem';
+import AllProducts from './pages/System/Admin/AllProducts';
 
 // import PendingProducts from "./pages/System/Admin/PendingProducts";
 
-import AdminProfile from "./pages/System/Admin/AdminProfile";
-import AllUsers from "./pages/System/Admin/AllUsers";
-import ProductDetailsPage from "./pages/ProductDetailsPage/ProductDetailsPage";
+import AdminProfile from './pages/System/Admin/AdminProfile';
+import AllUsers from './pages/System/Admin/AllUsers';
+import ProductDetailsPage from './pages/ProductDetailsPage/ProductDetailsPage';
 
-import SellerProfile from "./pages/System/Seller/SellerProfile";
-import NewSellerProfile from "./pages/System/Seller/NewSellerProfile";
-import AllOrders from "./pages/System/Seller/AllOrders";
+import SellerProfile from './pages/System/Seller/SellerProfile';
+import NewSellerProfile from './pages/System/Seller/NewSellerProfile';
+import AllOrders from './pages/System/Seller/AllOrders';
 
-import ShopPage from "./pages/ShopPage/ShopPage";
-import NewsPage from "./pages/NewsPage/NewsPage";
-import AboutUsPage from "./pages/AboutUsPage/AboutUsPage";
-import MyCart from "./pages/MyCart/MyCart";
-import MyProfile from "./pages/MyProfile/MyProfile";
-import SellerProducts from "./pages/System/Seller/SellerProducts";
-import CustomerLogin from "./pages/CustomerAuth/CustomerLogin";
-import CustomerRegister from "./pages/CustomerAuth/CustomerRegister";
-import DeliveryTracking from "./pages/System/Admin/DeliveryTracking";
-import PaymentGateway from "./pages/PaymentGateway/PaymentGateway";
-import CachOnDelivery from "./pages/CachOnDelivery/CachOnDelivery";
-import CustomerProfile from "./pages/CustomerAuth/CustomerProfile";
-import UpdateProduct from "./pages/System/Seller/UpdateProduct";
+import ShopPage from './pages/ShopPage/ShopPage';
+import NewsPage from './pages/NewsPage/NewsPage';
+import AboutUsPage from './pages/AboutUsPage/AboutUsPage';
+import MyCart from './pages/MyCart/MyCart';
+import MyProfile from './pages/MyProfile/MyProfile';
+import SellerProducts from './pages/System/Seller/SellerProducts';
+import CustomerLogin from './pages/CustomerAuth/CustomerLogin';
+import CustomerRegister from './pages/CustomerAuth/CustomerRegister';
+import DeliveryTracking from './pages/System/Admin/DeliveryTracking';
+import CustomerProfile from './pages/CustomerAuth/CustomerProfile';
+import UpdateProduct from './pages/System/Seller/UpdateProduct';
 
 function App() {
   return (
@@ -51,8 +49,7 @@ function App() {
         <Route path="/customerlogin" element={<CustomerLogin />} />
         <Route path="/customer/register" element={<CustomerRegister />} />
         <Route path="/customer/profile" element={<CustomerProfile />} />
-        <Route path="/payment-gateway" element={<PaymentGateway />} />
-        <Route path="/cachondelivery" element={<CachOnDelivery />} />
+        <Route path="/just" element={<Test />} />
         {/* ::::::::::::::::::::::::::::::::::::::::Customer Routes::::::::::::::::::::::::::::::::::::::::::::::::::: */}
 
         {/* ::::::::::::::::::::::::::::::::::::::::Admin Routes::::::::::::::::::::::::::::::::::::::::::::::::::: */}
@@ -80,19 +77,12 @@ function App() {
         <Route path="/system/auth" element={<Test />} />
         <Route path="/system/seller-dashboard" element={<SellerDashboard />} />
 
-        <Route
-          path="/system/system-login/seller-profile"
-          element={<NewSellerProfile />}
-        />
+        <Route path="/system/system-login/seller-profile" element={<NewSellerProfile />} />
         <Route path="/system/seller-allorders" element={<AllOrders />} />
 
         <Route path="/system/seller-products" element={<SellerProducts />} />
         <Route path="/system/system-login" element={<SystemLogin />} />
-        <Route
-          path="/system/seller-products/update/:id"
-          exact
-          element={<UpdateProduct />}
-        />
+        <Route path="/system/seller-products/update/:id" exact element={<UpdateProduct />} />
 
         {/* ::::::::::::::::::::::::::::::::::::::::Seller Routes::::::::::::::::::::::::::::::::::::::::::::::::::: */}
       </Routes>
