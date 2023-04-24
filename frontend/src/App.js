@@ -30,6 +30,7 @@ import SellerProducts from './pages/System/Seller/SellerProducts';
 import CustomerLogin from './pages/CustomerAuth/CustomerLogin';
 import CustomerRegister from './pages/CustomerAuth/CustomerRegister';
 import DeliveryTracking from './pages/System/Admin/DeliveryTracking';
+import CustomerProfile from './pages/CustomerAuth/CustomerProfile';
 
 function App() {
   return (
@@ -45,6 +46,7 @@ function App() {
         <Route path="/myaccount" element={<MyProfile />} />
         <Route path="/customerlogin" element={<CustomerLogin />} />
         <Route path="/customer/register" element={<CustomerRegister />} />
+        <Route path="/customer/profile" element={<CustomerProfile />} />
         <Route path="/just" element={<Test />} />
         {/* ::::::::::::::::::::::::::::::::::::::::Customer Routes::::::::::::::::::::::::::::::::::::::::::::::::::: */}
 
