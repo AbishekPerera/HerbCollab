@@ -93,7 +93,7 @@ productRouter.route('/get/:id').get(async (req, res) => {
 
   const product = await Product.findById(productId)
     .then((product) => {
-      res.status(200).send({ status: 'Product fetched', product });
+      res.status(200).send({ product });
     })
     .catch((err) => {
       console.log(err.message);

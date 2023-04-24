@@ -6,6 +6,7 @@ import './styles/SellerProducts.css';
 import AddProductModal from '../../../components/System/SellerProducts/AddProductModal';
 import UpdateProductModal from '../../../components/System/SellerProducts/UpdateProductModal';
 import axios from 'axios';
+import { Link } from 'react-router-dom';
 
 const SellerProducts = () => {
   const [showAddProductModal, setShowAddProductModal] = useState(false);
@@ -76,9 +77,10 @@ const SellerProducts = () => {
                       <li
                         class="icon "
                         id="edit"
-                        onClick={handleUpdateProductModalShow}
                       >
+                        <Link to={"/system/seller-products/update/" + product._id}>
                         <span class="bi bi-pen"></span>
+                        </Link>
                       </li>
                       <li class="icon mx-3">
                         <span class="bi bi-trash"></span>
@@ -88,9 +90,9 @@ const SellerProducts = () => {
                   <div class="tag bg-red">{product.category}</div>
                   <span class="tag1 bg-green">{product.quantity}</span>
                   <div class="title pt-4 pb-1">{product.name}</div>
-                  <div class="d-flex align-content-center justify-content-center">
+                  {/* <div class="d-flex align-content-center justify-content-center">
                     <p>{product.description}</p>
-                  </div>
+                  </div> */}
                   <div class="price">Rs. {product.price}</div>
                 </div>
               ))}
