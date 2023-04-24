@@ -21,7 +21,7 @@ const MyVerticallyCenteredModal = (props) => {
           <h5>Select payment method</h5>
           <Row>
             <Col>
-              <Link onClick={() => alert("Order placed successfully")}>
+              <Link to={"/CachOnDelivery"}>
                 <div className="Cash-on-delivery">
                   <h6>Cash on delivery</h6>
                   <p>

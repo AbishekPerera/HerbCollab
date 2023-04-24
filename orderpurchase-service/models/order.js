@@ -43,6 +43,23 @@ const orderSchema = new Schema({
     type: Number,
     required: true,
   },
+  // deliveryname,deliveryemail,deliveryphone,deliveryaddress
+  deliveryname: {
+    type: String,
+    required: true,
+  },
+  deliveryemail: {
+    type: String,
+    required: true,
+  },
+  deliveryphone: {
+    type: String,
+    required: true,
+  },
+  deliveryaddress: {
+    type: String,
+    required: true,
+  },
   status: {
     type: String,
     default: "Pending",

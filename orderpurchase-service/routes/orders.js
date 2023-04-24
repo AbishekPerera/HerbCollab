@@ -13,6 +13,10 @@ orderRouter.route("/addtoorder").post((req, res) => {
   const price = Number(req.body.price);
   const total = Number(req.body.total);
   const commission = Number(req.body.commission);
+  const deliveryname = req.body.deliveryname;
+  const deliveryemail = req.body.deliveryemail;
+  const deliveryphone = req.body.deliveryphone;
+  const deliveryaddress = req.body.deliveryaddress;
 
   const newOrder = new Order({
     userId,
@@ -24,6 +28,10 @@ orderRouter.route("/addtoorder").post((req, res) => {
     price,
     total,
     commission,
+    deliveryname,
+    deliveryemail,
+    deliveryphone,
+    deliveryaddress,
   });
 
   newOrder

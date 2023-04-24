@@ -49,8 +49,8 @@ const MyCart = () => {
     //get data prom
     const iserInfo = localStorage.getItem("userInfo");
     const userInfo = JSON.parse(iserInfo);
-
     const userId = userInfo.user._id;
+
     const { data } = await axios.get(
       "http://localhost:8072/carts/getcartbyuserid/" + userId
     );
@@ -99,7 +99,9 @@ const MyCart = () => {
 
   const shipping = 200;
 
-  const grandTotal = total + shipping;
+  const commission = 0.01 * total;
+
+  const grandTotal = total + shipping + commission;
 
   //for model
   const [modalShow, setModalShow] = React.useState(false);
@@ -165,6 +167,10 @@ const MyCart = () => {
                     <tr>
                       <td className="font-weight-bold">Shipping</td>
                       <td className="text-right">Rs. {shipping}</td>
+                    </tr>
+                    <tr>
+                      <td className="font-weight-bold">Commission</td>
+                      <td className="text-right">Rs.{commission}</td>
                     </tr>
                     <tr>
                       <td className="font-weight-bold">Total</td>

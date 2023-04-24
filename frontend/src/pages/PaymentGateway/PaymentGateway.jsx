@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from "react";
 import {
   Accordion,
+  Alert,
   Button,
   Col,
   Container,
@@ -34,9 +35,98 @@ const PaymentGateway = () => {
     setCvv(e.target.value);
   };
 
+  const iserInfo = localStorage.getItem("userInfo");
+  const userInfo = JSON.parse(iserInfo);
+  const userId = userInfo.user._id;
+  const userName = userInfo.user.name;
+
+  const [deliveryName, setDeliveryName] = useState("");
+  const [deliveryEmail, setDeliveryEmail] = useState("");
+  const [deliveryPhone, setDeliveryPhone] = useState("");
+  const [deliveryAddress, setDeliveryAddress] = useState("");
+
+  const [validDeleverydetails, setValidDeleverydetails] = useState(false);
+
+  const validateDeleveryDetails = (e) => {
+    e.preventDefault();
+    setValidDeleverydetails(true);
+  };
+
   const handleSubmit = (e) => {
     e.preventDefault();
-    // Add code to handle payment submission
+
+    // validate card details
+    if (validDeleverydetails == false) {
+      alert("Please enter delivery details.");
+      return;
+    } else if (cardNumber.length !== 16) {
+      alert("Invalid card number.");
+      return;
+    } else if (cardHolder.length < 3) {
+      alert("Invalid card holder name.");
+      return;
+    } else if (expiryDate.length !== 5) {
+      alert("Invalid expiry date.");
+      return;
+    } else if (cvv.length !== 3) {
+      alert("Invalid CVV.");
+      return;
+    } else {
+      for (const item of cartItems) {
+        // console.log(
+        //   "userId: " + userId,
+        //   "userName: " + userName,
+        //   "productId: " + item.productId,
+        //   "productName: " + item.productName,
+        //   "productImage: " + item.productImage,
+        //   "quantity: " + item.quantity,
+        //   "price: " + item.price,
+        //   "total: " + item.total,
+        //   "commission: " + commission,
+        //   "deliveryName: " + deliveryName,
+        //   "deliveryEmail: " + deliveryEmail,
+        //   "deliveryPhone: " + deliveryPhone,
+        //   "deliveryAddress: " + deliveryAddress
+        // );
+
+        // new object
+        const order = {
+          userId: userId,
+          username: userName,
+          productId: item.productId,
+          productName: item.productName,
+          productImage: item.productImage,
+          quantity: item.quantity,
+          price: item.price,
+          total: item.total,
+          commission: commission,
+          deliveryname: deliveryName,
+          deliveryemail: deliveryEmail,
+          deliveryphone: deliveryPhone,
+          deliveryaddress: deliveryAddress,
+        };
+
+        // console.log(order);
+
+        axios
+          .post("http://localhost:8072/orders/addtoorder", order)
+          .then((res) => {
+            // delete cart item
+            axios
+              .delete("http://localhost:8072/carts/deletecartitem/" + item._id)
+              .then((res) => {})
+              .catch((err) => {
+                // alert(err);
+              });
+          })
+          .catch((err) => {
+            // alert(err);
+          });
+      }
+
+      alert("Order placed successfully.");
+      window.location = "/shop";
+    }
   };
 
   const [cartItems, setCartItems] = useState([]);
@@ -89,18 +179,20 @@ const PaymentGateway = () => {
 
   const shipping = 200;
 
-  const grandTotal = total + shipping;
+  const commission = 0.01 * total;
+
+  const grandTotal = total + shipping + commission;
 
   return (
     <div className="paymentgateway-main-body">
       <div className="payment-gateway-header mb-5">
         <Navbar bg="dark" variant="dark">
           <Container>
-            <Navbar.Brand href="#home">Secure pay</Navbar.Brand>
+            <Navbar.Brand>Secure pay</Navbar.Brand>
             <Navbar.Toggle />
             <Navbar.Collapse className="justify-content-end">
               <Navbar.Text>
-                Having Trobble ? <a href="#login">click me</a>
+                Having Trobble ? <a>click me</a>
               </Navbar.Text>
             </Navbar.Collapse>
           </Container>
@@ -116,54 +208,69 @@ const PaymentGateway = () => {
                   <Table striped bordered hover>
                     <tbody className="text-center">{cartItemsList}</tbody>
                   </Table>
-                  <Accordion defaultActiveKey="0">
+                  {validDeleverydetails == false && (
+                    <Alert variant="info" dismissible>
+                      Insert delivery details
+                    </Alert>
+                  )}
+                  <Accordion>
                     <Accordion.Item eventKey="0">
                       <Accordion.Header>Delivery Details</Accordion.Header>
                       <Accordion.Body>
                         <div className="delivery-details-form">
-                          <Form>
+                          <Form onSubmit={validateDeleveryDetails}>
                             <h3>Delivery Details</h3>
 
                             <Form.Group controlId="fullName">
                               <Form.Label>Full Name</Form.Label>
                               <Form.Control
+                                required
                                 type="text"
                                 placeholder="Enter your full name"
-                                // value={fullName}
-                                // onChange={handleFullNameChange}
+                                onChange={(e) =>
+                                  setDeliveryName(e.target.value)
+                                }
                               />
                             </Form.Group>
 
                             <Form.Group controlId="email">
                               <Form.Label>Email</Form.Label>
                               <Form.Control
+                                required
                                 type="email"
                                 placeholder="Enter your email"
-                                // value={email}
-                                // onChange={handleEmailChange}
+                                onChange={(e) =>
+                                  setDeliveryEmail(e.target.value)
+                                }
                               />
                             </Form.Group>
 
                             <Form.Group controlId="phone">
                               <Form.Label>Phone Number</Form.Label>
                               <Form.Control
+                                required
                                 type="text"
                                 placeholder="Enter your phone number"
-                                // value={phone}
-                                // onChange={handlePhoneChange}
+                                onChange={(e) =>
+                                  setDeliveryPhone(e.target.value)
+                                }
                               />
                             </Form.Group>
 
                             <Form.Group controlId="address">
                               <Form.Label>Address</Form.Label>
                               <Form.Control
+                                required
                                 as="textarea"
                                 rows={3}
                                 placeholder="Enter your address"
-                                // value={address}
-                                // onChange={handleAddressChange}
+                                onChange={(e) =>
+                                  setDeliveryAddress(e.target.value)
+                                }
                               />
                             </Form.Group>
+
+                            <Button type="submit">Set Delivery details</Button>
                           </Form>
                         </div>
                       </Accordion.Body>
@@ -172,11 +279,13 @@ const PaymentGateway = () => {
                   <Row className="mt-3">
                     <Col>
                       <div className="paymentgateway-order-total">
-                        <h6>Total</h6>
-                        <h6>Rs. {total}</h6>
+                        <h6>Total Rs. {total}</h6>
                       </div>
                       <div className="paymentgateway-order-shipping">
-                        <p>Shipping Rs. {shipping}</p>
+                        Shipping Rs. {shipping}
+                      </div>
+                      <div className="paymentgateway-order-commission">
+                        Commission Rs. {commission}
                       </div>
                     </Col>
                     <Col>
@@ -197,6 +306,7 @@ const PaymentGateway = () => {
                   <Form.Group controlId="cardNumber">
                     <Form.Label>Card Number</Form.Label>
                     <Form.Control
+                      required
                       type="text"
                       placeholder="Enter card number"
                       value={cardNumber}
@@ -207,6 +317,7 @@ const PaymentGateway = () => {
                   <Form.Group controlId="cardHolder">
                     <Form.Label>Card Holder Name</Form.Label>
                     <Form.Control
+                      required
                       type="text"
                       placeholder="Enter card holder name"
                       value={cardHolder}
@@ -219,6 +330,7 @@ const PaymentGateway = () => {
                       <Form.Group controlId="expiryDate">
                         <Form.Label>Expiry Date</Form.Label>
                         <Form.Control
+                          required
                           type="text"
                           placeholder="Enter expiry date"
                           value={expiryDate}
@@ -230,6 +342,7 @@ const PaymentGateway = () => {
                       <Form.Group controlId="cvv">
                         <Form.Label>CVV</Form.Label>
                         <Form.Control
+                          required
                           type="number"
                           placeholder="Enter CVV"
                           value={cvv}

@@ -31,6 +31,7 @@ import CustomerLogin from "./pages/CustomerAuth/CustomerLogin";
 import CustomerRegister from "./pages/CustomerAuth/CustomerRegister";
 import DeliveryTracking from "./pages/System/Admin/DeliveryTracking";
 import PaymentGateway from "./pages/PaymentGateway/PaymentGateway";
+import CachOnDelivery from "./pages/CachOnDelivery/CachOnDelivery";
 
 function App() {
   return (
@@ -47,6 +48,7 @@ function App() {
         <Route path="/customerlogin" element={<CustomerLogin />} />
         <Route path="/customer/register" element={<CustomerRegister />} />
         <Route path="/payment-gateway" element={<PaymentGateway />} />
+        <Route path="/cachondelivery" element={<CachOnDelivery />} />
         {/* ::::::::::::::::::::::::::::::::::::::::Customer Routes::::::::::::::::::::::::::::::::::::::::::::::::::: */}
 
         {/* ::::::::::::::::::::::::::::::::::::::::Admin Routes::::::::::::::::::::::::::::::::::::::::::::::::::: */}
