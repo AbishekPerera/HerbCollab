@@ -102,3 +102,7 @@
   border-color: #0062cc;
   color: #fff;
 }
+
+.paymentgateway-main-body {
+  overflow: hidden;
+}

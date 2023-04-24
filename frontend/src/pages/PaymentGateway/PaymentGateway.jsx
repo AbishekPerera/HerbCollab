@@ -92,7 +92,7 @@ const PaymentGateway = () => {
   const grandTotal = total + shipping;
 
   return (
-    <div>
+    <div className="paymentgateway-main-body">
       <div className="payment-gateway-header mb-5">
         <Navbar bg="dark" variant="dark">
           <Container>
@@ -247,7 +247,7 @@ const PaymentGateway = () => {
           </Row>
         </Container>
       </div>
-      <div className="payment-gateway-footer m-3">
+      <div className="payment-gateway-footer mt-5">
         <Container>
           <Row>
             <Col className="text-center">
