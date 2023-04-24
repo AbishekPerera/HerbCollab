@@ -10,7 +10,7 @@ const Card = ({ id, title, image, price }) => {
         <div className="card-my ltn__product-item text-center">
           <h2 className="title">{title}</h2>
           <img className="image" src={image} alt={title} />
-          <p className="price">{price}</p>
+          <p className="price">Rs.{price}</p>
           <div class="product-hover-action">
             <ul>
               <li>
