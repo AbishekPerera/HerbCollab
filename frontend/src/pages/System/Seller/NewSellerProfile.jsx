@@ -111,8 +111,8 @@ return (
         </div>
         <div className="content " style={{ marginTop: '20px'}} >
         <div class="col-xl-12 ">
-            <div class="card bg-white shadow">
-              <div class="card-header bg-white border-0">
+            <div class="card shadow">
+              <div class="card-header  border-0">
                 
                     <h3 class="mb-0 text-center">My Profile</h3>
             

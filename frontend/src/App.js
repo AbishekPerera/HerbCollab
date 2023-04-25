@@ -14,12 +14,10 @@ import CustomerRegister from "./pages/CustomerAuth/CustomerRegister";
 import CustomerProfile from "./pages/CustomerAuth/CustomerProfile";
 import SystemLogin from "./pages/SystemLoginPage/system-Login";
 import MyOrders from "./pages/MyProfile/MyOrders";
-// import SellerProfile from "./pages/System/Seller/NewSellerProfile";
 import Dashboard from "./pages/System/Admin/Dashboard";
 import PendingOrders from "./pages/System/Admin/PendingOrders";
 import PendingItem from "./pages/System/Admin/PendingItem";
 import AllProducts from "./pages/System/Admin/AllProducts";
-//import AdminProfile from "./pages/System/Admin/AdminProfile";
 import AllUsers from "./pages/System/Admin/AllUsers";
 import DeliveryTracking from "./pages/System/Admin/DeliveryTracking";
 import SellerDashboard from "./pages/System/Seller/SellerDashboard";
@@ -28,6 +26,7 @@ import SellerProducts from "./pages/System/Seller/SellerProducts";
 import NewSellerProfile from "./pages/System/Seller/NewSellerProfile";
 import AllSellers from "./pages/System/Admin/AllSellers";
 import AdminProfile from "./pages/System/Admin/AdminProfile";
+import UpdateProduct from "./pages/System/Seller/UpdateProduct";
 // :::::::::::::::::::::::::::::::::::::::::::error in this line ::::::::::::::::::::::::::::::::::::::::::::::
 
 function App() {
@@ -63,17 +62,13 @@ function App() {
         <Route path="/system/admin-allsellers" element={<AllSellers />} />
          <Route path="/system/admin-tracking" element={<DeliveryTracking />} /> 
 
-        {/* <Route path="/system/admin-pendingproducts" element={<PendingProducts />} />*/}
+         {/*<Route path="/system/admin-pendingproducts" element={<PendingProducts />} />*/}
 
-       <Route
-          path="/system/admin-pendingproducts"
-          element={<PendingOrders />}
-        /> 
+       <Route path="/system/admin-pendingproducts" element={<PendingOrders />}/> 
 
         {/* ::::::::::::::::::::::::::::::::::::::::Admin Routes::::::::::::::::::::::::::::::::::::::::::::::::::: */}
 
         {/* ::::::::::::::::::::::::::::::::::::::::Seller Routes::::::::::::::::::::::::::::::::::::::::::::::::::: */}
-        {/* <Route path="/system/auth" element={<Test />} /> */}
         <Route path="/system/seller-dashboard" element={<SellerDashboard />} />
 
         <Route
@@ -83,11 +78,8 @@ function App() {
          <Route path="/system/seller-allorders" element={<AllOrders />} />
 
        <Route path="/system/seller-products" element={<SellerProducts />} /> 
-       {/*<Route
-          path="/system/seller-products/update/:id"
-          exact
-          element={<UpdateProduct />}
-        /> */}
+       <Route path="/system/seller-products/update/:id"exact element={<UpdateProduct />}
+        /> 
 
         {/* ::::::::::::::::::::::::::::::::::::::::Seller Routes::::::::::::::::::::::::::::::::::::::::::::::::::: */}
       </Routes>
