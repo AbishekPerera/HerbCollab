@@ -46,6 +46,8 @@ const CachOnDelivery = () => {
         deliveryemail: deliveryEmail,
         deliveryphone: deliveryPhone,
         deliveryaddress: deliveryAddress,
+        sellerId: item.sellerId,
+        sellerName: item.sellerName,
       };
 
       // console.log(order);
