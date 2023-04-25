@@ -22,7 +22,9 @@ const MyOrders = () => {
     const userId = userInfo.user._id;
 
     const { data } = await axios.get(
-      "http://localhost:8072/orders/getorderbyuserid/" + userId
+      "http://localhost:8072/orders/getorderbyuseridandstatus/" +
+        userId +
+        "/Pending"
     );
     setOrders(data);
   };
@@ -61,12 +63,25 @@ const MyOrders = () => {
     {
       name: "Action",
       selector: (row) => (
-        <button className="btn btn-danger">
+        <button className="btn btn-danger" onClick={() => deleteOrder(row._id)}>
           <i class="bi bi-trash"></i>
         </button>
       ),
     },
   ];
+
+  //delete order by id
+  const deleteOrder = async (id) => {
+    await axios
+      .delete("http://localhost:8072/orders/deleteorder/" + id)
+      .then((res) => {
+        alert("Order Deleted");
+        getOrders();
+      })
+      .catch((err) => {
+        alert(err);
+      });
+  };
 
   return (
     <div>
@@ -112,6 +127,7 @@ const MyOrders = () => {
               <Row>
                 <div className="my-order-tab-header">
                   <h3>My Orders</h3>
+                  <p>"Pending orders: the ultimate test of patience"</p>
                 </div>
                 <div className="my-order-tab-body">
                   <DataTable
@@ -120,6 +136,13 @@ const MyOrders = () => {
                     pagination={true}
                     paginationPerPage={5}
                     paginationRowsPerPageOptions={[5, 10, 15, 20, 25, 30]}
+                    noDataComponent={
+                      <div className="no-data-t-found-outer">
+                        <div className="no-data-t-found-inner">
+                          <h5>No Pending Orders</h5>
+                        </div>
+                      </div>
+                    }
                   />
                 </div>
               </Row>
