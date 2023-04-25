@@ -49,10 +49,15 @@ const SellerProducts = () => {
   }
 
   const getProducts = () => {
+    const sellerInfo = JSON.parse(localStorage.getItem('systemInfo'));
+    const getSellerId = sellerInfo['user']['_id'];
     axios
-      .get('http://localhost:8071/products/')
+      .get(`http://localhost:8071/products/`)
       .then((res) => {
-        setProduct(res.data);
+        const filteredProducts = res.data.filter((products) => {
+          return products.sellerId === getSellerId;
+        });
+        setProduct(filteredProducts);
       })
       .catch((err) => {
         alert(err.message);
