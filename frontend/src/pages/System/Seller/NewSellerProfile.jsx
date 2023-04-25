@@ -6,10 +6,11 @@ import SellerNav from "../../../components/System/SystemNavBar/SellerNav";
 
 import React, { useEffect, useState,useRef } from "react";
 import axios from "axios";
-axios.defaults.withCredentials=true;
 
 
-const SellerProfile = () => {
+const NewSellerProfile = () => {
+
+    
     const [isEditMode, setIsEditMode] = useState(false);
     
     const [ID,setID]=useState('');
@@ -19,17 +20,25 @@ const SellerProfile = () => {
         Email: '',
         MobileNo: '',
         Address: '',
-        Password:''  
         
     })  
     console.log(ID);
 
+      //get data from local storage as a string
+        const systemInfo = localStorage.getItem("systemInfo");
+      //set data to local storage as a JSON object
+        const systemInfo1 = JSON.parse(systemInfo);
+
+        const id = systemInfo1["user"]["_id"];
+        console.log(id);
+        //then you can get any data from local storage. in this case i get user id adn log it on console
+        console.log("local store", systemInfo1["user"]["_id"]);
+
     const sendRequest = async()=>{
         try{
           
-        const res =await axios.get("http://localhost:8084/users/user",{
-              withCredentials: true,
-          }).then((res)=>{
+        const res =await axios.get("http://localhost:8084/users/user/"+id
+             ).then((res)=>{
             const data =  res.data;
             setUser(data)
             setID(data._id);
@@ -293,4 +302,4 @@ return (
     </div>
 ) 
 }
-export default SellerProfile
+export default NewSellerProfile
