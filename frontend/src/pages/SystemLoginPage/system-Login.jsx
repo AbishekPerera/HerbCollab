@@ -100,7 +100,7 @@ const SystemLogin = () => {
         if (res.data.user.Role === "Seller") {
           history("/system/seller-Dashboard");
         } else if (res.data.user.Role === "Admin") {
-          history("/admin-Dashboard");
+          history("/system/admin-Dashboard");
         } else {
           alert("You are not a Seller or admin. Please Login as a Seller");
         }

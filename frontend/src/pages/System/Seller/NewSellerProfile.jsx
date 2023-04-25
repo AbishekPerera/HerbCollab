@@ -33,6 +33,7 @@ const NewSellerProfile = () => {
         console.log(id);
         //then you can get any data from local storage. in this case i get user id adn log it on console
         console.log("local store", systemInfo1["user"]["_id"]);
+        
 
     const sendRequest = async()=>{
         try{
@@ -40,7 +41,8 @@ const NewSellerProfile = () => {
         const res =await axios.get("http://localhost:8084/users/user/"+id
              ).then((res)=>{
             const data =  res.data;
-            setUser(data)
+            setUser(data);
+
             setID(data._id);
         })
       }catch(err){ alert(err)};
@@ -89,7 +91,6 @@ const NewSellerProfile = () => {
           }).then(res=>{
           
             alert("You have successfully updated.")
-            //history("/AllDrivers");
              
           }).catch(error => {
             alert(error);
