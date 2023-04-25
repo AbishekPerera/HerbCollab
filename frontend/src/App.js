@@ -26,6 +26,7 @@ import SellerDashboard from "./pages/System/Seller/SellerDashboard";
 import AllOrders from "./pages/System/Seller/AllOrders";
 import SellerProducts from "./pages/System/Seller/SellerProducts";
 import NewSellerProfile from "./pages/System/Seller/NewSellerProfile";
+import AllSellers from "./pages/System/Admin/AllSellers";
 // :::::::::::::::::::::::::::::::::::::::::::error in this line ::::::::::::::::::::::::::::::::::::::::::::::
 
 function App() {
@@ -58,6 +59,7 @@ function App() {
 
          {/*<Route path="/system/admin-profile" element={<AdminProfile />} /> */}
          <Route path="/system/admin-allusers" element={<AllUsers />} />
+        <Route path="/system/admin-allsellers" element={<AllSellers />} />
          <Route path="/system/admin-tracking" element={<DeliveryTracking />} /> 
 
         {/* <Route path="/system/admin-pendingproducts" element={<PendingProducts />} />*/}

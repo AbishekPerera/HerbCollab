@@ -105,6 +105,19 @@ const Sidebar = () => {
               </Link>
             </li>
             <li
+              className={
+                activeItem === '/system/admin-allsellers' ? 'active' : ''
+              }
+            >
+              <Link
+                to="/system/admin-allsellers"
+                className="text-decoration-none px-3 py-2 d-block"
+              >
+                <i class="bi bi-people"></i>
+                <span style={{ paddingLeft: '0.7rem' }}>Sellers</span>
+              </Link>
+            </li>
+            <li
               className={activeItem === '/system/admin-profile' ? 'active' : ''}
             >
               <Link
