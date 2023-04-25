@@ -2,122 +2,124 @@
     Breadcurmb Area
 ---------------------------------------------------- */
 .ltn__breadcrumb-area-myprofilepage {
-    background-color: #f4f4f4;
-    margin-bottom: 120px;
-    padding-top: 110px;
-    padding-bottom: 110px;
-    
-    background-image: url(https://cdn.pixabay.com/photo/2016/11/23/15/03/medications-1853400_960_720.jpg);
+  background-color: #f4f4f4;
+  margin-bottom: 120px;
+  padding-top: 110px;
+  padding-bottom: 110px;
 
-    background-repeat: no-repeat;
-    background-size: cover;
-  }
-  
-  .ltn__breadcrumb-list ul {
-    margin: 0;
-    padding: 0;
-  }
-  
-  .ltn__breadcrumb-list ul li {
-    display: inline-block;
-    margin-right: 30px;
-    position: relative;
-    font-weight: 700;
-  }
-  
-  .news-page-lowerbody {
-    margin: 2%;
-  }
-  
+  background-image: url(https://cdn.pixabay.com/photo/2016/11/23/15/03/medications-1853400_960_720.jpg);
 
-  /* ----------Profile Area(Nav Bar)------------- */
-  .sidebar77{
-    height: 100%;
-    padding: 15px;
-    /* background-color: #C8B6A6; */
-    background-color: #08781f;
-   
-  }
-  
-  .nav-item77 {
-    margin-bottom: 15px;
-    text-align: center;
-    font-size: 18px
-  }
-  
-  .nav-link77 {
-    color: #1214a9;
-    font-weight: 550;
-    display: flex;
-    gap: 5px;
-    text-align: center;
-  }
-  
-  .nav-link77:hover {
-    color: #fdd23e;
-  }
-  
-  .active77 {
-    color: #d6cddb !important;
-  }
+  background-repeat: no-repeat;
+  background-size: cover;
+}
 
-  /* ----------Profile Area(Form)------------- */
-  .profileformlabel {
-    display: inline-block;
-    width: 120px; /* adjust this value to match the desired label width */
-    margin-right: 20px; /* adjust this value to add spacing between the label and input field */
-    margin-left: 50px;
-    font-weight: bold;
-     
-  }
+.ltn__breadcrumb-list ul {
+  margin: 0;
+  padding: 0;
+}
 
-  .profileformlabelName {
-    display: inline-block;
-    width: 120px; 
-    margin-right: 200px;
-    margin-left: 10px;
-    font-weight: bold;
-  }
-  
-  .profileformtextarea {
-    display: inline-block;
-    width: 400px; /* adjust this value to match the desired input field width */
-    padding: 5px;
-    border: 1px solid #ccc; /* add border styling to the input field */
-    border-radius: 3px; /* add rounded corners to the input field */
-    margin-bottom: 10px; /* adjust this value to add spacing between input fields */
-  }
+.ltn__breadcrumb-list ul li {
+  display: inline-block;
+  margin-right: 30px;
+  position: relative;
+  font-weight: 700;
+}
 
-  profileformtextareaName {
-    display: inline-block;
-    width: 50px; /* adjust this value to match the desired input field width */
-    padding: 90px;
-    border: 1px solid #ccc; /* add border styling to the input field */
-    border-radius: 3px; /* add rounded corners to the input field */
-    margin-bottom: 10px; /* adjust this value to add spacing between input fields */
-  }
-  .profileicon {
-    display: inline-flex;
-    align-items: center;
-    margin-right: 0.5em;
-  }
-  
-  
-  /* Buttons */
-  .editbtn {
-    background-color: #1e90ff;
-    border: none;
-    color: white;
-    padding: 12px 16px;
-    font-size: 16px;
-    cursor: pointer;
-  }
-  
-  /* Darker background on mouse-over */
-  .editbtn:hover {
-    background-color: RoyalBlue;
-  }
+.news-page-lowerbody {
+  margin: 2%;
+}
 
+/* ----------Profile Area(Nav Bar)------------- */
+.sidebar77 {
+  height: 100%;
+  padding: 15px;
+  /* background-color: #C8B6A6; */
+  background-color: #08781f;
+}
 
-  /* Profile Photo */
-  
+.nav-item77 {
+  margin-bottom: 15px;
+  text-align: center;
+  font-size: 18px;
+}
+
+.nav-link77 {
+  color: #1214a9;
+  font-weight: 550;
+  display: flex;
+  gap: 5px;
+  text-align: center;
+}
+
+.nav-link77:hover {
+  color: #fdd23e;
+}
+
+.active77 {
+  color: #d6cddb !important;
+}
+
+/* ----------Profile Area(Form)------------- */
+.profileformlabel {
+  display: inline-block;
+  width: 120px; /* adjust this value to match the desired label width */
+  margin-right: 20px; /* adjust this value to add spacing between the label and input field */
+  margin-left: 50px;
+  font-weight: bold;
+}
+
+.profileformlabelName {
+  display: inline-block;
+  width: 120px;
+  margin-right: 200px;
+  margin-left: 10px;
+  font-weight: bold;
+}
+
+.profileformtextarea {
+  display: inline-block;
+  width: 400px; /* adjust this value to match the desired input field width */
+  padding: 5px;
+  border: 1px solid #ccc; /* add border styling to the input field */
+  border-radius: 3px; /* add rounded corners to the input field */
+  margin-bottom: 10px; /* adjust this value to add spacing between input fields */
+}
+
+profileformtextareaName {
+  display: inline-block;
+  width: 50px; /* adjust this value to match the desired input field width */
+  padding: 90px;
+  border: 1px solid #ccc; /* add border styling to the input field */
+  border-radius: 3px; /* add rounded corners to the input field */
+  margin-bottom: 10px; /* adjust this value to add spacing between input fields */
+}
+.profileicon {
+  display: inline-flex;
+  align-items: center;
+  margin-right: 0.5em;
+}
+
+/* Buttons */
+.editbtn {
+  background-color: #1e90ff;
+  border: none;
+  color: white;
+  padding: 12px 16px;
+  font-size: 16px;
+  cursor: pointer;
+}
+
+/* Darker background on mouse-over */
+.editbtn:hover {
+  background-color: RoyalBlue;
+}
+
+/* Profile Photo */
+
+/* my order component */
+
+.my-orders-comp-outer {
+  padding: 20px;
+  border-radius: 10px;
+  box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
+}

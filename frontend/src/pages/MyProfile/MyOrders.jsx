@@ -4,8 +4,9 @@ import { Link } from "react-router-dom";
 import Footer from "../../components/Footer/Footer";
 import CusProfileNavbar from "../../components/CusProfileNavbar/CusProfileNavbar";
 import "./MyProfile.css";
-import { Table } from "react-bootstrap";
+import { Row, Table } from "react-bootstrap";
 import axios from "axios";
+import DataTable from "react-data-table-component";
 
 const MyOrders = () => {
   const [orders, setOrders] = useState([]);
@@ -26,34 +27,46 @@ const MyOrders = () => {
     setOrders(data);
   };
 
-  // const myOrdersItemsList = orders.map((item) => (
-  //   <tr key={item._id}>
-  //     <td>
-  //       <img
-  //         className="cart-product-img"
-  //         src={item.productImage}
-  //         alt={item.productName}
-  //       />
-  //     </td>
-  //     <td>{item.productName}</td>
-  //     <td>
-  //       <input
-  //         className="cart-item-count-input"
-  //         type="number"
-  //         max={10}
-  //         min={1}
-  //         defaultValue={item.quantity}
-  //       />
-  //     </td>
-  //     <td>Rs.{item.price}</td>
-  //     <td>Rs.{item.price * item.quantity}</td>
-  //     <td>
-  //       <button className="btn btn-danger">
-  //         <i class="bi bi-trash"></i>
-  //       </button>
-  //     </td>
-  //   </tr>
-  // ));
+  const columns = [
+    {
+      name: "Product",
+      selector: (row) => (
+        <img
+          className="cart-product-img"
+          src={row.productImage}
+          alt={row.productName}
+        />
+      ),
+    },
+    {
+      name: "Name",
+      selector: (row) => row.productName,
+      sortable: true,
+    },
+    {
+      name: "Quantity",
+      selector: (row) => row.quantity,
+      sortable: true,
+    },
+    {
+      name: "Price",
+      selector: (row) => row.price,
+      sortable: true,
+    },
+    {
+      name: "Total",
+      selector: (row) => row.total,
+      sortable: true,
+    },
+    {
+      name: "Action",
+      selector: (row) => (
+        <button className="btn btn-danger">
+          <i class="bi bi-trash"></i>
+        </button>
+      ),
+    },
+  ];
 
   return (
     <div>
@@ -95,7 +108,22 @@ const MyOrders = () => {
           <CusProfileNavbar />
 
           <div class="col-lg-10">
-            <Table></Table>
+            <div className="my-orders-comp-outer">
+              <Row>
+                <div className="my-order-tab-header">
+                  <h3>My Orders</h3>
+                </div>
+                <div className="my-order-tab-body">
+                  <DataTable
+                    columns={columns}
+                    data={orders}
+                    pagination={true}
+                    paginationPerPage={5}
+                    paginationRowsPerPageOptions={[5, 10, 15, 20, 25, 30]}
+                  />
+                </div>
+              </Row>
+            </div>
           </div>
         </div>
       </div>
