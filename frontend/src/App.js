@@ -15,6 +15,17 @@ import CustomerProfile from "./pages/CustomerAuth/CustomerProfile";
 import SystemLogin from "./pages/SystemLoginPage/system-Login";
 import MyOrders from "./pages/MyProfile/MyOrders";
 // import SellerProfile from "./pages/System/Seller/NewSellerProfile";
+import Dashboard from "./pages/System/Admin/Dashboard";
+import PendingOrders from "./pages/System/Admin/PendingOrders";
+import PendingItem from "./pages/System/Admin/PendingItem";
+import AllProducts from "./pages/System/Admin/AllProducts";
+//import AdminProfile from "./pages/System/Admin/AdminProfile";
+import AllUsers from "./pages/System/Admin/AllUsers";
+import DeliveryTracking from "./pages/System/Admin/DeliveryTracking";
+import SellerDashboard from "./pages/System/Seller/SellerDashboard";
+import AllOrders from "./pages/System/Seller/AllOrders";
+import SellerProducts from "./pages/System/Seller/SellerProducts";
+import NewSellerProfile from "./pages/System/Seller/NewSellerProfile";
 // :::::::::::::::::::::::::::::::::::::::::::error in this line ::::::::::::::::::::::::::::::::::::::::::::::
 
 function App() {
@@ -39,38 +50,38 @@ function App() {
 
         {/* ::::::::::::::::::::::::::::::::::::::::Admin Routes::::::::::::::::::::::::::::::::::::::::::::::::::: */}
         <Route path="/system/auth" element={<SystemLogin />} />
-        {/* <Route path="/system/admin-dashboard" element={<Dashboard />} /> */}
+         <Route path="/system/admin-dashboard" element={<Dashboard />} />
 
-        {/* <Route path="/system/admin-pendingorders" element={<PendingOrders />} /> */}
-        {/* <Route path="/system/admin-pendingitem" element={<PendingItem />} /> */}
-        {/* <Route path="/system/admin-allproducts" element={<AllProducts />} /> */}
+         <Route path="/system/admin-pendingorders" element={<PendingOrders />} />
+         <Route path="/system/admin-pendingitem" element={<PendingItem />} /> 
+        <Route path="/system/admin-allproducts" element={<AllProducts />} /> 
 
-        {/* <Route path="/system/admin-profile" element={<AdminProfile />} /> */}
-        {/* <Route path="/system/admin-allusers" element={<AllUsers />} /> */}
-        {/* <Route path="/system/admin-tracking" element={<DeliveryTracking />} /> */}
+         {/*<Route path="/system/admin-profile" element={<AdminProfile />} /> */}
+         <Route path="/system/admin-allusers" element={<AllUsers />} />
+         <Route path="/system/admin-tracking" element={<DeliveryTracking />} /> 
 
-        {/* <Route path="/system/admin-pendingproducts" element={<PendingProducts />} />
+        {/* <Route path="/system/admin-pendingproducts" element={<PendingProducts />} />*/}
 
-        {/* <Route
+       <Route
           path="/system/admin-pendingproducts"
           element={<PendingOrders />}
-        /> */}
+        /> 
 
         {/* ::::::::::::::::::::::::::::::::::::::::Admin Routes::::::::::::::::::::::::::::::::::::::::::::::::::: */}
 
         {/* ::::::::::::::::::::::::::::::::::::::::Seller Routes::::::::::::::::::::::::::::::::::::::::::::::::::: */}
         {/* <Route path="/system/auth" element={<Test />} /> */}
-        {/* <Route path="/system/seller-dashboard" element={<SellerDashboard />} /> */}
+        <Route path="/system/seller-dashboard" element={<SellerDashboard />} />
 
-        {/* <Route
-          path="/system/system-login/seller-profile"
-          element={<SellerProfile />}
-        /> */}
-        {/* <Route path="/system/seller-allorders" element={<AllOrders />} /> */}
+        <Route
+          path="/system/seller-profile"
+          element={<NewSellerProfile />}
+        /> 
+         <Route path="/system/seller-allorders" element={<AllOrders />} />
 
-        {/* <Route path="/system/seller-products" element={<SellerProducts />} /> */}
-        {/* <Route path="/system/system-login" element={<SystemLogin />} /> */}
-        {/* <Route
+       <Route path="/system/seller-products" element={<SellerProducts />} /> 
+        {/*<Route path="/system/system-login" element={<SystemLogin />} />*/}
+       {/*<Route
           path="/system/seller-products/update/:id"
           exact
           element={<UpdateProduct />}
