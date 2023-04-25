@@ -93,3 +93,8 @@
   background-position: center;
   background-attachment: fixed;
 }
+
+.cus-update-form {
+  padding: 20px;
+  box-shadow: rgba(0, 0, 0, 0.16) 0px 1px 4px;
+}

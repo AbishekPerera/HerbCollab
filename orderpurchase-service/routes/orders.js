@@ -13,6 +13,12 @@ orderRouter.route("/addtoorder").post((req, res) => {
   const price = Number(req.body.price);
   const total = Number(req.body.total);
   const commission = Number(req.body.commission);
+  const sellerId = req.body.sellerId;
+  const sellerName = req.body.sellerName;
+  const deliveryname = req.body.deliveryname;
+  const deliveryaddress = req.body.deliveryaddress;
+  const deliveryphone = req.body.deliveryphone;
+  const deliveryemail = req.body.deliveryemail;
 
   const newOrder = new Order({
     userId,
@@ -24,6 +30,12 @@ orderRouter.route("/addtoorder").post((req, res) => {
     price,
     total,
     commission,
+    deliveryname,
+    deliveryemail,
+    deliveryphone,
+    deliveryaddress,
+    sellerId,
+    sellerName,
   });
 
   newOrder
@@ -79,6 +91,15 @@ orderRouter.route("/updateorderstatus/:id").put((req, res) => {
     .catch((err) => res.status(400).json("Error: " + err));
 });
 
+//get orders by sellerId (for seller)
+orderRouter.route("/getorderbysellerid/:sellerId").get((req, res) => {
+  const sellerId = req.params.sellerId;
+
+  Order.find({ sellerId })
+    .then((orders) => res.json(orders))
+    .catch((err) => res.status(400).json("Error: " + err));
+});
+
 // delete order
 orderRouter.route("/deleteorder/:id").delete((req, res) => {
   const id = req.params.id;
@@ -86,6 +107,19 @@ orderRouter.route("/deleteorder/:id").delete((req, res) => {
   Order.findByIdAndDelete(id)
     .then(() => res.json("Order deleted."))
     .catch((err) => res.status(400).json("Error: " + err));
+});
+
+orderRouter.route("/getorderbyid/:id").get(async (req, res) => {
+  let id = req.params.id;
+
+  const order = await Order.findById(id)
+    .then((order) => {
+      res.status(200).send({ order });
+    })
+    .catch((err) => {
+      console.log(err);
+      res.status(500).send({ err });
+    });
 });
 
 export default orderRouter;

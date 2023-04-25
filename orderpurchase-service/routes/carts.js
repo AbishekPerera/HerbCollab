@@ -12,6 +12,8 @@ cartRouter.route("/addtocart").post((req, res) => {
   const quantity = Number(req.body.quantity);
   const price = Number(req.body.price);
   const total = Number(req.body.total);
+  const sellerId = req.body.sellerId;
+  const sellerName = req.body.sellerName;
 
   const newCart = new Cart({
     userId,
@@ -22,6 +24,8 @@ cartRouter.route("/addtocart").post((req, res) => {
     quantity,
     price,
     total,
+    sellerId,
+    sellerName,
   });
 
   newCart
