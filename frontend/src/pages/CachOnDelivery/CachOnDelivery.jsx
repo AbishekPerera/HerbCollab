@@ -12,6 +12,7 @@ import {
 } from "react-bootstrap";
 import "./CachOnDelivery.css";
 import axios from "axios";
+import { Link } from "react-router-dom";
 
 const CachOnDelivery = () => {
   const iserInfo = localStorage.getItem("userInfo");
@@ -24,7 +25,7 @@ const CachOnDelivery = () => {
   const [deliveryPhone, setDeliveryPhone] = useState("");
   const [deliveryAddress, setDeliveryAddress] = useState("");
 
-  const [validDeleverydetails, setValidDeleverydetails] = useState(false);
+  // const [validDeleverydetails, setValidDeleverydetails] = useState(false);
 
   const validateDeleveryDetails = (e) => {
     e.preventDefault();
@@ -131,7 +132,7 @@ const CachOnDelivery = () => {
             <Navbar.Toggle />
             <Navbar.Collapse className="justify-content-end">
               <Navbar.Text>
-                Having Trobble ? <a>click me</a>
+                Having Trobble ? <Link>click me</Link>
               </Navbar.Text>
             </Navbar.Collapse>
           </Container>

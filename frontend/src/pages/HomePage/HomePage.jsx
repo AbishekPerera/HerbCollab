@@ -13,6 +13,7 @@ import Header from "../../components/Header/Header";
 import Footer from "../../components/Footer/Footer";
 import FooterBanner from "../../components/FooterBanner/FooterBanner";
 import axios from "axios";
+import { Link } from "react-router-dom";
 
 const HomePage = () => {
   // const products = [
@@ -141,29 +142,29 @@ const HomePage = () => {
                             <ul>
                               {/* <!-- Submenu Column - unlimited --> */}
                               <li class="ltn__category-menu-item ltn__category-menu-drop">
-                                <a>
+                                <Link>
                                   <i class="bi bi-bag-heart"></i>Health Care
-                                </a>
+                                </Link>
                                 <ul class="ltn__category-submenu ltn__category-column-5">
                                   <li class="ltn__category-submenu-title ltn__category-menu-drop">
-                                    <a>Health Care</a>
+                                    <Link>Health Care</Link>
                                     <ul class="ltn__category-submenu-children">
                                       <li>
-                                        <a>
+                                        <Link>
                                           Clutches Clutches Clutches Clutches{" "}
-                                        </a>
+                                        </Link>
                                       </li>
                                       <li>
-                                        <a>Cross Body</a>
+                                        <Link>Cross Body</Link>
                                       </li>
                                       <li>
-                                        <a>Satchels</a>
+                                        <Link>Satchels</Link>
                                       </li>
                                       <li>
-                                        <a>Sholuder</a>
+                                        <Link>Sholuder</Link>
                                       </li>
                                       <li>
-                                        <a>Toter</a>
+                                        <Link>Toter</Link>
                                       </li>
                                     </ul>
                                   </li>
@@ -171,27 +172,27 @@ const HomePage = () => {
                               </li>
                               {/* <!-- Submenu Column - 4 --> */}
                               <li class="ltn__category-menu-item ltn__category-menu-drop">
-                                <a>
+                                <Link>
                                   <i class="bi bi-bandaid"></i>First Aid{" "}
-                                </a>
+                                </Link>
                                 <ul class="ltn__category-submenu ltn__category-column-4">
                                   <li class="ltn__category-submenu-title ltn__category-menu-drop">
-                                    <a>First Aid</a>
+                                    <Link>First Aid</Link>
                                     <ul class="ltn__category-submenu-children">
                                       <li>
-                                        <a>Clutches</a>
+                                        <Link>Clutches</Link>
                                       </li>
                                       <li>
-                                        <a>Cross Body</a>
+                                        <Link>Cross Body</Link>
                                       </li>
                                       <li>
-                                        <a>Satchels</a>
+                                        <Link>Satchels</Link>
                                       </li>
                                       <li>
-                                        <a>Sholuder</a>
+                                        <Link>Sholuder</Link>
                                       </li>
                                       <li>
-                                        <a>Toter</a>
+                                        <Link>Toter</Link>
                                       </li>
                                     </ul>
                                   </li>
@@ -199,67 +200,67 @@ const HomePage = () => {
                               </li>
                               {/* <!-- Submenu Column - 3 --> */}
                               <li class="ltn__category-menu-item ltn__category-menu-drop">
-                                <a>
+                                <Link>
                                   <i class="bi bi-hospital"></i>Surgical Product
-                                </a>
+                                </Link>
                                 <ul class="ltn__category-submenu ltn__category-column-3">
                                   <li class="ltn__category-submenu-title ltn__category-menu-drop">
-                                    <a>Surgical Product</a>
+                                    <Link>Surgical Product</Link>
                                     <ul class="ltn__category-submenu-children">
                                       <li>
-                                        <a>Clutches</a>
+                                        <Link>Clutches</Link>
                                       </li>
                                       <li>
-                                        <a>Cross Body</a>
+                                        <Link>Cross Body</Link>
                                       </li>
                                       <li>
-                                        <a>Satchels</a>
+                                        <Link>Satchels</Link>
                                       </li>
                                       <li>
-                                        <a>Sholuder</a>
+                                        <Link>Sholuder</Link>
                                       </li>
                                       <li>
-                                        <a>Toter</a>
+                                        <Link>Toter</Link>
                                       </li>
                                     </ul>
                                   </li>
                                   <li class="ltn__category-submenu-title ltn__category-menu-drop">
-                                    <a>First Aid</a>
+                                    <Link>First Aid</Link>
                                     <ul class="ltn__category-submenu-children">
                                       <li>
-                                        <a>Clutches</a>
+                                        <Link>Clutches</Link>
                                       </li>
                                       <li>
-                                        <a>Cross Body</a>
+                                        <Link>Cross Body</Link>
                                       </li>
                                       <li>
-                                        <a>Satchels</a>
+                                        <Link>Satchels</Link>
                                       </li>
                                       <li>
-                                        <a>Sholuder</a>
+                                        <Link>Sholuder</Link>
                                       </li>
                                       <li>
-                                        <a>Toter</a>
+                                        <Link>Toter</Link>
                                       </li>
                                     </ul>
                                   </li>
                                   <li class="ltn__category-submenu-title ltn__category-menu-drop">
-                                    <a>Surgical Product</a>
+                                    <Link>Surgical Product</Link>
                                     <ul class="ltn__category-submenu-children">
                                       <li>
-                                        <a>Clutches</a>
+                                        <Link>Clutches</Link>
                                       </li>
                                       <li>
-                                        <a>Cross Body</a>
+                                        <Link>Cross Body</Link>
                                       </li>
                                       <li>
-                                        <a>Satchels</a>
+                                        <Link>Satchels</Link>
                                       </li>
                                       <li>
-                                        <a>Sholuder</a>
+                                        <Link>Sholuder</Link>
                                       </li>
                                       <li>
-                                        <a>Toter</a>
+                                        <Link>Toter</Link>
                                       </li>
                                     </ul>
                                   </li>

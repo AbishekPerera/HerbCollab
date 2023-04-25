@@ -12,6 +12,7 @@ import {
 } from "react-bootstrap";
 import "./PaymentGateway.css";
 import axios from "axios";
+import { Link } from "react-router-dom";
 
 const PaymentGateway = () => {
   const [cardNumber, setCardNumber] = useState("");
@@ -192,7 +193,7 @@ const PaymentGateway = () => {
             <Navbar.Toggle />
             <Navbar.Collapse className="justify-content-end">
               <Navbar.Text>
-                Having Trobble ? <a>click me</a>
+                Having Trobble ? <Link>click me</Link>
               </Navbar.Text>
             </Navbar.Collapse>
           </Container>

@@ -3,9 +3,9 @@ import { Link, useParams } from "react-router-dom";
 import Header from "../../components/Header/Header";
 import Footer from "../../components/Footer/Footer";
 import "./ProductDetailsPage.css";
-import { Button, Card, Col, Row, Tab, Tabs } from "react-bootstrap";
+import { Card, Col, Row, Tab, Tabs } from "react-bootstrap";
 import paymentimage from "../../img/other comp/payment-2.png";
-import doctorbanner from "../../img/other comp/doctorbanner.jpg";
+// import doctorbanner from "../../img/other comp/doctorbanner.jpg";
 import { useEffect, useState } from "react";
 import axios from "axios";
 import ReactStars from "react-rating-stars-component";
@@ -179,7 +179,7 @@ const ProductDetailsPage = () => {
                   <li>
                     <strong>Categories:</strong>
                     <span>
-                      <a>{product.category}</a>
+                      <Link>{product.category}</Link>
                     </span>
                   </li>
                 </ul>
@@ -220,24 +220,24 @@ const ProductDetailsPage = () => {
                 <ul>
                   <li>Share:</li>
                   <li>
-                    <a title="Facebook">
+                    <Link title="Facebook">
                       <i class="bi bi-facebook"></i>
-                    </a>
+                    </Link>
                   </li>
                   <li>
-                    <a title="Whatsapp">
+                    <Link title="Whatsapp">
                       <i class="bi bi-whatsapp"></i>
-                    </a>
+                    </Link>
                   </li>
                   <li>
-                    <a title="Messenger">
+                    <Link title="Messenger">
                       <i class="bi bi-messenger"></i>
-                    </a>
+                    </Link>
                   </li>
                   <li>
-                    <a title="Instagram">
+                    <Link title="Instagram">
                       <i class="bi bi-instagram"></i>
-                    </a>
+                    </Link>
                   </li>
                 </ul>
               </div>
