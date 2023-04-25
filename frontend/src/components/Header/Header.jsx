@@ -39,7 +39,7 @@ const Header = () => {
       <Row>
         <Col lg={3}>
           <a class="navbar-brand">
-            <Link to={"/"}>
+            <Link>
               <img src={Logo} alt="" id="navbar-Logo" />
             </Link>
           </a>
