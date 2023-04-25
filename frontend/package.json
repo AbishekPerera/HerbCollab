@@ -17,7 +17,6 @@
     "react-router-dom": "^6.10.0",
     "react-scripts": "5.0.1",
     "react-spinners": "^0.13.8",
-    "react-use-effect": "^0.0.1",
     "styled-components": "^5.3.9",
     "sweetalert": "^2.1.2",
     "web-vitals": "^2.1.4"

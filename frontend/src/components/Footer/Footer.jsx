@@ -14,19 +14,13 @@ const Footer = () => {
                 <h3>Services</h3>
                 <ul>
                   <li>
-                    <a>
-                      <Link>Order tracking</Link>
-                    </a>
+                    <Link>Order tracking</Link>
                   </li>
                   <li>
-                    <a>
-                      <Link>Wish List</Link>
-                    </a>
+                    <Link>Wish List</Link>
                   </li>
                   <li>
-                    <a>
-                      <Link to="/system/system-login">System Login</Link>
-                    </a>
+                    <Link to="/system/auth">System Login</Link>
                   </li>
                 </ul>
               </div>
@@ -34,19 +28,13 @@ const Footer = () => {
                 <h3>About</h3>
                 <ul>
                   <li>
-                    <a>
-                      <Link>Company</Link>
-                    </a>
+                    <Link>Company</Link>
                   </li>
                   <li>
-                    <a>
-                      <Link>Team</Link>
-                    </a>
+                    <Link>Team</Link>
                   </li>
                   <li>
-                    <a>
-                      <Link>Legacy</Link>
-                    </a>
+                    <Link>Legacy</Link>
                   </li>
                 </ul>
               </div>
@@ -54,39 +42,33 @@ const Footer = () => {
                 <h3>Careers</h3>
                 <ul>
                   <li>
-                    <a>
-                      <Link>Job openings</Link>
-                    </a>
+                    <Link>Job openings</Link>
                   </li>
                   <li>
-                    <a>
-                      <Link>Employee success</Link>
-                    </a>
+                    <Link>Employee success</Link>
                   </li>
                   <li>
-                    <a>
-                      <Link>Benefits</Link>
-                    </a>
+                    <Link>Benefits</Link>
                   </li>
                 </ul>
               </div>
               <div class="col-lg-3 item social">
-                <a>
-                  <Link></Link>
+                <Link>
                   <i class="bi bi-facebook"></i>
-                </a>
-                <a>
-                  <Link></Link>
+                </Link>
+
+                <Link>
                   <i class="bi bi-twitter"></i>
-                </a>
-                <a>
-                  <Link></Link>
+                </Link>
+
+                <Link>
                   <i class="bi bi-whatsapp"></i>
-                </a>
-                <a>
-                  <Link></Link>
+                </Link>
+
+                <Link>
                   <i class="bi bi-heart-pulse"></i>
-                </a>
+                </Link>
+
                 <p class="copyright">Herbcolab© 2023</p>
               </div>
             </div>
