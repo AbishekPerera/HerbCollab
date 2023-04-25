@@ -6,10 +6,11 @@ import SellerNav from "../../../components/System/SystemNavBar/SellerNav";
 
 import React, { useEffect, useState,useRef } from "react";
 import axios from "axios";
-axios.defaults.withCredentials=true;
 
 
-const SellerProfile = () => {
+const NewSellerProfile = () => {
+
+    
     const [isEditMode, setIsEditMode] = useState(false);
     
     const [ID,setID]=useState('');
@@ -19,17 +20,25 @@ const SellerProfile = () => {
         Email: '',
         MobileNo: '',
         Address: '',
-        Password:''  
         
     })  
     console.log(ID);
 
+      //get data from local storage as a string
+        const systemInfo = localStorage.getItem("systemInfo");
+      //set data to local storage as a JSON object
+        const systemInfo1 = JSON.parse(systemInfo);
+
+        const id = systemInfo1["user"]["_id"];
+        console.log(id);
+        //then you can get any data from local storage. in this case i get user id adn log it on console
+        console.log("local store", systemInfo1["user"]["_id"]);
+
     const sendRequest = async()=>{
         try{
           
-        const res =await axios.get("http://localhost:8084/users/user",{
-              withCredentials: true,
-          }).then((res)=>{
+        const res =await axios.get("http://localhost:8084/users/user/"+id
+             ).then((res)=>{
             const data =  res.data;
             setUser(data)
             setID(data._id);
@@ -102,14 +111,14 @@ return (
         </div>
         <div className="content " style={{ marginTop: '20px'}} >
         <div class="col-xl-12 ">
-            <div class="card bg-white shadow">
-              <div class="card-header bg-white border-0">
+            <div class="card shadow">
+              <div class="card-header  border-0">
                 
                     <h3 class="mb-0 text-center">My Profile</h3>
             
               </div>
               <div class="card-body text-center" >
-              <img src="https://bootdey.com/img/Content/avatar/avatar7.png" alt="Admin" class="rounded-circle" width="280"/>
+              <img src="https://bootdey.com/img/Content/avatar/avatar7.png" alt="Admin" class="rounded-circle" width="150"/>
               <p class="text-muted font-size-sm">Registered Date : {user.RegisteredDate} </p>
               </div>
               <div class="card-body" >
@@ -199,7 +208,8 @@ return (
 
                     <div class="d-flex align-items-center justify-content-center">
                     
-                        <button type="submit" class="btn btn-success " onClick={handleSaveClick}>Save</button>
+                        <button type="submit" class="btn btn-success " style={{marginRight: "10px"}} onClick={handleSaveClick}>Save</button>
+                        <button class="btn btn-danger">Cancel</button>
                      
                     </div>
                   </form>
@@ -211,21 +221,15 @@ return (
                     <div class="row">
                       <div class="col-lg-12">
                         <div class="form-group focused" >
-                          <label for="name" class=" profileformlabelName"><i class="bi bi-person-circle profileicon"></i>Seller Name:</label><br/>
-                         
-                            <div>{user.UserName}</div>
-                         
-                          <br/>
+                          <label for="name" ><i class="bi bi-person-circle profileicon"></i>Seller Name: {user.UserName}</label><br/> 
+                        <br/>
                         </div>
                       </div>
                     </div>
                     <div class="row">
                       <div class="col-lg-12">
                         <div class="form-group focused" >
-                          <label for="name" class=" profileformlabelName"><i class="bi bi-person-circle profileicon"></i>Store Name:</label><br/>
-                         
-                            <div>{user.StoreName}</div>
-                         
+                          <label for="name" ><i class="bi bi-person-circle profileicon"></i>Store Name: {user.StoreName}</label><br/>
                           <br/>
                         </div>
                       </div>
@@ -234,10 +238,7 @@ return (
                     <div class="row">
                       <div class="col-lg-12">
                         <div class="form-group focused" >
-                          <label for="email" class=" profileformlabelName"><i class="bi bi-envelope-at-fill profileicon"></i>Email:</label><br/>
-                        
-                            <div>{user.Email}</div>
-                          
+                          <label for="email" ><i class="bi bi-envelope-at-fill profileicon"></i>Email: {user.Email}</label><br/>
                           <br/>
                         </div>
                       </div>
@@ -249,9 +250,8 @@ return (
                     <div class="row">
                         <div class="col-md-12">
                         <div class="form-group">
-                            <label for="phone" class=" profileformlabelName"><i class="bi bi-telephone-fill profileicon"></i>Mobile:</label><br/>
-                            <div>{user.MobileNo}</div>
-                        
+                            <label for="phone" ><i class="bi bi-telephone-fill profileicon"></i>Mobile: {user.MobileNo}</label><br/>
+                            
                         </div>
                         </div>
                       </div>
@@ -259,10 +259,7 @@ return (
                       <div class="row">
                         <div class="col-md-12">
                         <div class="form-group">
-                          <label for="address" class=" profileformlabelName"><i class="bi bi-geo-alt profileicon"></i>Address:</label><br/>
-                         
-                         
-                            <div>{user.Address}</div>
+                          <label for="address" ><i class="bi bi-geo-alt profileicon"></i>Address: {user.Address}</label><br/>
                           
                           </div>
                         </div>
@@ -273,14 +270,12 @@ return (
 
                     <div class="d-flex align-items-center justify-content-center">
                     
-                       
-                    
                         <button type="submit" class="btn btn-success" onClick={handleEditClick}>Edit</button>
                     
                     </div>
                     </div>
                   </form>
-                        )};
+                        )}
                   
               </div>
             </div>
@@ -293,4 +288,4 @@ return (
     </div>
 ) 
 }
-export default SellerProfile
+export default NewSellerProfile

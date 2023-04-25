@@ -102,6 +102,13 @@ form.sign-in-form {
   text-decoration-line: underline;
 }
 
+.error{
+  color: red;
+  font-size: 0.8rem;
+  margin: 0;
+  padding: 0;
+}
+
 
 .btnLogin {
   width: 150px;
