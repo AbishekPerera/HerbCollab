@@ -79,7 +79,7 @@ const NewSellerProfile = () => {
       //insert data
       const sendRequest2=async()=>{
      
-      await axios.put("http://localhost:8084/users/update/"+{ID},{
+      await axios.put("http://localhost:8084/users/update/"+ID,{
           UserName:user.UserName,
           StoreName:user.StoreName,
           Email:user.Email,
