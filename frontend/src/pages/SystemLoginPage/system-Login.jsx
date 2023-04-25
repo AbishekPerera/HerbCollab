@@ -65,9 +65,10 @@ const SystemLogin = () => {
       })
       .then((res) => {
         alert(res.data);
+        window.location.reload(false);
       })
       .catch((error) => {
-        alert(error);
+        
         if (error.response.status === 406) {
           alert("User already exists! Login Instead");
         } else {
@@ -97,9 +98,9 @@ const SystemLogin = () => {
         // console.log("local store", systemInfo1["user"]["_id"]);
 
         if (res.data.user.Role === "Seller") {
-          history("/system/seller-Profile");
+          history("/system/seller-Dashboard");
         } else if (res.data.user.Role === "Admin") {
-          history("/admin-Profile");
+          history("/admin-Dashboard");
         } else {
           alert("You are not a Seller or admin. Please Login as a Seller");
         }
@@ -130,6 +131,10 @@ const SystemLogin = () => {
       ...prev,
       [e.target.name]: e.target.value,
     }));
+    setFormErrors((prev) => ({
+      ...prev,
+      [e.target.name]: '',
+    }));
   }
 
   //frontend validation
@@ -139,7 +144,12 @@ const SystemLogin = () => {
     if (!values.UserName) {
       errors.UserName = "UserName is required";
     }
-
+    if (!values.StoreName) {
+      errors.StoreName= "Store Name is required";
+    }
+    if (!values.Address) {
+      errors.Address= "Address is required";
+    }
     if (!values.Email) {
       errors.Email = "Email is required";
     } else if (
@@ -214,7 +224,7 @@ const SystemLogin = () => {
                 onChange={handleChange}
                 placeholder="User Name"
               />
-              <p class="error">{formErrors.UserName}</p>
+              <p class="error" name="UserName" Value={formErrors.UserName}>{formErrors.UserName}</p>
 
               <input
                 type="name"

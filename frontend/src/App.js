@@ -27,6 +27,7 @@ import AllOrders from "./pages/System/Seller/AllOrders";
 import SellerProducts from "./pages/System/Seller/SellerProducts";
 import NewSellerProfile from "./pages/System/Seller/NewSellerProfile";
 import AllSellers from "./pages/System/Admin/AllSellers";
+import AdminProfile from "./pages/System/Admin/AdminProfile";
 // :::::::::::::::::::::::::::::::::::::::::::error in this line ::::::::::::::::::::::::::::::::::::::::::::::
 
 function App() {
@@ -57,7 +58,7 @@ function App() {
          <Route path="/system/admin-pendingitem" element={<PendingItem />} /> 
         <Route path="/system/admin-allproducts" element={<AllProducts />} /> 
 
-         {/*<Route path="/system/admin-profile" element={<AdminProfile />} /> */}
+         <Route path="/system/admin-profile" element={<AdminProfile />} />
          <Route path="/system/admin-allusers" element={<AllUsers />} />
         <Route path="/system/admin-allsellers" element={<AllSellers />} />
          <Route path="/system/admin-tracking" element={<DeliveryTracking />} /> 
@@ -82,7 +83,6 @@ function App() {
          <Route path="/system/seller-allorders" element={<AllOrders />} />
 
        <Route path="/system/seller-products" element={<SellerProducts />} /> 
-        {/*<Route path="/system/system-login" element={<SystemLogin />} />*/}
        {/*<Route
           path="/system/seller-products/update/:id"
           exact

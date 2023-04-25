@@ -171,11 +171,16 @@ const AllSellers = () => {
                       <option value="Inactive">Inactive</option>
                     </select>
                   </td>
-                  <td className="d-flex justify-content-between">
-                    <button className="btn btnx btn-success" onClick={(() => handleSellerModalShow(sellerData._id))}><span class="glyphicon">&#xe105;</span></button>
-                    <button className="btn btnx btn-success"><a href={'/UpdatSeller/' + sellerData._id} style={{ color: 'white', textDecoration: 'none' }}> <span class="glyphicon glyphicon-pencil"></span></a></button>
-                    <button className="btn btnx btn-danger" onClick={(() => DeleteSeller(sellerData._id))}><span class="glyphicon">&#xe020;</span></button>
+                  <td className="d-flex justify-content-between align-items-center">
+                    <button className="btn btn-success seller-modal-button" style={{marginRight: "10px"}}  onClick={() => handleSellerModalShow(sellerData._id)}>
+                      View
+                    </button>
+                    <button className="btn btn-danger delete-seller-button" onClick={() => DeleteSeller(sellerData._id)}>
+                     Delete
+                    </button>
                   </td>
+
+
                 </tr>
                 ))}
             </table>
