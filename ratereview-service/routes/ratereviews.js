@@ -8,6 +8,7 @@ ratereviewRouter.route("/addratereview").post((req, res) => {
   const customerName = req.body.customerName;
   const productId = req.body.productId;
   const productName = req.body.productName;
+  const productImage = req.body.productImage;
   const sellerId = req.body.sellerId;
   const sellerName = req.body.sellerName;
   const sellerRating = Number(req.body.sellerRating);
@@ -20,6 +21,7 @@ ratereviewRouter.route("/addratereview").post((req, res) => {
     customerName,
     productId,
     productName,
+    productImage,
     sellerId,
     sellerName,
     sellerRating,

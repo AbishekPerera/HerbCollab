@@ -27,6 +27,9 @@ import NewSellerProfile from "./pages/System/Seller/NewSellerProfile";
 import AllSellers from "./pages/System/Admin/AllSellers";
 import AdminProfile from "./pages/System/Admin/AdminProfile";
 import UpdateProduct from "./pages/System/Seller/UpdateProduct";
+import MyPreOrders from "./pages/MyProfile/MyPreOrders";
+import MyShippedOrders from "./pages/MyProfile/MyShippedOrders";
+import MyReviews from "./pages/MyProfile/MyReviews";
 // :::::::::::::::::::::::::::::::::::::::::::error in this line ::::::::::::::::::::::::::::::::::::::::::::::
 
 function App() {
@@ -47,6 +50,9 @@ function App() {
         <Route path="/payment-gateway" element={<PaymentGateway />} />
         <Route path="/cachondelivery" element={<CachOnDelivery />} />
         <Route path="/myaccount/myorders" element={<MyOrders />} />
+        <Route path="/myaccount/mypreorders" element={<MyPreOrders />} />
+        <Route path="/myaccount/myshipped" element={<MyShippedOrders />} />
+        <Route path="/myaccount/myreviews" element={<MyReviews />} />
         {/* ::::::::::::::::::::::::::::::::::::::::Customer Routes::::::::::::::::::::::::::::::::::::::::::::::::::: */}
 
         {/* ::::::::::::::::::::::::::::::::::::::::Admin Routes::::::::::::::::::::::::::::::::::::::::::::::::::: */}

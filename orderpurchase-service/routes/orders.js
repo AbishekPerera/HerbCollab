@@ -79,4 +79,13 @@ orderRouter.route("/updateorderstatus/:id").put((req, res) => {
     .catch((err) => res.status(400).json("Error: " + err));
 });
 
+// delete order
+orderRouter.route("/deleteorder/:id").delete((req, res) => {
+  const id = req.params.id;
+
+  Order.findByIdAndDelete(id)
+    .then(() => res.json("Order deleted."))
+    .catch((err) => res.status(400).json("Error: " + err));
+});
+
 export default orderRouter;
