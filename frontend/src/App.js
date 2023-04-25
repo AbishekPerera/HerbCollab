@@ -13,6 +13,7 @@ import CustomerLogin from "./pages/CustomerAuth/CustomerLogin";
 import CustomerRegister from "./pages/CustomerAuth/CustomerRegister";
 import CustomerProfile from "./pages/CustomerAuth/CustomerProfile";
 import SystemLogin from "./pages/SystemLoginPage/system-Login";
+import MyOrders from "./pages/MyProfile/MyOrders";
 // import SellerProfile from "./pages/System/Seller/NewSellerProfile";
 // :::::::::::::::::::::::::::::::::::::::::::error in this line ::::::::::::::::::::::::::::::::::::::::::::::
 
@@ -33,6 +34,7 @@ function App() {
         <Route path="/myaccount" element={<CustomerProfile />} />
         <Route path="/payment-gateway" element={<PaymentGateway />} />
         <Route path="/cachondelivery" element={<CachOnDelivery />} />
+        <Route path="/myaccount/myorders" element={<MyOrders />} />
         {/* ::::::::::::::::::::::::::::::::::::::::Customer Routes::::::::::::::::::::::::::::::::::::::::::::::::::: */}
 
         {/* ::::::::::::::::::::::::::::::::::::::::Admin Routes::::::::::::::::::::::::::::::::::::::::::::::::::: */}
