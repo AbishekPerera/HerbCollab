@@ -1,4 +1,3 @@
-
 import React from "react";
 import { Routes, Route } from "react-router-dom";
 import Homepage from "./pages/HomePage/HomePage";
@@ -17,7 +16,6 @@ import SystemLogin from "./pages/SystemLoginPage/system-Login";
 // import SellerProfile from "./pages/System/Seller/NewSellerProfile";
 // :::::::::::::::::::::::::::::::::::::::::::error in this line ::::::::::::::::::::::::::::::::::::::::::::::
 
-
 function App() {
   return (
     <div className="App">
@@ -32,11 +30,9 @@ function App() {
         {/* <Route path="/myaccount" element={<MyProfile />} /> */}
         <Route path="/customerlogin" element={<CustomerLogin />} />
         <Route path="/customer/register" element={<CustomerRegister />} />
-
         <Route path="/myaccount" element={<CustomerProfile />} />
         <Route path="/payment-gateway" element={<PaymentGateway />} />
         <Route path="/cachondelivery" element={<CachOnDelivery />} />
-
         {/* ::::::::::::::::::::::::::::::::::::::::Customer Routes::::::::::::::::::::::::::::::::::::::::::::::::::: */}
 
         {/* ::::::::::::::::::::::::::::::::::::::::Admin Routes::::::::::::::::::::::::::::::::::::::::::::::::::: */}
@@ -64,7 +60,6 @@ function App() {
         {/* <Route path="/system/auth" element={<Test />} /> */}
         {/* <Route path="/system/seller-dashboard" element={<SellerDashboard />} /> */}
 
-
         {/* <Route
           path="/system/system-login/seller-profile"
           element={<SellerProfile />}
@@ -78,7 +73,6 @@ function App() {
           exact
           element={<UpdateProduct />}
         /> */}
-
 
         {/* ::::::::::::::::::::::::::::::::::::::::Seller Routes::::::::::::::::::::::::::::::::::::::::::::::::::: */}
       </Routes>

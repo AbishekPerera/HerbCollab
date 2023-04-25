@@ -3,81 +3,88 @@ import Header from "../../components/Header/Header";
 import Footer from "../../components/Footer/Footer";
 import { Link } from "react-router-dom";
 import "./MyCart.css";
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import { Col, Container, Row, Table } from "react-bootstrap";
-import MyVerticallyCenteredModal from "../../components/MyVerticallyCenteredModal/MyVerticallyCenteredModal";
+import PaymentGatewayModel from "../../components/PaymentGatewayModel/PaymentGatewayModel";
+import axios from "axios";
 
 const MyCart = () => {
-  const [cartItems, setCartItems] = useState([
-    {
-      id: 1,
-      name: "Item 1",
-      image:
-        "https://sp-ao.shortpixel.ai/client/to_auto,q_glossy,ret_img,w_300/https://www.uniquepharmacy.lk/wp-content/uploads/2021/08/NOW-VITAMIN-D-31000IU-300x300.jpg",
-      price: 10.99,
-      count: 1,
-    },
-    {
-      id: 2,
-      name: "Item 2",
-      image:
-        "https://sp-ao.shortpixel.ai/client/to_auto,q_glossy,ret_img,w_300/https://www.uniquepharmacy.lk/wp-content/uploads/2021/03/WAGNER-FISH-OIL-1000-300x300.jpg",
-      price: 15.99,
-      count: 2,
-    },
-    {
-      id: 3,
-      name: "Item 3",
-      image:
-        "https://sp-ao.shortpixel.ai/client/to_auto,q_glossy,ret_img,w_300/https://www.uniquepharmacy.lk/wp-content/uploads/2020/09/glutanex-tablet_640x-300x300.jpg",
-      price: 7.99,
-      count: 3,
-    },
-    {
-      id: 4,
-      name: "Item 4",
-      image:
-        "https://sp-ao.shortpixel.ai/client/to_auto,q_glossy,ret_img,w_300/https://www.uniquepharmacy.lk/wp-content/uploads/2020/09/glutanex-tablet_640x-300x300.jpg",
-      price: 500,
-      count: 3,
-    },
-  ]);
+  const [cartItems, setCartItems] = useState([]);
 
   const handleDeleteItem = (id) => {
-    const newCartItems = cartItems.filter((item) => item.id !== id);
-    setCartItems(newCartItems);
+    axios
+      .delete("http://localhost:8072/carts/deletecartitem/" + id)
+      .then((res) => {
+        alert("Item deleted successfully.");
+        getCartItems();
+      })
+      .catch((err) => {
+        alert(err);
+      });
   };
 
-  const handleItemCountChange = (id, count) => {
-    const newCartItems = cartItems.map((item) => {
-      if (item.id === id) {
-        return { ...item, count };
-      }
-      return item;
-    });
-    setCartItems(newCartItems);
+  // ::::::::::::::::::::::::::::::::::::::::::::::::::: update cart items
+  const handleItemCountChange = (id, count, price) => {
+    // console.log(id, count, price);
+    axios
+      .put("http://localhost:8072/carts/updatecart/" + id, {
+        quantity: count,
+        total: count * price,
+      })
+      .then((res) => {
+        // alert("Item updated successfully.");
+        getCartItems();
+      })
+      .catch((err) => {
+        alert(err);
+      });
+  };
+
+  // ::::::::::::::::::::::::::::::::::::::::::::::::::: get cart items
+  useEffect(() => {
+    getCartItems();
+  }, []);
+
+  const getCartItems = async () => {
+    //get data prom
+    const iserInfo = localStorage.getItem("userInfo");
+    const userInfo = JSON.parse(iserInfo);
+    const userId = userInfo.user._id;
+
+    const { data } = await axios.get(
+      "http://localhost:8072/carts/getcartbyuserid/" + userId
+    );
+    setCartItems(data);
   };
 
   const cartItemsList = cartItems.map((item) => (
-    <tr key={item.id}>
+    <tr key={item._id}>
       <td>
-        <img className="cart-product-img" src={item.image} alt={item.name} />
+        <img
+          className="cart-product-img"
+          src={item.productImage}
+          alt={item.productName}
+        />
       </td>
-      <td>{item.name}</td>
+      <td>{item.productName}</td>
       <td>
         <input
           className="cart-item-count-input"
           type="number"
-          value={item.count}
-          onChange={(e) => handleItemCountChange(item.id, e.target.value)}
+          max={10}
+          min={1}
+          defaultValue={item.quantity}
+          onChange={(e) =>
+            handleItemCountChange(item._id, e.target.value, item.price)
+          }
         />
       </td>
-      <td>{item.price}</td>
-      <td>{item.price * item.count}</td>
+      <td>Rs.{item.price}</td>
+      <td>Rs.{item.price * item.quantity}</td>
       <td>
         <button
           className="btn btn-danger"
-          onClick={() => handleDeleteItem(item.id)}
+          onClick={() => handleDeleteItem(item._id)}
         >
           <i class="bi bi-trash"></i>
         </button>
@@ -86,9 +93,15 @@ const MyCart = () => {
   ));
 
   const total = cartItems.reduce(
-    (acc, item) => acc + item.price * item.count,
+    (acc, item) => acc + item.price * item.quantity,
     0
   );
+
+  const shipping = 200;
+
+  const commission = 0.01 * total;
+
+  const grandTotal = total + shipping + commission;
 
   //for model
   const [modalShow, setModalShow] = React.useState(false);
@@ -149,15 +162,19 @@ const MyCart = () => {
                   <tbody>
                     <tr>
                       <td className="font-weight-bold">Subtotal</td>
-                      <td className="text-right">${total}</td>
+                      <td className="text-right">Rs.{total}</td>
                     </tr>
                     <tr>
                       <td className="font-weight-bold">Shipping</td>
-                      <td className="text-right">Free</td>
+                      <td className="text-right">Rs. {shipping}</td>
+                    </tr>
+                    <tr>
+                      <td className="font-weight-bold">Commission</td>
+                      <td className="text-right">Rs.{commission}</td>
                     </tr>
                     <tr>
                       <td className="font-weight-bold">Total</td>
-                      <td className="text-right">${total}</td>
+                      <td className="text-right">Rs.{grandTotal}</td>
                     </tr>
                   </tbody>
                 </Table>
@@ -171,7 +188,7 @@ const MyCart = () => {
                     </button>
                   </Link>
                 </div>
-                <MyVerticallyCenteredModal
+                <PaymentGatewayModel
                   show={modalShow}
                   onHide={() => setModalShow(false)}
                 />
