@@ -71,9 +71,12 @@ const SellerSidebar = () => {
                 <span style={{ paddingLeft: "0.7rem" }}>Users</span>
               </Link>
             </li> */}
-            <li>
-              <Link to="/system/seller-profile" className="text-decoration-none px-3 py-2 d-block">
-                <i class="bi bi-person-square"></i>
+               <li
+             className={activeItem === "/system/seller-profile" ? "active" : ""
+            }
+                        >
+              <Link  to="/system/seller-profile" className="text-decoration-none px-3 py-2 d-block">
+                <i class="bi bi-bag-plus"></i>
                 <span style={{ paddingLeft: "0.7rem" }}>My Profile</span>
               </Link>
             </li>
