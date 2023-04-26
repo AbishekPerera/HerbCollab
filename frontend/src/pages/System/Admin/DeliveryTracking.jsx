@@ -108,26 +108,26 @@ const DeliveryTracking = () => {
       name: 'Update Status',
       selector: (row) => (
         <>
-          {row.status === 'Dispatched' ? (
+          {row.status === 'Delivered' ? (
             <span style={{ fontWeight: 'bold', color: 'green' }}>
               Order Completed
             </span>
           ) : (
             <>
-              {row.status === 'Delivered' ? (
+              {row.status === 'Dispatched' ? (
                 <button
+                  style={{ backgroundColor: 'orange', width: '120px' }}
                   className='button-18'
-                  onClick={() => changeStatusToDispatched(row._id)}>
-                  Dispatched
+                  onClick={() => changeStatusToDelivered(row._id)}>
+                  Delivered
                 </button>
               ) : (
                 <>
                   {row.status === 'Confirmed' ? (
                     <button
-                      style={{ backgroundColor: 'orange', width: '120px' }}
                       className='button-18'
-                      onClick={() => changeStatusToDelivered(row._id)}>
-                      Delivered
+                      onClick={() => changeStatusToDispatched(row._id)}>
+                      Dispatched
                     </button>
                   ) : (
                     ''
