@@ -1,169 +1,171 @@
-import React from 'react';
+import React, { useState, useEffect } from 'react';
 import './styles/Dashboard.css';
-import './styles/AllProducts.css';
-import './styles/AllProductsSearch.css';
+import './styles/DeliveryTracking.css';
 import SystemFooter from '../../../components/System/SystemFooter/SystemFooter';
-import Product1 from '../../../img/Admin/Product7.jpeg';
-import Product2 from '../../../img/Admin/Product6.jpeg';
-import Product3 from '../../../img/Admin/Product3FaceCream.jpeg';
-import Product4 from '../../../img/Admin/Product4Cream.jpeg';
-import Product5 from '../../../img/Admin/Product8.jpeg';
 import Sidebar from '../../../components/System/Sidebar/Sidebar';
 import SystemNav from '../../../components/System/SystemNavBar/SystemNav';
+import DataTable from 'react-data-table-component';
+import { tableCustomStyles } from './styles/tableStyle.jsx';
+import { useNavigate } from 'react-router-dom';
+import axios from 'axios';
+import swal from 'sweetalert';
 
 const DeliveryTracking = () => {
+  const [trackingOrders, setTrackingOrders] = useState([]);
+  const navigate = useNavigate();
+
+  useEffect(() => getAllTrackingOrders(), []);
+
+  const getAllTrackingOrders = () => {
+    axios
+      .get('http://localhost:8072/orders/getallorders')
+      .then((res) => {
+        const filteredOrders = res.data.filter((trackingOrders) => {
+          return (
+            trackingOrders.status === 'Dispatched' ||
+            trackingOrders.status === 'Delivered' ||
+            trackingOrders.status === 'Confirmed'
+          );
+        });
+        setTrackingOrders(filteredOrders);
+      })
+      .catch((err) => {
+        alert(err.message);
+      });
+  };
+
+  const changeStatusToDelivered = (id) => {
+    const status = 'Delivered';
+    axios
+      .put('http://localhost:8072/orders/updateorderstatus/' + id, { status })
+      .then((res) => {
+        swal('Order Delivered!', 'Order Delivered!', 'success');
+        setTimeout(function () {
+          // navigate('/system/admin-tracking');
+          window.location.reload();
+        }, 2000);
+      })
+      .catch((err) => {
+        alert(err.message);
+      });
+  };
+
+  const changeStatusToDispatched = (id) => {
+    const status = 'Dispatched';
+    axios
+      .put('http://localhost:8072/orders/updateorderstatus/' + id, { status })
+      .then((res) => {
+        swal('Order Dispatched!', 'Order Dispatched!', 'success');
+        setTimeout(function () {
+          // navigate('/system/admin-tracking');
+          window.location.reload();
+        }, 2000);
+      })
+      .catch((err) => {
+        alert(err.message);
+      });
+  };
+
+  const columns = [
+    {
+      name: 'Order',
+
+      selector: (row) => (
+        <img
+          className='cart-product-img'
+          src={row.productImage}
+          alt={row.productName}
+          style={{ height: '120px', width: '120px' }}
+        />
+      ),
+    },
+    {
+      name: 'Product Name',
+      selector: (row) => row.productName,
+      sortable: true,
+    },
+    {
+      name: 'Quantity',
+      selector: (row) => row.quantity,
+      sortable: true,
+    },
+    {
+      name: 'Price',
+      selector: (row) => row.price,
+      sortable: true,
+    },
+    {
+      name: 'Total Price',
+      selector: (row) => row.total,
+      sortable: true,
+    },
+    {
+      name: 'Order Status',
+      selector: (row) => row.status,
+      sortable: true,
+    },
+    {
+      name: 'Update Status',
+      selector: (row) => (
+        <>
+          {row.status === 'Dispatched' ? (
+            <span style={{ fontWeight: 'bold', color: 'green' }}>
+              Order Completed
+            </span>
+          ) : (
+            <>
+              {row.status === 'Delivered' ? (
+                <button
+                  className='button-18'
+                  onClick={() => changeStatusToDispatched(row._id)}>
+                  Dispatched
+                </button>
+              ) : (
+                <>
+                  {row.status === 'Confirmed' ? (
+                    <button
+                      style={{ backgroundColor: 'orange', width: '120px' }}
+                      className='button-18'
+                      onClick={() => changeStatusToDelivered(row._id)}>
+                      Delivered
+                    </button>
+                  ) : (
+                    ''
+                  )}
+                </>
+              )}
+            </>
+          )}
+        </>
+      ),
+    },
+  ];
+
   return (
-    <div className="mainContainer">
-      <div className="sidebar">
+    <div className='mainContainer'>
+      <div className='sidebar'>
         <Sidebar />
       </div>
 
-      <div className="contentContainer">
-        <div className="systemNavBar">
+      <div className='contentContainer'>
+        <div className='systemNavBar'>
           <SystemNav />
         </div>
-        <div style={{ textAlign: 'center' }}>
-          <h2>Delivery Status</h2>
+        <div className='content'>
+          <br />
+          <h1 style={{ textAlign: 'center' }}>Delivery Status</h1>
+          <br />
+          <br />
+          <DataTable
+            customStyles={tableCustomStyles}
+            columns={columns}
+            data={trackingOrders}
+            pagination={true}
+            paginationPerPage={5}
+            paginationRowsPerPageOptions={[5, 10, 15, 20, 25, 30]}
+            noDataComponent='No Products Found'
+          />
         </div>
-        <br />
-        {/* Search Bar */}
-        <link
-          rel="stylesheet"
-          href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css"
-        ></link>
-        <div
-          style={{
-            display: 'flex',
-            justifyContent: 'flex-end',
-            alignItems: 'center',
-            marginRight: '20px',
-          }}
-        >
-          <form
-            className="example"
-            action="/action_page.php"
-            style={{ maxWidth: '300px' }}
-          >
-            <input type="text" placeholder="Search.." name="search2" />
-            <button type="submit">
-              <i className="fa fa-search"></i>
-            </button>
-          </form>
-        </div>
-        <br />
-        {/* Table */}
-        <div className="table-container" style={{ width: '98%' }}>
-          <table>
-            <tr class="header-row">
-              <th>Product</th>
-              <th>Product Name</th>
-              <th>Quantity</th>
-              <th>Amount</th>
-              <th>Seller Name</th>
-              <th>Tracking Status</th>
-            </tr>
-            <tr>
-              <td>
-                <img
-                  src={Product4}
-                  alt="ProductImage"
-                  style={{ width: '150px', height: '150px' }}
-                />
-              </td>
-              <td>Facial Cream</td>
-              <td>1</td>
-              <td>1500.00</td>
-              <td>Seller name here</td>
-
-              <td>
-                <select style={{ width: '180px' }}>
-                  <option value="dispatched">Dispatched</option>
-                  <option value="delivered">Delivered</option>
-                </select>
-              </td>
-            </tr>
-            <tr>
-              <td>
-                <img
-                  src={Product2}
-                  alt="ProductImage"
-                  style={{ width: '150px', height: '150px' }}
-                />
-              </td>
-              <td>Body Spray</td>
-              <td>5</td>
-              <td>2500.00</td>
-              <td>Seller name here</td>
-
-              <td>
-                <select style={{ width: '180px' }}>
-                  <option value="dispatched">Dispatched</option>
-                  <option value="delivered">Delivered</option>
-                </select>
-              </td>
-            </tr>
-            <tr>
-              <td>
-                <img
-                  src={Product3}
-                  alt="ProductImage"
-                  style={{ width: '150px', height: '150px' }}
-                />
-              </td>
-              <td>Hand Clenser</td>
-              <td>1</td>
-              <td>4500.00</td>
-              <td>Sam Perera</td>
-
-              <td>
-                <select style={{ width: '180px' }}>
-                  <option value="dispatched">Dispatched</option>
-                  <option value="delivered">Delivered</option>
-                </select>
-              </td>
-            </tr>
-            <tr>
-              <td>
-                <img
-                  src={Product5}
-                  alt="ProductImage"
-                  style={{ width: '150px', height: '150px' }}
-                />
-              </td>
-              <td>Amond oil</td>
-              <td>8</td>
-              <td>4000.00</td>
-              <td>Seller name here</td>
-              <td>
-                <select style={{ width: '180px' }}>
-                  <option value="dispatched">Dispatched</option>
-                  <option value="delivered">Delivered</option>
-                </select>
-              </td>
-            </tr>
-            <tr>
-              <td>
-                <img
-                  src={Product1}
-                  alt="ProductImage"
-                  style={{ width: '150px', height: '150px' }}
-                />
-              </td>
-              <td>Hair oil</td>
-              <td>1</td>
-              <td>3000.00</td>
-              <td>Seller name here</td>
-
-              <td>
-                <select style={{ width: '180px' }}>
-                  <option value="dispatched">Dispatched</option>
-                  <option value="delivered">Delivered</option>
-                </select>
-              </td>
-            </tr>
-          </table>
-        </div>
-        <br /> <br /> <br />
         <SystemFooter />
       </div>
     </div>
