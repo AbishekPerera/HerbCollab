@@ -1,67 +1,25 @@
-import React, { useEffect, useState } from "react";
+import React, { useState } from "react";
 import Header from "../../components/Header/Header";
 import Footer from "../../components/Footer/Footer";
 import CusProfileNavbar from "../../components/CusProfileNavbar/CusProfileNavbar";
 import { Link } from "react-router-dom";
-import { Col, Form, Row } from "react-bootstrap";
-import axios from "axios";
-import { useNavigate } from "react-router-dom";
 
 const CustomerProfile = () => {
   const [isEditMode, setIsEditMode] = useState(false);
   const [image, setImage] = useState(false);
   const [text, setText] = useState("Enter the value");
-  const [userInfo, setUserInfo] = useState([]);
 
-  const [name, setName] = useState("");
-  const [password, setPassword] = useState("");
-  const [confirmPassword, setConfirmPassword] = useState("");
-  const [phone, setPhone] = useState("");
-  const [address, setAddress] = useState("");
-
-  const history = useNavigate();
+  const handleInputChange = (e) => {
+    setText(e.target.value);
+  };
 
   const handleEditClick = () => {
     setIsEditMode(true);
     setImage(true);
   };
 
-  const handleSaveClick = (e) => {
-    e.preventDefault();
+  const handleSaveClick = () => {
     setIsEditMode(false);
-    updateProfile();
-  };
-
-  useEffect(() => {
-    if (!localStorage.getItem("userInfo")) {
-      history("/");
-    }
-    const userInfo = localStorage.getItem("userInfo");
-    const user = JSON.parse(userInfo);
-    // console.log(user.user);
-    setUserInfo(user.user);
-  }, []);
-
-  const updateProfile = async () => {
-    if (confirmPassword === password) {
-      axios
-        .put("http://localhost:8075/auth/update/" + userInfo._id, {
-          name: name || userInfo.name,
-          password: password || userInfo.password,
-          phone: phone || userInfo.phone,
-          address: address || userInfo.address,
-        })
-        .then((res) => {
-          alert("Profile Updated Successfully");
-          localStorage.setItem("userInfo", JSON.stringify(res.data));
-          history("/");
-        })
-        .catch((err) => {
-          alert(err);
-        });
-    } else {
-      alert("Password and Confirm Password does not match");
-    }
   };
 
   return (
@@ -114,14 +72,14 @@ const CustomerProfile = () => {
                   </div>
                 </div>
                 <div class="card-body">
-                  <Form onSubmit={handleSaveClick}>
+                  <form>
                     <h6 class="heading-small text-muted mb-4">
                       User information
                     </h6>
                     <div class="pl-lg-4">
                       <div class="row">
                         <div class="col-lg-12">
-                          <div class="form-group">
+                          <div class="form-group focused">
                             <label for="name" class=" profileformlabelName">
                               <i class="bi bi-person-circle profileicon"></i>
                               Name:
@@ -133,14 +91,12 @@ const CustomerProfile = () => {
                                 class="form-control profileformtextareaName"
                                 id="name"
                                 name="name"
-                                defaultValue={userInfo.name}
-                                onChange={(e) => setName(e.target.value)}
+                                value={text}
+                                onChange={handleInputChange}
                                 required
                               />
                             ) : (
-                              <div class="profileformlabelName">
-                                {userInfo.name}
-                              </div>
+                              <div class="profileformlabelName">{text}</div>
                             )}
                             <br />
                           </div>
@@ -149,56 +105,24 @@ const CustomerProfile = () => {
 
                       <div class="row">
                         <div class="col-lg-12">
-                          <div class="form-group">
-                            {isEditMode ? (
-                              <p></p>
-                            ) : (
-                              <label for="name" class=" profileformlabelName">
-                                <i class="bi bi-envelope-at-fill profileicon"></i>
-                                Email:
-                              </label>
-                            )}
+                          <div class="form-group focused">
+                            <label for="email" class=" profileformlabelName">
+                              <i class="bi bi-envelope-at-fill profileicon"></i>
+                              Email:
+                            </label>
                             <br />
                             {isEditMode ? (
-                              <>
-                                <Row>
-                                  <Col lg={6}>
-                                    <label
-                                      for="email"
-                                      class=" profileformlabelName"
-                                    >
-                                      <i class="bi bi-envelope-at-fill profileicon"></i>
-                                      Password :
-                                    </label>
-                                    <input
-                                      type="password"
-                                      class="form-control profileformtextareaName"
-                                      onChange={(e) =>
-                                        setPassword(e.target.value)
-                                      }
-                                      required
-                                    />
-                                  </Col>
-                                  <Col lg={6}>
-                                    <label for="repassword" class="">
-                                      <i class="bi bi-envelope-at-fill profileicon"></i>
-                                      Re-Enter Password:
-                                    </label>
-                                    <input
-                                      type="password"
-                                      class="form-control profileformtextareaName"
-                                      onChange={(e) =>
-                                        setConfirmPassword(e.target.value)
-                                      }
-                                      required
-                                    />
-                                  </Col>
-                                </Row>
-                              </>
+                              <input
+                                type="email"
+                                class="form-control profileformtextareaName"
+                                id="email"
+                                name="email"
+                                value={text}
+                                onChange={handleInputChange}
+                                required
+                              />
                             ) : (
-                              <div class=" profileformlabelName">
-                                {userInfo.email}
-                              </div>
+                              <div class=" profileformlabelName">{text}</div>
                             )}
                             <br />
                           </div>
@@ -221,16 +145,16 @@ const CustomerProfile = () => {
                             <br />
                             {isEditMode ? (
                               <input
-                                type="text"
+                                type="number"
                                 class="form-control profileformtextareaName"
-                                defaultValue={userInfo.phone}
-                                onChange={(e) => setPhone(e.target.value)}
+                                id="aphone"
+                                name="phone"
+                                value={text}
+                                onChange={handleInputChange}
                                 required
                               />
                             ) : (
-                              <div class=" profileformlabelName">
-                                {userInfo.phone}
-                              </div>
+                              <div class=" profileformlabelName">{text}</div>
                             )}
                           </div>
                         </div>
@@ -249,14 +173,12 @@ const CustomerProfile = () => {
                                 class="form-control profileformtextareaName"
                                 id="address"
                                 name="address"
-                                defaultValue={userInfo.address}
-                                onChange={(e) => setAddress(e.target.value)}
+                                value={text}
+                                onChange={handleInputChange}
                                 required
                               />
                             ) : (
-                              <div class=" profileformlabelName">
-                                {userInfo.address}
-                              </div>
+                              <div class=" profileformlabelName">{text}</div>
                             )}
                           </div>
                         </div>
@@ -264,7 +186,11 @@ const CustomerProfile = () => {
                     </div>
                     <hr class="my-4" />
                     {isEditMode ? (
-                      <button type="submit" class="btn btn-info">
+                      <button
+                        type="submit"
+                        class="btn btn-info"
+                        onClick={handleSaveClick}
+                      >
                         Save
                       </button>
                     ) : (
@@ -276,7 +202,7 @@ const CustomerProfile = () => {
                         Edit
                       </button>
                     )}
-                  </Form>
+                  </form>
                 </div>
               </div>
             </div>
@@ -300,12 +226,41 @@ const CustomerProfile = () => {
                       />
                     )}
                     <div class="mt-3">
-                      <h4>{userInfo.name}</h4>
-                      <p class="text-secondary mb-1">{userInfo.name}</p>
-                      <p class="text-muted font-size-sm">{userInfo.email}</p>
+                      <h4>John Doe</h4>
+                      <p class="text-secondary mb-1">Abhishek Pererea</p>
+                      <p class="text-muted font-size-sm">abhi@gmail.com</p>
                       <p class="text-muted font-size-sm">
-                        Registerd Date : {userInfo.date}
+                        Registerd Date : 2020/10/12
                       </p>
+
+                      <form
+                        class="upload-form"
+                        method="POST"
+                        enctype="multipart/form-data"
+                        show={image}
+                      >
+                        <div class="form-group">
+                          {isEditMode ? (
+                            <input
+                              type="file"
+                              class="form-control"
+                              id="photo"
+                              name="photo"
+                            />
+                          ) : (
+                            <p></p>
+                          )}
+                        </div>
+                        {isEditMode ? <hr class="my-4" /> : <p></p>}
+
+                        {isEditMode ? (
+                          <button type="submit" class="btn btn-info">
+                            Upload
+                          </button>
+                        ) : (
+                          <p></p>
+                        )}
+                      </form>
                     </div>
                   </div>
                 </div>
