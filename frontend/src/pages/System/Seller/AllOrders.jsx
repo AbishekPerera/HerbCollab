@@ -1,147 +1,135 @@
-import React from 'react'
-import "./styles/SellerDashboard.css";
-import "./styles/AllOrders.css";
-import "./styles/AllOrdersSearch.css";
-import SystemFooter from "../../../components/System/SystemFooter/SystemFooter";
-import SellerSidebar from "../../../components/System/Sidebar/SellerSidebar";
-import SellerNav from "../../../components/System/SystemNavBar/SellerNav";
-import Product1 from "../../../img/Seller/AllOrdersImages/Product7.jpeg";
-import Product2 from "../../../img/Seller/AllOrdersImages/Product9.jpeg";
-import Product3 from "../../../img/Seller/AllOrdersImages/Product3FaceCream.jpeg";
-import Product4 from "../../../img/Seller/AllOrdersImages/Product4Cream.jpeg";
-import Product5 from "../../../img/Seller/AllOrdersImages/Product8.jpeg";
-
+import React, { useEffect, useState } from 'react';
+import './styles/SellerDashboard.css';
+import './styles/AllOrders.css';
+import './styles/AllOrdersSearch.css';
+import SystemFooter from '../../../components/System/SystemFooter/SystemFooter';
+import SellerSidebar from '../../../components/System/Sidebar/SellerSidebar';
+import SellerNav from '../../../components/System/SystemNavBar/SellerNav';
+import { tableCustomStyles } from '../Admin/styles/tableStyle.jsx';
+import axios from 'axios';
+import DataTable from 'react-data-table-component';
 
 const AllOrders = () => {
-return ( 
-<div className="mainContainer">
-      <div className="sidebar">
+  const [sellerOrders, setSellerOrders] = useState([]);
+  const sellerInfo = JSON.parse(localStorage.getItem('systemInfo'));
+  const getSellerName = sellerInfo['user']['UserName'];
+
+  const getAllSellerOrders = () => {
+    const sellerInfo = JSON.parse(localStorage.getItem('systemInfo'));
+    const getSellerId = sellerInfo['user']['_id'];
+    axios
+      .get(`http://localhost:8072/orders/getallorders`)
+      .then((res) => {
+        const filteredSellerOrders = res.data.filter((order) => {
+          return order.sellerId === getSellerId;
+        });
+        setSellerOrders(filteredSellerOrders);
+      })
+      .catch((err) => {
+        alert(err.message);
+      });
+  };
+
+  useEffect(() => {
+    getAllSellerOrders();
+  }, []);
+
+  const columns = [
+    {
+      name: 'Product',
+
+      selector: (row) => (
+        <img
+          className='cart-product-img'
+          src={row.productImage}
+          alt={row.name}
+          style={{ height: '120px', width: '120px' }}
+        />
+      ),
+    },
+    {
+      name: 'Product Name',
+      selector: (row) => row.productName,
+      sortable: true,
+    },
+    {
+      name: 'Total',
+      selector: (row) => row.total,
+      sortable: true,
+    },
+    {
+      name: 'Quantity',
+      selector: (row) => row.quantity,
+      sortable: true,
+    },
+
+    {
+      name: 'Customer Name',
+      selector: (row) => row.deliveryname,
+      sortable: true,
+    },
+    {
+      name: 'Order Status',
+      selector: (row) => 'status',
+      sortable: true,
+      sortFunction: (rowA, rowB) => {
+        // Define the order in which the status labels should be sorted
+        const statusOrder = ['Pending', 'Confirmed', 'Shipped', 'Delivered'];
+
+        // Get the indices of the status labels in the order array
+        const indexA = statusOrder.indexOf(rowA.status);
+        const indexB = statusOrder.indexOf(rowB.status);
+
+        // Return the comparison result based on the indices
+        return indexA - indexB;
+      },
+      cell: (row) => {
+        // Render the status label with the appropriate color class
+        let colorClass;
+        if (row.status === 'Pending') {
+          colorClass = 'bg-secondary font-size-14';
+        } else if (row.status === 'Confirmed') {
+          colorClass = 'bg-warning font-size-14';
+        } else if (row.status === 'Dispatched') {
+          colorClass = 'bg-danger font-size-14';
+        } else if (row.status === 'Delivered') {
+          colorClass = 'bg-primary font-size-14';
+        } else {
+          colorClass = 'bg-dark font-size-14';
+        }
+        return <span className={`badge ${colorClass}`}>{row.status}</span>;
+      },
+    },
+  ];
+
+  return (
+    <div className='mainContainer'>
+      <div className='sidebar'>
         <SellerSidebar />
       </div>
 
-      <div className="contentContainer">
-        <div className="systemNavBar">
+      <div className='contentContainer'>
+        <div className='systemNavBar'>
           <SellerNav />
         </div>
-
-        <div style={{ textAlign: 'center' }}>
-                <h2>All Orders</h2>
+        <div className='content'>
+          <br />
+          <h1 style={{ textAlign: 'center' }}>All Orders of {getSellerName}</h1>
+          <br />
+          <br />
+          <DataTable
+            customStyles={tableCustomStyles}
+            columns={columns}
+            data={sellerOrders}
+            pagination={true}
+            paginationPerPage={5}
+            paginationRowsPerPageOptions={[5, 10, 15, 20, 25, 30]}
+            noDataComponent='No Products Found'
+          />
         </div>
-
-          <br/> 
-
-          {/* Search Bar */}
-          <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css"></link>
-          <div style={{ display: "flex", justifyContent: "flex-end", alignItems: "center", marginRight: "20px"  }}>
-                <form className="searchbody example1 example2 example3 example4" action="/action_page.php" style={{ maxWidth: "300px" }}>
-                    <input type="text" placeholder="Search.." name="search2" />
-                    <button type="submit"><i className="fa fa-search"></i></button>
-                </form>
-          </div>
-          <br/>  
-           
-          {/* Table */}
-          
-          <div className="table-container" style={{ width: '98%'}}>
-          
-                <table>
-                    <tr class="header-row">
-                        <th>Product</th>
-                        <th>Product Name</th>
-                        <th>Quantity</th>
-                        <th>Amount</th>
-                        <th>Order Details</th>
-                        <th>Status</th>
-                    </tr>
-                    <tr>
-                        <td><img src={Product4} alt="Product Image" style={{ width: '100px', height: '120px' }} /></td>
-                        <td>Facial Cream</td>
-                        <td>100ml Bottle</td>
-                        <td>1500.00</td>
-                        <td>
-                            <p style={{ fontFamily: 'Arial, sans-serif', fontSize: '14px' }}>Customer Name:  Sam Perera</p>
-                            <p style={{ fontFamily: 'Arial, sans-serif', fontSize: '14px' }}>Customer Address:  No 12/Ragama</p>
-                        </td>
-                        <td>
-                            <select style={{ width: '180px' }}>
-                                <option value="completed">Completed</option>
-                                <option value="in-progress">In Progress</option>
-                            </select>
-                        </td>
-                    </tr>
-                    <tr>
-                        <td><img src={Product2} alt="Product Image" style={{ width: '100px', height: '120px' }} /></td>
-                        <td>Body Spray</td>
-                        <td>200ml Bottle</td>
-                        <td>2500.00</td>
-                        <td>
-                            <p style={{ fontFamily: 'Arial, sans-serif', fontSize: '14px' }}>Customer Name:  Sam Perera</p>
-                            <p style={{ fontFamily: 'Arial, sans-serif', fontSize: '14px' }}>Customer Address:  No 12/Ragama</p>
-                        </td>
-                        <td>
-                            <select style={{ width: '180px' }}>
-                                <option value="completed">Completed</option>
-                                <option value="in-progress">In Progress</option>
-                            </select>
-                        </td>
-                    </tr>
-                    <tr>
-                        <td><img src={Product3} alt="Product Image" style={{ width: '100px', height: '120px' }} /></td>
-                        <td>Hand Clenser</td>
-                        <td>100ml Bottle</td>
-                        <td>4500.00</td>
-                        <td>
-                            <p style={{ fontFamily: 'Arial, sans-serif', fontSize: '14px' }}>Customer Name:  Sam Perera</p>
-                            <p style={{ fontFamily: 'Arial, sans-serif', fontSize: '14px' }}>Customer Address:  No 12/Ragama</p>
-                        </td>
-                        <td>
-                            <select style={{ width: '180px' }}>
-                                <option value="completed">Completed</option>
-                                <option value="in-progress">In Progress</option>
-                            </select>
-                        </td>
-                    </tr>
-                    <tr>
-                        <td><img src={Product5} alt="Product Image" style={{ width: '100px', height: '120px' }} /></td>
-                        <td>Amond oil</td>
-                        <td>100ml Bottle</td>
-                        <td>4000.00</td>
-                        <td>
-                            <p style={{ fontFamily: 'Arial, sans-serif', fontSize: '14px' }}>Customer Name:  Sam Perera</p>
-                            <p style={{ fontFamily: 'Arial, sans-serif', fontSize: '14px' }}>Customer Address:  No 12/Ragama</p>
-                        </td>
-                        <td>
-                            <select style={{ width: '180px' }}>
-                                <option value="completed">Completed</option>
-                                <option value="in-progress">In Progress</option>
-                            </select>
-                        </td>
-                    </tr>
-                    <tr>
-                        <td><img src={Product1} alt="Product Image" style={{ width: '100px', height: '120px' }} /></td>
-                        <td>Hair oil</td>
-                        <td>100ml Bottle</td>
-                        <td>3000.00</td>
-                        <td>
-                            <p style={{ fontFamily: 'Arial, sans-serif', fontSize: '14px' }}>Customer Name:  Sam Perera</p>
-                            <p style={{ fontFamily: 'Arial, sans-serif', fontSize: '14px' }}>Customer Address:  No 12/Ragama</p>
-                        </td>
-                        <td>
-                            <select style={{ width: '180px' }}>
-                                <option value="completed">Completed</option>
-                                <option value="in-progress">In Progress</option>
-                            </select>
-                        </td>
-                    </tr>
-                </table>
-          </div>
-            <br/> <br/>  <br/>      
-             
-            
-                
-            <SystemFooter />
-            </div>
-        </div>
-    )
-}
-export default AllOrders 
+        <SystemFooter />
+      </div>
+    </div>
+  );
+};
+export default AllOrders;

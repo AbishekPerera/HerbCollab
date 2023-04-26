@@ -27,6 +27,7 @@ import NewSellerProfile from "./pages/System/Seller/NewSellerProfile";
 import AllSellers from "./pages/System/Admin/AllSellers";
 import AdminProfile from "./pages/System/Admin/AdminProfile";
 import UpdateProduct from "./pages/System/Seller/UpdateProduct";
+import ForgetPassword from "./pages/SystemLoginPage/Forget-Password";
 import MyPreOrders from "./pages/MyProfile/MyPreOrders";
 import MyShippedOrders from "./pages/MyProfile/MyShippedOrders";
 import MyReviews from "./pages/MyProfile/MyReviews";
@@ -61,11 +62,15 @@ function App() {
 
         {/* ::::::::::::::::::::::::::::::::::::::::Admin Routes::::::::::::::::::::::::::::::::::::::::::::::::::: */}
         <Route path="/system/auth" element={<SystemLogin />} />
+
+        <Route path="/system/forgetpassword" element={<ForgetPassword />} />
         <Route path="/system/admin-dashboard" element={<Dashboard />} />
 
-        <Route path="/system/admin-pendingorders" element={<PendingOrders />} />
-        <Route path="/system/admin-pendingitem" element={<PendingItem />} />
-        <Route path="/system/admin-allproducts" element={<AllProducts />} />
+
+         <Route path="/system/admin-pendingorders" element={<PendingOrders />} />
+         <Route path="/system/admin-pendingorders/:id" exact element={<PendingItem />} /> 
+        <Route path="/system/admin-allproducts" element={<AllProducts />} /> 
+
 
         <Route path="/system/admin-profile" element={<AdminProfile />} />
         <Route path="/system/admin-allusers" element={<AllUsers />} />

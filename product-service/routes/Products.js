@@ -12,6 +12,8 @@ productRouter.route('/add').post(async (req, res) => {
   const quantity = Number(req.body.quantity);
   const price = Number(req.body.price);
   const image = req.body.image;
+  const sellerId = req.body.sellerId;
+  const sellerUsername = req.body.sellerUsername;
 
   const newProduct = new Product({
     name,
@@ -20,6 +22,8 @@ productRouter.route('/add').post(async (req, res) => {
     quantity,
     price,
     image,
+    sellerId,
+    sellerUsername,
   });
 
   newProduct
@@ -48,8 +52,7 @@ productRouter.route('/').get(async (req, res) => {
 
 productRouter.route('/update/:id').put(async (req, res) => {
   let productId = req.params.id;
-  const { name, category, description, quantity, price, status, image } =
-    req.body;
+  const { name, category, description, quantity, price, image } = req.body;
 
   const updateProduct = {
     name,

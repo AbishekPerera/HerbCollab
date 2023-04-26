@@ -1,6 +1,3 @@
-
-
-
 .container-login {
   position: relative;
   width: 100%;
@@ -28,7 +25,6 @@
   grid-template-columns: 1fr;
   z-index: 5;
 }
-
 
 form.sign-up-form {
   display: flex;
@@ -69,7 +65,7 @@ form.sign-in-form {
   background-color: #cdf5d5;
   margin: 10px 0;
   height: 55px;
-  border:1px solid #08781f;
+  border: 1px solid #08781f;
   border-radius: 55px;
   display: grid;
   grid-template-columns: 15% 85%;
@@ -77,8 +73,6 @@ form.sign-in-form {
   position: relative;
   text-align: center;
 }
-
-
 
 .input-field .input {
   background: none;
@@ -97,18 +91,17 @@ form.sign-in-form {
 .social-text {
   padding: 0.7rem 0;
   font-size: 1rem;
-  color:#000000;
+  color: #000000;
   text-decoration: none;
   text-decoration-line: underline;
 }
 
-.error{
+.error {
   color: red;
   font-size: 0.8rem;
   margin: 0;
   padding: 0;
 }
-
 
 .btnLogin {
   width: 150px;
@@ -127,7 +120,7 @@ form.sign-in-form {
 
 .btnLogin:hover {
   background-color: #000000;
-  color:#08781f
+  color: #08781f;
 }
 
 #btnLogin {
@@ -147,7 +140,7 @@ form.sign-in-form {
 
 #btnLogin:hover {
   background-color: #000000;
-  color:#08781f
+  color: #08781f;
 }
 
 .panels-container {
@@ -168,7 +161,7 @@ form.sign-in-form {
   top: -10%;
   right: 48%;
   transform: translateY(-50%);
-  background-image:url("../../img/SigIn/ayurveda4.jpg");
+  background-image: url("../../img/SigIn/ayurveda4.jpg");
   transition: 1.8s ease-in-out;
   border-radius: 50%;
   z-index: 6;
