@@ -1,15 +1,25 @@
-import React, { useState } from "react";
-import Modal from "react-bootstrap/Modal";
-import axios from "axios";
-import swal from "sweetalert";
+import React, { useEffect, useState } from 'react';
+import Modal from 'react-bootstrap/Modal';
+import axios from 'axios';
+import swal from 'sweetalert';
 
 const AddProductModal = ({ show, handleClose }) => {
-  var [name, setName] = useState("");
-  var [category, setCategory] = useState("");
-  var [description, setDescription] = useState("");
-  var [quantity, setQuantity] = useState("");
-  var [price, setPrice] = useState("");
-  var [image, setImage] = useState("");
+  var [name, setName] = useState('');
+  var [category, setCategory] = useState('');
+  var [description, setDescription] = useState('');
+  var [quantity, setQuantity] = useState('');
+  var [price, setPrice] = useState('');
+  var [image, setImage] = useState('');
+  var [sellerId, setSellerId] = useState('');
+  var [sellerUsername, setSellerUsername] = useState('');
+
+  useEffect(() => {
+    const sellerInfo = JSON.parse(localStorage.getItem('systemInfo'));
+    const getSellerId = sellerInfo['user']['_id'];
+    const getSellerUserame = sellerInfo['user']['UserName'];
+    setSellerId(getSellerId);
+    setSellerUsername(getSellerUserame);
+  }, []);
 
   const handleSubmit = (e) => {
     e.preventDefault();
@@ -21,20 +31,21 @@ const AddProductModal = ({ show, handleClose }) => {
       quantity,
       price,
       image,
+      sellerId,
+      sellerUsername,
     };
-
-    console.log("Checking new  product details: ", newProduct);
+    console.log('Checking new  product details: ', newProduct);
 
     axios
-      .post("http://localhost:8071/products/add", newProduct)
+      .post('http://localhost:8071/products/add', newProduct)
       .then(() => {
-        swal("Product Added!", "Product Added Successfully!", "success");
+        swal('Product Added!', 'Product Added Successfully!', 'success');
         setTimeout(function () {
           window.location.reload();
         }, 1000);
       })
       .catch((err) => {
-        swal("Error!", "Error in Adding Product!", err);
+        swal('Error!', 'Error in Adding Product!', err);
       });
 
     handleClose();
@@ -47,13 +58,13 @@ const AddProductModal = ({ show, handleClose }) => {
       </Modal.Header>
 
       <Modal.Body>
-        <div className="form-group">
-          <label htmlFor="ProductName">Product Name</label>
+        <div className='form-group'>
+          <label htmlFor='ProductName'>Product Name</label>
           <input
-            id="name"
-            type="text"
-            className="form-control"
-            placeholder="Enter product Name"
+            id='name'
+            type='text'
+            className='form-control'
+            placeholder='Enter product Name'
             value={name}
             onChange={(e) => {
               setName(e.target.value);
@@ -62,12 +73,12 @@ const AddProductModal = ({ show, handleClose }) => {
           />
         </div>
 
-        <div className="form-group">
-          <label htmlFor="category">Product Category</label>
+        <div className='form-group'>
+          <label htmlFor='category'>Product Category</label>
           <input
-            type="text"
-            class="form-control"
-            placeholder="Enter product Category"
+            type='text'
+            class='form-control'
+            placeholder='Enter product Category'
             // name="category"
             value={category}
             onChange={(e) => {
@@ -75,12 +86,12 @@ const AddProductModal = ({ show, handleClose }) => {
             }}
           />
         </div>
-        <div class="form-group">
-          <label for="description">Product Description</label>
+        <div class='form-group'>
+          <label for='description'>Product Description</label>
           <input
-            type="text"
-            class="form-control"
-            placeholder="Enter product Description"
+            type='text'
+            class='form-control'
+            placeholder='Enter product Description'
             // name="description"
             value={description}
             onChange={(e) => {
@@ -88,12 +99,12 @@ const AddProductModal = ({ show, handleClose }) => {
             }}
           />
         </div>
-        <div class="form-group">
-          <label for="quantity">Quantity</label>
+        <div class='form-group'>
+          <label for='quantity'>Quantity</label>
           <input
-            type="number"
-            class="form-control"
-            placeholder="Enter Quantity"
+            type='number'
+            class='form-control'
+            placeholder='Enter Quantity'
             // name="quantity"
             value={quantity}
             onChange={(e) => {
@@ -101,12 +112,12 @@ const AddProductModal = ({ show, handleClose }) => {
             }}
           />
         </div>
-        <div class="form-group">
-          <label for="price">Price</label>
+        <div class='form-group'>
+          <label for='price'>Price</label>
           <input
-            type="number"
-            class="form-control"
-            placeholder="Price"
+            type='number'
+            class='form-control'
+            placeholder='Price'
             // name="price"
             value={price}
             onChange={(e) => {
@@ -114,12 +125,12 @@ const AddProductModal = ({ show, handleClose }) => {
             }}
           />
         </div>
-        <div class="form-group">
-          <label for="image">Image</label>
+        <div class='form-group'>
+          <label for='image'>Image</label>
           <input
-            type="text"
-            class="form-control"
-            placeholder="Image URL"
+            type='text'
+            class='form-control'
+            placeholder='Image URL'
             value={image}
             onChange={(e) => {
               setImage(e.target.value);
@@ -129,14 +140,13 @@ const AddProductModal = ({ show, handleClose }) => {
       </Modal.Body>
       <Modal.Footer>
         <button
-          type="submit"
-          class="btn btn-success"
-          variant="secondary"
-          onClick={handleSubmit}
-        >
+          type='submit'
+          class='btn btn-success'
+          variant='secondary'
+          onClick={handleSubmit}>
           Add Product
         </button>
-        <button class="btn btn-danger" variant="primary" onClick={handleClose}>
+        <button class='btn btn-danger' variant='primary' onClick={handleClose}>
           Close
         </button>
       </Modal.Footer>

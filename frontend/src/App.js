@@ -61,9 +61,11 @@ function App() {
         <Route path="/system/forgetpassword" element={<ForgetPassword />} />
         <Route path="/system/admin-dashboard" element={<Dashboard />} />
 
-        <Route path="/system/admin-pendingorders" element={<PendingOrders />} />
-        <Route path="/system/admin-pendingitem" element={<PendingItem />} />
-        <Route path="/system/admin-allproducts" element={<AllProducts />} />
+
+         <Route path="/system/admin-pendingorders" element={<PendingOrders />} />
+         <Route path="/system/admin-pendingorders/:id" exact element={<PendingItem />} /> 
+        <Route path="/system/admin-allproducts" element={<AllProducts />} /> 
+
 
         <Route path="/system/admin-profile" element={<AdminProfile />} />
         <Route path="/system/admin-allusers" element={<AllUsers />} />
