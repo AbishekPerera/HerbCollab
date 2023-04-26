@@ -8,7 +8,7 @@ import { Row, Table } from "react-bootstrap";
 import axios from "axios";
 import DataTable from "react-data-table-component";
 
-const MyOrders = () => {
+const MyShippedOrders = () => {
   const [orders, setOrders] = useState([]);
 
   useEffect(() => {
@@ -24,7 +24,7 @@ const MyOrders = () => {
     const { data } = await axios.get(
       "http://localhost:8072/orders/getorderbyuseridandstatus/" +
         userId +
-        "/Pending"
+        "/Shipped"
     );
     setOrders(data);
   };
@@ -41,31 +41,61 @@ const MyOrders = () => {
       ),
     },
     {
-      name: "Name",
-      selector: (row) => row.productName,
+      name: "Details",
+      selector: (row) => {
+        return (
+          <div
+            style={{
+              padding: "10px",
+            }}
+          >
+            <p>
+              {row.productName} <br />
+              qty : {row.quantity} <br />
+              MSP : {row.price} <br />
+            </p>
+            <p>Total : {row.total}</p>
+          </div>
+        );
+      },
+    },
+    {
+      name: "Delivery Name",
+      selector: (row) => row.deliveryname,
       sortable: true,
     },
     {
-      name: "Quantity",
-      selector: (row) => row.quantity,
+      name: "Delivery Address",
+      selector: (row) => row.deliveryaddress,
       sortable: true,
     },
     {
-      name: "Price",
-      selector: (row) => row.price,
+      name: "Delivery Contacts",
+      selector: (row) => {
+        return (
+          <div>
+            <p>{row.deliveryphone}</p>
+            <p>{row.deliveryemail}</p>
+          </div>
+        );
+      },
+    },
+    {
+      name: "Status",
+      selector: (row) => row.status,
       sortable: true,
     },
     {
-      name: "Total",
-      selector: (row) => row.total,
-      sortable: true,
-    },
-    {
-      name: "Action",
+      name: "Date",
       selector: (row) => (
-        <button className="btn btn-danger" onClick={() => deleteOrder(row._id)}>
-          <i class="bi bi-trash"></i>
-        </button>
+        <div
+          style={{
+            fontSize: "12px",
+            fontWeight: "bold",
+          }}
+        >
+          {row.date.substring(0, 10)}
+        </div>
       ),
     },
   ];
@@ -126,8 +156,8 @@ const MyOrders = () => {
             <div className="my-orders-comp-outer">
               <Row>
                 <div className="my-order-tab-header">
-                  <h3>My Orders</h3>
-                  <p>"Pending orders: the ultimate test of patience"</p>
+                  <h3>My Shipped</h3>
+                  <p>"Shipped orders: Track the status of your open orders"</p>
                 </div>
                 <div className="my-order-tab-body">
                   <DataTable
@@ -139,7 +169,7 @@ const MyOrders = () => {
                     noDataComponent={
                       <div className="no-data-t-found-outer">
                         <div className="no-data-t-found-inner">
-                          <h5>No Pending Orders</h5>
+                          <h5>No Shipped Orders</h5>
                         </div>
                       </div>
                     }
@@ -156,4 +186,4 @@ const MyOrders = () => {
   );
 };
 
-export default MyOrders;
+export default MyShippedOrders;

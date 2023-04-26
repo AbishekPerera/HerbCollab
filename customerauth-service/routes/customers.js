@@ -4,20 +4,20 @@ import Customer from "../models/customer.js";
 import bcrypt from "bcryptjs";
 
 //add customer to database
-customerRouter.route("/addcustomer").post(async(req, res) => {
+customerRouter.route("/addcustomer").post(async (req, res) => {
   const name = req.body.name;
   const email = req.body.email;
   const phone = req.body.phone;
   const address = req.body.address;
   const password = req.body.password;
-  const hashPassword =await bcrypt.hash(password, 10);
+  const hashPassword = await bcrypt.hash(password, 10);
 
   const newCustomer = new Customer({
     name,
     email,
     phone,
     address,
-    password:hashPassword,
+    password: hashPassword,
   });
 
   newCustomer
@@ -62,26 +62,43 @@ customerRouter.route("/:id").get((req, res) => {
 
 //update customer by id
 customerRouter.route("/update/:id").put(async (req, res) => {
-  let customerId = req.params.id;
-  const { name, phone, address, password } = req.body;
+  try {
+    const customerId = req.params.id;
+    const { name, phone, address, password } = req.body;
 
-  const updateCustomer = {
-    name,
-    phone,
-    address,
-    password,
-  };
+    if (!password) {
+      return res.status(400).send({ message: "Password is required" });
+    }
 
-  Customer.findByIdAndUpdate(customerId, updateCustomer)
-    .then(() => {
-      res.status(200).send({ status: "Customer updated" });
-    })
-    .catch((err) => {
-      console.log(err);
-      res
-        .status(500)
-        .send({ status: "Error with updating data", error: err.message });
-    });
+    const hashPassword = await bcrypt.hash(password, 10);
+
+    const updateCustomer = {
+      name: name,
+      phone: phone,
+      address: address,
+      password: hashPassword,
+    };
+
+    const updatedCustomer = await Customer.findByIdAndUpdate(
+      customerId,
+      updateCustomer,
+      { new: true }
+    );
+
+    if (!updatedCustomer) {
+      return res.status(404).send({
+        status: "Error with updating data",
+        error: "Customer not found",
+      });
+    }
+
+    res.status(200).send({ status: "User updated", user: updatedCustomer });
+  } catch (err) {
+    console.log(err);
+    res
+      .status(500)
+      .send({ status: "Error with updating data", error: err.message });
+  }
 });
 
 export default customerRouter;

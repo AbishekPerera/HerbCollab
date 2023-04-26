@@ -63,6 +63,8 @@ const ProductDetailsPage = () => {
     const productId = product._id;
     const productName = product.name;
     const productImage = product.image;
+    const sellerId = product.sellerId;
+    const sellerName = product.sellerUsername;
 
     const newOb = {
       userId,
@@ -73,6 +75,8 @@ const ProductDetailsPage = () => {
       quantity,
       price,
       total,
+      sellerId,
+      sellerName,
     };
 
     // console.log(newOb);
