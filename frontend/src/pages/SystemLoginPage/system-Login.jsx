@@ -210,7 +210,9 @@ const SystemLogin = () => {
                 id="btnLogin"
                 className="btnLogin solid"
               />
-              <Link className="social-text">Forgot Password ? </Link>
+              <Link to="/system/forgetpassword" className="social-text">
+                Forgot Password ?{" "}
+              </Link>
             </form>
             <form onSubmit={sendData} className="sign-up-form">
               <h2 className="title">Sign up</h2>
