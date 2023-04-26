@@ -4,8 +4,9 @@ import { Link } from "react-router-dom";
 import Footer from "../../components/Footer/Footer";
 import CusProfileNavbar from "../../components/CusProfileNavbar/CusProfileNavbar";
 import "./MyProfile.css";
-import { Button, Modal, Row, Table } from "react-bootstrap";
+import { Button, Col, Form, Modal, Row } from "react-bootstrap";
 import axios from "axios";
+import ReactStars from "react-rating-stars-component";
 import DataTable from "react-data-table-component";
 
 const MyReviews = () => {
@@ -63,7 +64,7 @@ const MyReviews = () => {
       selector: (row) => {
         return (
           <div>
-            <h5>{row.sellerRating}</h5>
+            <h5>{row.sellerRating}/5</h5>
             <p>{row.sellerReview}</p>
           </div>
         );
@@ -76,7 +77,7 @@ const MyReviews = () => {
       selector: (row) => {
         return (
           <div>
-            <h5>{row.productRating}</h5>
+            <h5>{row.productRating}/5</h5>
             <p>{row.productReview}</p>
           </div>
         );
@@ -117,9 +118,20 @@ const MyReviews = () => {
     },
   ];
 
+  const [productrating, setProductrating] = useState(0);
+  const [sellerrating, setSellerrating] = useState(0);
+  const handleSellerChange = (newRating) => {
+    setSellerrating(newRating);
+  };
+
+  const handleRatingChange = (newRating) => {
+    setProductrating(newRating);
+  };
+
   const updateReview = async (id) => {
     setSelectedRateId(id);
     handleShow();
+    // history("/updatereview/" + id);
   };
 
   //   delete order by id
@@ -129,6 +141,33 @@ const MyReviews = () => {
       .then((res) => {
         alert("Review Deleted");
         getReviews();
+      })
+      .catch((err) => {
+        alert(err);
+      });
+  };
+
+  const [productReview, setProductReview] = useState("");
+  const [sellerReview, setSellerReview] = useState("");
+
+  const updateReviewSubmit = async (e) => {
+    e.preventDefault();
+
+    await axios
+      .put(
+        "http://localhost:8073/ratereviews/updateratereviewbyid/" +
+          selectedRateId,
+        {
+          productRating: productrating,
+          sellerRating: sellerrating,
+          productReview: productReview,
+          sellerReview: sellerReview,
+        }
+      )
+      .then((res) => {
+        alert("Review Updated");
+        getReviews();
+        handleClose();
       })
       .catch((err) => {
         alert(err);
@@ -182,18 +221,77 @@ const MyReviews = () => {
               keyboard={false}
             >
               <Modal.Header closeButton>
-                <Modal.Title>{selectedRateId}</Modal.Title>
+                <Modal.Title>Update Rate or Review</Modal.Title>
               </Modal.Header>
-              <Modal.Body>
-                I will not close if you click outside me. Don't even try to
-                press escape key.
-              </Modal.Body>
-              <Modal.Footer>
-                <Button variant="secondary" onClick={handleClose}>
-                  Close
-                </Button>
-                <Button variant="primary">Understood</Button>
-              </Modal.Footer>
+              <Form onSubmit={updateReviewSubmit}>
+                <Modal.Body>
+                  <div className="updateRateandReview">
+                    <Form.Group className="text-center">
+                      <Form.Label className="mx-auto">
+                        Product Rating
+                      </Form.Label>
+                      <Row className="d-flex align-items-center justify-content-center">
+                        <Col lg={3}>
+                          <Form.Control
+                            type="text"
+                            disabled
+                            value={`${productrating} /5`}
+                          />
+                        </Col>
+                        <Col lg={6}>
+                          <ReactStars size={40} onChange={handleRatingChange} />
+                        </Col>
+                      </Row>
+                    </Form.Group>
+                    <Form.Group controlId="productReview">
+                      <Form.Label>Product Review</Form.Label>
+                      <Form.Control
+                        as="textarea"
+                        rows={3}
+                        onChange={(e) => {
+                          setProductReview(e.target.value);
+                        }}
+                        required
+                      />
+                    </Form.Group>
+                    <Form.Group className="mt-1 text-center">
+                      <Form.Label>Seller Rating</Form.Label>
+                      <Row className="d-flex align-items-center justify-content-center">
+                        <Col lg={3}>
+                          <Form.Control
+                            type="text"
+                            disabled
+                            value={`${sellerrating} /5`}
+                          />
+                        </Col>
+                        <Col lg={6}>
+                          <ReactStars size={40} onChange={handleSellerChange} />
+                        </Col>
+                      </Row>
+                    </Form.Group>
+                    <Form.Group controlId="sellerReview">
+                      <Form.Label>Seller Review</Form.Label>
+                      <Form.Control
+                        as="textarea"
+                        rows={3}
+                        onChange={(e) => {
+                          setSellerReview(e.target.value);
+                        }}
+                        required
+                      />
+                    </Form.Group>
+                  </div>
+                </Modal.Body>
+
+                <Modal.Footer>
+                  <Button variant="secondary" onClick={handleClose}>
+                    Close
+                  </Button>
+                  <Button variant="success" type="submit">
+                    Update
+                  </Button>
+                </Modal.Footer>
+              </Form>
             </Modal>
             <div className="my-orders-comp-outer">
               <Row>

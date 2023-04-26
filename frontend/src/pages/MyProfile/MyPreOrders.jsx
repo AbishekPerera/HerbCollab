@@ -2,7 +2,7 @@ import axios from "axios";
 import React, { useEffect, useState } from "react";
 import DataTable from "react-data-table-component";
 import Header from "../../components/Header/Header";
-import { Form, Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import CusProfileNavbar from "../../components/CusProfileNavbar/CusProfileNavbar";
 import { Button, Modal, Row } from "react-bootstrap";
 import Footer from "../../components/Footer/Footer";
@@ -14,9 +14,8 @@ const MyPreOrders = () => {
   const [show, setShow] = useState(false);
 
   const handleClose = () => setShow(false);
-  const handleShow = () => setShow(true);
 
-  const [selectedRateId, setSelectedRateId] = useState("");
+  const history = useNavigate();
 
   useEffect(() => {
     getOrders();
@@ -35,8 +34,7 @@ const MyPreOrders = () => {
   };
 
   const addReview = async (id) => {
-    setSelectedRateId(id);
-    handleShow();
+    history("/addreview/" + id);
   };
 
   const columns = [
@@ -110,7 +108,10 @@ const MyPreOrders = () => {
     {
       name: "Action",
       selector: (row) => (
-        <button className="btn btn-primary" onClick={() => addReview(row._id)}>
+        <button
+          className="btn btn-primary"
+          onClick={() => addReview(row.productId)}
+        >
           <i class="bi bi-chat-heart"></i>
         </button>
       ),
@@ -157,46 +158,6 @@ const MyPreOrders = () => {
           <CusProfileNavbar />
 
           <div class="col-lg-10">
-            <Modal
-              show={show}
-              onHide={handleClose}
-              backdrop="static"
-              keyboard={false}
-            >
-              <Modal.Header closeButton>
-                <Modal.Title>Add Rate and Review</Modal.Title>
-              </Modal.Header>
-              <Modal.Body>
-                <div className="addrateandreview">
-                  {/* <Form>
-                    <Form.Group className="mb-3" controlId="formBasicEmail">
-                      <Form.Label>Email address</Form.Label>
-                      <Form.Control type="email" placeholder="Enter email" />
-                      <Form.Text className="text-muted">
-                        We'll never share your email with anyone else.
-                      </Form.Text>
-                    </Form.Group>
-
-                    <Form.Group className="mb-3" controlId="formBasicPassword">
-                      <Form.Label>Password</Form.Label>
-                      <Form.Control type="password" placeholder="Password" />
-                    </Form.Group>
-                    <Form.Group className="mb-3" controlId="formBasicCheckbox">
-                      <Form.Check type="checkbox" label="Check me out" />
-                    </Form.Group>
-                    <Button variant="primary" type="submit">
-                      Submit
-                    </Button>
-                  </Form> */}
-                </div>
-              </Modal.Body>
-              <Modal.Footer>
-                <Button variant="secondary" onClick={handleClose}>
-                  Close
-                </Button>
-                <Button variant="primary">Understood</Button>
-              </Modal.Footer>
-            </Modal>
             <div className="my-orders-comp-outer">
               <Row>
                 <div className="my-order-tab-header">

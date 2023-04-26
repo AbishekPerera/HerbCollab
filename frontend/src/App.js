@@ -30,6 +30,8 @@ import UpdateProduct from "./pages/System/Seller/UpdateProduct";
 import MyPreOrders from "./pages/MyProfile/MyPreOrders";
 import MyShippedOrders from "./pages/MyProfile/MyShippedOrders";
 import MyReviews from "./pages/MyProfile/MyReviews";
+import RateAndReview from "./pages/RateAndReview/RateAndReview";
+// import RateAndReviewUpdate from "./pages/RateAndReview/RateAndReviewUpdate";
 // :::::::::::::::::::::::::::::::::::::::::::error in this line ::::::::::::::::::::::::::::::::::::::::::::::
 
 function App() {
@@ -53,39 +55,44 @@ function App() {
         <Route path="/myaccount/mypreorders" element={<MyPreOrders />} />
         <Route path="/myaccount/myshipped" element={<MyShippedOrders />} />
         <Route path="/myaccount/myreviews" element={<MyReviews />} />
+        <Route path="/addreview/:id" element={<RateAndReview />} />
+        {/* <Route path="/updatereview/:id" element={<RateAndReviewUpdate />} /> */}
         {/* ::::::::::::::::::::::::::::::::::::::::Customer Routes::::::::::::::::::::::::::::::::::::::::::::::::::: */}
 
         {/* ::::::::::::::::::::::::::::::::::::::::Admin Routes::::::::::::::::::::::::::::::::::::::::::::::::::: */}
         <Route path="/system/auth" element={<SystemLogin />} />
-         <Route path="/system/admin-dashboard" element={<Dashboard />} />
+        <Route path="/system/admin-dashboard" element={<Dashboard />} />
 
-         <Route path="/system/admin-pendingorders" element={<PendingOrders />} />
-         <Route path="/system/admin-pendingitem" element={<PendingItem />} /> 
-        <Route path="/system/admin-allproducts" element={<AllProducts />} /> 
+        <Route path="/system/admin-pendingorders" element={<PendingOrders />} />
+        <Route path="/system/admin-pendingitem" element={<PendingItem />} />
+        <Route path="/system/admin-allproducts" element={<AllProducts />} />
 
-         <Route path="/system/admin-profile" element={<AdminProfile />} />
-         <Route path="/system/admin-allusers" element={<AllUsers />} />
+        <Route path="/system/admin-profile" element={<AdminProfile />} />
+        <Route path="/system/admin-allusers" element={<AllUsers />} />
         <Route path="/system/admin-allsellers" element={<AllSellers />} />
-         <Route path="/system/admin-tracking" element={<DeliveryTracking />} /> 
+        <Route path="/system/admin-tracking" element={<DeliveryTracking />} />
 
-         {/*<Route path="/system/admin-pendingproducts" element={<PendingProducts />} />*/}
+        {/*<Route path="/system/admin-pendingproducts" element={<PendingProducts />} />*/}
 
-       <Route path="/system/admin-pendingproducts" element={<PendingOrders />}/> 
+        <Route
+          path="/system/admin-pendingproducts"
+          element={<PendingOrders />}
+        />
 
         {/* ::::::::::::::::::::::::::::::::::::::::Admin Routes::::::::::::::::::::::::::::::::::::::::::::::::::: */}
 
         {/* ::::::::::::::::::::::::::::::::::::::::Seller Routes::::::::::::::::::::::::::::::::::::::::::::::::::: */}
         <Route path="/system/seller-dashboard" element={<SellerDashboard />} />
 
-        <Route
-          path="/system/seller-profile"
-          element={<NewSellerProfile />}
-        /> 
-         <Route path="/system/seller-allorders" element={<AllOrders />} />
+        <Route path="/system/seller-profile" element={<NewSellerProfile />} />
+        <Route path="/system/seller-allorders" element={<AllOrders />} />
 
-       <Route path="/system/seller-products" element={<SellerProducts />} /> 
-       <Route path="/system/seller-products/update/:id"exact element={<UpdateProduct />}
-        /> 
+        <Route path="/system/seller-products" element={<SellerProducts />} />
+        <Route
+          path="/system/seller-products/update/:id"
+          exact
+          element={<UpdateProduct />}
+        />
 
         {/* ::::::::::::::::::::::::::::::::::::::::Seller Routes::::::::::::::::::::::::::::::::::::::::::::::::::: */}
       </Routes>
