@@ -93,6 +93,7 @@
   color: #d7bdca;
   font-family: 'MockFlowFont';
   display: -webkit-box;
+  text-align: -webkit-center;
   -webkit-box-orient: vertical;
   -webkit-line-clamp: 3;
   overflow: hidden;
