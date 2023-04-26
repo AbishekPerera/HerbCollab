@@ -4,6 +4,7 @@ import { useState, useEffect } from "react";
 import axios from "axios";
 import Header from "../../components/Header/Header";
 import Footer from "../../components/Footer/Footer";
+import swal from "sweetalert";
 
 const ForgetPassword = () => {
   const [inputs, setInputs] = useState({
@@ -37,16 +38,16 @@ const ForgetPassword = () => {
         Password: inputs.Password,
       })
       .then((res) => {
-        alert("You have successfully Update your Password.");
+        swal("You have successfully Update your Password.");
         window.location.href = "/system/auth";
       })
       .catch((error) => {
         if (error.response.status === 400) {
-          alert("Invalid Email");
+          swal("Invalid Email");
         } else if (error.response.status === 401) {
-          alert("Error with Change Password");
+          swal("Error with Change Password");
         } else {
-          alert(error);
+          swal(error);
         }
       });
   };

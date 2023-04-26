@@ -3,7 +3,7 @@ import "./styles/SellerProfile.css";
 import SystemFooter from "../../../components/System/SystemFooter/SystemFooter";
 import SellerSidebar from "../../../components/System/Sidebar/SellerSidebar";
 import SellerNav from "../../../components/System/SystemNavBar/SellerNav";
-
+import swal from "sweetalert";
 import React, { useEffect, useState, useRef } from "react";
 import axios from "axios";
 
@@ -41,7 +41,7 @@ const NewSellerProfile = () => {
           setID(data._id);
         });
     } catch (err) {
-      alert(err);
+      swal(err);
     }
   };
 
@@ -79,10 +79,10 @@ const NewSellerProfile = () => {
         Address: user.Address,
       })
       .then((res) => {
-        alert("You have successfully updated.");
+        swal("You have successfully updated.");
       })
       .catch((error) => {
-        alert(error);
+        swal(error);
       });
   };
 

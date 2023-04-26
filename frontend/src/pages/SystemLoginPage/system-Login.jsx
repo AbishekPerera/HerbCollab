@@ -4,6 +4,7 @@ import { useNavigate } from "react-router-dom";
 import "./system-Login.css";
 import Header from "../../components/Header/Header";
 import { Link } from "react-router-dom";
+import swal from "sweetalert";
 
 const SystemLogin = () => {
   const [isSignUpMode, setIsSignUpMode] = useState(false);
@@ -64,14 +65,14 @@ const SystemLogin = () => {
         Password: inputs.Password,
       })
       .then((res) => {
-        alert(res.data);
+        swal(res.data);
         window.location.reload(false);
       })
       .catch((error) => {
         if (error.response.status === 406) {
-          alert("User already exists! Login Instead");
+          swal("User already exists! Login Instead");
         } else {
-          alert(error);
+          swal(error);
         }
       });
   };
@@ -83,7 +84,7 @@ const SystemLogin = () => {
         Password: inputs.Password,
       })
       .then((res) => {
-        alert("You have successfully Logged.");
+        swal("You have successfully Logged.");
 
         //set response data to local storage
         localStorage.setItem("systemInfo", JSON.stringify(res.data));
@@ -101,18 +102,20 @@ const SystemLogin = () => {
         } else if (res.data.user.Role === "Admin") {
           history("/system/admin-Dashboard");
         } else {
-          alert("You are not a Seller or admin. Please Login as a Seller");
+          swal("You are not a Seller or admin. Please Login as a Seller");
         }
       })
       .catch((error) => {
         if (error.response.status === 400) {
-          alert("User not Found. SignUp Please");
+          swal("User not Found. SignUp Please");
         } else if (error.response.status === 401) {
-          alert("Invalid Email/Password");
+          swal("Invalid Email/Password");
         } else if (error.response.status === 402) {
-          alert("Your account is not activate Yet");
+          swal(
+            "Your account is not activate Yet.Admin will Activate your account soon"
+          );
         } else {
-          alert(error);
+          swal(error);
         }
       });
   };
