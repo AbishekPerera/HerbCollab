@@ -1,101 +1,91 @@
-import React from 'react'
-import "./styles/Dashboard.css";
-import "./styles/AllUsers.css";
-import "./styles/AllUsersSearch.css";
-import SystemNav from "../../../components/System/SystemNavBar/SystemNav";
-import SystemFooter from "../../../components/System/SystemFooter/SystemFooter";
-import Sidebar from "../../../components/System/Sidebar/Sidebar";
+import React, { useState, useEffect } from 'react';
+import './styles/Dashboard.css';
+import './styles/AllUsersSearch.css';
+import SystemNav from '../../../components/System/SystemNavBar/SystemNav';
+import SystemFooter from '../../../components/System/SystemFooter/SystemFooter';
+import Sidebar from '../../../components/System/Sidebar/Sidebar';
+import { tableCustomStyles } from './styles/tableStyle.jsx';
+import { useNavigate } from 'react-router-dom';
+import axios from 'axios';
+import swal from 'sweetalert';
+import DataTable from 'react-data-table-component';
 
 const AllUsers = () => {
-    return (
-        <div className="mainContainer">
-          <div className="sidebar">
-            <Sidebar />
-          </div>
-    
-          <div className="contentContainer">
+  const [users, setUsers] = useState([]);
+  const navigate = useNavigate();
 
-          <div className="systemNavBar">
-              <SystemNav />
-          </div>
+  const getAllUsers = () => {
+    axios
+      .get('http://localhost:8075/auth/')
+      .then((res) => {
+        setUsers(res.data);
+      })
+      .catch((err) => {
+        alert(err.message);
+      });
+  };
 
-          <div style={{ textAlign: "left", marginLeft: "500px"}}>
-             <h2>All Users</h2>
-          </div>
-          <br/> 
+  useEffect(() => {
+    getAllUsers();
+  }, []);
 
-          {/* Search Bar */}
-          <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css"></link>
-          <div className="search-form__example" style={{ display: "flex", justifyContent: "flex-end", alignItems: "center", marginRight: "20px"  }}>
-                <form className="searchbody example1 example2 example3 example4" action="/action_page.php" style={{ maxWidth: "300px" }}>
-                    <input type="text" placeholder="Search.." name="search2" />
-                    <button type="submit"><i className="fa fa-search"></i></button>
-                </form>
-          </div>
-          <br/>  
-           
-          {/* Table */}
-          <div className="table-container" style={{ width: '98%'}}>
-          
-                <table>
-                    <tr>
-                        <th>Name</th>
-                        <th>User Type</th>
-                        <th>Address</th>
-                        <th>Mobile</th>
-                        <th>Email</th>
-                    </tr>
-                    <tr>
-                        <td>Peter White</td>
-                        <td style={{ fontWeight: 'bold', color: '#2c831e' }}>Admin</td>
-                        <td>Colombo</td>
-                        <td>0778558989</td>
-                        <td>peter@gmail.com</td>
-                    </tr>
-                    <tr>
-                        <td>Peter</td>
-                        <td style={{ fontWeight: 'bold', color: '#2c831e' }}>Admin</td>
-                        <td>Colombo</td>
-                        <td>0778558989</td>
-                        <td>peter@gmail.com</td>
-                    </tr>
-                    <tr>
-                        <td>Peter</td>
-                        <td style={{ fontWeight: 'bold', color: '#2c831e' }}>Admin</td>
-                        <td>Colombo</td>
-                        <td>0778558989</td>
-                        <td>peter@gmail.com</td>
-                    </tr>
-                    <tr>
-                        <td>Peter</td>
-                        <td style={{ fontWeight: 'bold', color: '#2c831e' }}>Admin</td>
-                        <td>Colombo</td>
-                        <td>0778558989</td>
-                        <td>peter@gmail.com</td>
-                    </tr>
-                    <tr>
-                        <td>Peter</td>
-                        <td style={{ fontWeight: 'bold', color: '#2c831e' }}>Admin</td>
-                        <td>Colombo</td>
-                        <td>0778558989</td>
-                        <td>peter@gmail.com</td>
-                    </tr>
-                    <tr>
-                        <td>Peter</td>
-                        <td style={{ fontWeight: 'bold', color: '#2c831e' }}>Admin</td>
-                        <td>Colombo</td>
-                        <td>0778558989</td>
-                        <td>peter@gmail.com</td>
-                    </tr>
-                </table>
-          </div>
-            <br/> <br/>  <br/> <br/>     
-            <br/> <br/>  <br/> <br/>  
-            
-                
-            <SystemFooter />
-            </div>
+  const columns = [
+    {
+      name: 'Customer Name',
+      selector: (row) => row.name,
+      sortable: true,
+    },
+    {
+      name: 'Email',
+      selector: (row) => row.email,
+      sortable: true,
+    },
+    {
+      name: 'Contact Number',
+      selector: (row) => row.phone,
+      sortable: true,
+    },
+    {
+      name: 'Address',
+      selector: (row) => row.address,
+      sortable: true,
+    },
+    {
+      name: 'Date joined',
+      selector: (row) => row.date,
+      sortable: true,
+    },
+  ];
+
+  return (
+    <div className='mainContainer'>
+      <div className='sidebar'>
+        <Sidebar />
+      </div>
+
+      <div className='contentContainer'>
+        <div className='systemNavBar'>
+          <SystemNav />
         </div>
-    )
-}
-export default AllUsers    
+        <div className='content'>
+          <br />
+          <h1 style={{ textAlign: 'center' }}>All Customers</h1>
+          <br />
+          <br />
+          <DataTable
+            customStyles={tableCustomStyles}
+            columns={columns}
+            data={users}
+            pagination={true}
+            paginationPerPage={5}
+            paginationRowsPerPageOptions={[5, 10, 15, 20, 25, 30]}
+            noDataComponent='No Products Found'
+          />
+        </div>
+
+        <SystemFooter />
+      </div>
+    </div>
+  );
+};
+export default AllUsers;
