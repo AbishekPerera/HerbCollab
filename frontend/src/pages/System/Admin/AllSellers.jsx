@@ -6,6 +6,7 @@ import Sidebar from "../../../components/System/Sidebar/Sidebar";
 import SystemNav from "../../../components/System/SystemNavBar/SystemNav";
 import axios from "axios";
 import ViewSellerModal from "../../../components/System/Seller/ViewSellerModal";
+import swal from "sweetalert";
 
 const AllSellers = () => {
   const [SellerModal, setSellerModal] = useState(false);
@@ -41,17 +42,27 @@ const AllSellers = () => {
   }, []);
 
   function DeleteSeller(id) {
-    if (window.confirm("Are you sure to Delete the item?")) {
-      axios
-        .delete("http://localhost:8084/users/delete/" + id)
-        .then((res) => {
-          setSellers((sellers) => sellers.filter((_, i) => i !== id));
-          window.location.reload(false);
-        })
-        .catch((err) => {
-          alert(err);
-        });
-    }
+    swal({
+      title: "Are you sure?",
+      text: "Once deleted, you will not be able to recover this record!",
+      icon: "warning",
+      buttons: true,
+      dangerMode: true,
+    }).then((willDelete) => {
+      if (willDelete) {
+        axios
+          .delete("http://localhost:8084/users/delete/" + id)
+          .then((res) => {
+            setSellers((sellers) => sellers.filter((_, i) => i !== id));
+            window.location.reload(false);
+          })
+          .catch((err) => {
+            swal(err);
+          });
+      } else {
+        swal("Delete cancelled success!");
+      }
+    });
   }
 
   function handleChange(e, sellerData) {
@@ -75,7 +86,7 @@ const AllSellers = () => {
         })
         .then((res) => {
           const data = res.data;
-          alert("Update Seller Status Successfully");
+          swal("Update Seller Status Successfully");
           window.location.reload(false);
         });
     } catch (err) {
@@ -138,7 +149,10 @@ const AllSellers = () => {
           </div>
           <br />
           {/* Table */}
-          <div className="table-container" style={{ width: "98%" }}>
+          <div
+            className="table-container"
+            style={{ width: "98%", maxHeight: "500px", overflowY: "auto" }}
+          >
             <table>
               <tr class="header-row">
                 <th>Seller ID</th>
@@ -147,6 +161,7 @@ const AllSellers = () => {
                 <th>Email</th>
                 <th>Mobile Number</th>
                 <th>Address</th>
+                <th>Registered Date</th>
                 <th>Seller Status</th>
                 <th>Action</th>
               </tr>
@@ -180,6 +195,7 @@ const AllSellers = () => {
                       <td>{sellerData.Email}</td>
                       <td>{sellerData.MobileNo}</td>
                       <td>{sellerData.Address}</td>
+                      <td>{sellerData.RegisteredDate}</td>
                       <td>
                         <select
                           style={{ width: "180px" }}
