@@ -289,8 +289,9 @@ const SystemLogin = () => {
             <div className="content">
               <h3>New here ?</h3>
               <p>
-                Lorem ipsum, dolor sit amet consectetur adipisicing elit.
-                Debitis, ex ratione. Aliquid!
+                Sign up now as a seller and join our vibrant community of
+                entrepreneurs! Start selling your products and services to a
+                wide audience and take your business to the next level
               </p>
               <button
                 className="btnLogin transparent"
@@ -305,8 +306,8 @@ const SystemLogin = () => {
             <div className="content">
               <h3>One of us ?</h3>
               <p>
-                Lorem ipsum dolor sit amet consectetur adipisicing elit. Nostrum
-                laboriosam ad deleniti.
+                Start selling your products and services to a wide audience and
+                take your business to the next level
               </p>
               <button
                 className="btnLogin transparent"
