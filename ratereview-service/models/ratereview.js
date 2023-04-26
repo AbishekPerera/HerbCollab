@@ -19,6 +19,10 @@ const ratereviewSchema = new Schema({
     type: String,
     required: true,
   },
+  productImage: {
+    type: String,
+    required: true,
+  },
   sellerId: {
     type: String,
     required: true,

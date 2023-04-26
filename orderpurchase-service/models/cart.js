@@ -35,6 +35,14 @@ const cartSchema = new Schema({
     type: Number,
     required: true,
   },
+  sellerId: {
+    type: String,
+    required: true,
+  },
+  sellerName: {
+    type: String,
+    required: true,
+  },
   date: {
     type: Date,
     default: Date.now,

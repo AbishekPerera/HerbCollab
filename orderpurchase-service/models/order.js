@@ -47,6 +47,30 @@ const orderSchema = new Schema({
     type: String,
     default: "Pending",
   },
+  deliveryname: {
+    type: String,
+    required: true,
+  },
+  deliveryemail: {
+    type: String,
+    required: true,
+  },
+  deliveryphone: {
+    type: String,
+    required: true,
+  },
+  deliveryaddress: {
+    type: String,
+    required: true,
+  },
+  sellerId: {
+    type: String,
+    required: true,
+  },
+  sellerName: {
+    type: String,
+    required: true,
+  },
 });
 
 export const Order = mongoose.model("Order", orderSchema);
