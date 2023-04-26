@@ -22,7 +22,6 @@ const UpdateProduct = () => {
   const [image, setImage] = useState('');
 
   const { id } = useParams();
-  console.log('IDD: ', id);
   const getProduct = () => {
     axios
       .get('http://localhost:8071/products/get/' + id)
