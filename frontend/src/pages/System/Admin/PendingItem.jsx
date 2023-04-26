@@ -13,7 +13,6 @@ const PendingItem = () => {
   const { id } = useParams();
   const navigate = useNavigate();
 
-
   useEffect(() => {
     getPendingItem();
   }, []);
@@ -43,14 +42,31 @@ const PendingItem = () => {
         swal('Order Confirmed!', 'Order Confirmed!', 'success');
         setTimeout(function () {
           navigate('/system/admin-pendingorders');
-        }
-          , 2000);
-        
+        }, 2000);
       })
       .catch((err) => {
         alert(err.message);
       });
-  }
+  };
+
+  //Change status to rejected
+
+  const changeStatusToRejected = () => {
+    const status = 'Rejected';
+    axios
+      .put('http://localhost:8072/orders/updateorderstatus/' + id, {
+        status,
+      })
+      .then((res) => {
+        swal('Order Rejected!', 'Order Rejected!', 'success');
+        setTimeout(function () {
+          navigate('/system/admin-pendingorders');
+        }, 2000);
+      })
+      .catch((err) => {
+        alert(err.message);
+      });
+  };
 
   return (
     <div className='mainContainer'>
@@ -135,10 +151,14 @@ const PendingItem = () => {
               <div className='buttonRow row'>
                 <div class='p-1 d-flex justify-content-end'>
                   <div class='px-4 py-2'>
-                    <Button variant='success' onClick={changeStatusPending}>Approve</Button>
+                    <Button variant='success' onClick={changeStatusPending}>
+                      Approve
+                    </Button>
                   </div>
                   <div class='p-2'>
-                    <Button variant='danger'>Reject</Button>
+                    <Button variant='danger' onClick={changeStatusToRejected}>
+                      Reject
+                    </Button>
                   </div>
                 </div>
               </div>
