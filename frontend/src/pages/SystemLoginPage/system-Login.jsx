@@ -68,7 +68,6 @@ const SystemLogin = () => {
         window.location.reload(false);
       })
       .catch((error) => {
-        
         if (error.response.status === 406) {
           alert("User already exists! Login Instead");
         } else {
@@ -133,7 +132,7 @@ const SystemLogin = () => {
     }));
     setFormErrors((prev) => ({
       ...prev,
-      [e.target.name]: '',
+      [e.target.name]: "",
     }));
   }
 
@@ -145,10 +144,10 @@ const SystemLogin = () => {
       errors.UserName = "UserName is required";
     }
     if (!values.StoreName) {
-      errors.StoreName= "Store Name is required";
+      errors.StoreName = "Store Name is required";
     }
     if (!values.Address) {
-      errors.Address= "Address is required";
+      errors.Address = "Address is required";
     }
     if (!values.Email) {
       errors.Email = "Email is required";
@@ -224,7 +223,9 @@ const SystemLogin = () => {
                 onChange={handleChange}
                 placeholder="User Name"
               />
-              <p class="error" name="UserName" Value={formErrors.UserName}>{formErrors.UserName}</p>
+              <p class="error" name="UserName" Value={formErrors.UserName}>
+                {formErrors.UserName}
+              </p>
 
               <input
                 type="name"

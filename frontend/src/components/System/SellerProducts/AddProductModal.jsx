@@ -4,41 +4,38 @@ import axios from "axios";
 import swal from "sweetalert";
 
 const AddProductModal = ({ show, handleClose }) => {
-
- var [name, setName] = useState("");
+  var [name, setName] = useState("");
   var [category, setCategory] = useState("");
   var [description, setDescription] = useState("");
   var [quantity, setQuantity] = useState("");
   var [price, setPrice] = useState("");
   var [image, setImage] = useState("");
 
-
   const handleSubmit = (e) => {
     e.preventDefault();
-    
 
-     const newProduct = {
-       name,
-       category,
-       description,
-       quantity,
-        price,
-       image,
-     };
+    const newProduct = {
+      name,
+      category,
+      description,
+      quantity,
+      price,
+      image,
+    };
 
-     console.log('Checking new  product details: ', newProduct);
+    console.log("Checking new  product details: ", newProduct);
 
-     axios
-       .post('http://localhost:8071/products/add', newProduct)
-       .then(() => {
-         swal('Product Added!', 'Product Added Successfully!', 'success');
-         setTimeout(function () {
-           window.location.reload();
-         }, 1000);
-       })
-       .catch((err) => {
-         swal('Error!', 'Error in Adding Product!', err);
-       });
+    axios
+      .post("http://localhost:8071/products/add", newProduct)
+      .then(() => {
+        swal("Product Added!", "Product Added Successfully!", "success");
+        setTimeout(function () {
+          window.location.reload();
+        }, 1000);
+      })
+      .catch((err) => {
+        swal("Error!", "Error in Adding Product!", err);
+      });
 
     handleClose();
   };
