@@ -31,6 +31,8 @@ import ForgetPassword from "./pages/SystemLoginPage/Forget-Password";
 import MyPreOrders from "./pages/MyProfile/MyPreOrders";
 import MyShippedOrders from "./pages/MyProfile/MyShippedOrders";
 import MyReviews from "./pages/MyProfile/MyReviews";
+import RateAndReview from "./pages/RateAndReview/RateAndReview";
+// import RateAndReviewUpdate from "./pages/RateAndReview/RateAndReviewUpdate";
 // :::::::::::::::::::::::::::::::::::::::::::error in this line ::::::::::::::::::::::::::::::::::::::::::::::
 
 function App() {
@@ -54,10 +56,13 @@ function App() {
         <Route path="/myaccount/mypreorders" element={<MyPreOrders />} />
         <Route path="/myaccount/myshipped" element={<MyShippedOrders />} />
         <Route path="/myaccount/myreviews" element={<MyReviews />} />
+        <Route path="/addreview/:id" element={<RateAndReview />} />
+        {/* <Route path="/updatereview/:id" element={<RateAndReviewUpdate />} /> */}
         {/* ::::::::::::::::::::::::::::::::::::::::Customer Routes::::::::::::::::::::::::::::::::::::::::::::::::::: */}
 
         {/* ::::::::::::::::::::::::::::::::::::::::Admin Routes::::::::::::::::::::::::::::::::::::::::::::::::::: */}
         <Route path="/system/auth" element={<SystemLogin />} />
+
         <Route path="/system/forgetpassword" element={<ForgetPassword />} />
         <Route path="/system/admin-dashboard" element={<Dashboard />} />
 

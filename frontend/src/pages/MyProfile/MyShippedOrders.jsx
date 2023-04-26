@@ -24,7 +24,7 @@ const MyShippedOrders = () => {
     const { data } = await axios.get(
       "http://localhost:8072/orders/getorderbyuseridandstatus/" +
         userId +
-        "/Shipped"
+        "/Dispatched"
     );
     setOrders(data);
   };
