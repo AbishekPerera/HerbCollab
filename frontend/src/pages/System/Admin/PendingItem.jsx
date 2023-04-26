@@ -5,12 +5,14 @@ import SystemFooter from '../../../components/System/SystemFooter/SystemFooter';
 import './styles/PendingItem.css';
 import { Button } from 'react-bootstrap';
 import axios from 'axios';
-import { useParams } from 'react-router-dom';
+import { useNavigate, useParams } from 'react-router-dom';
+import swal from 'sweetalert';
 
 const PendingItem = () => {
   const [pendingItem, setPendingItem] = useState({});
   const { id } = useParams();
-  console.log('IDD: ', id);
+  const navigate = useNavigate();
+
 
   useEffect(() => {
     getPendingItem();
@@ -21,7 +23,6 @@ const PendingItem = () => {
       .get('http://localhost:8072/orders/getorderbyid/' + id)
       .then((res) => {
         setPendingItem(res.data.order);
-        console.log(res.data.order);
       })
       .catch((err) => {
         alert(err.message);
@@ -30,8 +31,26 @@ const PendingItem = () => {
 
   useEffect(() => {
     getPendingItem();
-    console.log('Pending Item: ', pendingItem);
   }, []);
+
+  const changeStatusPending = () => {
+    const status = 'Confirmed';
+    axios
+      .put('http://localhost:8072/orders/updateorderstatus/' + id, {
+        status,
+      })
+      .then((res) => {
+        swal('Order Confirmed!', 'Order Confirmed!', 'success');
+        setTimeout(function () {
+          navigate('/system/admin-pendingorders');
+        }
+          , 2000);
+        
+      })
+      .catch((err) => {
+        alert(err.message);
+      });
+  }
 
   return (
     <div className='mainContainer'>
@@ -88,7 +107,7 @@ const PendingItem = () => {
                             <br />
                             <br />
                             <span className='pendingItemDescSpan'>
-                              Seller name :{' '}
+                              Seller name : {pendingItem.sellerName}
                             </span>
                             <br />
                             <br />
@@ -116,7 +135,7 @@ const PendingItem = () => {
               <div className='buttonRow row'>
                 <div class='p-1 d-flex justify-content-end'>
                   <div class='px-4 py-2'>
-                    <Button variant='success'>Approve</Button>
+                    <Button variant='success' onClick={changeStatusPending}>Approve</Button>
                   </div>
                   <div class='p-2'>
                     <Button variant='danger'>Reject</Button>
