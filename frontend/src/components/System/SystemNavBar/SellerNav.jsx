@@ -2,11 +2,17 @@ import Container from "react-bootstrap/Container";
 import Nav from "react-bootstrap/Nav";
 import Navbar from "react-bootstrap/Navbar";
 import NavDropdown from "react-bootstrap/NavDropdown";
-import { Link } from "react-router-dom";
+import { useNavigate,Link } from "react-router-dom";
 import SellerImg from "../../../img/Seller/sellerImg.png";
 import "./SystemNav.css";
 
 const SellerNav = () => {
+  const history = useNavigate();
+
+  function logout(){
+    localStorage.removeItem("systemInfo");
+    
+  }
   return (
     <div className="mainNavContainer d-flex justify-content-end">
       <Navbar className="subNavContainer" expand="lg">
@@ -47,9 +53,9 @@ const SellerNav = () => {
                   </Link>
                 </NavDropdown.Item>
                 <NavDropdown.Item href="#action/3.2">
-                  <Link to="#" style={{ color: "#359733" }} class="nav-link">
+                  <Link to="/system/auth" style={{ color: "#359733" }} class="nav-link" onclick={logout}>
                     <i class="bi bi-box-arrow-right"></i>{" "}
-                    <span style={{ fontSize: "12px", color: "black" }}>
+                    <span style={{ fontSize: "12px", color: "black" }} >
                       Log Out
                     </span>
                   </Link>

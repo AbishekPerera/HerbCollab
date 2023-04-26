@@ -1,10 +1,9 @@
 import express from "express";
-import  { login,logout } from "../utils/auth.js"
+import { login, logout } from "../utils/auth.js";
 const router = express.Router();
 
-
 // Login route
-router.post('/login', login);
+router.post("/login", login);
 
 // Refresh token route
 //router.get('/refresh', refresh);
@@ -13,6 +12,6 @@ router.post('/login', login);
 //router.get('/user', verifyToken,getUserDetails);
 
 // Logout route
-router.post('/logout', logout);
+router.post("/logout", logout);
 
 export default router;

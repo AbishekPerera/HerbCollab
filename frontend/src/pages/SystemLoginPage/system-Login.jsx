@@ -68,7 +68,6 @@ const SystemLogin = () => {
         window.location.reload(false);
       })
       .catch((error) => {
-        
         if (error.response.status === 406) {
           alert("User already exists! Login Instead");
         } else {
@@ -100,7 +99,7 @@ const SystemLogin = () => {
         if (res.data.user.Role === "Seller") {
           history("/system/seller-Dashboard");
         } else if (res.data.user.Role === "Admin") {
-          history("/admin-Dashboard");
+          history("/system/admin-Dashboard");
         } else {
           alert("You are not a Seller or admin. Please Login as a Seller");
         }
@@ -133,7 +132,7 @@ const SystemLogin = () => {
     }));
     setFormErrors((prev) => ({
       ...prev,
-      [e.target.name]: '',
+      [e.target.name]: "",
     }));
   }
 
@@ -145,10 +144,10 @@ const SystemLogin = () => {
       errors.UserName = "UserName is required";
     }
     if (!values.StoreName) {
-      errors.StoreName= "Store Name is required";
+      errors.StoreName = "Store Name is required";
     }
     if (!values.Address) {
-      errors.Address= "Address is required";
+      errors.Address = "Address is required";
     }
     if (!values.Email) {
       errors.Email = "Email is required";
@@ -211,7 +210,9 @@ const SystemLogin = () => {
                 id="btnLogin"
                 className="btnLogin solid"
               />
-              <Link className="social-text">Forgot Password ? </Link>
+              <Link to="/system/forgetpassword" className="social-text">
+                Forgot Password ?{" "}
+              </Link>
             </form>
             <form onSubmit={sendData} className="sign-up-form">
               <h2 className="title">Sign up</h2>
@@ -224,7 +225,9 @@ const SystemLogin = () => {
                 onChange={handleChange}
                 placeholder="User Name"
               />
-              <p class="error" name="UserName" Value={formErrors.UserName}>{formErrors.UserName}</p>
+              <p class="error" name="UserName" Value={formErrors.UserName}>
+                {formErrors.UserName}
+              </p>
 
               <input
                 type="name"
@@ -286,8 +289,9 @@ const SystemLogin = () => {
             <div className="content">
               <h3>New here ?</h3>
               <p>
-                Lorem ipsum, dolor sit amet consectetur adipisicing elit.
-                Debitis, ex ratione. Aliquid!
+                Sign up now as a seller and join our vibrant community of
+                entrepreneurs! Start selling your products and services to a
+                wide audience and take your business to the next level
               </p>
               <button
                 className="btnLogin transparent"
@@ -302,8 +306,8 @@ const SystemLogin = () => {
             <div className="content">
               <h3>One of us ?</h3>
               <p>
-                Lorem ipsum dolor sit amet consectetur adipisicing elit. Nostrum
-                laboriosam ad deleniti.
+                Start selling your products and services to a wide audience and
+                take your business to the next level
               </p>
               <button
                 className="btnLogin transparent"
