@@ -1,22 +1,22 @@
-import React from "react";
-import "./styles/SellerDashboard.css";
-import SystemFooter from "../../../components/System/SystemFooter/SystemFooter";
-import SellerSidebar from "../../../components/System/Sidebar/SellerSidebar";
-import SellerNav from "../../../components/System/SystemNavBar/SellerNav";
-import SellerInfoCard from "../../../components/System/DashInfoCard/SellerInfoCard";
+import React from 'react';
+import './styles/SellerDashboard.css';
+import SystemFooter from '../../../components/System/SystemFooter/SystemFooter';
+import SellerSidebar from '../../../components/System/Sidebar/SellerSidebar';
+import SellerNav from '../../../components/System/SystemNavBar/SellerNav';
+import SellerInfoCard from '../../../components/System/DashInfoCard/SellerInfoCard';
 
 const SellerDashboard = () => {
   return (
-    <div className="mainContainer">
-      <div className="sidebar">
+    <div className='mainContainer'>
+      <div className='sidebar'>
         <SellerSidebar />
       </div>
 
-      <div className="contentContainer">
-        <div className="systemNavBar">
+      <div className='contentContainer'>
+        <div className='systemNavBar'>
           <SellerNav />
         </div>
-        <div className="content">
+        <div className='content'>
           <SellerInfoCard />
           <br />
           Lorem ipsum dolor sit amet consectetur adipisicing elit. Et non odio
