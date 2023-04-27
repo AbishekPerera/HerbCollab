@@ -1,5 +1,5 @@
 import React from "react";
-import { Link, useParams } from "react-router-dom";
+import { Link, useNavigate, useParams } from "react-router-dom";
 import Header from "../../components/Header/Header";
 import Footer from "../../components/Footer/Footer";
 import "./ProductDetailsPage.css";
@@ -9,6 +9,9 @@ import paymentimage from "../../img/other comp/payment-2.png";
 import { useEffect, useState } from "react";
 import axios from "axios";
 import ReactStars from "react-rating-stars-component";
+import swal from "sweetalert";
+import logoicon from "../../img/Logo/logo.png";
+import CustomerCartFloatingBtn from "../../components/CustomerFloatingBtn/CustomerCartFloatingBtn";
 
 const ProductDetailsPage = () => {
   //get product id from url
@@ -46,45 +49,65 @@ const ProductDetailsPage = () => {
     }
   };
 
+  const history = useNavigate();
+
   //add to cart button handler
   const addToCartHandler = (e) => {
     e.preventDefault();
-    const count = document.querySelector(".count");
-    const quantity = count.value;
-    const price = product.price;
-    const total = quantity * price;
+    if (localStorage.getItem("userInfo") == null) {
+      swal({
+        title: "Join with us",
+        text: "You need to join with us to add products to cart",
+        icon: "http://localhost:3000/static/media/logo.6f9a8264d985eb9a234c.png",
+      }).then((value) => {
+        history("/customerlogin");
+      });
+    } else {
+      const count = document.querySelector(".count");
+      const quantity = count.value;
+      const price = product.price;
+      const total = quantity * price;
 
-    //get data prom
-    const iserInfo = localStorage.getItem("userInfo");
-    const userInfo = JSON.parse(iserInfo);
+      //get data prom
+      const iserInfo = localStorage.getItem("userInfo");
+      const userInfo = JSON.parse(iserInfo);
 
-    const userId = userInfo.user._id;
-    const username = userInfo.user.name;
-    const productId = product._id;
-    const productName = product.name;
-    const productImage = product.image;
-    const sellerId = product.sellerId;
-    const sellerName = product.sellerUsername;
+      const userId = userInfo.user._id;
+      const username = userInfo.user.name;
+      const productId = product._id;
+      const productName = product.name;
+      const productImage = product.image;
+      const sellerId = product.sellerId;
+      const sellerName = product.sellerUsername;
 
-    const newOb = {
-      userId,
-      username,
-      productId,
-      productName,
-      productImage,
-      quantity,
-      price,
-      total,
-      sellerId,
-      sellerName,
-    };
+      const newOb = {
+        userId,
+        username,
+        productId,
+        productName,
+        productImage,
+        quantity,
+        price,
+        total,
+        sellerId,
+        sellerName,
+      };
 
-    // console.log(newOb);
+      // console.log(newOb);
 
-    axios.post("http://localhost:8072/carts/addtocart", newOb).then((res) => {
-      // console.log(res.data);
-      alert("Added to cart");
-    });
+      axios.post("http://localhost:8072/carts/addtocart", newOb).then((res) => {
+        // console.log(res.data);
+        // alert("Added to cart");
+        swal({
+          title: "Added to cart",
+          text: "Product added to cart successfully",
+          icon: "success",
+          button: "OK",
+        }).then((value) => {
+          history("/shop");
+        });
+      });
+    }
   };
 
   //get priduct ratings and reviews
@@ -323,6 +346,7 @@ const ProductDetailsPage = () => {
         </div>
       </div>
       {/* <!-- PRODUCT DETAILS AREA END --> */}
+      <CustomerCartFloatingBtn />
 
       <Footer />
     </div>

@@ -13,6 +13,7 @@ import {
 import "./PaymentGateway.css";
 import axios from "axios";
 import { Link } from "react-router-dom";
+import swal from "sweetalert";
 
 const PaymentGateway = () => {
   const [cardNumber, setCardNumber] = useState("");
@@ -58,19 +59,44 @@ const PaymentGateway = () => {
 
     // validate card details
     if (validDeleverydetails == false) {
-      alert("Please enter delivery details.");
+      // alert("Please enter delivery details.");
+      swal({
+        title: "Please enter delivery details.",
+        icon: "warning",
+        button: "Ok",
+      });
       return;
     } else if (cardNumber.length !== 16) {
-      alert("Invalid card number.");
+      // alert("Invalid card number.");
+      swal({
+        title: "Invalid card number.",
+        icon: "warning",
+        button: "Ok",
+      });
       return;
     } else if (cardHolder.length < 3) {
-      alert("Invalid card holder name.");
+      // alert("Invalid card holder name.");
+      swal({
+        title: "Invalid card holder name.",
+        icon: "warning",
+        button: "Ok",
+      });
       return;
     } else if (expiryDate.length !== 5) {
-      alert("Invalid expiry date.");
+      // alert("Invalid expiry date.");
+      swal({
+        title: "Invalid expiry date.",
+        icon: "warning",
+        button: "Ok",
+      });
       return;
     } else if (cvv.length !== 3) {
-      alert("Invalid CVV.");
+      // alert("Invalid CVV.");
+      swal({
+        title: "Invalid CVV.",
+        icon: "warning",
+        button: "Ok",
+      });
       return;
     } else {
       for (const item of cartItems) {
@@ -127,8 +153,26 @@ const PaymentGateway = () => {
           });
       }
 
-      alert("Order placed successfully.");
-      window.location = "/shop";
+      // alert("Order placed successfully.");
+      // window.location = "/shop";
+      swal({
+        title: "Order placed successfully.",
+        icon: "success",
+        button: "Ok",
+      }).then((value) => {
+        const to = deliveryEmail;
+
+        axios
+          .post("http://localhost:8079/mail/sendMail", {
+            to: to,
+          })
+          .then((res) => {
+            window.location = "/shop";
+          })
+          .catch((err) => {
+            console.log(err);
+          });
+      });
     }
   };
 

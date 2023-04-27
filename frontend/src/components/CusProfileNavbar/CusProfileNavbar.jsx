@@ -16,17 +16,17 @@ const CusProfileNavbar = () => {
           </li>
           <li class="nav-item nav-item77">
             <Link class="nav-link nav-link77" to={"/myaccount/myorders"}>
-              <i class="bi bi-cart-fill me-2"></i>My Orders
+              <i class="bi bi-cart-fill me-2"></i>Pendings
             </Link>
           </li>
           <li class="nav-item nav-item77">
             <Link to="/myaccount/mypreorders" class="nav-link nav-link77">
-              <i class="bi bi-clock-history me-2"></i>Pre Orders
+              <i class="bi bi-clock-history me-2"></i>All Orders
             </Link>
           </li>
           <li class="nav-item nav-item77">
             <Link to="/myaccount/myshipped" class="nav-link nav-link77">
-              <i class="bi bi-truck me-2"></i>Shipped
+              <i class="bi bi-truck me-2"></i>Dispatched
             </Link>
           </li>
           <li class="nav-item nav-item77">

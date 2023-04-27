@@ -14,6 +14,9 @@ import Footer from "../../components/Footer/Footer";
 import FooterBanner from "../../components/FooterBanner/FooterBanner";
 import axios from "axios";
 import { Link } from "react-router-dom";
+import FooterBannerSeller from "../../components/FooterBanner/FooterBannerSeller";
+import CustomerFloatingBtn from "../../components/CustomerFloatingBtn/CustomerFloatingBtn";
+import CustomerCartFloatingBtn from "../../components/CustomerFloatingBtn/CustomerCartFloatingBtn";
 
 const HomePage = () => {
   // const products = [
@@ -395,7 +398,11 @@ const HomePage = () => {
             ))}
           </Row>
         </div>
+        <CustomerCartFloatingBtn />
+
+        <CustomerFloatingBtn />
         <FooterBanner />
+        <FooterBannerSeller />
       </div>
       <Footer />
     </div>

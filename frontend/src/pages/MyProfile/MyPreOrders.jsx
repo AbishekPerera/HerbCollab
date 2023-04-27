@@ -161,7 +161,7 @@ const MyPreOrders = () => {
             <div className="my-orders-comp-outer">
               <Row>
                 <div className="my-order-tab-header">
-                  <h3>My Pre Orders</h3>
+                  <h3>My All Orders</h3>
                   <p>
                     "Order Management: Access your purchase history and
                     pre-order options"
