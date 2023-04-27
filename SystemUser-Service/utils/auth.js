@@ -1,91 +1,92 @@
-import users from '../models/Users.js';
-import bcrypt from 'bcryptjs';
-import jwt from 'jsonwebtoken'
+import users from "../models/Users.js";
+import bcrypt from "bcryptjs";
+import jwt from "jsonwebtoken";
 import dotenv from "dotenv";
 
-
 //login
-export async function login(req,res,next){
+export async function login(req, res, next) {
+  const { Email, Password } = req.body;
 
-    const {Email,Password}  = req.body;
+  let existingUser;
 
-    let existingUser;
+  try {
+    existingUser = await users.findOne({ Email: Email });
+  } catch (err) {
+    console.log(err);
+  }
+  if (!existingUser) {
+    return res.status(400).json({ message: "User not Found. SignUp Please" });
+  }
 
-    try{
-        existingUser = await users.findOne({Email:Email});
-        
+  const result = await bcrypt.compare(Password, existingUser.Password);
+  //const result = users.findOne({Password:existingUser.Password});
+
+  if (!result) {
+    return res.status(401).json({ message: "Invalid Email/Password" });
+  } else if (
+    existingUser.Role !== "Admin" &&
+    existingUser.Account !== "Active"
+  ) {
+    return res.status(402).json({
+      message:
+        "Your account is not activate Yet.Admin will Activate your account soon",
+    });
+  }
+
+  const token = jwt.sign(
+    { id: existingUser._id },
+    process.env.JWT_SECREAT_KEY,
+    {
+      expiresIn: "7d",
     }
-    catch(err){
-        console.log(err)
-    }
-    if(!existingUser){
-        return res.status(400).json({message: "User not Found. SignUp Please"});
-    }
-    
-    const result =  await bcrypt.compare(Password, existingUser.Password);
-    //const result = users.findOne({Password:existingUser.Password});
-    
-     if (!result ) {
-    
-        return res.status(401).json({message: "Invalid Email/Password"});
-    }
-
-    /*else if(existingUser.Account !== 'Active'){
-        return res.status(402).json({message: "Your account is not activate Yet"})
-    }*/
-
-    
-    
-        const token = jwt.sign({id:existingUser._id},process.env.JWT_SECREAT_KEY,{
-            expiresIn:"7d"
-        });
-        res.cookie(String(existingUser._id),token,{
-            path: '/',
-           // expires: new Date(Date.now()+1000*30),
-           expiresIn:"7d",
-            httpOnly: true,
-            sameSite: 'lax'
-        });
-        if(existingUser.Role == 'Seller'){
-            return res.status(201).json({message: "You are allowed to login as seller",user:existingUser,token})
-        }
-         else if(existingUser.Role == 'Admin'){
-            return res.status(202).json({message: "You are successfully login as Admin",user:existingUser,token})
-        }
-       // return res.status(200).json({message: "Successfully Loged In",user:existingUser,token});
-        
-   
-};
-
-
-
+  );
+  res.cookie(String(existingUser._id), token, {
+    path: "/",
+    // expires: new Date(Date.now()+1000*30),
+    expiresIn: "7d",
+    httpOnly: true,
+    sameSite: "lax",
+  });
+  if (existingUser.Role == "Seller") {
+    return res.status(201).json({
+      message: "You are allowed to login as seller",
+      user: existingUser,
+      token,
+    });
+  } else if (existingUser.Role == "Admin") {
+    return res.status(202).json({
+      message: "You are successfully login as Admin",
+      user: existingUser,
+      token,
+    });
+  }
+  // return res.status(200).json({message: "Successfully Loged In",user:existingUser,token});
+}
 
 //verify token
-export async function verifyToken(req,res,next){
+export async function verifyToken(req, res, next) {
+  const cookies = req.headers.cookie;
+  const token = cookies.split("=")[1].split(";")[0];
+  console.log(token);
+  //const headers = req.headers["authorization"];
+  //const token = headers.split("=")[1];
+  //console.log("tok",token);
 
-
-        const cookies = req.headers.cookie;
-        const token = cookies.split('=')[1].split(';')[0];
-       console.log(token);
-        //const headers = req.headers["authorization"];
-        //const token = headers.split("=")[1];
-        //console.log("tok",token);
-        
-    if(!token){
-        res.status(404).json({message:"No token found"})
+  if (!token) {
+    res.status(404).json({ message: "No token found" });
+  }
+  console.log(token);
+  jwt.verify(String(token), process.env.JWT_SECREAT_KEY, (err, user) => {
+    if (err) {
+      return res.status(400).json({ message: "Invalid Token" });
     }
-    console.log(token);
-    jwt.verify(String(token), process.env.JWT_SECREAT_KEY, (err, user) => {
-        if(err){
-            return res.status(400).json({message:"Invalid Token"});;
-        }
-        //return res.status(400).json({message:"valid Token"});
-        //console.log(user.id);
-        req.id = user.id;
-        console.log(user.id)
-    });
-    next();
-};
+    //return res.status(400).json({message:"valid Token"});
+    //console.log(user.id);
+    req.id = user.id;
+    console.log(user.id);
+  });
+  next();
+}
 
 /*export async function refresh(req,res,next){
     const cookies = req.headers.cookie;
@@ -119,43 +120,35 @@ export async function verifyToken(req,res,next){
 };
 */
 //get user details
-export async function getUserDetails(req,res,next){
-    const userId = req.id;
-    
-    
-       await users.findById(userId,"-Password").then((user)=>{
-        
-        return res.status(200).json(user)
-       }
-       ).catch((err)=>{
-        return new Error(err)
+export async function getUserDetails(req, res, next) {
+  const userId = req.id;
+
+  await users
+    .findById(userId, "-Password")
+    .then((user) => {
+      return res.status(200).json(user);
     })
-
-  
-};
-
-export async function logout(req,res,next){
-    const cookies = req.headers.cookie;
-    const token = cookies.split('=')[1].split(';')[0];
-    console.log(cookies);
-    
-        
-    if(!token){
-        res.status(404).json({message:"No token found"})
-    }
-    jwt.verify(String(token), process.env.JWT_SECREAT_KEY, (err, user) => {
-        if(err){
-            return res.status(400).json({message:"Invalid Token"});
-        }
-        res.clearCookie(user.id)
-        //req.cookies[user.id]=" "
-        console.log(user.id);
-        req.id = user.id;
-        return res.status(200).json({message:"successfully logout"});
-       
+    .catch((err) => {
+      return new Error(err);
     });
-   
+}
 
-   
-};
+export async function logout(req, res, next) {
+  const cookies = req.headers.cookie;
+  const token = cookies.split("=")[1].split(";")[0];
+  console.log(cookies);
 
+  if (!token) {
+    res.status(404).json({ message: "No token found" });
+  }
+  jwt.verify(String(token), process.env.JWT_SECREAT_KEY, (err, user) => {
+    if (err) {
+      return res.status(400).json({ message: "Invalid Token" });
+    }
+    res.clearCookie(user.id);
+    //req.cookies[user.id]=" "
+    console.log(user.id);
+    req.id = user.id;
+    return res.status(200).json({ message: "successfully logout" });
+  });
+}

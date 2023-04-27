@@ -191,20 +191,6 @@ const NewSellerProfile = () => {
                           </div>
                         </div>
                       </div>
-                      <div class="row">
-                        <div class="col-lg-12">
-                          <div class="form-group focused">
-                            <input
-                              type="file"
-                              class="form-control"
-                              id="photo"
-                              name="photo"
-                            />
-
-                            <br />
-                          </div>
-                        </div>
-                      </div>
                     </div>
 
                     <h6 class="heading-small text-muted mb-4">

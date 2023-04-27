@@ -7,20 +7,18 @@ import cors from "cors";
 const app = express();
 dotenv.config();
 app.use(express.json());
-app.use(cors({origin:true,credentials: true}));
+app.use(cors({ origin: true, credentials: true }));
 app.use(cookieParser());
-app.use(cors({credentials: true, origin: "http://localhost:3000"}));
+app.use(cors({ credentials: true, origin: "http://localhost:3000" }));
 app.use(bodyParser.json());
 app.use(express.json());
 
 dotenv.config();
 
 import userRouter from "./routes/user-routes.js";
-import authRouter from "./routes/auth.js"
+import authRouter from "./routes/auth.js";
 
-
-
-const PORT = process.env.PORT || 8074;
+const PORT = process.env.PORT || 8084;
 
 const URL = process.env.MONGODB_URL;
 
@@ -37,6 +35,5 @@ mongoose
   )
   .catch((err) => console.log(err));
 
-
-app.use("/users",userRouter );
-app.use("/users",authRouter );
+app.use("/users", userRouter);
+app.use("/users", authRouter);
