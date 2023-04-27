@@ -1,7 +1,7 @@
 FROM node:alpine
-WORKDIR /herbcollab/systemuser-service
+WORKDIR /herbcollab/notification-service
 COPY package*.json ./
 RUN npm install
 COPY . .
-EXPOSE 8084
+EXPOSE 8079
 CMD ["npm","run", "dev"]

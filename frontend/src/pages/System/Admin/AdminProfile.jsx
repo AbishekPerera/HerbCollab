@@ -5,8 +5,9 @@ import Sidebar from "../../../components/System/Sidebar/Sidebar";
 import SystemNav from "../../../components/System/SystemNavBar/SystemNav";
 import React, { useEffect, useState, useRef } from "react";
 import axios from "axios";
+import swal from "sweetalert";
 
-const NewSellerProfile = () => {
+const AdminProfile = () => {
   const [isEditMode, setIsEditMode] = useState(false);
 
   const [ID, setID] = useState("");
@@ -39,7 +40,7 @@ const NewSellerProfile = () => {
           setID(data._id);
         });
     } catch (err) {
-      alert(err);
+      swal(err);
     }
   };
 
@@ -77,11 +78,10 @@ const NewSellerProfile = () => {
         Address: user.Address,
       })
       .then((res) => {
-        alert("You have successfully updated.");
-        //history("/AllDrivers");
+        swal("You have successfully updated.");
       })
       .catch((error) => {
-        alert(error);
+        swal(error);
       });
   };
 
@@ -125,7 +125,7 @@ const NewSellerProfile = () => {
                           <div class="form-group focused">
                             <label for="name" class=" profileformlabelName">
                               <i class="bi bi-person-circle profileicon"></i>
-                              Seller Name:
+                              Admin Name:
                             </label>
                             <br />
 
@@ -161,20 +161,6 @@ const NewSellerProfile = () => {
                               value={user.Email}
                               onChange={handleInputChange}
                               required
-                            />
-
-                            <br />
-                          </div>
-                        </div>
-                      </div>
-                      <div class="row">
-                        <div class="col-lg-12">
-                          <div class="form-group focused">
-                            <input
-                              type="file"
-                              class="form-control"
-                              id="photo"
-                              name="photo"
                             />
 
                             <br />
@@ -257,7 +243,7 @@ const NewSellerProfile = () => {
                           <div class="form-group focused">
                             <label for="name">
                               <i class="bi bi-person-circle profileicon"></i>
-                              Seller Name: {user.UserName}
+                              Admin Name: {user.UserName}
                             </label>
                             <br />
                             <br />
@@ -334,4 +320,4 @@ const NewSellerProfile = () => {
     </div>
   );
 };
-export default NewSellerProfile;
+export default AdminProfile;
