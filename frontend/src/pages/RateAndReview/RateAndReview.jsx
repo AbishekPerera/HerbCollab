@@ -7,6 +7,7 @@ import rateusimg from "../../img/carousel/4.jpg";
 import "./RateAndReview.css";
 import ReactStars from "react-rating-stars-component";
 import axios from "axios";
+import swal from "sweetalert";
 
 // "userId": "6444315b39ed44a8ba4396bb",
 //   "customerName": "John Doe",
@@ -76,11 +77,25 @@ const RateAndReview = () => {
     axios
       .post("http://localhost:8073/ratereviews/addratereview", review)
       .then((res) => {
-        alert("Review added successfully");
-        history("/myaccount/mypreorders");
+        // alert("Review added successfully");
+        // history("/myaccount/mypreorders");
+        swal({
+          title: "Review added successfully",
+          text: "Thank you for your feedback!",
+          icon: "success",
+          button: "OK",
+        }).then((value) => {
+          history("/myaccount/mypreorders");
+        });
       })
       .catch((err) => {
-        alert("Error");
+        // alert("Error");
+        swal({
+          title: "Error",
+          text: "Something went wrong!",
+          icon: "error",
+          button: "OK",
+        });
       });
   };
 

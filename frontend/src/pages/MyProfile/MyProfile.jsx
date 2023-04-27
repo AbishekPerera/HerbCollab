@@ -7,6 +7,9 @@ import "./MyProfile.css";
 import CustomerProfilePhoto from "../../img/other comp/CustomerProfilePhoto.jpeg";
 
 const MyProfile = () => {
+  if (localStorage.getItem("userInfo") === null) {
+    window.location.href = "/";
+  }
   return (
     <div>
       <Header />

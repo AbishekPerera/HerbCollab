@@ -6,6 +6,8 @@ import { Link } from "react-router-dom";
 import { Col, Form, Row } from "react-bootstrap";
 import axios from "axios";
 import { useNavigate } from "react-router-dom";
+import CustomerCartFloatingBtn from "../../components/CustomerFloatingBtn/CustomerCartFloatingBtn";
+import swal from "sweetalert";
 
 const CustomerProfile = () => {
   const [isEditMode, setIsEditMode] = useState(false);
@@ -52,18 +54,34 @@ const CustomerProfile = () => {
           address: address || userInfo.address,
         })
         .then((res) => {
-          alert("Profile Updated Successfully");
-          localStorage.setItem("userInfo", JSON.stringify(res.data));
-          history("/");
+          // alert("Profile Updated Successfully");
+          // localStorage.setItem("userInfo", JSON.stringify(res.data));
+          // history("/");
+          swal({
+            title: "Profile Updated Successfully.",
+            icon: "success",
+            button: "Ok",
+          }).then(() => {
+            localStorage.setItem("userInfo", JSON.stringify(res.data));
+            history("/");
+          });
         })
         .catch((err) => {
           alert(err);
         });
     } else {
-      alert("Password and Confirm Password does not match");
+      // alert("Password and Confirm Password does not match");
+      swal({
+        title: "Password and Confirm Password does not match.",
+        icon: "error",
+        button: "Ok",
+      });
     }
   };
 
+  if (localStorage.getItem("userInfo") === null) {
+    window.location.href = "/";
+  }
   return (
     <>
       <div>
@@ -313,7 +331,8 @@ const CustomerProfile = () => {
             </div>
           </div>
         </div>
-      </div>
+      </div>{" "}
+      <CustomerCartFloatingBtn />
       <Footer />
     </>
   );

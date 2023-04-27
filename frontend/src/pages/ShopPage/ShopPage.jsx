@@ -7,6 +7,8 @@ import { Col, Pagination, Row } from "react-bootstrap";
 import Card from "../../components/ItemCard/ItemCard";
 import FooterBanner from "../../components/FooterBanner/FooterBanner";
 import axios from "axios";
+import CustomerFloatingBtn from "../../components/CustomerFloatingBtn/CustomerFloatingBtn";
+import CustomerCartFloatingBtn from "../../components/CustomerFloatingBtn/CustomerCartFloatingBtn";
 
 const ShopPage = () => {
   // const products = [
@@ -213,7 +215,9 @@ const ShopPage = () => {
             <Pagination.Last />
           </Pagination>
         </div>
+        <CustomerFloatingBtn />
         <FooterBanner />
+        <CustomerCartFloatingBtn />
       </div>
       <Footer />
     </div>

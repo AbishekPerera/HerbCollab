@@ -8,6 +8,7 @@ import loginsidejpg from "../../img/other comp/loginside.jpg";
 import axios from "axios";
 import ErrorMsgLogin from "./ErrorMsgLogin";
 import Loading from "../../components/Loading/Loading";
+import swal from "sweetalert";
 
 const CustomerLogin = () => {
   const [adEmail, setemail] = useState("");
@@ -33,14 +34,26 @@ const CustomerLogin = () => {
       .post("http://localhost:8075/auth/login", newOb)
       .then((res) => {
         // console.log(res.data);
-        localStorage.setItem("userInfo", JSON.stringify(res.data));
-        setLoading(false);
-        setError(false);
+        swal({
+          title: "Login Successfull.",
+          icon: "success",
+          button: "Ok",
+        }).then(() => {
+          localStorage.setItem("userInfo", JSON.stringify(res.data));
+          setLoading(false);
+          setError(false);
+        });
       })
       .catch((err) => {
         // console.log(err);
-        setLoading(false);
-        setError(true);
+        swal({
+          title: "Invalid Email Or Password.",
+          icon: "error",
+          button: "Ok",
+        }).then(() => {
+          setLoading(false);
+          setError(true);
+        });
       });
   };
 

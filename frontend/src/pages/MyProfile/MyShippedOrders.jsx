@@ -7,6 +7,7 @@ import "./MyProfile.css";
 import { Row, Table } from "react-bootstrap";
 import axios from "axios";
 import DataTable from "react-data-table-component";
+import swal from "sweetalert";
 
 const MyShippedOrders = () => {
   const [orders, setOrders] = useState([]);
@@ -105,11 +106,25 @@ const MyShippedOrders = () => {
     await axios
       .delete("http://localhost:8072/orders/deleteorder/" + id)
       .then((res) => {
-        alert("Order Deleted");
-        getOrders();
+        // alert("Order Deleted");
+        // getOrders();
+        swal({
+          title: "Order Deleted",
+          text: "Order Deleted Successfully",
+          icon: "success",
+          button: "Done",
+        }).then((value) => {
+          getOrders();
+        });
       })
       .catch((err) => {
-        alert(err);
+        // alert(err);
+        swal({
+          title: "Order Not Deleted",
+          text: "Order Not Deleted Successfully",
+          icon: "error",
+          button: "Done",
+        });
       });
   };
 
@@ -156,8 +171,10 @@ const MyShippedOrders = () => {
             <div className="my-orders-comp-outer">
               <Row>
                 <div className="my-order-tab-header">
-                  <h3>My Shipped</h3>
-                  <p>"Shipped orders: Track the status of your open orders"</p>
+                  <h3>My Dispatched Orders</h3>
+                  <p>
+                    "Dispatched orders: Track the status of your open orders"
+                  </p>
                 </div>
                 <div className="my-order-tab-body">
                   <DataTable

@@ -8,6 +8,7 @@ import { Button, Col, Form, Modal, Row } from "react-bootstrap";
 import axios from "axios";
 import ReactStars from "react-rating-stars-component";
 import DataTable from "react-data-table-component";
+import swal from "sweetalert";
 
 const MyReviews = () => {
   const [reviews, setReviews] = useState([]);
@@ -139,11 +140,28 @@ const MyReviews = () => {
     await axios
       .delete("http://localhost:8073/ratereviews/deleteratereviewbyid/" + id)
       .then((res) => {
-        alert("Review Deleted");
-        getReviews();
+        // alert("Review Deleted");
+        // getReviews();
+        swal({
+          title: "Are you sure?",
+          text: "Once deleted, you will not be able to recover this review!",
+          icon: "warning",
+          buttons: true,
+          dangerMode: true,
+        }).then((willDelete) => {
+          if (willDelete) {
+            swal("Review Deleted!", {
+              icon: "success",
+            });
+            getReviews();
+          } else {
+            swal("Review Not Deleted!");
+          }
+        });
       })
       .catch((err) => {
-        alert(err);
+        // alert(err);
+        swal("Review Not Deleted!");
       });
   };
 
@@ -165,12 +183,19 @@ const MyReviews = () => {
         }
       )
       .then((res) => {
-        alert("Review Updated");
-        getReviews();
-        handleClose();
+        // alert("Review Updated");
+        // getReviews();
+        // handleClose();
+        swal("Review Updated!", {
+          icon: "success",
+        }).then(() => {
+          getReviews();
+          handleClose();
+        });
       })
       .catch((err) => {
-        alert(err);
+        // alert(err);
+        swal("Review Not Updated!");
       });
   };
 

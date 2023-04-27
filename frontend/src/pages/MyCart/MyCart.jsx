@@ -7,6 +7,8 @@ import { useState, useEffect } from "react";
 import { Col, Container, Row, Table } from "react-bootstrap";
 import PaymentGatewayModel from "../../components/PaymentGatewayModel/PaymentGatewayModel";
 import axios from "axios";
+import CustomerCartFloatingBtn from "../../components/CustomerFloatingBtn/CustomerCartFloatingBtn";
+import swal from "sweetalert";
 
 const MyCart = () => {
   const [cartItems, setCartItems] = useState([]);
@@ -15,11 +17,22 @@ const MyCart = () => {
     axios
       .delete("http://localhost:8072/carts/deletecartitem/" + id)
       .then((res) => {
-        alert("Item deleted successfully.");
-        getCartItems();
+        // alert("Item deleted successfully.");
+        swal({
+          title: "Item deleted successfully.",
+          icon: "success",
+          button: "Ok",
+        }).then(() => {
+          getCartItems();
+        });
       })
       .catch((err) => {
-        alert(err);
+        // alert(err);
+        swal({
+          title: "Something went wrong.",
+          icon: "error",
+          button: "Ok",
+        });
       });
   };
 
@@ -106,6 +119,9 @@ const MyCart = () => {
   //for model
   const [modalShow, setModalShow] = React.useState(false);
 
+  if (localStorage.getItem("userInfo") === null) {
+    window.location.href = "/customerlogin";
+  }
   return (
     <div>
       <Header />
@@ -197,7 +213,8 @@ const MyCart = () => {
             </Col>
           </Row>
         </div>
-      </div>
+      </div>{" "}
+      <CustomerCartFloatingBtn />
       <Footer />
     </div>
   );

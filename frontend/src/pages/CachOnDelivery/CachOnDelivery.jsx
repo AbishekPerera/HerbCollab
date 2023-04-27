@@ -13,6 +13,7 @@ import {
 import "./CachOnDelivery.css";
 import axios from "axios";
 import { Link } from "react-router-dom";
+import swal from "sweetalert";
 
 const CachOnDelivery = () => {
   const iserInfo = localStorage.getItem("userInfo");
@@ -68,8 +69,21 @@ const CachOnDelivery = () => {
         });
     }
 
-    alert("Order placed successfully.");
-    window.location = "/shop";
+    // alert("Order placed successfully.");
+    swal("Order placed successfully.", "", "success").then(() => {
+      const to = deliveryEmail;
+
+      axios
+        .post("http://localhost:8079/mail/sendMail", {
+          to: to,
+        })
+        .then((res) => {
+          window.location = "/shop";
+        })
+        .catch((err) => {
+          console.log(err);
+        });
+    });
   };
 
   const [cartItems, setCartItems] = useState([]);

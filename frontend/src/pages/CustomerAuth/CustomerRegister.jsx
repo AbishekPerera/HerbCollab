@@ -5,6 +5,7 @@ import { Link, useNavigate } from "react-router-dom";
 import "./CustomerAuth.css";
 import RegisterImg from "../../img/other comp/register1.jpeg";
 import axios from "axios";
+import swal from "sweetalert";
 
 const CustomerRegister = () => {
   const [name, setName] = useState("");
@@ -39,8 +40,15 @@ const CustomerRegister = () => {
     axios
       .post("http://localhost:8075/auth/addcustomer", newOb)
       .then((res) => {
-        console.log(res.data);
-        history("/customerlogin");
+        swal({
+          title: "Registration Successfull.",
+          icon: "success",
+          button: "Ok",
+        }).then(() => {
+          console.log(res.data);
+          history("/customerlogin");
+          setError(false);
+        });
       })
       .catch((err) => {
         setError(true);
