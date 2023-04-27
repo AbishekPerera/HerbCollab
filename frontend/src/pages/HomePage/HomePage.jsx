@@ -12,94 +12,112 @@ import Card from "../../components/ItemCard/ItemCard";
 import Header from "../../components/Header/Header";
 import Footer from "../../components/Footer/Footer";
 import FooterBanner from "../../components/FooterBanner/FooterBanner";
+import axios from "axios";
+import { Link } from "react-router-dom";
+import FooterBannerSeller from "../../components/FooterBanner/FooterBannerSeller";
+import CustomerFloatingBtn from "../../components/CustomerFloatingBtn/CustomerFloatingBtn";
+import CustomerCartFloatingBtn from "../../components/CustomerFloatingBtn/CustomerCartFloatingBtn";
 
 const HomePage = () => {
-  const products = [
-    {
-      id: 1,
-      title: "Product 1",
-      image:
-        "https://mymed.lk/public/storage/products_assets/6114a16bbee4e.jpg",
-      price: "$10.00",
-    },
-    {
-      id: 2,
-      title: "Product 2",
-      image:
-        "https://mymed.lk/public/storage/dev_images/products_assets/60d530404aa4e.jpg",
-      price: "$20.00",
-    },
-    {
-      id: 3,
-      title: "Product 3",
-      image:
-        "https://mymed.lk/public/storage/products_assets/614c12af03c80.png",
-      price: "$30.00",
-    },
-    {
-      id: 4,
-      title: "Product 4",
-      image:
-        "https://mymed.lk/public/storage/products_assets/614d827c00aa1.jpg",
-      price: "$40.00",
-    },
-    {
-      id: 5,
-      title: "Product 5",
-      image:
-        "https://mymed.lk/public/storage/products_assets/614d876228cfd.jpg",
-      price: "$40.00",
-    },
-    {
-      id: 6,
-      title: "Product 6",
-      image:
-        "https://mymed.lk/public/storage/products_assets/614d88568ca26.jpg",
-      price: "$40.00",
-    },
-    {
-      id: 7,
-      title: "Product 7",
-      image:
-        "https://mymed.lk/public/storage/products_assets/6135ac6edd3d5.jpg",
-      price: "$40.00",
-    },
-    {
-      id: 8,
-      title: "Product 8",
-      image:
-        "https://mymed.lk/public/storage/products_assets/612c56d1d51f1.png",
-      price: "$40.00",
-    },
-    {
-      id: 9,
-      title: "Product 9",
-      image:
-        "https://mymed.lk/public/storage/products_assets/61262d0c4911e.jpg",
-      price: "$40.00",
-    },
-    {
-      id: 10,
-      title: "Product 10",
-      image:
-        "https://mymed.lk/public/storage/products_assets/61262c58df611.jpg",
-      price: "$40.00",
-    },
-    {
-      id: 11,
-      title: "Product 11",
-      image:
-        "https://mymed.lk/public/storage/products_assets/61262d8a3a528.jpg",
-      price: "$40.00",
-    },
-    {
-      id: 12,
-      title: "Product 12",
-      image:
-        "https://mymed.lk/public/storage/products_assets/6184bdc63310f.jpg",
-      price: "$40.00",
-    },
-  ];
+  // const products = [
+  //   {
+  //     id: 1,
+  //     title: "Product 1",
+  //     image:
+  //       "https://mymed.lk/public/storage/products_assets/6114a16bbee4e.jpg",
+  //     price: "$10.00",
+  //   },
+  //   {
+  //     id: 2,
+  //     title: "Product 2",
+  //     image:
+  //       "https://mymed.lk/public/storage/dev_images/products_assets/60d530404aa4e.jpg",
+  //     price: "$20.00",
+  //   },
+  //   {
+  //     id: 3,
+  //     title: "Product 3",
+  //     image:
+  //       "https://mymed.lk/public/storage/products_assets/614c12af03c80.png",
+  //     price: "$30.00",
+  //   },
+  //   {
+  //     id: 4,
+  //     title: "Product 4",
+  //     image:
+  //       "https://mymed.lk/public/storage/products_assets/614d827c00aa1.jpg",
+  //     price: "$40.00",
+  //   },
+  //   {
+  //     id: 5,
+  //     title: "Product 5",
+  //     image:
+  //       "https://mymed.lk/public/storage/products_assets/614d876228cfd.jpg",
+  //     price: "$40.00",
+  //   },
+  //   {
+  //     id: 6,
+  //     title: "Product 6",
+  //     image:
+  //       "https://mymed.lk/public/storage/products_assets/614d88568ca26.jpg",
+  //     price: "$40.00",
+  //   },
+  //   {
+  //     id: 7,
+  //     title: "Product 7",
+  //     image:
+  //       "https://mymed.lk/public/storage/products_assets/6135ac6edd3d5.jpg",
+  //     price: "$40.00",
+  //   },
+  //   {
+  //     id: 8,
+  //     title: "Product 8",
+  //     image:
+  //       "https://mymed.lk/public/storage/products_assets/612c56d1d51f1.png",
+  //     price: "$40.00",
+  //   },
+  //   {
+  //     id: 9,
+  //     title: "Product 9",
+  //     image:
+  //       "https://mymed.lk/public/storage/products_assets/61262d0c4911e.jpg",
+  //     price: "$40.00",
+  //   },
+  //   {
+  //     id: 10,
+  //     title: "Product 10",
+  //     image:
+  //       "https://mymed.lk/public/storage/products_assets/61262c58df611.jpg",
+  //     price: "$40.00",
+  //   },
+  //   {
+  //     id: 11,
+  //     title: "Product 11",
+  //     image:
+  //       "https://mymed.lk/public/storage/products_assets/61262d8a3a528.jpg",
+  //     price: "$40.00",
+  //   },
+  //   {
+  //     id: 12,
+  //     title: "Product 12",
+  //     image:
+  //       "https://mymed.lk/public/storage/products_assets/6184bdc63310f.jpg",
+  //     price: "$40.00",
+  //   },
+  // ];
+
+  const [products, setproducts] = useState([]);
+
+  useEffect(() => {
+    getAllProducts();
+  });
+
+  //get all product
+  const getAllProducts = async () => {
+    const response = await axios.get("http://localhost:8071/products/");
+    // console.log(response.data);
+    setproducts(response.data);
+  };
 
   return (
     <div>
@@ -127,29 +145,29 @@ const HomePage = () => {
                             <ul>
                               {/* <!-- Submenu Column - unlimited --> */}
                               <li class="ltn__category-menu-item ltn__category-menu-drop">
-                                <a>
+                                <Link>
                                   <i class="bi bi-bag-heart"></i>Health Care
-                                </a>
+                                </Link>
                                 <ul class="ltn__category-submenu ltn__category-column-5">
                                   <li class="ltn__category-submenu-title ltn__category-menu-drop">
-                                    <a>Health Care</a>
+                                    <Link>Health Care</Link>
                                     <ul class="ltn__category-submenu-children">
                                       <li>
-                                        <a>
+                                        <Link>
                                           Clutches Clutches Clutches Clutches{" "}
-                                        </a>
+                                        </Link>
                                       </li>
                                       <li>
-                                        <a>Cross Body</a>
+                                        <Link>Cross Body</Link>
                                       </li>
                                       <li>
-                                        <a>Satchels</a>
+                                        <Link>Satchels</Link>
                                       </li>
                                       <li>
-                                        <a>Sholuder</a>
+                                        <Link>Sholuder</Link>
                                       </li>
                                       <li>
-                                        <a>Toter</a>
+                                        <Link>Toter</Link>
                                       </li>
                                     </ul>
                                   </li>
@@ -157,27 +175,27 @@ const HomePage = () => {
                               </li>
                               {/* <!-- Submenu Column - 4 --> */}
                               <li class="ltn__category-menu-item ltn__category-menu-drop">
-                                <a>
+                                <Link>
                                   <i class="bi bi-bandaid"></i>First Aid{" "}
-                                </a>
+                                </Link>
                                 <ul class="ltn__category-submenu ltn__category-column-4">
                                   <li class="ltn__category-submenu-title ltn__category-menu-drop">
-                                    <a>First Aid</a>
+                                    <Link>First Aid</Link>
                                     <ul class="ltn__category-submenu-children">
                                       <li>
-                                        <a>Clutches</a>
+                                        <Link>Clutches</Link>
                                       </li>
                                       <li>
-                                        <a>Cross Body</a>
+                                        <Link>Cross Body</Link>
                                       </li>
                                       <li>
-                                        <a>Satchels</a>
+                                        <Link>Satchels</Link>
                                       </li>
                                       <li>
-                                        <a>Sholuder</a>
+                                        <Link>Sholuder</Link>
                                       </li>
                                       <li>
-                                        <a>Toter</a>
+                                        <Link>Toter</Link>
                                       </li>
                                     </ul>
                                   </li>
@@ -185,67 +203,67 @@ const HomePage = () => {
                               </li>
                               {/* <!-- Submenu Column - 3 --> */}
                               <li class="ltn__category-menu-item ltn__category-menu-drop">
-                                <a>
+                                <Link>
                                   <i class="bi bi-hospital"></i>Surgical Product
-                                </a>
+                                </Link>
                                 <ul class="ltn__category-submenu ltn__category-column-3">
                                   <li class="ltn__category-submenu-title ltn__category-menu-drop">
-                                    <a>Surgical Product</a>
+                                    <Link>Surgical Product</Link>
                                     <ul class="ltn__category-submenu-children">
                                       <li>
-                                        <a>Clutches</a>
+                                        <Link>Clutches</Link>
                                       </li>
                                       <li>
-                                        <a>Cross Body</a>
+                                        <Link>Cross Body</Link>
                                       </li>
                                       <li>
-                                        <a>Satchels</a>
+                                        <Link>Satchels</Link>
                                       </li>
                                       <li>
-                                        <a>Sholuder</a>
+                                        <Link>Sholuder</Link>
                                       </li>
                                       <li>
-                                        <a>Toter</a>
+                                        <Link>Toter</Link>
                                       </li>
                                     </ul>
                                   </li>
                                   <li class="ltn__category-submenu-title ltn__category-menu-drop">
-                                    <a>First Aid</a>
+                                    <Link>First Aid</Link>
                                     <ul class="ltn__category-submenu-children">
                                       <li>
-                                        <a>Clutches</a>
+                                        <Link>Clutches</Link>
                                       </li>
                                       <li>
-                                        <a>Cross Body</a>
+                                        <Link>Cross Body</Link>
                                       </li>
                                       <li>
-                                        <a>Satchels</a>
+                                        <Link>Satchels</Link>
                                       </li>
                                       <li>
-                                        <a>Sholuder</a>
+                                        <Link>Sholuder</Link>
                                       </li>
                                       <li>
-                                        <a>Toter</a>
+                                        <Link>Toter</Link>
                                       </li>
                                     </ul>
                                   </li>
                                   <li class="ltn__category-submenu-title ltn__category-menu-drop">
-                                    <a>Surgical Product</a>
+                                    <Link>Surgical Product</Link>
                                     <ul class="ltn__category-submenu-children">
                                       <li>
-                                        <a>Clutches</a>
+                                        <Link>Clutches</Link>
                                       </li>
                                       <li>
-                                        <a>Cross Body</a>
+                                        <Link>Cross Body</Link>
                                       </li>
                                       <li>
-                                        <a>Satchels</a>
+                                        <Link>Satchels</Link>
                                       </li>
                                       <li>
-                                        <a>Sholuder</a>
+                                        <Link>Sholuder</Link>
                                       </li>
                                       <li>
-                                        <a>Toter</a>
+                                        <Link>Toter</Link>
                                       </li>
                                     </ul>
                                   </li>
@@ -299,7 +317,7 @@ const HomePage = () => {
           </Col>
         </Row>
         <div class="ltn__feature-area">
-          {/* <!-- FEATURE AREA START ( Feature - 3) --> */}
+          {/* <!-- FEATURE AREA START --> */}
           <Container className="container-features">
             <Row>
               <Col className="svg-features" lg={3}>
@@ -309,7 +327,7 @@ const HomePage = () => {
                   </div>
                   <div class="ltn__feature-info">
                     <h4>Free shipping</h4>
-                    <p>On all orders over $49.00</p>
+                    <p>On all orders over Rs.4999</p>
                   </div>
                 </div>
               </Col>
@@ -369,10 +387,10 @@ const HomePage = () => {
           <Row xs={2} md={4} lg={5} className="g-4">
             {/* add grid classes */}
             {products.map((product) => (
-              <Col key={product.id}>
+              <Col key={product._id}>
                 <Card
-                  id={product.id}
-                  title={product.title}
+                  id={product._id}
+                  title={product.name}
                   image={product.image}
                   price={product.price}
                 />
@@ -380,7 +398,11 @@ const HomePage = () => {
             ))}
           </Row>
         </div>
+        <CustomerCartFloatingBtn />
+
+        <CustomerFloatingBtn />
         <FooterBanner />
+        <FooterBannerSeller />
       </div>
       <Footer />
     </div>

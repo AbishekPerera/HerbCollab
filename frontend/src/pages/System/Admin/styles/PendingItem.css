@@ -1,11 +1,14 @@
 .pendingItemContainer0 {
   /* padding: 2rem; */
+  margin-left: 6rem;
   margin-top: 2rem;
   box-shadow: 0 3px 6px rgba(0, 0, 0, 0.16), 0 3px 6px rgba(0, 0, 0, 0.23);
   background-color: rgb(255, 255, 255);
+  max-width: 900px;
 }
 
 .pendingItemImageContainer {
+  margin-left: 2rem;
   height: 450px;
 }
 
@@ -39,4 +42,8 @@
 
   background-color: #5d646d5e;
   --bs-gutter-x: 0rem;
+}
+
+.pendingItemDescSpan {
+  font-size: 1.1rem;
 }

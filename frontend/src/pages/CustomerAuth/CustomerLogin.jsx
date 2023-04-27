@@ -1,12 +1,70 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
 import Header from "../../components/Header/Header";
 import Footer from "../../components/Footer/Footer";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import "./CustomerAuth.css";
 import { Container } from "react-bootstrap";
 import loginsidejpg from "../../img/other comp/loginside.jpg";
+import axios from "axios";
+import ErrorMsgLogin from "./ErrorMsgLogin";
+import Loading from "../../components/Loading/Loading";
+import swal from "sweetalert";
 
 const CustomerLogin = () => {
+  const [adEmail, setemail] = useState("");
+  const [adPassword, setpassword] = useState("");
+  const [error, setError] = useState(false);
+  const [loading, setLoading] = useState(false);
+
+  const history = useNavigate();
+
+  const submitHandler = async (e) => {
+    e.preventDefault();
+    setLoading(true);
+
+    // console.log(adEmail, adPassword);
+    const newOb = {
+      email: adEmail,
+      password: adPassword,
+    };
+
+    // console.log(newOb);
+
+    axios
+      .post("http://localhost:8075/auth/login", newOb)
+      .then((res) => {
+        // console.log(res.data);
+        swal({
+          title: "Login Successfull.",
+          icon: "success",
+          button: "Ok",
+        }).then(() => {
+          localStorage.setItem("userInfo", JSON.stringify(res.data));
+          setLoading(false);
+          setError(false);
+        });
+      })
+      .catch((err) => {
+        // console.log(err);
+        swal({
+          title: "Invalid Email Or Password.",
+          icon: "error",
+          button: "Ok",
+        }).then(() => {
+          setLoading(false);
+          setError(true);
+        });
+      });
+  };
+
+  useEffect(() => {
+    const userInfo = localStorage.getItem("userInfo");
+
+    if (userInfo) {
+      history("/");
+    }
+  });
+
   return (
     <div>
       <Header />
@@ -52,10 +110,16 @@ const CustomerLogin = () => {
                 </div>
                 <div className="row">
                   {/* login form  */}
-                  <form>
+                  <form onSubmit={submitHandler}>
+                    {error && (
+                      <ErrorMsgLogin variant="danger">
+                        {"Invalid Email Or Password..."}
+                      </ErrorMsgLogin>
+                    )}
                     <div className="form-group m-2">
                       <label for="exampleInputEmail1">Email address</label>
                       <input
+                        onChange={(e) => setemail(e.target.value)}
                         type="email"
                         className="form-control"
                         id="exampleInputEmail1"
@@ -69,6 +133,7 @@ const CustomerLogin = () => {
                     <div className="form-group m-2">
                       <label for="exampleInputPassword1">Password</label>
                       <input
+                        onChange={(e) => setpassword(e.target.value)}
                         type="password"
                         className="form-control"
                         id="exampleInputPassword1"
@@ -85,6 +150,7 @@ const CustomerLogin = () => {
                         Check me out
                       </label>
                     </div>
+                    {loading && <Loading />}
                     <div className="loginsubmit m-2 justify-content-center  d-flex">
                       <button type="submit" className="btn btn-success">
                         Login

@@ -24,3 +24,38 @@ tr:hover {
 .header-row {
   background-color: #73c285;
 }
+
+.dataTable {
+  font-size: 20px;
+  border-collapse: collapse;
+  width: 100%;
+  max-width: 100%;
+  white-space: nowrap;
+  overflow: auto;
+}
+
+.dataTable th {
+  font-size: 20px;
+  font-weight: bold;
+  text-align: left;
+  background-color: #f2f2f2;
+  padding: 8px;
+  border: 1px solid #ddd;
+}
+
+.dataTable td {
+  text-align: left;
+  padding: 8px;
+  border: 1px solid #ddd;
+}
+
+.dataTable tr:nth-child(even) {
+  background-color: #f2f2f2;
+}
+
+.dataTable .cart-product-img {
+  width: 150px;
+  height: 150px;
+  object-fit: cover;
+  margin-right: 10px;
+}

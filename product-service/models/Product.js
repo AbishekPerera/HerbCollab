@@ -27,6 +27,12 @@ const ProductSchema = new Schema({
     type: String,
     required: true,
   },
+  sellerId: {
+    type: String,
+  },
+  sellerUsername: {
+    type: String,
+  },
 });
 
 export const Product = mongoose.model('Product', ProductSchema);

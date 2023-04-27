@@ -5,7 +5,7 @@ import cors from "cors";
 import dotenv from "dotenv";
 const app = express();
 
-const PORT = process.env.PORT || 8070;
+const PORT = process.env.PORT || 8073;
 app.use(cors());
 app.use(bodyParser.json());
 
@@ -24,3 +24,8 @@ mongoose
     })
   )
   .catch((err) => console.log(err));
+
+//routes-----------------------------------------------------------------
+
+import ratereviewRouter from "./routes/ratereviews.js";
+app.use("/ratereviews", ratereviewRouter);
