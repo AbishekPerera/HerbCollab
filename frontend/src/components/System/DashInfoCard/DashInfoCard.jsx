@@ -94,6 +94,7 @@ const DashInfoCard = () => {
             <div class='col-12 mt-3 mb-1'>
               <h2 class='cardTopic text-uppercase'>Overall Statistics</h2>
               <br />
+              <br />
             </div>
           </div>
 
@@ -107,7 +108,9 @@ const DashInfoCard = () => {
                         <div class='media-body px-4'>
                           <h4>Total Revenue</h4>
                         </div>
-                        <div class='align-self-center px-4'>
+                        <div
+                          class='align-self-center px-4'
+                          style={{ marginTop: '1rem', marginBottom: '1rem' }}>
                           <h1>Rs. {totalCommission}</h1>
                         </div>
                       </div>
@@ -133,7 +136,9 @@ const DashInfoCard = () => {
                         <div class='media-body px-4'>
                           <h4>Total Orders</h4>
                         </div>
-                        <div class='align-self-center px-4'>
+                        <div
+                          class='align-self-center px-4'
+                          style={{ marginTop: '1rem', marginLeft: '3rem' }}>
                           <h1>{systemTotalOrders}</h1>
                         </div>
                       </div>
@@ -149,6 +154,7 @@ const DashInfoCard = () => {
             </div>
           </div>
           <br />
+          <br />
           <div class='row'>
             <div class='col-xl-5 col-md-12'>
               <div class='card overflow-hidden'>
@@ -159,7 +165,13 @@ const DashInfoCard = () => {
                         <div class='media-body px-4'>
                           <h4>Total Customers</h4>
                         </div>
-                        <div class='align-self-center px-5'>
+                        <div
+                          class='align-self-center px-5'
+                          style={{
+                            marginTop: '1rem',
+                            marginLeft: '3rem',
+                            marginBottom: '1rem',
+                          }}>
                           <h1>{totalCustomers}</h1>
                         </div>
                       </div>
@@ -185,7 +197,13 @@ const DashInfoCard = () => {
                         <div class='media-body px-4'>
                           <h4>Total Sellers</h4>
                         </div>
-                        <div class='align-self-center px-5'>
+                        <div
+                          class='align-self-center px-5'
+                          style={{
+                            marginTop: '1rem',
+                            marginLeft: '3rem',
+                            marginBottom: '1rem',
+                          }}>
                           <h1>{totalSellers}</h1>
                         </div>
                       </div>

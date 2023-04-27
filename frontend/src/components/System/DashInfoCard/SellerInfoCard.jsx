@@ -18,7 +18,6 @@ const SellerInfoCard = () => {
           return order.sellerId === getSellerId && order.status === 'Delivered';
         });
         setSellerOrders(filteredSellerOrders);
-        console.log(filteredSellerOrders);
 
         const totalCommission = filteredSellerOrders
           .map((order) => {

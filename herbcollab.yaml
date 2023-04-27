@@ -1,0 +1,103 @@
+apiVersion: v1
+kind: Service
+metadata:
+  name: herbcollab
+spec:
+  ports:
+  - name: product-service
+    port: 8071
+    protocol: TCP
+    targetPort: 8071
+  - name: orderpurchase-service
+    port: 8072
+    protocol: TCP
+    targetPort: 8072
+  - name: ratereview-service
+    port: 8073
+    protocol: TCP
+    targetPort: 8073
+  - name: systemuser-service
+    port: 8084
+    protocol: TCP
+    targetPort: 8084
+  - name: customerauth-service
+    port: 8075
+    protocol: TCP
+    targetPort: 8075
+  - name: notification-service
+    port: 8079
+    protocol: TCP
+    targetPort: 8079       
+  selector:
+    app: herbcollab
+  type: LoadBalancer
+status:
+  loadBalancer: {}
+ 
+---
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  labels:
+    app: herbcollab
+  name: herbcollab
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: herbcollab
+  strategy:
+    type: Recreate
+  template:
+    metadata:
+      labels:
+        app: herbcollab
+    spec:
+      containers:
+      - name: product-service
+        image: jananimaya/product-service
+        imagePullPolicy: Always
+        ports:
+        - containerPort: 8071
+          protocol: TCP
+        resources: {}
+      - name: orderpurchase-service
+        image: jananimaya/orderpurchase-service
+        imagePullPolicy: Always
+        ports:
+        - containerPort: 8072
+          protocol: TCP
+        resources: {}
+      - name: ratereview-service
+        image: jananimaya/ratereview-service
+        imagePullPolicy: Always
+        ports:
+        - containerPort: 8073
+          protocol: TCP
+        resources: {}
+      - name: systemuser-service
+        image: jananimaya/systemuser-service
+        imagePullPolicy: Always
+        ports:
+        - containerPort: 8084
+          protocol: TCP
+        resources: {} 
+      - name: customerauth-service
+        image: jananimaya/customerauth-service
+        imagePullPolicy: Always
+        ports:
+        - containerPort: 8075
+          protocol: TCP
+        resources: {}
+      - name: notification-service
+        image: jananimaya/notification-service
+        imagePullPolicy: Always
+        ports:
+        - containerPort: 8079
+          protocol: TCP
+        resources: {}       
+      restartPolicy: Always
+status: {}
+
+# kubectl apply -f herbcollab.yaml
+# kubectl delete -f herbcollab.yaml
