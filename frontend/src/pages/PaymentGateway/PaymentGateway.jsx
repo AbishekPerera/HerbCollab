@@ -235,7 +235,7 @@ const PaymentGateway = () => {
       <div className="payment-gateway-header mb-5">
         <Navbar bg="dark" variant="dark">
           <Container>
-            <Navbar.Brand>Secure pay</Navbar.Brand>
+            <Navbar.Brand>HerbCollab Securepay Payment portal</Navbar.Brand>
             <Navbar.Toggle />
             <Navbar.Collapse className="justify-content-end">
               <Navbar.Text>

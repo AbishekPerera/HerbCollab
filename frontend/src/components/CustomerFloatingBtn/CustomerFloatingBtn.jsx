@@ -4,7 +4,7 @@ import "./CustomerFloatingBtn.css";
 
 const CustomerFloatingBtn = () => {
   if (localStorage.getItem("userInfo")) {
-    return 0;
+    return null;
   }
 
   return (

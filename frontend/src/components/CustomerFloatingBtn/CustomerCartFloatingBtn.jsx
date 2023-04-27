@@ -25,7 +25,7 @@ const CustomerCartFloatingBtn = () => {
     });
   };
   if (localStorage.getItem("userInfo") === null) {
-    return 0;
+    return null;
   }
 
   return (

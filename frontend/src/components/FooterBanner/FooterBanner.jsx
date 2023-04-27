@@ -13,7 +13,7 @@ const FooterBanner = () => {
   });
 
   if (isLogedin) {
-    return 0;
+    return null;
   }
 
   return (
