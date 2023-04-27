@@ -1,0 +1,85 @@
+version: "3.9"
+
+services: 
+  product-service:
+    build: /product-service
+    image: product-service
+    container_name: product-service-server
+    ports: 
+      - "8071:8071"
+    environment:
+      REACT_APP_MONGODB_URL: mongodb+srv://abhishekmongo77:suneraabi1999@cluster0.yhv08pn.mongodb.net/?retryWrites=true&w=majority
+      REACT_APP_PORT: 8071
+    networks:
+      - hc
+
+  orderpurchase-service:
+    build: /orderpurchase-service
+    image: orderpurchase-service
+    container_name: orderpurchase-service-server
+    ports: 
+      - "8072:8072"
+    environment:
+      REACT_APP_MONGODB_URL: mongodb+srv://abhishekmongo77:suneraabi1999@cluster0.yhv08pn.mongodb.net/?retryWrites=true&w=majority
+      REACT_APP_PORT: 8072
+    networks:
+      - hc   
+
+  ratereview-service:
+    build: /ratereview-service
+    image: ratereview-service
+    container_name: ratereview-service-server
+    ports: 
+      - "8073:8073"
+    environment:
+      REACT_APP_MONGODB_URL: mongodb+srv://abhishekmongo77:suneraabi1999@cluster0.yhv08pn.mongodb.net/?retryWrites=true&w=majority
+      REACT_APP_PORT: 8073
+    networks:
+      - hc  
+
+  systemuser-service:
+    build: /systemuser-service
+    image: systemuser-service
+    container_name: systemuser-service-server
+    ports: 
+      - "8084:8084"
+    environment:
+      REACT_APP_MONGODB_URL: mongodb+srv://abhishekmongo77:suneraabi1999@cluster0.yhv08pn.mongodb.net/?retryWrites=true&w=majority
+      REACT_APP_PORT: 8084
+      REACT_APP_JWT_SECRET_KEY: "MyKey"
+    networks:
+      - hc    
+
+  customerauth-service:
+    build: /customerauth-service
+    image: customerauth-service
+    container_name: customerauth-service-server
+    ports: 
+      - "8075:8075"
+    environment:
+      REACT_APP_MONGODB_URL: mongodb+srv://abhishekmongo77:suneraabi1999@cluster0.yhv08pn.mongodb.net/?retryWrites=true&w=majority
+      REACT_APP_PORT: 8075
+      REACT_APP_JWT_SECRET_KEY: "MyKey"   
+    networks:
+      - hc      
+
+  notification-service:
+    build: /notification-service
+    image: notification-service
+    container_name: notification-service-server
+    ports: 
+      - "8079:8079"
+    environment:
+      REACT_APP_MONGODB_URL: mongodb+srv://abhishekmongo77:suneraabi1999@cluster0.yhv08pn.mongodb.net/?retryWrites=true&w=majority
+      REACT_APP_PORT: 8079
+    networks:
+      - hc                  
+
+networks:
+  hc:
+    driver: bridge
+
+# docker compose up -d
+# docker build -t herbcollab .
+# docker tag herbcollab jananimaya/herbcollab
+  # docker tag <imagename> <dockerhubusername>/<imagename>   
