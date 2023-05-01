@@ -4,6 +4,7 @@ import bodyParser from "body-parser";
 import cors from "cors";
 import dotenv from "dotenv";
 import mail from "./routes/mail.js";
+import sms from "./routes/sms.js";
 
 const app = express();
 
@@ -12,7 +13,6 @@ app.use(cors());
 app.use(bodyParser.json());
 
 dotenv.config();
-
 
 const URL = process.env.MONGODB_URL;
 
@@ -29,4 +29,5 @@ mongoose
   )
   .catch((err) => console.log(err));
 
-  app.use("/mail",mail );
+app.use("/mail", mail);
+app.use("/sms", sms);
