@@ -13,7 +13,7 @@ The HerbCollab system fulfills the following assignment requirements:
 - Requires manual verification and confirmation of orders by administrators upon purchase.
 - Offers delivery options with integration to a third-party delivery service (e.g., DHL).
 - Generates revenue through commission charges on purchases, including payment service fees.
-- Integrates with payment gateways for credit card and PayPal/Payhere transactions.
+- Integrates with payment gateways for credit card transactions.
 - Sends SMS and email notifications to users upon successful purchase.
 - Provides an interface for tracking the status of orders (pending, confirmed, dispatched, delivered).
 - Includes a review and rating system for suppliers and individual products.
